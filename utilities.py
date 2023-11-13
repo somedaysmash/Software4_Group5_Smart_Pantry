@@ -181,10 +181,88 @@ def update_inventory():
         raise DbConnectionError("Failed to update inventory: {e}")
 
 
+# LaurenA adding function to view all pantry stock
+def pantry_stock():
+    try:
+        db_name = 'smart_pantry'
+        conn = _connect_to_db(db_name)
+        cur = conn.cursor()
+
+        query = """SELECT IngredientName, Quantity, UnitOfMeasurement FROM pantry"""
+
+        # Execute the SQL update query
+        cur.execute(query)
+
+        result = cur.fetchall()
+        for row in result:
+            print(row)
+            print("\n")
+
+        # Close the cursor and database connection
+        cur.close()
+        conn.close()
+
+    except Exception as e:
+        raise DbConnectionError(f'Failed to update inventory: {e}')
+
+
+# LaurenA adding function to view all fridge stock
+def fridge_stock():
+    try:
+        db_name = 'smart_pantry'
+        conn = _connect_to_db(db_name)
+        cur = conn.cursor()
+
+        query = """SELECT IngredientName, Quantity, UnitOfMeasurement FROM fridge"""
+
+        # Execute the SQL update query
+        cur.execute(query)
+
+        result = cur.fetchall()
+        for row in result:
+            print(row)
+            print("\n")
+
+        # Close the cursor and database connection
+        cur.close()
+        conn.close()
+
+    except Exception as e:
+        raise DbConnectionError(f'Failed to update inventory: {e}')
+
+
+# LaurenA adding function to view all freezer stock
+def freezer_stock():
+    try:
+        db_name = 'smart_pantry'
+        conn = _connect_to_db(db_name)
+        cur = conn.cursor()
+
+        query = """SELECT IngredientName, Quantity, UnitOfMeasurement FROM freezer"""
+
+        # Execute the SQL update query
+        cur.execute(query)
+
+        result = cur.fetchall()
+        for row in result:
+            print(row)
+            print("\n")
+
+        # Close the cursor and database connection
+        cur.close()
+        conn.close()
+
+    except Exception as e:
+        raise DbConnectionError(f'Failed to update inventory: {e}')
+
+
 if __name__ == '__main__':
-    #test_connection()
-    #add_item_fridge('Feta Cheese', 'Dairy', 200.0, 'Grams', 0.0, '2023-12-31')
-    #add_item_freezer('Diced Onion', 'Vegetable', 500.0, 'Grams', 150.0, '2024-10-31')
-    #add_item_pantry('Paprika', 'Spices/Seasonings', 100.0, 'Grams', 0.25, '2025-08-31')
-    #update_inventory()
+    # test_connection()
+    # add_item_fridge('Feta Cheese', 'Dairy', 200.0, 'Grams', 0.0, '2023-12-31')
+    # add_item_freezer('Diced Onion', 'Vegetable', 500.0, 'Grams', 150.0, '2024-10-31')
+    # add_item_pantry('Paprika', 'Spices/Seasonings', 100.0, 'Grams', 0.25, '2025-08-31')
+    # update_inventory()
+    # pantry_stock()
+    # fridge_stock()
+    freezer_stock()
 
