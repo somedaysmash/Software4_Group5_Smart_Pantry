@@ -1,7 +1,7 @@
 # FLASK AND @ROUTES GO HERE
 
 from flask import Flask, jsonify, request
-from utilities_test import add_item_fridge, add_item_freezer, add_item_pantry
+from utilities import add_item_fridge, add_item_freezer, add_item_pantry, update_inventory
 
 app = Flask(__name__)
 
@@ -21,6 +21,15 @@ def new_item_fridge():
         _SellByDate=new_fridge_stock['_SellByDate']
     )
     return new_fridge_stock
+
+
+@app.route('/update/fridge', methods=['PUT'])
+def update_fridge_stock():
+    successful = update_inventory()
+    if successful:
+        return jsonify({"message": f"Fridge ingredient has been updated."})
+    else:
+        return jsonify({"error": f"Failed to update fridge ingredient."})
 
 
 if __name__ == '__main__':

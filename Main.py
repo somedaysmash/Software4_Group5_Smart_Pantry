@@ -56,6 +56,14 @@ def run_fridge():
 
 
 # PUT REQUEST (UPDATE)
+def update_fridge():
+    url = f'http://127.0.0.1:5000/update/fridge'
+    response = requests.put(url)
+    print(response)
+    if response.status_code == 201:
+        print(response.json())
+    else:
+        print(f"Failed to update fridge ingredient.")
 
 
 
@@ -65,4 +73,5 @@ def run_fridge():
 
 
 if __name__ == "__main__":
-    run_fridge()
+    # run_fridge()
+    update_fridge()
