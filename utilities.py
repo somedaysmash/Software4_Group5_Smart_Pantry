@@ -3,6 +3,7 @@
 import mysql.connector
 from config import USER, PASSWORD, HOST
 
+
 class DbConnectionError(Exception):
     pass
 
@@ -47,6 +48,12 @@ def test_connection():
         if db_connection:
             db_connection.close()
             print('DB connection is closed')
+
+
+
+class DbConnectionError(Exception):
+    pass
+
 
 
 
@@ -130,11 +137,54 @@ def add_item_pantry(_IngredientName, _TypeOfIngredient, _Quantity, _UnitofMeasur
 
 
 
-# FUNCTION TO UPDATE ITEM IN STOCK
+# LAUREN-A FUNCTION TO UPDATE ITEM IN STOCK
+def update_inventory():
+    try:
+        db_name = 'smart_pantry'
+        conn = _connect_to_db(db_name)
+        cur = conn.cursor()
+
+        # Retrieve input from user
+        storage_update = input("Which stock store would you like to update? \n - Fridge \n - Freezer \n - Pantry \n : ").lower()
+        column_update = input("Which column of data would you like to update? \n - Ingredient name \n - Type of ingredient \n - Quantity \n - Sell by date \n : ").lower()
+        data_id = int(input("Please enter the ingredient ID: "))
+        new_value = input(f"Enter the new value for the {column_update}: ")
+
+        # Define SQL update query
+        update_query = ""
+
+        if column_update == 'ingredient name':
+            update_query = f"UPDATE {storage_update} SET IngredientName = %s WHERE ID = %s"
+        elif column_update == 'quantity':
+            new_value = int(new_value)
+            update_query = f"UPDATE {storage_update} SET Quantity = %s WHERE ID = %s"
+        elif column_update == 'type of ingredient':
+            update_query = f"UPDATE {storage_update} SET TypeOfIngredient = %s WHERE ID = %s"
+        elif column_update == 'sell by date':
+            new_value = int(new_value)
+            update_query = f"UPDATE {storage_update} SET SellByDate = %s WHERE ID = %s"
+        else:
+            print("Invalid input.")
+
+        # Execute the SQL update query
+        cur.execute(update_query, (new_value, data_id))
+
+        # Commit the changes to the database
+        conn.commit()
+        print("Record Updated successfully ")
+
+        # Close the cursor and database connection
+        cur.close()
+        conn.close()
+
+    except Exception as e:
+        raise DbConnectionError("Failed to update inventory: {e}")
 
 
 if __name__ == '__main__':
-    test_connection()
+    #test_connection()
     #add_item_fridge('Feta Cheese', 'Dairy', 200.0, 'Grams', 0.0, '2023-12-31')
     #add_item_freezer('Diced Onion', 'Vegetable', 500.0, 'Grams', 150.0, '2024-10-31')
     #add_item_pantry('Paprika', 'Spices/Seasonings', 100.0, 'Grams', 0.25, '2025-08-31')
+    #update_inventory()
+
