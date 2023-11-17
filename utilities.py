@@ -161,7 +161,7 @@ def _add_item(stock_store, values):
 #             db_connection.close()
 #             print('DB connection is closed')
 
-# KAREN - FUNCTION TO DELETE ITEM FROM STOCK
+# FUNCTION TO DELETE ITEM FROM STOCK
 
 def delete_item(stock_store, item_name):
     try:

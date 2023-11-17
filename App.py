@@ -1,7 +1,9 @@
 # FLASK AND @ROUTES GO HERE
 
 from flask import Flask, jsonify, request
-from utilities import _add_item, update_inventory, delete_item
+from utilities import add_item_fridge, add_item_freezer, add_item_pantry, update_inventory
+from utilities import delete_item, _add_item
+
 
 app = Flask(__name__)
 

@@ -68,7 +68,7 @@ def update_fridge():
 
 
 
-# DELETE REQUEST (REMOVE) -Karen
+# DELETE REQUEST (REMOVE)
 
 def delete_stock_item_by_name():
     try:
