@@ -2,6 +2,8 @@
 
 from flask import Flask, jsonify, request
 from utilities import add_item_fridge, add_item_freezer, add_item_pantry, update_inventory
+from utilities import delete_item, _add_item
+
 
 app = Flask(__name__)
 
@@ -30,6 +32,15 @@ def update_fridge_stock():
         return jsonify({"message": f"Fridge ingredient has been updated."})
     else:
         return jsonify({"error": f"Failed to update fridge ingredient."})
+
+
+@app.route('/delete/<stock_store>/<item_name>', methods=['DELETE'])
+def delete_item_from_stock(stock_store, item_name):
+    try:
+        delete_item(stock_store, item_name)
+        return jsonify({"message": f"{item_name} successfully deleted from {stock_store}."})
+    except:
+        return jsonify({"error": f"Failed to delete {item_name} from {stock_store}."})
 
 
 if __name__ == '__main__':

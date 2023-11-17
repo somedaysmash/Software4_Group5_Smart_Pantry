@@ -163,6 +163,27 @@ def _add_item(stock_store, values):
 
 # FUNCTION TO DELETE ITEM FROM STOCK
 
+def delete_item(stock_store, item_name):
+    try:
+        db_name = 'Smart_Pantry'
+        db_connection = _connect_to_db(db_name)
+        cur = db_connection.cursor()
+        print(f'Connected to DB: {db_name}')
+
+        query = f"DELETE FROM {stock_store} WHERE IngredientName = %s"
+        print(f'Deleting item with ID {item_name} from {stock_store}')
+
+        execute_query(cur, query, (item_name,))
+        db_connection.commit()
+        print(f"Item with ID {item_name} deleted from {stock_store}.")
+
+    except (NameError, ImportError, DbConnectionError) as e:
+        print(e)
+        raise
+
+    finally:
+        close_connection(db_connection)
+
 
 
 # LAUREN-A FUNCTION TO UPDATE ITEM IN STOCK
