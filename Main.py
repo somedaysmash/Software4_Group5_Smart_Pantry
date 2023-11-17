@@ -68,10 +68,28 @@ def update_fridge():
 
 
 
-# DELETE REQUEST (REMOVE)
+# DELETE REQUEST (REMOVE) -Karen
+
+def delete_stock_item_by_name():
+    try:
+        stock_store = input("Enter the stock store (fridge, freezer, pantry) from which you want to delete an item: ")
+        item_name = input(f"Enter the name of the item you want to delete from {stock_store}: ")
+
+        url = f'http://127.0.0.1:5000/delete/{stock_store}/{item_name}'
+        response = requests.delete(url)
+
+        if response.status_code == 200:
+            print(response.json())
+        else:
+            print(f"Failed to delete {item_name} from {stock_store}.")
+
+    except requests.exceptions.RequestException as err:
+        print("Error:", repr(err))
+
 
 
 
 if __name__ == "__main__":
     # run_fridge()
-    update_fridge()
+    # update_fridge()
+    delete_stock_item_by_name()
