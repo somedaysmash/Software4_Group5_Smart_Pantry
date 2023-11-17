@@ -1,5 +1,3 @@
-# FUNCTIONS GO IN THIS FILE
-
 import mysql.connector
 from config import USER, PASSWORD, HOST
 
@@ -7,159 +5,73 @@ from config import USER, PASSWORD, HOST
 class DbConnectionError(Exception):
     pass
 
+#NEW CLASS TO CONNECT TO DB
+class SqlDatabase:
+    def __init__(self, database):
+        self.host = HOST
+        self.user = USER
+        self.password = PASSWORD
+        self.database = database
+        self.connection = None
 
-def _connect_to_db(db_name):
-    cnx = mysql.connector.connect(
-        host=HOST,
-        user=USER,
-        password=PASSWORD,
-        auth_plugin='mysql_native_password',
-        database=db_name
-    )
-    return cnx
-
-
-# new code
-def close_connection(connection):
-    if connection:
-        connection.close()
-        print('DB connection is closed')
-
-
-# new code
-def execute_query(cur, query, values=None):
-    cur.execute(query, values)
+    def connect(self):
+        try:
+            self.connection = mysql.connector.connect(
+                host=self.host,
+                user=self.user,
+                password=self.password,
+                database=self.database
+            )
+        except (NameError, ImportError, DbConnectionError, ValueError) as e:
+            print(e)
+            raise
 
 
-def test_connection():
-    try:
-        db_name = 'Smart_Pantry'
-        db_connection = _connect_to_db(db_name)
-        cur = db_connection.cursor(buffered=True)
-        print(f'Connected to DB: {db_name}')
+    def disconnect(self):
+        if self.connection:
+            self.connection.close()
 
-        query = """
-        DESCRIBE freezer;
-        """
-        print(query)
-        execute_query(cur, query, None)
+    def execute_query(self, query):
+        try:
+            cursor = self.connection.cursor()
+            cursor.execute(query)
+            result = cursor.fetchall()
+            cursor.close()
+        except mysql.connector.Error as e:
+            raise DbConnectionError(e)
 
-        result = cur.fetchall()
-        print(result)
+        return result
 
-    except (NameError, ImportError, DbConnectionError) as e:
-        print(e)
-        raise
-
-    finally:
-        close_connection(db_connection)
-
-
-class DbConnectionError(Exception):
-    pass
+#TO CONNECT TO THE DB CREATE A NEW VARIABLE = SqlDatabase class and pass through the database. This allows us to connect to more than one database
+#example:
+# db = SqlDatabase('Smart_Pantry')
+# db.connect()
+# result = db.execute_query("SELECT * FROM fridge")
+# print(result)
 
 
 # new code - function to add items
 def _add_item(stock_store, values):
     try:
-        db_name = 'Smart_Pantry'
-        db_connection = _connect_to_db(db_name)
-        cur = db_connection.cursor()
-        print(f'Connected to DB: {db_name}')
-
-        query = f"INSERT INTO {stock_store} (IngredientName, TypeOfIngredient, Quantity, UnitOfMeasurement, MinimumQuantityNeeded, SellByDate) VALUES (%s, %s, %s, %s, %s, %s)"
+        db = SqlDatabase('Smart_Pantry')
+        db.connect()
+        db.execute_query(f"INSERT INTO {stock_store} (IngredientName, TypeOfIngredient, Quantity, UnitOfMeasurement, MinimumQuantityNeeded, SellByDate) VALUES {values}")
         print(f'The following data has been added to {stock_store}: {values}')
         # Additional check for NULL or None values
         if None in values:
             raise ValueError("Values cannot be None.")
-
-        execute_query(cur, query, values)
-        db_connection.commit()
+        db.connection.commit()
         print(f"Record added successfully to {stock_store}.")
+
 
     except (NameError, ImportError, DbConnectionError, ValueError) as e:
         print(e)
         raise
 
     finally:
-        close_connection(db_connection)
+        db.disconnect()
 
 
-# FUNCTION TO ADD ITEM TO STOCK
-# def add_item_fridge(_IngredientName, _TypeOfIngredient, _Quantity, _UnitofMeasurement, _MinimumQuantityNeeded, _SellByDate):
-#     try:
-#         db_name = 'Smart_Pantry'
-#         db_connection = _connect_to_db(db_name)
-#         cur = db_connection.cursor()
-#         print(f'Connected to DB: {db_name}')
-#
-#         query = "INSERT INTO fridge (IngredientName, TypeOfIngredient, Quantity, UnitOfMeasurement, MinimumQuantityNeeded, SellByDate) VALUES (%s, %s, %s, %s, %s, %s)"
-#         val = _IngredientName, _TypeOfIngredient, _Quantity, _UnitofMeasurement, _MinimumQuantityNeeded, _SellByDate
-#         print(query, val)
-#         cur.execute(query, val)
-#         db_connection.commit()
-#         cur.close()
-#
-#     except (NameError, ImportError, DbConnectionError) as e:
-#
-#         print(e)
-#
-#         raise
-#
-#     finally:
-#         if db_connection:
-#             db_connection.close()
-#             print('DB connection is closed')
-#
-# def add_item_freezer(_IngredientName, _TypeOfIngredient, _Quantity, _UnitofMeasurement, _MinimumQuantityNeeded, _SellByDate):
-#     try:
-#         db_name = 'Smart_Pantry'
-#         db_connection = _connect_to_db(db_name)
-#         cur = db_connection.cursor()
-#         print(f'Connected to DB: {db_name}')
-#
-#         query = "INSERT INTO freezer (IngredientName, TypeOfIngredient, Quantity, UnitOfMeasurement, MinimumQuantityNeeded, SellByDate) VALUES (%s, %s, %s, %s, %s, %s)"
-#         val = _IngredientName, _TypeOfIngredient, _Quantity, _UnitofMeasurement, _MinimumQuantityNeeded, _SellByDate
-#         print(query, val)
-#         cur.execute(query, val)
-#         db_connection.commit()
-#         cur.close()
-#
-#     except (NameError, ImportError, DbConnectionError) as e:
-#
-#         print(e)
-#
-#         raise
-#
-#     finally:
-#         if db_connection:
-#             db_connection.close()
-#             print('DB connection is closed')
-#
-# def add_item_pantry(_IngredientName, _TypeOfIngredient, _Quantity, _UnitofMeasurement, _MinimumQuantityNeeded, _SellByDate):
-#     try:
-#         db_name = 'Smart_Pantry'
-#         db_connection = _connect_to_db(db_name)
-#         cur = db_connection.cursor()
-#         print(f'Connected to DB: {db_name}')
-#
-#         query = "INSERT INTO pantry (IngredientName, TypeOfIngredient, Quantity, UnitOfMeasurement, MinimumQuantityNeeded, SellByDate) VALUES (%s, %s, %s, %s, %s, %s)"
-#         val = _IngredientName, _TypeOfIngredient, _Quantity, _UnitofMeasurement, _MinimumQuantityNeeded, _SellByDate
-#         print(query, val)
-#         cur.execute(query, val)
-#         db_connection.commit()
-#         cur.close()
-#
-#     except (NameError, ImportError, DbConnectionError) as e:
-#
-#         print(e)
-#
-#         raise
-#
-#     finally:
-#         if db_connection:
-#             db_connection.close()
-#             print('DB connection is closed')
 
 # FUNCTION TO DELETE ITEM FROM STOCK
 
@@ -233,6 +145,6 @@ def retrieve_stock(stock_store):
 
 if __name__ == '__main__':
     # test_connection()
-    _add_item(stock_store='freezer', values=('Diced Onion', 'Vegetable', 500.0, 'Grams', 150.0, '2024-10-31'))
+    _add_item(stock_store='Pantry', values=('Tinned Tomatoes', 'Vegetable', 450, 'Grams', 450, '2025-07-30'))
     # update_inventory()
     # retrieve_stock('freezer')
