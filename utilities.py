@@ -78,11 +78,11 @@ def _add_item(stock_store, values):
 
 
 # LAUREN-A FUNCTION TO UPDATE ITEM IN STOCK
+#Vanessa has edited to add class connection
 def update_inventory():
     try:
-        db_name = 'smart_pantry'
-        conn = _connect_to_db(db_name)
-        cur = conn.cursor()
+        db = SqlDatabase('Smart_Pantry')
+        db.connect()
 
         # Retrieve input from user
         storage_update = input("Which stock store would you like to update? \n - Fridge \n - Freezer \n - Pantry \n : ").lower()
@@ -94,57 +94,60 @@ def update_inventory():
         update_query = ""
 
         if column_update == 'ingredient name':
-            update_query = f"UPDATE {storage_update} SET IngredientName = %s WHERE ID = %s"
+            update_query = f"UPDATE {storage_update} SET IngredientName = {new_value} WHERE ID = {data_id}"
         elif column_update == 'quantity':
             new_value = int(new_value)
-            update_query = f"UPDATE {storage_update} SET Quantity = %s WHERE ID = %s"
+            update_query = f"UPDATE {storage_update} SET Quantity = {new_value} WHERE ID = {data_id}"
         elif column_update == 'type of ingredient':
-            update_query = f"UPDATE {storage_update} SET TypeOfIngredient = %s WHERE ID = %s"
+            update_query = f"UPDATE {storage_update} SET TypeOfIngredient = {new_value} WHERE ID = {data_id}"
         elif column_update == 'sell by date':
             new_value = int(new_value)
-            update_query = f"UPDATE {storage_update} SET SellByDate = %s WHERE ID = %s"
+            update_query = f"UPDATE {storage_update} SET SellByDate = {new_value} WHERE ID = {data_id}"
         else:
             print("Invalid input.")
 
+
         # Execute the SQL update query
-        execute_query(cur, update_query, (new_value, data_id))
+        db.execute_query(update_query)
 
         # Commit the changes to the database
-        conn.commit()
+        db.connection.commit()
         print("Record Updated successfully ")
 
     except Exception as e:
         raise DbConnectionError("Failed to update inventory: {e}")
+
     finally:
-        close_connection(conn)
+        db.disconnect()
 
 
 # LaurenA adding function to view all stock
 def retrieve_stock(stock_store):
     try:
-        db_name = 'smart_pantry'
-        conn = _connect_to_db(db_name)
-        cur = conn.cursor()
+        db = SqlDatabase('Smart_Pantry')
+        db.connect()
 
         query = f"""SELECT IngredientName, Quantity, UnitOfMeasurement FROM {stock_store}"""
 
         # Execute the SQL update query
-        execute_query(cur, query)
+        db.execute_query(query)
 
-        result = cur.fetchall()
         print(f'This is the current stock you have in your {stock_store}: ')
+
+        result = db.execute_query(query)
         for row in result:
             print(row)
             print("\n")
 
     except Exception as e:
         raise DbConnectionError(f'Failed to update inventory: {e}')
+
     finally:
-        close_connection(conn)
+        db.disconnect()
 
 
 if __name__ == '__main__':
     # test_connection()
-    _add_item(stock_store='Pantry', values=('Tinned Tomatoes', 'Vegetable', 450, 'Grams', 450, '2025-07-30'))
+    # _add_item(stock_store='Pantry', values=('Tinned Tomatoes', 'Vegetable', 450, 'Grams', 450, '2025-07-30'))
     # update_inventory()
-    # retrieve_stock('freezer')
+    retrieve_stock(input("Which store do you want to see? Freezer, Fridge or Pantry?").lower())
