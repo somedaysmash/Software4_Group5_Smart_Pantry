@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@1&display=swap');
+
+body {
+    margin: 0 2vmax 0 2vmax;
+    font-size: clamp(1rem, calc(1rem + ((1vw - 0.23rem) * 0.9615)), 1.5rem);
+    line-height: 1.6;
+    font-family: 'DM Serif Display', serif;
+    height: 100vh;
+}
+
+.index_bg {
+    background: url(assets/index_pantry.jpeg), lightgray 50% / cover no-repeat;
+}
+
+.fridge_bg {
+    background: url(assets/fridge.png), no-repeat rgb(30, 30, 30) fixed center center;
+    background-size: contain;
+}
+
+a {
+    color: whitesmoke;
+    text-decoration: none;
+}
+
+.navigation ul {
+    list-style: none;
+    margin: 0;
+    padding-top: 2rem;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+ul li {
+    padding: 0 7rem 0 7rem;
+    background-color: rgba(94, 86, 82, 0.80);
+    border-radius: 7rem;
+    text-align: center;
+}
+
+#orange ul li {
+    background-color: rgba(255, 104, 28, 0.9);
+}
+
+.main_button {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 40vh auto auto auto;
+    width: 40%;
+}
+
+.main_button li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    width: 100%;
+    height: 50px;
+}
+
+#primary {
+    align-items: center;
+    font-size: 3rem;
+    height: 15vh;
+}
+
+.container {
+    background: rgba(159, 193, 213, 0.9);
+    border-radius: 7rem;
+    margin: 3vh auto;
+    width: 80vw;
+    text-align: center;
+}
