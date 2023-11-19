@@ -47,7 +47,7 @@ def run_fridge():
         Quantity = input('What quantity are you adding?')
         UnitOfMeasurement = input ('What is the unit of measurement for the quantity?')
         MinimumQuantityNeeded = input("What's the minimum quanity of this you want to hold in stock?")
-        SellByDate = input ("What is the sell by date? Enter in format YYY-MM-DD")
+        SellByDate = input ("What is the sell by date? Enter in format YYYY-MM-DD")
         add_stock_item_fridge(IngredientName, TypeOfIngredient, Quantity, UnitOfMeasurement, MinimumQuantityNeeded, SellByDate)
         print("We have added your item")
 
