@@ -2,7 +2,7 @@
 import mysql.connector
 from flask import Flask, jsonify, request, send_file, render_template
 from utilities import add_item_fridge, add_item_freezer, add_item_pantry, update_inventory
-from utilities import delete_item, _add_item, _connect_to_db, retrieve_stock
+from utilities import delete_item, _add_item, retrieve_stock
 from config import *
 
 
