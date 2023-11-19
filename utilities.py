@@ -229,13 +229,14 @@ def update_inventory():
 
 
 # LaurenA adding function to view all stock
+# Anna editing the below for Flask to parse 
 def retrieve_stock(stock_store):
     try:
         db_name = 'smart_pantry'
         conn = _connect_to_db(db_name)
         cur = conn.cursor()
 
-        query = f"""SELECT IngredientName, Quantity, UnitOfMeasurement FROM {stock_store}"""
+        query = f"""SELECT IngredientName, format(Quantity, 0), UnitOfMeasurement FROM {stock_store}"""
 
         # Execute the SQL update query
         execute_query(cur, query)
@@ -245,6 +246,7 @@ def retrieve_stock(stock_store):
         for row in result:
             print(row)
             print("\n")
+        return result
 
     except Exception as e:
         raise DbConnectionError(f'Failed to update inventory: {e}')

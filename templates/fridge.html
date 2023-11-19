@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- meta data -->
+
+  <head>
+    <title>Smart Pantry</title>
+    <!-- <link rel="icon" type="text/png" href="favicon-32x32.png"> -->
+    <link rel="stylesheet" href="static/style.css" />
+  </head>
+
+  <body class="fridge_bg">
+    <nav class="navigation" id="orange">
+      <ul>
+        <li><a href="/freezer">Open my freezer</a></li>
+        <li><a href="/recipe">Generate a recipe!</a></li>
+        <li><a href="/pantry">Open my pantry</a></li>
+      </ul>
+    </nav>
+
+    <div class="container" id="table-container">
+      <table>
+        <tbody>
+          {%for item in result%}
+          <tr>
+            <td>{{item[0]}}</td>
+            <td>{{item[1]}}</td>
+            <td>{{item[2]}}</td>
+          </tr>
+          {%endfor%}
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>
