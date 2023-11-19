@@ -86,80 +86,80 @@ def _add_item(stock_store, values):
 
 
 # FUNCTION TO ADD ITEM TO STOCK
-# def add_item_fridge(_IngredientName, _TypeOfIngredient, _Quantity, _UnitofMeasurement, _MinimumQuantityNeeded, _SellByDate):
-#     try:
-#         db_name = 'Smart_Pantry'
-#         db_connection = _connect_to_db(db_name)
-#         cur = db_connection.cursor()
-#         print(f'Connected to DB: {db_name}')
-#
-#         query = "INSERT INTO fridge (IngredientName, TypeOfIngredient, Quantity, UnitOfMeasurement, MinimumQuantityNeeded, SellByDate) VALUES (%s, %s, %s, %s, %s, %s)"
-#         val = _IngredientName, _TypeOfIngredient, _Quantity, _UnitofMeasurement, _MinimumQuantityNeeded, _SellByDate
-#         print(query, val)
-#         cur.execute(query, val)
-#         db_connection.commit()
-#         cur.close()
-#
-#     except (NameError, ImportError, DbConnectionError) as e:
-#
-#         print(e)
-#
-#         raise
-#
-#     finally:
-#         if db_connection:
-#             db_connection.close()
-#             print('DB connection is closed')
-#
-# def add_item_freezer(_IngredientName, _TypeOfIngredient, _Quantity, _UnitofMeasurement, _MinimumQuantityNeeded, _SellByDate):
-#     try:
-#         db_name = 'Smart_Pantry'
-#         db_connection = _connect_to_db(db_name)
-#         cur = db_connection.cursor()
-#         print(f'Connected to DB: {db_name}')
-#
-#         query = "INSERT INTO freezer (IngredientName, TypeOfIngredient, Quantity, UnitOfMeasurement, MinimumQuantityNeeded, SellByDate) VALUES (%s, %s, %s, %s, %s, %s)"
-#         val = _IngredientName, _TypeOfIngredient, _Quantity, _UnitofMeasurement, _MinimumQuantityNeeded, _SellByDate
-#         print(query, val)
-#         cur.execute(query, val)
-#         db_connection.commit()
-#         cur.close()
-#
-#     except (NameError, ImportError, DbConnectionError) as e:
-#
-#         print(e)
-#
-#         raise
-#
-#     finally:
-#         if db_connection:
-#             db_connection.close()
-#             print('DB connection is closed')
-#
-# def add_item_pantry(_IngredientName, _TypeOfIngredient, _Quantity, _UnitofMeasurement, _MinimumQuantityNeeded, _SellByDate):
-#     try:
-#         db_name = 'Smart_Pantry'
-#         db_connection = _connect_to_db(db_name)
-#         cur = db_connection.cursor()
-#         print(f'Connected to DB: {db_name}')
-#
-#         query = "INSERT INTO pantry (IngredientName, TypeOfIngredient, Quantity, UnitOfMeasurement, MinimumQuantityNeeded, SellByDate) VALUES (%s, %s, %s, %s, %s, %s)"
-#         val = _IngredientName, _TypeOfIngredient, _Quantity, _UnitofMeasurement, _MinimumQuantityNeeded, _SellByDate
-#         print(query, val)
-#         cur.execute(query, val)
-#         db_connection.commit()
-#         cur.close()
-#
-#     except (NameError, ImportError, DbConnectionError) as e:
-#
-#         print(e)
-#
-#         raise
-#
-#     finally:
-#         if db_connection:
-#             db_connection.close()
-#             print('DB connection is closed')
+def add_item_fridge(_IngredientName, _TypeOfIngredient, _Quantity, _UnitofMeasurement, _MinimumQuantityNeeded, _SellByDate):
+    try:
+        db_name = 'Smart_Pantry'
+        db_connection = _connect_to_db(db_name)
+        cur = db_connection.cursor()
+        print(f'Connected to DB: {db_name}')
+
+        query = "INSERT INTO fridge (IngredientName, TypeOfIngredient, Quantity, UnitOfMeasurement, MinimumQuantityNeeded, SellByDate) VALUES (%s, %s, %s, %s, %s, %s)"
+        val = _IngredientName, _TypeOfIngredient, _Quantity, _UnitofMeasurement, _MinimumQuantityNeeded, _SellByDate
+        print(query, val)
+        cur.execute(query, val)
+        db_connection.commit()
+        cur.close()
+
+    except (NameError, ImportError, DbConnectionError) as e:
+
+        print(e)
+
+        raise
+
+    finally:
+        if db_connection:
+            db_connection.close()
+            print('DB connection is closed')
+
+def add_item_freezer(_IngredientName, _TypeOfIngredient, _Quantity, _UnitofMeasurement, _MinimumQuantityNeeded, _SellByDate):
+    try:
+        db_name = 'Smart_Pantry'
+        db_connection = _connect_to_db(db_name)
+        cur = db_connection.cursor()
+        print(f'Connected to DB: {db_name}')
+
+        query = "INSERT INTO freezer (IngredientName, TypeOfIngredient, Quantity, UnitOfMeasurement, MinimumQuantityNeeded, SellByDate) VALUES (%s, %s, %s, %s, %s, %s)"
+        val = _IngredientName, _TypeOfIngredient, _Quantity, _UnitofMeasurement, _MinimumQuantityNeeded, _SellByDate
+        print(query, val)
+        cur.execute(query, val)
+        db_connection.commit()
+        cur.close()
+
+    except (NameError, ImportError, DbConnectionError) as e:
+
+        print(e)
+
+        raise
+
+    finally:
+        if db_connection:
+            db_connection.close()
+            print('DB connection is closed')
+
+def add_item_pantry(_IngredientName, _TypeOfIngredient, _Quantity, _UnitofMeasurement, _MinimumQuantityNeeded, _SellByDate):
+    try:
+        db_name = 'Smart_Pantry'
+        db_connection = _connect_to_db(db_name)
+        cur = db_connection.cursor()
+        print(f'Connected to DB: {db_name}')
+
+        query = "INSERT INTO pantry (IngredientName, TypeOfIngredient, Quantity, UnitOfMeasurement, MinimumQuantityNeeded, SellByDate) VALUES (%s, %s, %s, %s, %s, %s)"
+        val = _IngredientName, _TypeOfIngredient, _Quantity, _UnitofMeasurement, _MinimumQuantityNeeded, _SellByDate
+        print(query, val)
+        cur.execute(query, val)
+        db_connection.commit()
+        cur.close()
+
+    except (NameError, ImportError, DbConnectionError) as e:
+
+        print(e)
+
+        raise
+
+    finally:
+        if db_connection:
+            db_connection.close()
+            print('DB connection is closed')
 
 # FUNCTION TO DELETE ITEM FROM STOCK
 

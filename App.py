@@ -1,8 +1,8 @@
 # FLASK AND @ROUTES GO HERE
-
-from flask import Flask, jsonify, request
+import mysql.connector
+from flask import Flask, jsonify, request, send_file
 from utilities import add_item_fridge, add_item_freezer, add_item_pantry, update_inventory
-from utilities import delete_item, _add_item
+from utilities import delete_item, _add_item, _connect_to_db
 
 
 app = Flask(__name__)
@@ -42,6 +42,42 @@ def delete_item_from_stock(stock_store, item_name):
     except:
         return jsonify({"error": f"Failed to delete {item_name} from {stock_store}."})
 
+
+if __name__ == '__main__':
+    app.run(debug=True)
+    
+    
+    
+# Anna's test code
+
+@app.route('/fridge')
+def index():
+    # Connect to MySQL
+    connection = mysql.connector.connect(**_connect_to_db)
+    cursor = connection.cursor()
+
+    # Execute a query to fetch data from your table
+    cursor.execute('SELECT IngredientName FROM Fridge')
+    data = cursor.fetchall()
+
+    # Close the connection
+    cursor.close()
+    connection.close()
+
+    # Read the HTML file
+    with open('front-end/fridge.html', 'r') as file:
+        html_content = file.read()
+
+    # Inject the data into the HTML content
+    data_html = '<ul>'
+    for row in data:
+        data_html += f'<li>{row}</li>'
+    data_html += '</ul>'
+
+    html_content = html_content.replace('<!-- placeholder -->', data_html)
+
+    # Send the modified content as the response
+    return send_file(html_content, mimetype='text/html')
 
 if __name__ == '__main__':
     app.run(debug=True)
