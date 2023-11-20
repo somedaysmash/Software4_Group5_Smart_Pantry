@@ -1,15 +1,24 @@
 # FLASK AND @ROUTES GO HERE
-
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, send_file, render_template
 from utilities import add_item_fridge, add_item_freezer, add_item_pantry, update_inventory
-from utilities import delete_item, _add_item
+from utilities import delete_item, _add_item, retrieve_stock
+from config import *
 
 
 app = Flask(__name__)
 
 @app.route('/')
 def welcome():
-    return '''<h1>Welcome to Smart Pantry</h1>'''
+    return render_template('index.html')
+
+@app.route('/kitchen')
+def fridge():
+    fridge = retrieve_stock("Fridge")
+    pantry = retrieve_stock("Pantry")
+    freezer = retrieve_stock("Freezer")
+    return render_template('kitchen.html', fridge=fridge, pantry=pantry, freezer=freezer)
+
+
 
 @app.route('/add_item_fridge', methods=['PUT'])
 def new_item_fridge():

@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@1&display=swap');
 
 body {
-    margin: 0 2vmax 0 2vmax;
+    margin: 0 20px;
     font-size: clamp(1rem, calc(1rem + ((1vw - 0.23rem) * 0.9615)), 1.5rem);
     line-height: 1.6;
     font-family: 'DM Serif Display', serif;
@@ -27,7 +27,7 @@ a {
     margin: 0;
     padding-top: 2rem;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
 }
 
 ul li {
@@ -37,9 +37,24 @@ ul li {
     text-align: center;
 }
 
-#orange ul li {
+.or_navigation {
     background-color: rgba(255, 104, 28, 0.9);
+    margin: 0;
+    padding: 0 7rem;
+    border-radius: 7rem;
+    color: whitesmoke;
 }
+
+.recipe_button {
+    background-color: rgba(71, 115, 74, 0.9);
+    text-align: center;
+    margin: 10px 0 0 0;
+    padding: 0 7rem;
+    border-radius: 7rem;
+    width: 80vw;
+    color: whitesmoke;
+}
+
 
 .main_button {
     list-style: none;
@@ -67,10 +82,38 @@ ul li {
     height: 15vh;
 }
 
-.container {
-    background: rgba(159, 193, 213, 0.9);
-    border-radius: 7rem;
+.wrapper {
     margin: 3vh auto;
-    width: 80vw;
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.pantry-container, .fridge-container, .freezer-container {
+    margin: 0 auto;
+    border-radius: 1rem;
+    padding: 0 3rem;
+}
+
+.pantry-container {
+    background: rgba(169, 115, 87, 0.9)
+}
+
+.fridge-container {
+    background: rgba(159, 193, 213, 0.9);
+}
+
+.freezer-container {
+    background: rgba(81, 150, 190, 0.9);
+}
+
+td {
     text-align: center;
+    padding-bottom: 3rem;
+    white-space: nowrap;
+}
+
+.first_col {
+    padding-right: 30px;
 }
