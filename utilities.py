@@ -1,5 +1,6 @@
 import mysql.connector
 from config import USER, PASSWORD, HOST
+from tkinter import Tk, StringVar, Radiobutton, Button
 
 
 class DbConnectionError(Exception):
@@ -217,7 +218,7 @@ def update_inventory():
 
 
 # LaurenA adding function to view all stock
-# Anna editing the below for Flask to parse 
+# Anna editing the below for Flask to parse
 def retrieve_stock(stock_store):
     try:
         db = SqlDatabase('Smart_Pantry')
@@ -238,6 +239,43 @@ def retrieve_stock(stock_store):
 
     except Exception as e:
         raise DbConnectionError(f'Failed to update inventory: {e}')
+
+    finally:
+        db.disconnect()
+
+
+# Lauren S - creating a function to select protein data from DB
+def fetch_protein_data():
+    try:
+        # Connect to DB
+        db = SqlDatabase('Smart_Pantry')
+        db.connect()
+
+        # Execute the query to select protein data
+        query = "SELECT protein_name FROM protein_table"
+        protein_data = db.execute_query(query)
+
+        # Create a Tkinter window
+        root = Tk()
+        root.title("Select Protein: ")
+
+        # Store the protein variable
+        selected_protein = StringVar()
+
+        def save_selection():
+            nonlocal selected_protein
+            selected_protein_value = selected_protein.get()
+            print(f"Selected protein: {selected_protein_value}")
+
+        for protein in protein_data:
+            Radiobutton(root, text=protein[0], variable=selected_protein, value=protein[0]).pack()
+
+        Button(root, text="Save Selection", command=save_selection).pack()
+
+        root.mainloop()
+
+    except Exception as e:
+        print(f"An error has occurred: {e}")
 
     finally:
         db.disconnect()
