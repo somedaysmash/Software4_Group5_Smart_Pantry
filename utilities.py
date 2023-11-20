@@ -77,24 +77,23 @@ def _add_item(stock_store, values):
 
 def delete_item(stock_store, item_name):
     try:
-        db_name = 'Smart_Pantry'
-        db_connection = _connect_to_db(db_name)
-        cur = db_connection.cursor()
-        print(f'Connected to DB: {db_name}')
+        db = SqlDatabase('Smart_Pantry')
+        db.connect()
+        print(f'Connected to DB: {db}')
 
-        query = f"DELETE FROM {stock_store} WHERE IngredientName = %s"
-        print(f'Deleting item with ID {item_name} from {stock_store}')
+        query = f"DELETE FROM {stock_store} WHERE IngredientName = '{item_name}'"
+        print(f'Deleting item : {item_name} from {stock_store}')
 
-        execute_query(cur, query, (item_name,))
-        db_connection.commit()
-        print(f"Item with ID {item_name} deleted from {stock_store}.")
+        db.execute_query(query)
+        db.connection.commit()
+        print(f"Item : {item_name} deleted from {stock_store}.")
 
     except (NameError, ImportError, DbConnectionError) as e:
         print(e)
         raise
 
     finally:
-        close_connection(db_connection)
+        db.disconnect()
 
 
 
@@ -171,4 +170,6 @@ if __name__ == '__main__':
     # test_connection()
     # _add_item(stock_store='Pantry', values=('Tinned Tomatoes', 'Vegetable', 450, 'Grams', 450, '2025-07-30'))
     # update_inventory()
-    retrieve_stock(input("Which store do you want to see? Freezer, Fridge or Pantry?").lower())
+    #retrieve_stock(input("Which store do you want to see? Freezer, Fridge or Pantry?").lower())
+    delete_item(input("Which store is the item in? Fridge, Freezer or Pantry?").lower(),
+                input("What is the item name?").title())
