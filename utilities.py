@@ -73,28 +73,35 @@ def _add_item(stock_store, values):
 
 
 
-# FUNCTION TO DELETE ITEM FROM STOCK
+# Karen added FUNCTION TO DELETE ITEM FROM STOCK
+#Vanessa edited Karen's code to add Class DB connection plus edited the function to be a class
+class StockDelete:
+    def __init__(self, stock_store, item_name):
+        self.stock_store = stock_store
+        self.item_name = item_name
 
-def delete_item(stock_store, item_name):
-    try:
-        db = SqlDatabase('Smart_Pantry')
-        db.connect()
-        print(f'Connected to DB: {db}')
+    def delete_item(self, stock_store, item_name):
+        try:
+            db = SqlDatabase('Smart_Pantry')
+            db.connect()
+            print(f'Connected to DB: {db}')
 
-        query = f"DELETE FROM {stock_store} WHERE IngredientName = '{item_name}'"
-        print(f'Deleting item : {item_name} from {stock_store}')
+            query = f"DELETE FROM {stock_store} WHERE IngredientName = '{item_name}'"
+            print(f'Deleting item : {item_name} from {stock_store}')
 
-        db.execute_query(query)
-        db.connection.commit()
-        print(f"Item : {item_name} deleted from {stock_store}.")
+            db.execute_query(query)
+            db.connection.commit()
+            print(f"Item : {item_name} deleted from {stock_store}.")
 
-    except (NameError, ImportError, DbConnectionError) as e:
-        print(e)
-        raise
+        except (NameError, ImportError, DbConnectionError) as e:
+            print(e)
+            raise
 
-    finally:
-        db.disconnect()
+        finally:
+            db.disconnect()
 
+#to call the class StockDelete you need to create an object of the class. You also need to pass the same arguments to the run statement
+stock_delete = StockDelete("Freezer", "Diced Onion")
 
 
 # LAUREN-A FUNCTION TO UPDATE ITEM IN STOCK
@@ -166,10 +173,11 @@ def retrieve_stock(stock_store):
         db.disconnect()
 
 
+
+
 if __name__ == '__main__':
     # test_connection()
     # _add_item(stock_store='Pantry', values=('Tinned Tomatoes', 'Vegetable', 450, 'Grams', 450, '2025-07-30'))
     # update_inventory()
-    #retrieve_stock(input("Which store do you want to see? Freezer, Fridge or Pantry?").lower())
-    delete_item(input("Which store is the item in? Fridge, Freezer or Pantry?").lower(),
-                input("What is the item name?").title())
+    # retrieve_stock(input("Which store do you want to see? Freezer, Fridge or Pantry?").lower())
+    # stock_delete.delete_item("Freezer", "Diced Onion")
