@@ -17,8 +17,7 @@ without user input '''
 
 query = input("Please enter chosen ingredient..")
 
-random_url=(f'https://api.edamam.com/api/recipes/v2?type=public&{app_id}&{app_key}&q={query}&/'
-                f'random=true&field=label&field=ingredients&field=totalWeight')
+random_url=(f'https://api.edamam.com/api/recipes/v2?type=public&app_id={app_id}&app_key={app_key}&q={query}&/random=true&field=label&field=ingredients&field=totalWeight')
 
 response = requests.get(random_url)
 # Will use url/ params instead of very long URL
@@ -33,6 +32,7 @@ if response.status_code == 200:
     # pp(data)
 elif response.status_code != 200:
     print("An error occurred")
+# quit()
 
 # To access recipe name, ingredients and weight from data
 try:

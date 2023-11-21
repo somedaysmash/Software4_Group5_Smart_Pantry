@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- meta data -->
+
+  <head>
+    <title>Smart Pantry</title>
+    <!-- <link rel="icon" type="text/png" href="favicon-32x32.png"> -->
+    <link rel="stylesheet" href="static/style.css" />
+  </head>
+
+  <body class="fridge_bg">
+    <div class='recipe_button'>Help me choose a recipe</div>
+    <div class="wrapper">
+        <div class="or_navigation">What's in my fridge</div>
+        <div class="or_navigation">What's in my freezer</div>
+        <div class="or_navigation">What's in my pantry</div>
+        
+    
+      <div class="fridge-container">
+        <table>
+          <tbody align="center">
+            {%for item in fridge%}
+            <tr>
+              <td class="first_col">{{item[0]}}</td>
+              <td>{{item[1]}}</td>
+              <td>{{item[2]}}</td>
+            </tr>
+            {%endfor%}
+          </tbody>
+        </table>
+      </div>
+
+      <div class="pantry-container">
+        <table>
+          <tbody align="center">
+            {%for item in pantry%}
+            <tr>
+              <td class="first_col">{{item[0]}}</td>
+              <td>{{item[1]}}</td>
+              <td>{{item[2]}}</td>
+            </tr>
+            {%endfor%}
+          </tbody>
+        </table>
+      </div>
+
+      <div class="freezer-container">
+        <table>
+          <tbody align="center">
+            {%for item in freezer%}
+            <tr>
+              <td class="first_col">{{item[0]}}</td>
+              <td>{{item[1]}}</td>
+              <td>{{item[2]}}</td>
+            </tr>
+            {%endfor%}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </body>
+</html>
