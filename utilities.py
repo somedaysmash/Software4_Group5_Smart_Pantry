@@ -296,4 +296,4 @@ if __name__ == '__main__':
     # update_inventory()
     # retrieve_stock(input("Which store do you want to see? Freezer, Fridge or Pantry?").lower())
     # stock_delete.delete_item("Freezer", "Diced Onion")
-    retrieve_stock(input("Which store do you want to see? Freezer, Fridge or Pantry?").lower())
+    fetch_protein_data()
