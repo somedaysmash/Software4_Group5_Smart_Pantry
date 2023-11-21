@@ -1,5 +1,6 @@
 import mysql.connector
 from config import USER, PASSWORD, HOST
+from tkinter import Tk, StringVar, Radiobutton, Button
 
 
 class DbConnectionError(Exception):
@@ -71,30 +72,113 @@ def _add_item(stock_store, values):
     finally:
         db.disconnect()
 
+## REDUNDANT FUNCTION TO ADD ITEM TO STOCK
+# def add_item_fridge(_IngredientName, _TypeOfIngredient, _Quantity, _UnitofMeasurement, _MinimumQuantityNeeded, _SellByDate):
+#     try:
+#         db_name = 'Smart_Pantry'
+#         db_connection = _connect_to_db(db_name)
+#         cur = db_connection.cursor()
+#         print(f'Connected to DB: {db_name}')
+
+#         query = "INSERT INTO fridge (IngredientName, TypeOfIngredient, Quantity, UnitOfMeasurement, MinimumQuantityNeeded, SellByDate) VALUES (%s, %s, %s, %s, %s, %s)"
+#         val = _IngredientName, _TypeOfIngredient, _Quantity, _UnitofMeasurement, _MinimumQuantityNeeded, _SellByDate
+#         print(query, val)
+#         cur.execute(query, val)
+#         db_connection.commit()
+#         cur.close()
+
+#     except (NameError, ImportError, DbConnectionError) as e:
+
+#         print(e)
+
+#         raise
+
+#     finally:
+#         if db_connection:
+#             db_connection.close()
+#             print('DB connection is closed')
+
+# def add_item_freezer(_IngredientName, _TypeOfIngredient, _Quantity, _UnitofMeasurement, _MinimumQuantityNeeded, _SellByDate):
+#     try:
+#         db_name = 'Smart_Pantry'
+#         db_connection = _connect_to_db(db_name)
+#         cur = db_connection.cursor()
+#         print(f'Connected to DB: {db_name}')
+
+#         query = "INSERT INTO freezer (IngredientName, TypeOfIngredient, Quantity, UnitOfMeasurement, MinimumQuantityNeeded, SellByDate) VALUES (%s, %s, %s, %s, %s, %s)"
+#         val = _IngredientName, _TypeOfIngredient, _Quantity, _UnitofMeasurement, _MinimumQuantityNeeded, _SellByDate
+#         print(query, val)
+#         cur.execute(query, val)
+#         db_connection.commit()
+#         cur.close()
+
+#     except (NameError, ImportError, DbConnectionError) as e:
+
+#         print(e)
+
+#         raise
+
+#     finally:
+#         if db_connection:
+#             db_connection.close()
+#             print('DB connection is closed')
+
+# def add_item_pantry(_IngredientName, _TypeOfIngredient, _Quantity, _UnitofMeasurement, _MinimumQuantityNeeded, _SellByDate):
+#     try:
+#         db_name = 'Smart_Pantry'
+#         db_connection = _connect_to_db(db_name)
+#         cur = db_connection.cursor()
+#         print(f'Connected to DB: {db_name}')
+
+#         query = "INSERT INTO pantry (IngredientName, TypeOfIngredient, Quantity, UnitOfMeasurement, MinimumQuantityNeeded, SellByDate) VALUES (%s, %s, %s, %s, %s, %s)"
+#         val = _IngredientName, _TypeOfIngredient, _Quantity, _UnitofMeasurement, _MinimumQuantityNeeded, _SellByDate
+#         print(query, val)
+#         cur.execute(query, val)
+#         db_connection.commit()
+#         cur.close()
+
+#     except (NameError, ImportError, DbConnectionError) as e:
+
+#         print(e)
+
+#         raise
+
+#     finally:
+#         if db_connection:
+#             db_connection.close()
+#             print('DB connection is closed')
 
 
-# FUNCTION TO DELETE ITEM FROM STOCK
 
-def delete_item(stock_store, item_name):
-    try:
-        db_name = 'Smart_Pantry'
-        db_connection = _connect_to_db(db_name)
-        cur = db_connection.cursor()
-        print(f'Connected to DB: {db_name}')
+# Karen added FUNCTION TO DELETE ITEM FROM STOCK
+#Vanessa edited Karen's code to add Class DB connection plus edited the function to be a class
+class StockDelete:
+    def __init__(self, stock_store, item_name):
+        self.stock_store = stock_store
+        self.item_name = item_name
 
-        query = f"DELETE FROM {stock_store} WHERE IngredientName = %s"
-        print(f'Deleting item with ID {item_name} from {stock_store}')
+    def delete_item(self, stock_store, item_name):
+        try:
+            db = SqlDatabase('Smart_Pantry')
+            db.connect()
+            print(f'Connected to DB: {db}')
 
-        execute_query(cur, query, (item_name,))
-        db_connection.commit()
-        print(f"Item with ID {item_name} deleted from {stock_store}.")
+            query = f"DELETE FROM {stock_store} WHERE IngredientName = '{item_name}'"
+            print(f'Deleting item : {item_name} from {stock_store}')
 
-    except (NameError, ImportError, DbConnectionError) as e:
-        print(e)
-        raise
+            db.execute_query(query)
+            db.connection.commit()
+            print(f"Item : {item_name} deleted from {stock_store}.")
 
-    finally:
-        close_connection(db_connection)
+        except (NameError, ImportError, DbConnectionError) as e:
+            print(e)
+            raise
+
+        finally:
+            db.disconnect()
+
+#to call the class StockDelete you need to create an object of the class. You also need to pass the same arguments to the run statement
+stock_delete = StockDelete("Freezer", "Diced Onion")
 
 
 
@@ -143,12 +227,13 @@ def update_inventory():
 
 
 # LaurenA adding function to view all stock
+# Anna editing the below for Flask to parse
 def retrieve_stock(stock_store):
     try:
         db = SqlDatabase('Smart_Pantry')
         db.connect()
 
-        query = f"""SELECT IngredientName, Quantity, UnitOfMeasurement FROM {stock_store}"""
+        query = f"""SELECT IngredientName, format(Quantity, 0), UnitOfMeasurement FROM {stock_store}"""
 
         # Execute the SQL update query
         db.execute_query(query)
@@ -159,6 +244,7 @@ def retrieve_stock(stock_store):
         for row in result:
             print(row)
             print("\n")
+        return result
 
     except Exception as e:
         raise DbConnectionError(f'Failed to update inventory: {e}')
@@ -167,8 +253,47 @@ def retrieve_stock(stock_store):
         db.disconnect()
 
 
+# Lauren S - creating a function to select protein data from DB
+def fetch_protein_data():
+    try:
+        # Connect to DB
+        db = SqlDatabase('Smart_Pantry')
+        db.connect()
+
+        # Execute the query to select protein data
+        query = "SELECT protein_name FROM protein_table"
+        protein_data = db.execute_query(query)
+
+        # Create a Tkinter window
+        root = Tk()
+        root.title("Select Protein: ")
+
+        # Store the protein variable
+        selected_protein = StringVar()
+
+        def save_selection():
+            nonlocal selected_protein
+            selected_protein_value = selected_protein.get()
+            print(f"Selected protein: {selected_protein_value}")
+
+        for protein in protein_data:
+            Radiobutton(root, text=protein[0], variable=selected_protein, value=protein[0]).pack()
+
+        Button(root, text="Save Selection", command=save_selection).pack()
+
+        root.mainloop()
+
+    except Exception as e:
+        print(f"An error has occurred: {e}")
+
+    finally:
+        db.disconnect()
+
+
 if __name__ == '__main__':
     # test_connection()
-    # _add_item(stock_store='Pantry', values=('Tinned Tomatoes', 'Vegetable', 450, 'Grams', 450, '2025-07-30'))
+    # _add_item()
     # update_inventory()
-    retrieve_stock(input("Which store do you want to see? Freezer, Fridge or Pantry?").lower())
+    # retrieve_stock(input("Which store do you want to see? Freezer, Fridge or Pantry?").lower())
+    # stock_delete.delete_item("Freezer", "Diced Onion")
+    fetch_protein_data()
