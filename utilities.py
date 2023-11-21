@@ -292,7 +292,7 @@ def fetch_protein_data():
 
 if __name__ == '__main__':
     # test_connection()
-    # _add_item()
+    # _add_item(stock_store='Pantry', values=('Tinned Tomatoes', 'Vegetable', 450, 'Grams', 450, '2025-07-30'))
     # update_inventory()
     # retrieve_stock(input("Which store do you want to see? Freezer, Fridge or Pantry?").lower())
     # stock_delete.delete_item("Freezer", "Diced Onion")

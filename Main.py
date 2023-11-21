@@ -90,6 +90,6 @@ def delete_stock_item_by_name():
 
 
 if __name__ == "__main__":
-    # run_fridge()
+    run_fridge()
     # update_fridge()
-    delete_stock_item_by_name()
+    # delete_stock_item_by_name()
