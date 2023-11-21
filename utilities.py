@@ -1,5 +1,6 @@
 import mysql.connector
 from config import USER, PASSWORD, HOST
+from tkinter import Tk, StringVar, Radiobutton, Button
 
 
 class DbConnectionError(Exception):
@@ -147,6 +148,8 @@ def _add_item(stock_store, values):
 #             db_connection.close()
 #             print('DB connection is closed')
 
+
+
 # Karen added FUNCTION TO DELETE ITEM FROM STOCK
 #Vanessa edited Karen's code to add Class DB connection plus edited the function to be a class
 class StockDelete:
@@ -176,6 +179,7 @@ class StockDelete:
 
 #to call the class StockDelete you need to create an object of the class. You also need to pass the same arguments to the run statement
 stock_delete = StockDelete("Freezer", "Diced Onion")
+
 
 
 # LAUREN-A FUNCTION TO UPDATE ITEM IN STOCK
@@ -223,7 +227,7 @@ def update_inventory():
 
 
 # LaurenA adding function to view all stock
-# Anna editing the below for Flask to parse 
+# Anna editing the below for Flask to parse
 def retrieve_stock(stock_store):
     try:
         db = SqlDatabase('Smart_Pantry')
@@ -249,11 +253,47 @@ def retrieve_stock(stock_store):
         db.disconnect()
 
 
+# Lauren S - creating a function to select protein data from DB
+def fetch_protein_data():
+    try:
+        # Connect to DB
+        db = SqlDatabase('Smart_Pantry')
+        db.connect()
+
+        # Execute the query to select protein data
+        query = "SELECT protein_name FROM protein_table"
+        protein_data = db.execute_query(query)
+
+        # Create a Tkinter window
+        root = Tk()
+        root.title("Select Protein: ")
+
+        # Store the protein variable
+        selected_protein = StringVar()
+
+        def save_selection():
+            nonlocal selected_protein
+            selected_protein_value = selected_protein.get()
+            print(f"Selected protein: {selected_protein_value}")
+
+        for protein in protein_data:
+            Radiobutton(root, text=protein[0], variable=selected_protein, value=protein[0]).pack()
+
+        Button(root, text="Save Selection", command=save_selection).pack()
+
+        root.mainloop()
+
+    except Exception as e:
+        print(f"An error has occurred: {e}")
+
+    finally:
+        db.disconnect()
 
 
 if __name__ == '__main__':
     # test_connection()
-    #  _add_item(stock_store='Pantry', values=('Tinned Tomatoes', 'Vegetable', 450, 'Grams', 450, '2025-07-30'))
-     update_inventory()
+    # _add_item(stock_store='Pantry', values=('Tinned Tomatoes', 'Vegetable', 450, 'Grams', 450, '2025-07-30'))
+    # update_inventory()
     # retrieve_stock(input("Which store do you want to see? Freezer, Fridge or Pantry?").lower())
     # stock_delete.delete_item("Freezer", "Diced Onion")
+    fetch_protein_data()
