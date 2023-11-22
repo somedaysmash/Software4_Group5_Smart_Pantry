@@ -305,10 +305,56 @@ def fetch_protein_data(ingredient):
         db.disconnect()
 
 
+def low_stock():
+    shoppinglist = []
+    try:
+        db = SqlDatabase('Smart_Pantry')
+        db.connect()
+
+        query = (
+            f"SELECT IngredientName, Quantity, UnitOfMeasurement "
+            f"FROM Pantry "
+            f"WHERE Quantity < '100.0' "
+            f"UNION ALL "
+            f"SELECT IngredientName, Quantity, UnitOfMeasurement "
+            f"FROM Fridge "
+            f"WHERE Quantity < '100.0' "
+            f"UNION ALL "
+            f"SELECT IngredientName, Quantity, UnitOfMeasurement "
+            f"FROM Freezer "
+            f"WHERE Quantity < '100.0' ")
+        db.execute_query(query)
+
+        result = db.execute_query(query)
+        # result = cur.fetchall()
+        for row in result:
+            print(row)
+            print("\n")
+
+            add_to_list = input(f"Would you like to add {row} to your shopping list? (yes/no): ")
+
+            if add_to_list.lower() == 'yes':
+                print(f"Adding {row} to your shopping list")
+                shoppinglist.append(row)
+            else:
+                print(f"{row} has not been added to your shopping list")
+                print("-------")
+
+        print("Your shopping list: ")
+        for item in shoppinglist:
+            print(item)
+
+    except Exception as e:
+        raise DbConnectionError(f'Failed to update inventory: {e}')
+
+    finally:
+        db.disconnect()
+
 if __name__ == '__main__':
     # test_connection()
     # _add_item(stock_store='Pantry', values=('Tinned Tomatoes', 'Vegetable', 450, 'Grams', 450, '2025-07-30'))
     # update_inventory()
     # retrieve_stock(input("Which store do you want to see? Freezer, Fridge or Pantry?").lower())
     # stock_delete.delete_item("Freezer", "Diced Onion")
-    fetch_protein_data(ingredient='Rice')
+    # fetch_protein_data(ingredient='Rice')
+    low_stock()
