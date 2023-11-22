@@ -254,17 +254,24 @@ def retrieve_stock(stock_store):
 
 
 # Lauren S - creating a function to select protein data from DB
-def fetch_protein_data(stock_store, ingredient):
+def fetch_protein_data(ingredient):
     try:
         # Connect to DB
         db = SqlDatabase('Smart_Pantry')
         db.connect()
 
         # Execute the query to select protein data
-        query = f"SELECT IngredientName FROM {stock_store} WHERE IngredientName = {ingredient}"
+        query = (
+            f"SELECT IngredientName, Quantity, UnitOfMeasurement "
+            f"FROM Pantry WHERE IngredientName = '{ingredient}' "
+            f"UNION "
+            f"SELECT IngredientName, Quantity, UnitOfMeasurement "
+            f"FROM Fridge WHERE IngredientName = '{ingredient}' "
+            f"UNION "
+            f"SELECT IngredientName, Quantity, UnitOfMeasurement "
+            f"FROM Freezer WHERE IngredientName = '{ingredient}'"
+        )
         db.execute_query(query)
-
-        print(f'This is the current stock you have in your {stock_store}: ')
 
         result = db.execute_query(query)
         for row in result:
@@ -304,4 +311,4 @@ if __name__ == '__main__':
     # update_inventory()
     # retrieve_stock(input("Which store do you want to see? Freezer, Fridge or Pantry?").lower())
     # stock_delete.delete_item("Freezer", "Diced Onion")
-    fetch_protein_data(stock_store='Pantry', ingredient='rice')
+    fetch_protein_data(ingredient='Rice')
