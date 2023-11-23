@@ -4,6 +4,7 @@ import requests
 from pprintpp import pprint as pp
 import csv
 import API_key
+import sqlite3
 
 '''app_id/key stored on separate .py file (API_key.py), register for recipe API (developer plan) at 
 https://www.edamam.com'''
@@ -127,8 +128,53 @@ def run() -> None:
         print('That\'s all the recipes we have! Thank you for using Smart Pantry!')
 
 
-run()
+# Adding function that takes our recipe and checks the stock in our database, returning True or False
+def check_stock_for_recipe(ingredients_and_weight):
+    conn = sqlite3.connect('SmartPantryDB.sql')
+    cursor = conn.cursor()
+
+    missing_ingredients = []  # Initialising an empty list. (not sure if this needs to go inside the Try block?)
+
+    try:
+        for ingredient, weight in ingredients_and_weight:
+            # Checking the fridge, freezer, and pantry tables for the ingredient
+            # Using ? as a placeholder
+            query_fridge = f"SELECT * FROM Fridge WHERE IngredientName = ? AND Quantity >= ?"
+            query_freezer = f"SELECT * FROM Freezer WHERE IngredientName = ? AND Quantity >= ?"
+            query_pantry = f"SELECT * FROM Pantry WHERE IngredientName = ? AND Quantity >= ?"
+
+            # Executing the queries
+            cursor.execute(query_fridge, (ingredient, weight))
+            result_fridge = cursor.fetchone()
+
+            cursor.execute(query_freezer, (ingredient, weight))
+            result_freezer = cursor.fetchone()
+
+            cursor.execute(query_pantry, (ingredient, weight))
+            result_pantry = cursor.fetchone()
+
+            # If the ingredient is not available in any of the tables, we add it to the missing list
+            if not result_fridge and not result_freezer and not result_pantry:
+                missing_ingredients.append((ingredient, weight))
+    finally:
+        # Closing the database connection outside the loop
+        conn.close()
+
+    # If all ingredients are available in sufficient quantity, return True
+    return not missing_ingredients
+
+run() # should we move this to within the if __name__ part?
 
 if __name__ == '__main__':
     # random_recipe()
-    recipe_search_by_ingredient()
+    results = recipe_search_by_ingredient()
+    recipes = results['hits']
+    recipe_data = recipes[0]["recipe"]
+    ingredients_and_weight = [(ingredient["text"], ingredient["weight"]) for ingredient in recipe_data["ingredients"]]
+
+    if check_stock_for_recipe(ingredients_and_weight):
+        print("You have all the ingredients needed for this recipe!")
+    else:
+        print("Some ingredients are missing in your stock:")
+        for ingredient, weight in missing_ingredients:
+            print(f"{ingredient} is missing or needs {weight} grams more.")
