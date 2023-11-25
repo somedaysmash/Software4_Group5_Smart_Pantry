@@ -3,3 +3,5 @@ config.py
 **/__pycache__/
 *.pyc
 API_key.py
+.vscode
+shopping_list.txt
