@@ -227,17 +227,11 @@ def retrieve_stock(stock_store):
 
         # Execute the SQL update query
         db.execute_query(query)
-
-        print(f'This is the current stock you have in your {stock_store}: ')
-
         result = db.execute_query(query)
-        for row in result:
-            print(row)
-            print("\n")
         return result
 
     except Exception as e:
-        raise DbConnectionError(f'Failed to update inventory: {e}')
+        raise DbConnectionError(f'Failed to show inventory: {e}')
 
     finally:
         db.disconnect()

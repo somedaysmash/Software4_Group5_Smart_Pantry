@@ -12,9 +12,20 @@ body {
     background: url(assets/index_pantry.jpeg), lightgray 50% / cover no-repeat;
 }
 
+h1 {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-style: normal;
+}
+
 .fridge_bg {
     background: url(assets/fridge.png), no-repeat rgb(30, 30, 30) fixed center center;
     background-size: contain;
+}
+
+.ingredient_bg {
+    background-image: url(assets/ingredient.jpeg);
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 a {
@@ -22,19 +33,71 @@ a {
     text-decoration: none;
 }
 
-.navigation ul {
+nav ul {
     list-style: none;
     margin: 0;
     padding-top: 2rem;
     display: flex;
     justify-content: center;
+
+    >li {
+        padding: 0 7rem;
+        background-color: rgba(94, 86, 82, 0.80);
+        border-radius: 7rem;
+        text-align: center;
+    }
 }
 
-ul li {
-    padding: 0 7rem 0 7rem;
-    background-color: rgba(94, 86, 82, 0.80);
+.ing_list li {
+    display: flex;
+    background-color: rgba(166, 159, 77, 0.8);
+}
+
+button {
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+input {
+    color: rgb(78, 94, 68);
+    font-size: 1.1rem;
+}
+
+input:focus {
+    outline: 2px solid rgb(126, 121, 96)
+}
+
+input::placeholder {
+    color: rgb(78, 94, 68);
+}
+
+/* Button on top of the Input */
+.wrapper_button {
+    width: 400px;
+    position: relative;
+    margin: auto;
+}
+
+.wrapper_button input {
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid white;
     border-radius: 7rem;
-    text-align: center;
+    padding: 1rem 2rem;
+    width: 100%;
+}
+
+.wrapper_button button {
+    background: white;
+    border-radius: 50px;
+    aspect-ratio: 1;
+    height: 80%;
+    position: absolute;
+    top: 10%;
+    right: 5px;
 }
 
 .or_navigation {
@@ -48,7 +111,7 @@ ul li {
 .recipe_button {
     background-color: rgba(71, 115, 74, 0.9);
     text-align: center;
-    margin: 10px 0 0 0;
+    margin: 2rem 0 0 0;
     padding: 0 7rem;
     border-radius: 7rem;
     width: 80vw;
@@ -70,6 +133,8 @@ ul li {
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color: rgba(94, 86, 82, 0.80);
+    border-radius: 7rem;
     font-size: 1.5rem;
     margin-bottom: 20px;
     width: 100%;

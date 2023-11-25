@@ -1,9 +1,11 @@
 # FLASK AND @ROUTES GO HERE
-from flask import Flask, jsonify, request, send_file, render_template
+from flask import Flask, jsonify, request, send_file, render_template, url_for, flash, redirect
 from utilities import add_item_fridge, add_item_freezer, add_item_pantry, update_inventory
 from utilities import delete_item, _add_item, retrieve_stock
 from config import *
-
+from RecipeAPI import get_random_recipe
+from pprintpp import pprint as pp
+import random
 
 app = Flask(__name__)
 
@@ -18,7 +20,18 @@ def fridge():
     freezer = retrieve_stock("Freezer")
     return render_template('kitchen.html', fridge=fridge, pantry=pantry, freezer=freezer)
 
-
+# Anna fetching recipe name and ingredients
+@app.route('/ingredient', methods=('GET', 'POST'))
+def ingredient():
+    recipe = ""
+   
+    if request.method == 'POST':
+        query = request.form['query']
+        # Call the function to get the data
+        data = get_random_recipe(query)
+        if data:
+            recipe = random.choice(data['hits'])['recipe']
+    return render_template('ingredient.html', recipe=recipe)
 
 @app.route('/add_item_fridge', methods=['PUT'])
 def new_item_fridge():
@@ -53,4 +66,4 @@ def delete_item_from_stock(stock_store, item_name):
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(port=5002, debug=True)
