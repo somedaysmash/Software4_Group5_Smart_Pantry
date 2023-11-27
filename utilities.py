@@ -428,6 +428,30 @@ shopping_list.user_add_item()
 shopping_list.display_list()
 
 
+
+# Function outside of Class:
+# Lauren S: User prompt for low-stock items
+def populate_from_database(self):
+    try:
+        cursor = self.connection.cursor()
+        cursor.execute(
+            "SELECT IngredientName, Quantity FROM Fridge UNION SELECT IngredientName, Quantity FROM Freezer UNION SELECT IngredientName, Quantity FROM Pantry")
+        inventory_data = cursor.fetchall()
+        for item, quantity in inventory_data:
+            self.add_item(item, quantity)
+            if quantity <= LOW_STOCK_THRESHOLD:  # Set a threshold for low stock
+                user_input = input(f"{item} is low in stock. Do you want to add it to the shopping list? (yes/no): ")
+                if user_input.lower() == 'yes':
+                    shopping_quantity = int(input(f"Enter the quantity of {item} to add to the shopping list: "))
+                    self.add_item(item, shopping_quantity)
+    except mysql.connector.Error as err:
+        print(f"Error: {err}")
+        # Handle the error as needed
+    finally:
+        cursor.close()
+
+
+
 if __name__ == '__main__':
     # test_connection()
     # _add_item(stock_store='Fridge', values=('Beef', 'Protein', 2000, 'Grams', 450, '2025-07-30'))
