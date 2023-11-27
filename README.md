@@ -8,4 +8,10 @@ LINK TO PROJECT ACTIVITY LOG https://docs.google.com/spreadsheets/d/16BXI3OMypGL
 
 LINK TO CODEPEN MOCKUP https://codepen.io/Lauren_Aldridge/pen/KKJqvLo
 
-An account is required to access the Edamam (recipe) API. Register for the developer plan (FREE) at https://developer.edamam.com/edamam-recipe-api. API id's and keys are to be kept private, so add a .py file (API_key.py) containing your own API id and key to gitignore.
+
+This project uses the Edamam API to get nutrition data and recipes for various foods. You need to have an app_id and an app_key for each API you want to use. You can get them by signing up for a free account at [ Edamam developer porta](https://developer.edamam.com/edamam-recipe-api) and creating an application for the recipe API. You can also see your app_id and app_key in your Dashboard in the Applications section.
+
+To use the Edamam API, you need to set the following variables in a file called API_key.py:
+
+app_id = "xxxxxx"
+app_key = "xxxxxxxxx"
