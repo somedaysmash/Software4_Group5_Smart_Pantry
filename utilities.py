@@ -6,7 +6,8 @@ from tkinter import Tk, StringVar, Radiobutton, Button
 class DbConnectionError(Exception):
     pass
 
-#NEW CLASS TO CONNECT TO DB
+
+# NEW CLASS TO CONNECT TO DB
 class SqlDatabase:
     def __init__(self, database):
         self.host = HOST
@@ -27,7 +28,6 @@ class SqlDatabase:
             print(e)
             raise
 
-
     def disconnect(self):
         if self.connection:
             self.connection.close()
@@ -43,8 +43,9 @@ class SqlDatabase:
 
         return result
 
-#TO CONNECT TO THE DB CREATE A NEW VARIABLE = SqlDatabase class and pass through the database. This allows us to connect to more than one database
-#example:
+# TO CONNECT TO THE DB CREATE A NEW VARIABLE = SqlDatabase class and pass through the database.
+# This allows us to connect to more than one database
+# example:
 # db = SqlDatabase('Smart_Pantry')
 # db.connect()
 # result = db.execute_query("SELECT * FROM fridge")
@@ -64,7 +65,6 @@ def _add_item(stock_store, values):
         db.connection.commit()
         print(f"Record added successfully to {stock_store}.")
 
-
     except (NameError, ImportError, DbConnectionError, ValueError) as e:
         print(e)
         raise
@@ -72,7 +72,7 @@ def _add_item(stock_store, values):
     finally:
         db.disconnect()
 
-## REDUNDANT FUNCTION TO ADD ITEM TO STOCK
+# REDUNDANT FUNCTION TO ADD ITEM TO STOCK
 # def add_item_fridge(_IngredientName, _TypeOfIngredient, _Quantity, _UnitofMeasurement, _MinimumQuantityNeeded, _SellByDate):
 #     try:
 #         db_name = 'Smart_Pantry'
@@ -149,9 +149,8 @@ def _add_item(stock_store, values):
 #             print('DB connection is closed')
 
 
-
 # Karen added FUNCTION TO DELETE ITEM FROM STOCK
-#Vanessa edited Karen's code to add Class DB connection plus edited the function to be a class
+# Vanessa edited Karen's code to add Class DB connection plus edited the function to be a class
 class StockDelete:
     def __init__(self, stock_store, item_name):
         self.stock_store = stock_store
@@ -177,13 +176,13 @@ class StockDelete:
         finally:
             db.disconnect()
 
-#to call the class StockDelete you need to create an object of the class. You also need to pass the same arguments to the run statement
+
+# to call the class StockDelete you need to create an object of the class. You also need to pass the same arguments to the run statement
 stock_delete = StockDelete("Freezer", "Diced Onion")
 
 
-
 # LAUREN-A FUNCTION TO UPDATE ITEM IN STOCK
-#Vanessa has edited to add class connection
+# Vanessa has edited to add class connection
 def update_inventory():
     try:
         db = SqlDatabase('Smart_Pantry')
@@ -210,7 +209,6 @@ def update_inventory():
             update_query = f"UPDATE {storage_update} SET SellByDate = {new_value} WHERE ID = {data_id}"
         else:
             print("Invalid input.")
-
 
         # Execute the SQL update query
         db.execute_query(update_query)
@@ -349,6 +347,110 @@ def low_stock():
 
     finally:
         db.disconnect()
+
+
+# Lauren S: Generate shopping list, including low-stock, with the option to add/modify items:
+class ShoppingList:
+    def __init__(self):
+        self.items = {}
+        self.connection = None
+
+    def connect_to_database(self, host, user, password, database):
+        try:
+            self.connection = mysql.connector.connect(
+                host=host,
+                user=user,
+                password=password,
+                database=database
+            )
+        except mysql.connector.Error as err:
+            print(f"Error: {err}")
+            # Handle the error as needed
+
+    def populate_from_database(self):
+        try:
+            cursor = self.connection.cursor()
+            cursor.execute(
+                "SELECT IngredientName, Quantity FROM Fridge UNION SELECT IngredientName, Quantity FROM Freezer UNION SELECT IngredientName, Quantity FROM Pantry")
+            inventory_data = cursor.fetchall()
+            for item, quantity in inventory_data:
+                self.add_item(item, quantity)
+        except mysql.connector.Error as err:
+            print(f"Error: {err}")
+            # Handle the error as needed
+        finally:
+            cursor.close()
+
+    def add_item(self, item, quantity):
+        if item in self.items:
+            self.items[item] += quantity
+        else:
+            self.items[item] = quantity
+
+    def display_list(self):
+        print('Shopping List:')
+        for item, quantity in self.items.items():
+            print(f'{item}: {quantity}')
+
+    def check_low_stock(self):
+        print('Low-stock items:')
+        for item, quantity in self.items.items():
+            if quantity < 5:  # Adjust the threshold as needed
+                print(f'{item}: {quantity}')
+
+    def user_add_item(self):
+        while True:
+            user_input = input('Do you want to add an item to the list? (yes/no): ')
+            if user_input.lower() == 'yes':
+                item_to_add = input('Enter the item you want to add: ')
+                quantity_to_add = int(input('Enter the quantity: '))
+                self.add_item(item_to_add, quantity_to_add)
+            else:
+                break
+
+
+# Example usage:
+shopping_list = ShoppingList()
+
+# Populate shopping list from the database
+shopping_list.populate_from_database()
+
+# Display initial shopping list
+shopping_list.display_list()
+
+# Check and display low-stock items
+shopping_list.check_low_stock()
+
+# Allow the user to add items
+shopping_list.user_add_item()
+
+# Display the final shopping list
+shopping_list.display_list()
+
+
+
+# Function outside of Class:
+# Lauren S: User prompt for low-stock items
+def populate_from_database(self):
+    try:
+        cursor = self.connection.cursor()
+        cursor.execute(
+            "SELECT IngredientName, Quantity FROM Fridge UNION SELECT IngredientName, Quantity FROM Freezer UNION SELECT IngredientName, Quantity FROM Pantry")
+        inventory_data = cursor.fetchall()
+        for item, quantity in inventory_data:
+            self.add_item(item, quantity)
+            if quantity <= LOW_STOCK_THRESHOLD:  # Set a threshold for low stock
+                user_input = input(f"{item} is low in stock. Do you want to add it to the shopping list? (yes/no): ")
+                if user_input.lower() == 'yes':
+                    shopping_quantity = int(input(f"Enter the quantity of {item} to add to the shopping list: "))
+                    self.add_item(item, shopping_quantity)
+    except mysql.connector.Error as err:
+        print(f"Error: {err}")
+        # Handle the error as needed
+    finally:
+        cursor.close()
+
+
 
 if __name__ == '__main__':
     # test_connection()
