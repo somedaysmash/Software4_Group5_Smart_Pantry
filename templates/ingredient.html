@@ -1,0 +1,57 @@
+<head>
+  <title>Smart Pantry</title>
+  <link rel="stylesheet" href="static/style.css" />
+</head>
+
+<body class="ingredient_bg">
+  <nav>
+    <ul class="ing_list">
+      <li><a href="/kitchen">What's in my kitchen?</a></li>
+      <li><a href="/shopping">Shopping list</a></li>
+       </ul>
+      <h1>
+        Don't know what to make? Choose a protein of your choice to generate a
+        random recipe. We'll automatically create a shopping list with all
+        missing products.
+      </h1>
+   
+  </nav>
+  <form method="post">
+    <div class="wrapper_button">
+      <input
+        type="text"
+        name="query"
+        placeholder="Choose your protein"
+        value = ''
+      />
+      <button type="submit">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="28"
+          height="28"
+          viewBox="0 0 24 24"
+          stroke-width="2"
+          stroke="currentColor"
+          fill="none"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+          <path d="M5 12l14 0"></path>
+          <path d="M13 18l6 -6"></path>
+          <path d="M13 6l6 6"></path>
+        </svg>
+      </button>
+    </div>
+  </form>
+
+
+  </div>
+  <hr/>
+  <h2>{{ recipe.label }}</h2>
+  <ul class='ingredients'>
+    {% for i in recipe.ingredients %}
+    <li>{{ i.text }}</li>
+    {% endfor %}
+  </ul>
+</body>
