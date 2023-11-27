@@ -428,6 +428,7 @@ shopping_list.user_add_item()
 shopping_list.display_list()
 
 
+
 # Function outside of Class:
 # Lauren S: User prompt for low-stock items
 def populate_from_database(self):
@@ -448,6 +449,7 @@ def populate_from_database(self):
         # Handle the error as needed
     finally:
         cursor.close()
+
 
 
 if __name__ == '__main__':
