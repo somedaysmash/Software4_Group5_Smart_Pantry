@@ -3,3 +3,7 @@ config.py
 **/__pycache__/
 *.pyc
 API_key.py
+.vscode
+shopping_list.txt
+random_recipe.csv
+random_recipe.txt
