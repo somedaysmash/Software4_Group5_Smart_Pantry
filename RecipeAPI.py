@@ -232,6 +232,49 @@ def check_stock_for_recipe(ingredients_and_weight):
     # If all ingredients are available in sufficient quantity, return True
     # return not missing_ingredients
 
+# adding function to update pantry
+def update_pantry(ingredients_and_weight):
+    # connect to db
+    try:
+        db = SqlDatabase('Smart_Pantry')
+        db.connect()
+    except DbConnectionError as e:
+        print(e)
+        raise
+
+    try:
+        for ingredient, weight in ingredients_and_weight:
+            # Define the storage areas to check
+            storage_areas = ['Fridge', 'Freezer', 'Pantry']
+
+            for storage_area in storage_areas:
+                # Get the available quantity of the ingredient from the specific storage area
+                query = f"SELECT Quantity FROM {storage_area} WHERE IngredientName = %s"
+                result = db.execute_query(query, (ingredient,))
+
+                if result:
+                    available_quantity = result[0][0]  # getting the quantity from the result
+
+                    # Calculate the remaining quantity after deduction - make sure it is not negative
+                    remaining_quantity = max(available_quantity - weight, 0)
+
+                    # Update the specific storage area with the remaining quantity
+                    update_query = f"UPDATE {storage_area} SET Quantity = %s WHERE IngredientName = %s"
+                    db.execute_query(update_query, (remaining_quantity, ingredient))
+
+                    print(f"{ingredient} deducted from {storage_area}. Remaining quantity: {remaining_quantity}")
+
+                    # If the update was successful, break the loop (ingredient found so update is done)
+                    break
+
+            else:
+                # If ingredient wasn't found in any storage area
+                print(f"{ingredient} not found in any storage area.")
+
+        print("Pantry updated with recipe ingredients.")
+    finally:
+        db.disconnect()
+
 
 
 if __name__ == '__main__':
