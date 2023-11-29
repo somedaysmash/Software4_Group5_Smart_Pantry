@@ -407,7 +407,7 @@ class ShoppingList:
 shopping_list = ShoppingList()
 
 # Populate shopping list from the database
-shopping_list.populate_from_database()
+# shopping_list.populate_from_database()
 
 # Display initial shopping list
 shopping_list.display_list()
@@ -433,7 +433,7 @@ def populate_from_database(self):
         inventory_data = cursor.fetchall()
         for item, quantity in inventory_data:
             self.add_item(item, quantity)
-            if quantity <= LOW_STOCK_THRESHOLD:  # Set a threshold for low stock
+            if quantity <= 5:  # Set a threshold for low stock
                 user_input = input(f"{item} is low in stock. Do you want to add it to the shopping list? (yes/no): ")
                 if user_input.lower() == 'yes':
                     shopping_quantity = int(input(f"Enter the quantity of {item} to add to the shopping list: "))

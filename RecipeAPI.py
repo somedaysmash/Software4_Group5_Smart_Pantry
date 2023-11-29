@@ -6,7 +6,7 @@ import csv
 import API_key
 import sqlite3
 import math
-from utilities import SqlDatabase
+from utilities import SqlDatabase, DbConnectionError
 
 '''app_id/key stored on separate .py file (API_key.py), register for recipe API (developer plan) at 
 https://www.edamam.com'''

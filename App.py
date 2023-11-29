@@ -1,6 +1,6 @@
 # FLASK AND @ROUTES GO HERE
 from flask import Flask, jsonify, request, send_file, render_template, url_for, flash, redirect
-from utilities import add_item_fridge, add_item_freezer, add_item_pantry, update_inventory, retrieve_stock, SqlDatabase
+from utilities import update_inventory, retrieve_stock, SqlDatabase, _add_item, stock_delete
 from config import *
 from RecipeAPI import get_random_recipe
 from pprintpp import pprint as pp
@@ -64,5 +64,5 @@ def delete_item_from_stock(stock_store, item_name):
         return jsonify({"error": f"Failed to delete {item_name} from {stock_store}."})
 
 
-if __name__ == '__main__':
-    app.run(port=5002, debug=True)
+#   if __name__ == '__main__':
+app.run(port=5002, debug=True)
