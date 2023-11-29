@@ -1,0 +1,138 @@
+- We wanted to include all extra code to show the progression of our project
+
+*********************************************************************************************************
+
+CODE FROM RecipeAPI.py file
+
+- Extra code for function:
+def get_random_recipe(query):
+
+# Will use url/ params instead of very long URL
+# response = requests.get(url=api_endpoint, params=payload)
+# print(response.status_code)
+
+# To access recipe name, ingredients and weight from data
+                # try:
+                #     refine_label = data['hits'][1]['recipe']['label']
+                #     # To access ingredients and weights (grams to 2d.p.) from data
+                #     refine_ingredient_weight = data['hits'][1]['recipe']['ingredients']
+                #     text = [dictionary["text"] for dictionary in refine_ingredient_weight]
+                #     weight = [dictionary["weight"] for dictionary in refine_ingredient_weight]
+                #     weight_rounded = [round(n, 2) for n in weight]
+                # except IndexError:
+                #     print("Please enter ingredient name")
+                # except NameError:
+                #     print("Please try again")
+
+                # # A zipped list of ingredients as keys, and weights as values
+                # try:
+                #     ingredients_and_weight= zip(text, weight_rounded)
+                #     ingredient_list= list(ingredients_and_weight)
+                #     dict_of_weights= dict((x,y) for x,y in ingredient_list)
+                #     pp(dict_of_weights)
+                # except NameError:
+                #     print("Please try again")
+
+
+    # # CSV file - ingredient items/ weights
+    # aheader = ["Item", "Weight"]
+    # with open('random_recipe.csv', 'w', newline='') as csv_file:
+    #     file = csv.writer(csv_file)
+    #     file.writerow([refine_label])
+    #     file.writerow(aheader)
+    #     file.writerows(ingredient_list)
+
+
+- Extra code for function:
+def run() -> None:
+
+        # recipes = results['hits']
+        # for recipe in recipes:
+        #     recipe_data = recipe['recipe']
+        #     print(recipe_data['label'])
+        #     print(recipe_data['url'])
+        #     print()
+
+
+- Extra code for function:
+def check_stock_for_recipe(ingredients_and_weight):
+- Executing the queries - updated due to change in connection type
+
+    # conn = sqlite3.connect('SmartPantryDB.sql')
+    # cursor = conn.cursor()
+
+
+            # cursor.execute(query_fridge, (ingredient, weight))
+            # result_fridge = cursor.fetchone()
+            #
+            # cursor.execute(query_freezer, (ingredient, weight))
+            # result_freezer = cursor.fetchone()
+            #
+            # cursor.execute(query_pantry, (ingredient, weight))
+            # result_pantry = cursor.fetchone()
+
+
+*********************************************************************************************************
+
+CODE FROM Utilities.py file
+
+# REDUNDANT FUNCTION TO ADD ITEM TO STOCK
+# def add_item_fridge(_IngredientName, _TypeOfIngredient, _Quantity, _UnitofMeasurement, _MinimumQuantityNeeded, _SellByDate):
+#     try:
+#         db_name = 'Smart_Pantry'
+#         db_connection = _connect_to_db(db_name)
+#         cur = db_connection.cursor()
+#         print(f'Connected to DB: {db_name}')
+#         query = "INSERT INTO fridge (IngredientName, TypeOfIngredient, Quantity, UnitOfMeasurement, MinimumQuantityNeeded, SellByDate) VALUES (%s, %s, %s, %s, %s, %s)"
+#         val = _IngredientName, _TypeOfIngredient, _Quantity, _UnitofMeasurement, _MinimumQuantityNeeded, _SellByDate
+#         print(query, val)
+#         cur.execute(query, val)
+#         db_connection.commit()
+#         cur.close()
+#     except (NameError, ImportError, DbConnectionError) as e:
+#         print(e)
+#         raise
+#     finally:
+#         if db_connection:
+#             db_connection.close()
+#             print('DB connection is closed')
+
+# def add_item_freezer(_IngredientName, _TypeOfIngredient, _Quantity, _UnitofMeasurement, _MinimumQuantityNeeded, _SellByDate):
+#     try:
+#         db_name = 'Smart_Pantry'
+#         db_connection = _connect_to_db(db_name)
+#         cur = db_connection.cursor()
+#         print(f'Connected to DB: {db_name}')
+#         query = "INSERT INTO freezer (IngredientName, TypeOfIngredient, Quantity, UnitOfMeasurement, MinimumQuantityNeeded, SellByDate) VALUES (%s, %s, %s, %s, %s, %s)"
+#         val = _IngredientName, _TypeOfIngredient, _Quantity, _UnitofMeasurement, _MinimumQuantityNeeded, _SellByDate
+#         print(query, val)
+#         cur.execute(query, val)
+#         db_connection.commit()
+#         cur.close()
+#     except (NameError, ImportError, DbConnectionError) as e:
+#         print(e)
+#         raise
+#     finally:
+#         if db_connection:
+#             db_connection.close()
+#             print('DB connection is closed')
+
+# def add_item_pantry(_IngredientName, _TypeOfIngredient, _Quantity, _UnitofMeasurement, _MinimumQuantityNeeded, _SellByDate):
+#     try:
+#         db_name = 'Smart_Pantry'
+#         db_connection = _connect_to_db(db_name)
+#         cur = db_connection.cursor()
+#         print(f'Connected to DB: {db_name}')
+#         query = "INSERT INTO pantry (IngredientName, TypeOfIngredient, Quantity, UnitOfMeasurement, MinimumQuantityNeeded, SellByDate) VALUES (%s, %s, %s, %s, %s, %s)"
+#         val = _IngredientName, _TypeOfIngredient, _Quantity, _UnitofMeasurement, _MinimumQuantityNeeded, _SellByDate
+#         print(query, val)
+#         cur.execute(query, val)
+#         db_connection.commit()
+#         cur.close()
+#     except (NameError, ImportError, DbConnectionError) as e:
+#         print(e)
+#         raise
+#     finally:
+#         if db_connection:
+#             db_connection.close()
+#             print('DB connection is closed')

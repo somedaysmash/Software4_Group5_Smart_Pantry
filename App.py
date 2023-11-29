@@ -8,9 +8,11 @@ import random
 
 app = Flask(__name__)
 
+
 @app.route('/')
 def welcome():
     return render_template('index.html')
+
 
 @app.route('/kitchen')
 def fridge():
@@ -18,6 +20,7 @@ def fridge():
     pantry = retrieve_stock("Pantry")
     freezer = retrieve_stock("Freezer")
     return render_template('kitchen.html', fridge=fridge, pantry=pantry, freezer=freezer)
+
 
 # Anna fetching recipe name and ingredients
 @app.route('/ingredient', methods=('GET', 'POST'))
@@ -31,6 +34,7 @@ def ingredient():
         if data:
             recipe = random.choice(data['hits'])['recipe']
     return render_template('ingredient.html', recipe=recipe)
+
 
 @app.route('/add_item_fridge', methods=['PUT'])
 def new_item_fridge():
