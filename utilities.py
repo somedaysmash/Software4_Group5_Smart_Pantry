@@ -7,6 +7,7 @@ from tkinter import Tk, StringVar, Radiobutton, Button
 class DbConnectionError(Exception):
     pass
 
+
 class DbQueryError(Exception):
     def __init__(self, message, query, params):
         super().__init__(message)
@@ -15,7 +16,6 @@ class DbQueryError(Exception):
 
     def __str__(self):
         return (f"{self.message}\nQuery: {self.query}\nParams: {self.params}")
-
 
 
 # NEW CLASS TO CONNECT TO DB
@@ -65,6 +65,7 @@ class SqlDatabase:
 # result = db.execute_query("SELECT * FROM fridge")
 # print(result)
 
+
 def assert_sell_by_date(sell_by_date):
     # Check that the sell by date is a string
     assert isinstance(sell_by_date, str), "Sell by date must be a string"
@@ -73,6 +74,7 @@ def assert_sell_by_date(sell_by_date):
         datetime.strptime(sell_by_date, "%Y-%m-%d")
     except ValueError:
         raise ValueError("Sell by date must be in the format YYYY-MM-DD")
+
 
 def _add_item(stock_store, values):
     """
@@ -102,7 +104,6 @@ def _add_item(stock_store, values):
         db.connection.commit()
         print(f"Record added successfully to {stock_store}.")
 
-
     except (NameError, ImportError, DbConnectionError, ValueError, TypeError, DbQueryError) as e:
         # Handle any errors that might occur during the database operation
         # NameError: The SqlDatabase class is not defined or imported
@@ -118,82 +119,6 @@ def _add_item(stock_store, values):
     finally:
         # Close the database connection
         db.disconnect()
-
-# REDUNDANT FUNCTION TO ADD ITEM TO STOCK
-# def add_item_fridge(_IngredientName, _TypeOfIngredient, _Quantity, _UnitofMeasurement, _MinimumQuantityNeeded, _SellByDate):
-#     try:
-#         db_name = 'Smart_Pantry'
-#         db_connection = _connect_to_db(db_name)
-#         cur = db_connection.cursor()
-#         print(f'Connected to DB: {db_name}')
-
-#         query = "INSERT INTO fridge (IngredientName, TypeOfIngredient, Quantity, UnitOfMeasurement, MinimumQuantityNeeded, SellByDate) VALUES (%s, %s, %s, %s, %s, %s)"
-#         val = _IngredientName, _TypeOfIngredient, _Quantity, _UnitofMeasurement, _MinimumQuantityNeeded, _SellByDate
-#         print(query, val)
-#         cur.execute(query, val)
-#         db_connection.commit()
-#         cur.close()
-
-#     except (NameError, ImportError, DbConnectionError) as e:
-
-#         print(e)
-
-#         raise
-
-#     finally:
-#         if db_connection:
-#             db_connection.close()
-#             print('DB connection is closed')
-
-# def add_item_freezer(_IngredientName, _TypeOfIngredient, _Quantity, _UnitofMeasurement, _MinimumQuantityNeeded, _SellByDate):
-#     try:
-#         db_name = 'Smart_Pantry'
-#         db_connection = _connect_to_db(db_name)
-#         cur = db_connection.cursor()
-#         print(f'Connected to DB: {db_name}')
-
-#         query = "INSERT INTO freezer (IngredientName, TypeOfIngredient, Quantity, UnitOfMeasurement, MinimumQuantityNeeded, SellByDate) VALUES (%s, %s, %s, %s, %s, %s)"
-#         val = _IngredientName, _TypeOfIngredient, _Quantity, _UnitofMeasurement, _MinimumQuantityNeeded, _SellByDate
-#         print(query, val)
-#         cur.execute(query, val)
-#         db_connection.commit()
-#         cur.close()
-
-#     except (NameError, ImportError, DbConnectionError) as e:
-
-#         print(e)
-
-#         raise
-
-#     finally:
-#         if db_connection:
-#             db_connection.close()
-#             print('DB connection is closed')
-
-# def add_item_pantry(_IngredientName, _TypeOfIngredient, _Quantity, _UnitofMeasurement, _MinimumQuantityNeeded, _SellByDate):
-#     try:
-#         db_name = 'Smart_Pantry'
-#         db_connection = _connect_to_db(db_name)
-#         cur = db_connection.cursor()
-#         print(f'Connected to DB: {db_name}')
-
-#         query = "INSERT INTO pantry (IngredientName, TypeOfIngredient, Quantity, UnitOfMeasurement, MinimumQuantityNeeded, SellByDate) VALUES (%s, %s, %s, %s, %s, %s)"
-#         val = _IngredientName, _TypeOfIngredient, _Quantity, _UnitofMeasurement, _MinimumQuantityNeeded, _SellByDate
-#         print(query, val)
-#         cur.execute(query, val)
-#         db_connection.commit()
-#         cur.close()
-
-#     except (NameError, ImportError, DbConnectionError) as e:
-
-#         print(e)
-
-#         raise
-
-#     finally:
-#         if db_connection:
-#             db_connection.close()
-#             print('DB connection is closed')
 
 
 class StockDelete:
@@ -246,13 +171,13 @@ class StockDelete:
             print(e)
             # Reraise the exception to the caller
             raise
-
         finally:
             # Close the database connection
             db.disconnect()
 
 
-# to call the class StockDelete you need to create an object of the class. You also need to pass the same arguments to the run statement
+# to call the class StockDelete you need to create an object of the class.
+# You also need to pass the same arguments to the run statement
 stock_delete = StockDelete("Freezer", "Diced Onion")
 
 
@@ -271,9 +196,11 @@ def update_inventory():
         storage_update = input("Which stock store would you like to update? \n - Fridge \n - Freezer \n - Pantry \n : ").lower()
         # Check table name is valid
         assert storage_update in ["Fridge", "Freezer", "Pantry"], "Invalid table name"
-        column_update = input("Which column of data would you like to update? \n - Ingredient name \n - Type of ingredient \n - Quantity \n - Sell by date \n : ").lower()
+        column_update = input("Which column of data would you like to update? \n - Ingredient name \n "
+                              "- Type of ingredient \n - Quantity \n - Sell by date \n : ").lower()
         # Check column name is valid
-        assert column_update in ["ingredient name", "type of ingredient", "quantity", "sell by date"], "Invalid column name"
+        assert column_update in ["ingredient name", "type of ingredient", "quantity", "sell by date"], \
+            "Invalid column name"
         data_id = int(input("Please enter the ingredient ID: "))
         # Check the data ID is valid and exists in the table
         try:
@@ -410,17 +337,15 @@ def fetch_protein_data(ingredient):
             print(row)
             print("\n")
 
-
         # Create a Tkinter window
         try:
             root = Tk()
             root.title("Select Protein: ")
-
             # Store the protein variable
             selected_protein = StringVar()
 
             def save_selection():
-                nonlocal selected_protein #this may not be needed
+                nonlocal selected_protein # this may not be needed
                 # Get the value of the selected protein
                 selected_protein_value = selected_protein.get()
                 print(f"Selected protein: {selected_protein_value}")
@@ -445,7 +370,6 @@ def fetch_protein_data(ingredient):
     finally:
         # Disconnect from the database
         db.disconnect()
-
         # Return the result
         return result
 
@@ -704,7 +628,6 @@ shopping_list.user_add_item()
 shopping_list.display_list()
 
 
-
 # Function outside of Class:
 # Lauren S: User prompt for low-stock items
 def populate_from_database(self):
@@ -729,7 +652,8 @@ def populate_from_database(self):
         cursor = self.connection.cursor()
         # Execute a query to select the ingredient name and quantity from different tables
         cursor.execute(
-            "SELECT IngredientName, Quantity FROM Fridge UNION SELECT IngredientName, Quantity FROM Freezer UNION SELECT IngredientName, Quantity FROM Pantry")
+            "SELECT IngredientName, Quantity FROM Fridge UNION SELECT IngredientName, Quantity FROM Freezer UNION "
+            "SELECT IngredientName, Quantity FROM Pantry")
         # Fetch the query result as a list of tuples
         inventory_data = cursor.fetchall()
         # Loop through the result and add each item and quantity to the inventory
@@ -751,13 +675,12 @@ def populate_from_database(self):
         cursor.close()
 
 
-
 if __name__ == '__main__':
     # test_connection()
     # _add_item(stock_store='Fridge', values=('Beef', 'Protein', 2000, 'Grams', 450, '2025-07-30'))
     # update_inventory()
     # retrieve_stock(input("Which store do you want to see? Freezer, Fridge or Pantry?").lower())
     # stock_delete.delete_item("Freezer", "Diced Onion")
-    # fetch_protein_data(ingredient='Rice')
-    low_stock()
+    fetch_protein_data(ingredient='Rice')
+    # low_stock()
 

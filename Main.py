@@ -4,17 +4,15 @@ import requests
 import json
 
 
-
 # POST REQUEST (ADD)
-
 def add_stock_item_fridge(IngredientName, TypeOfIngredient, Quantity, UnitOfMeasurement, MinimumQuantityNeeded, SellByDate):
     new_fridge_stock = {
         "_IngredientName": IngredientName,
-        "_TypeOfIngredient":TypeOfIngredient,
-        "_Quantity":Quantity,
-        "_UnitofMeasurement":UnitOfMeasurement,
-        "_MinimumQuantityNeeded":MinimumQuantityNeeded,
-        "_SellByDate":SellByDate
+        "_TypeOfIngredient": TypeOfIngredient,
+        "_Quantity": Quantity,
+        "_UnitOfMeasurement": UnitOfMeasurement,
+        "_MinimumQuantityNeeded": MinimumQuantityNeeded,
+        "_SellByDate": SellByDate
     }
 
     try:
@@ -40,19 +38,17 @@ def run_fridge():
     add_to_fridge = input('Would you like to add stock to your fridge? Y/N')
     add_item = add_to_fridge.lower() == 'y'
 
-
     if add_item:
         IngredientName = input('What is the item name?')
-        TypeOfIngredient = input ('What type is this? Dairy, Protein, Vegetable, etc')
+        TypeOfIngredient = input('What type is this? Dairy, Protein, Vegetable, etc')
         Quantity = input('What quantity are you adding?')
-        UnitOfMeasurement = input ('What is the unit of measurement for the quantity?')
+        UnitOfMeasurement = input('What is the unit of measurement for the quantity?')
         MinimumQuantityNeeded = input("What's the minimum quanity of this you want to hold in stock?")
-        SellByDate = input ("What is the sell by date? Enter in format YYYY-MM-DD")
+        SellByDate = input("What is the sell by date? Enter in format YYYY-MM-DD")
         add_stock_item_fridge(IngredientName, TypeOfIngredient, Quantity, UnitOfMeasurement, MinimumQuantityNeeded, SellByDate)
         print("We have added your item")
 
     print('See you soon!')
-
 
 
 # PUT REQUEST (UPDATE)
@@ -66,10 +62,7 @@ def update_fridge():
         print(f"Failed to update fridge ingredient.")
 
 
-
-
 # DELETE REQUEST (REMOVE)
-
 def delete_stock_item_by_name():
     try:
         stock_store = input("Enter the stock store (fridge, freezer, pantry) from which you want to delete an item: ")
@@ -85,8 +78,6 @@ def delete_stock_item_by_name():
 
     except requests.exceptions.RequestException as err:
         print("Error:", repr(err))
-
-
 
 
 if __name__ == "__main__":
