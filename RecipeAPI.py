@@ -271,7 +271,7 @@ def update_pantry(ingredients_and_weight):
                 # If ingredient wasn't found in any storage area
                 print(f"{ingredient} not found in any storage area.")
 
-        print("Pantry updated with recipe ingredients.")
+        print("Pantry updated.")
     finally:
         db.disconnect()
 
