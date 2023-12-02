@@ -175,10 +175,19 @@ input::placeholder {
 
 td {
     text-align: center;
-    padding-bottom: 3rem;
     white-space: nowrap;
 }
 
 .first_col {
     padding-right: 30px;
+}
+
+.prompt {
+        display: block;
+    margin-top: 20px; /* Adjust the margin as needed */
+    width: 100%; /* Ensure full width */
+    background-color: rgba(255, 104, 28, 0.9);
+    border-radius: 7rem;
+    color: whitesmoke;
+    padding: 1rem;
 }
