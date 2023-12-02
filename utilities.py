@@ -53,7 +53,7 @@ class SqlDatabase:
             result = cursor.fetchall()
             cursor.close()
         except mysql.connector.Error as e:
-            raise DbQueryError(e)
+            raise DbQueryError(str(e), query, params)
 
         return result
 
@@ -137,7 +137,7 @@ class StockDelete:
 
     def delete_item(self, stock_store, item_name):
         # Check that the table name is valid
-        assert stock_store in ["Fridge", "Freezer", "Pantry"], "Invalid table name"
+        assert stock_store in ["fridge", "freezer", "pantry"], "Invalid table name"
         # Check the item name is not none or empty
         assert item_name, "Item name cannot be None or empty"
 
@@ -145,15 +145,16 @@ class StockDelete:
             # Create and connect to db object
             db = SqlDatabase('Smart_Pantry')
             db.connect()
+            cursor = db.connection.cursor()
             print(f'Connected to DB: {db}')
 
             # Construct and execute the delete query with given table and item name
-            query = f"DELETE FROM {stock_store} WHERE IngredientName = '{item_name}'"
+            query = f"DELETE FROM {stock_store} WHERE IngredientName = %s"
             print(f'Deleting item : {item_name} from {stock_store}')
 
-            db.execute_query(query)
+            cursor.execute(query, (self.item_name,))
             # Check that the deletion was successful
-            if db.connection.rowcount == 0:
+            if cursor.rowcount == 0:
                 raise DbQueryError("No such item in the table", query, None)
 
             # Check the connection object is not none
@@ -172,13 +173,14 @@ class StockDelete:
             # Reraise the exception to the caller
             raise
         finally:
+            cursor.close()
             # Close the database connection
             db.disconnect()
 
 
 # to call the class StockDelete you need to create an object of the class.
 # You also need to pass the same arguments to the run statement
-stock_delete = StockDelete("Freezer", "Diced Onion")
+stock_delete = StockDelete("freezer", "Diced Onion")
 
 
 def update_inventory():
@@ -195,20 +197,23 @@ def update_inventory():
         # Retrieve input from user
         storage_update = input("Which stock store would you like to update? \n - Fridge \n - Freezer \n - Pantry \n : ").lower()
         # Check table name is valid
-        assert storage_update in ["Fridge", "Freezer", "Pantry"], "Invalid table name"
+        assert storage_update in ["fridge", "freezer", "pantry"], "Invalid table name"
         column_update = input("Which column of data would you like to update? \n - Ingredient name \n "
                               "- Type of ingredient \n - Quantity \n - Sell by date \n : ").lower()
         # Check column name is valid
         assert column_update in ["ingredient name", "type of ingredient", "quantity", "sell by date"], \
             "Invalid column name"
-        data_id = int(input("Please enter the ingredient ID: "))
+        data_id_input = input("Please enter the ingredient ID: ")
         # Check the data ID is valid and exists in the table
         try:
-            db.execute_query(f"SELECT * FROM {storage_update} WHERE ID = {data_id}")
-            if db.connection.rowcount == 0:
+            data_id = int(data_id_input)
+            result = db.execute_query(f"SELECT * FROM {storage_update} WHERE ID = {data_id}")
+            if not result:
                 raise ValueError("No such ID in the table")
         except ValueError:
             raise ValueError("ID must be an integer")
+        except Exception as e:
+            raise ValueError(f"An error occurred: {str(e)}")
         new_value = input(f"Enter the new value for the {column_update}: ")
 
         # Define SQL update query
@@ -218,32 +223,30 @@ def update_inventory():
             # Check that the new value is a string
             assert isinstance(new_value, str), "New value must be a string"
             # Update the ingredient name with the new value
-            update_query = f"UPDATE {storage_update} SET IngredientName = {new_value} WHERE ID = {data_id}"
+            update_query = f"UPDATE {storage_update} SET IngredientName = %s WHERE ID = %s"
+            db.execute_query(update_query, (new_value, data_id))
         elif column_update == 'quantity':
             new_value = int(new_value)
             # Check that the new value is an integer
             assert isinstance(new_value, int), "New value must be an integer"
             # Update the quantity with the new value
-            update_query = f"UPDATE {storage_update} SET Quantity = {new_value} WHERE ID = {data_id}"
+            update_query = f"UPDATE {storage_update} SET Quantity = %s WHERE ID = %s"
+            db.execute_query(update_query, (new_value, data_id))
         elif column_update == 'type of ingredient':
             # Check that the new value is a string
             assert isinstance(new_value, str), "New value must be a string"
             # Update the type of ingredient with the new value
-            update_query = f"UPDATE {storage_update} SET TypeOfIngredient = {new_value} WHERE ID = {data_id}"
+            update_query = f"UPDATE {storage_update} SET TypeOfIngredient = %s WHERE ID = %s"
+            db.execute_query(update_query, (new_value, data_id))
         elif column_update == 'sell by date':
             # Check that the new value is a valid date in the format YYYY-MM-DD
             assert_sell_by_date(new_value)
             new_value = int(new_value)
             # Update the sell by date with the new value
-            update_query = f"UPDATE {storage_update} SET SellByDate = {new_value} WHERE ID = {data_id}"
+            update_query = f"UPDATE {storage_update} SET SellByDate = %s WHERE ID = %s"
+            db.execute_query(update_query, (new_value, data_id))
         else:
             print("Invalid input.")
-
-        # Execute the SQL update query
-        try:
-            db.execute_query(update_query)
-        except mysql.connector.Error as e:
-            raise DbQueryError(e, update_query, None)
 
         # Commit the changes to the database
         db.connection.commit()
@@ -265,7 +268,7 @@ def retrieve_stock(stock_store):
     :return: A list of tuples containing ingredient name and quantity for each item in the table.
     """
     # Check that the table name is valid
-    assert stock_store in ["Fridge", "Freezer", "Pantry"], "Invalid table name"
+    assert stock_store in ["fridge", "freezer", "pantry"], "Invalid table name"
     try:
         # Create a connection to the database
         db = SqlDatabase('Smart_Pantry')
@@ -282,10 +285,11 @@ def retrieve_stock(stock_store):
             assert result, "No data found in the table"
             # Check that the result is a list of tuples
             assert isinstance(result, list) and all(isinstance(row, tuple) for row in result), "Invalid data type or structure"
-            return result
+            print(result)
+
         except mysql.connector.Error as e:
             # Handle errors that may occur during query execution
-            raise DbQueryError(e, query, None)
+            raise DbQueryError(str(e), query, None)
 
     except Exception as e:
         # Handle any errors that might occur in db connection
@@ -294,6 +298,24 @@ def retrieve_stock(stock_store):
     finally:
         # Close database connection
         db.disconnect()
+
+
+def fetch_protein_data_db(ingredient, db):
+    db = SqlDatabase('Smart_Pantry')
+    db.connect()
+    query = (
+        f"SELECT IngredientName, Quantity, UnitOfMeasurement "
+        f"FROM Pantry WHERE IngredientName = '{ingredient}' "
+        f"UNION "
+        f"SELECT IngredientName, Quantity, UnitOfMeasurement "
+        f"FROM Fridge WHERE IngredientName = '{ingredient}' "
+        f"UNION "
+        f"SELECT IngredientName, Quantity, UnitOfMeasurement "
+        f"FROM Freezer WHERE IngredientName = '{ingredient}'"
+    )
+    # Execute the query and store the result
+    result = db.execute_query(query, (ingredient,))
+    return result
 
 
 def fetch_protein_data(ingredient):
@@ -310,58 +332,60 @@ def fetch_protein_data(ingredient):
     '''
     # Assert that the ingredient parameter is a string and not empty
     assert isinstance(ingredient, str) and ingredient, "Ingredient must be a non-empty string"
+    result = None
     try:
         # Connect to DB
         db = SqlDatabase('Smart_Pantry')
         db.connect()
 
+        result = fetch_protein_data_db(ingredient, db)
         # Execute the query to select protein data
-        query = (
-            f"SELECT IngredientName, Quantity, UnitOfMeasurement "
-            f"FROM Pantry WHERE IngredientName = '{ingredient}' "
-            f"UNION "
-            f"SELECT IngredientName, Quantity, UnitOfMeasurement "
-            f"FROM Fridge WHERE IngredientName = '{ingredient}' "
-            f"UNION "
-            f"SELECT IngredientName, Quantity, UnitOfMeasurement "
-            f"FROM Freezer WHERE IngredientName = '{ingredient}'"
-        )
-        db.execute_query(query)
-        # Execute the query and store the result
-        result = db.execute_query(query)
+        # query = (
+        #     f"SELECT IngredientName, Quantity, UnitOfMeasurement "
+        #     f"FROM Pantry WHERE IngredientName = '{ingredient}' "
+        #     f"UNION "
+        #     f"SELECT IngredientName, Quantity, UnitOfMeasurement "
+        #     f"FROM Fridge WHERE IngredientName = '{ingredient}' "
+        #     f"UNION "
+        #     f"SELECT IngredientName, Quantity, UnitOfMeasurement "
+        #     f"FROM Freezer WHERE IngredientName = '{ingredient}'"
+        # )
+        # db.execute_query(query)
+        # # Execute the query and store the result
+        # result = db.execute_query(query)
         if not result:
             # Raise a custom exception if the ingredient is not found
-            raise DbQueryError("No such ingredient in the database", query, None)
+            raise DbQueryError("No such ingredient in the database", None, None)
         for row in result:
             # Print each row of the result
             print(row)
             print("\n")
+        # protein_data = result
 
         # Create a Tkinter window
-        try:
-            root = Tk()
-            root.title("Select Protein: ")
-            # Store the protein variable
-            selected_protein = StringVar()
+        root = Tk()
+        root.title("Select Protein: ")
+        # Store the protein variable
+        selected_protein = StringVar()
 
-            def save_selection():
-                nonlocal selected_protein # this may not be needed
-                # Get the value of the selected protein
-                selected_protein_value = selected_protein.get()
-                print(f"Selected protein: {selected_protein_value}")
+        def save_selection():
+            nonlocal selected_protein # this may not be needed
+            # Get the value of the selected protein
+            selected_protein_value = selected_protein.get()
+            print(f"Selected protein: {selected_protein_value}")
 
-            for protein in protein_data:
-                # Create a radio button for each protein option
-                Radiobutton(root, text=protein[0], variable=selected_protein, value=protein[0]).pack()
+        for protein in result:
+            # Create a radio button for each protein option
+            Radiobutton(root, text=protein[0], variable=selected_protein, value=protein[0]).pack()
 
-                # Create a button to save the selection
-                Button(root, text="Save Selection", command=save_selection).pack()
-                # Start the main loop of the window
-                root.mainloop()
+        # Create a button to save the selection
+        Button(root, text="Save Selection", command=save_selection).pack()
+        # Start the main loop of the window
+        root.mainloop()
 
-        except tkinter.TclError as e:
-            # Handle any errors related to the Tkinter window
-            print(f"An error occurred with the Tkinter window: {e}")
+    except Tk.TclError as e:
+        # Handle any errors related to the Tkinter window
+        print(f"An error occurred with the Tkinter window: {e}")
 
     except Exception as e:
         # Handle any other errors
@@ -369,7 +393,7 @@ def fetch_protein_data(ingredient):
 
     finally:
         # Disconnect from the database
-        db.disconnect()
+        # db.disconnect()
         # Return the result
         return result
 
@@ -399,20 +423,19 @@ def low_stock():
         query = (
             f"SELECT IngredientName, Quantity, UnitOfMeasurement "
             f"FROM Pantry "
-            f"WHERE Quantity < '100.0' "
+            f"WHERE Quantity < 100.0 "
             f"UNION ALL "
             f"SELECT IngredientName, Quantity, UnitOfMeasurement "
             f"FROM Fridge "
-            f"WHERE Quantity < '100.0' "
+            f"WHERE Quantity < 100.0 "
             f"UNION ALL "
             f"SELECT IngredientName, Quantity, UnitOfMeasurement "
             f"FROM Freezer "
-            f"WHERE Quantity < '100.0' ")
+            f"WHERE Quantity < 100.0 ")
         # Executing the query
-        db.execute_query(query)
+        result = db.execute_query(query)
 
         try:
-            result = db.execute_query(query)
             if not result:
                 # Raise an exception if the query result is empty
                 raise DbQueryError("No such ingredient in the database", query, None)
@@ -430,13 +453,13 @@ def low_stock():
 
             try:
                 # Ask the user if they want to add the ingredient to the shopping list
-                add_to_list = input(f"Would you like to add {row} to your shopping list? (yes/no): ")
-                if add_to_list() not in ('yes', 'no'):
+                add_to_list = input(f"Would you like to add {row} to your shopping list? (yes/no): ").lower()
+                if add_to_list not in ("yes", "no", "Yes", "No"):
                     # Raise a ValueError if the user input is invalid
                     raise ValueError("Invalid input")
             except ValueError as e:
                 # Print the exception message and ask the user to enter a valid input
-                print (e)
+                print(e)
                 print("Please enter yes or no)")
 
                 if add_to_list.lower() == 'yes':
@@ -450,12 +473,12 @@ def low_stock():
 
         # Print the final shopping list
         print("Your shopping list: ")
-        # Assert that the shoppinglist variable is a list
-        assert isinstance(shoppinglist, list), "Shopping list must be a list"
         for item in shoppinglist:
             print(item)
-            # Assert that the item variable is a tuple
-            assert isinstance(item, tuple), "Item must be a tuple"
+        #     # Assert that the item variable is a tuple
+        #     assert isinstance(item, tuple), "Item must be a tuple"
+        # # Assert that the shoppinglist variable is a list
+        # assert isinstance(shoppinglist, list), "Shopping list must be a list"
 
     except Exception as e:
         # Raise a custom exception if there is an error in connecting to or disconnecting from the database
@@ -464,6 +487,8 @@ def low_stock():
     finally:
         # Disconnect from the database
         db.disconnect()
+
+    return shoppinglist
 
 
 # Lauren S: Generate shopping list, including low-stock, with the option to add/modify items:
@@ -676,11 +701,10 @@ def populate_from_database(self):
 
 
 if __name__ == '__main__':
-    # test_connection()
     # _add_item(stock_store='Fridge', values=('Beef', 'Protein', 2000, 'Grams', 450, '2025-07-30'))
-    # update_inventory()
-    # retrieve_stock(input("Which store do you want to see? Freezer, Fridge or Pantry?").lower())
-    # stock_delete.delete_item("Freezer", "Diced Onion")
-    fetch_protein_data(ingredient='Rice')
-    # low_stock()
+    #  update_inventory()
+    # retrieve_stock(input("Which store do you want to see? Freezer, Fridge or Pantry? ").lower())
+    # stock_delete.delete_item(stock_store="freezer", item_name="Diced Onion")
+    # fetch_protein_data(ingredient_name)
+     low_stock()
 
