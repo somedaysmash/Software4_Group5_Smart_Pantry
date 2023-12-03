@@ -296,42 +296,31 @@ def retrieve_stock(stock_store):
         db.disconnect()
 
 
-def fetch_protein_data(ingredient):
-    '''Fetches the protein data of a given ingredient from the database and displays it in a Tkinter window.
+def fetch_protein_data():
+    '''Fetches the protein data from the database and displays it in a Tkinter window.
 
-    :param:ingredient (str): The name of the ingredient to search for.
-
-    :return: list: A list of tuples containing the ingredient name, quantity, and unit of measurement.
+    :return: list: A list of tuples containing the ingredient name, quantity, and sell by date.
 
     :raise: AssertionError: If the ingredient is not a non-empty string.
         DbQueryError: If the ingredient is not found in the database.
         tkinter.TclError: If there is an error with the Tkinter window.
         Exception: If there is any other error.
     '''
-    # Assert that the ingredient parameter is a string and not empty
-    assert isinstance(ingredient, str) and ingredient, "Ingredient must be a non-empty string"
     try:
         # Connect to DB
         db = SqlDatabase('Smart_Pantry')
         db.connect()
 
         # Execute the query to select protein data
-        query = (
-            f"SELECT IngredientName, Quantity, UnitOfMeasurement "
-            f"FROM Pantry WHERE IngredientName = '{ingredient}' "
-            f"UNION "
-            f"SELECT IngredientName, Quantity, UnitOfMeasurement "
-            f"FROM Fridge WHERE IngredientName = '{ingredient}' "
-            f"UNION "
-            f"SELECT IngredientName, Quantity, UnitOfMeasurement "
-            f"FROM Freezer WHERE IngredientName = '{ingredient}'"
+        query = ("SELECT ingredientname, quantity, sellbydate FROM proteinview ORDER BY sellbydate;"
         )
         db.execute_query(query)
         # Execute the query and store the result
         result = db.execute_query(query)
         if not result:
-            # Raise a custom exception if the ingredient is not found
-            raise DbQueryError("No such ingredient in the database", query, None)
+            # Raise a custom exception if no protein found
+            raise DbQueryError("No protein in the database", query, None)
+        protein_data = result
         for row in result:
             # Print each row of the result
             print(row)
@@ -345,7 +334,7 @@ def fetch_protein_data(ingredient):
             selected_protein = StringVar()
 
             def save_selection():
-                nonlocal selected_protein # this may not be needed
+                nonlocal selected_protein  # this may not be needed
                 # Get the value of the selected protein
                 selected_protein_value = selected_protein.get()
                 print(f"Selected protein: {selected_protein_value}")
@@ -354,14 +343,18 @@ def fetch_protein_data(ingredient):
                 # Create a radio button for each protein option
                 Radiobutton(root, text=protein[0], variable=selected_protein, value=protein[0]).pack()
 
-                # Create a button to save the selection
-                Button(root, text="Save Selection", command=save_selection).pack()
-                # Start the main loop of the window
-                root.mainloop()
+            # Create a button to save the selection
+            Button(root, text="Save Selection", command=save_selection).pack()
+            # Start the main loop of the window
+            root.mainloop()
 
         except tkinter.TclError as e:
             # Handle any errors related to the Tkinter window
             print(f"An error occurred with the Tkinter window: {e}")
+
+        # except tkinter.TclError as e:
+        #     # Handle any errors related to the Tkinter window
+        #     print(f"An error occurred with the Tkinter window: {e}")
 
     except Exception as e:
         # Handle any other errors
@@ -608,7 +601,7 @@ class ShoppingList:
                 # Break the loop if the user does not want to add more items
                 break
 
-
+'''
 # Example usage:
 shopping_list = ShoppingList()
 
@@ -626,7 +619,7 @@ shopping_list.user_add_item()
 
 # Display the final shopping list
 shopping_list.display_list()
-
+'''
 
 # Function outside of Class:
 # Lauren S: User prompt for low-stock items
@@ -681,6 +674,6 @@ if __name__ == '__main__':
     # update_inventory()
     # retrieve_stock(input("Which store do you want to see? Freezer, Fridge or Pantry?").lower())
     # stock_delete.delete_item("Freezer", "Diced Onion")
-    fetch_protein_data(ingredient='Rice')
+    fetch_protein_data()
     # low_stock()
 
