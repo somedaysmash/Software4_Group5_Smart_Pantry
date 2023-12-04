@@ -2,27 +2,28 @@
 
 import requests
 import json
+from flask import url_for
 
 
 # POST REQUEST (ADD)
-def add_stock_item_fridge(IngredientName, TypeOfIngredient, Quantity, UnitOfMeasurement, MinimumQuantityNeeded, SellByDate):
+def add_stock_item_fridge(IngredientName, TypeOfIngredient, Quantity, UnitOfMeasurement, MinimumQuantityNeeded, SellByDate, stock_store):
     new_fridge_stock = {
         "_IngredientName": IngredientName,
         "_TypeOfIngredient": TypeOfIngredient,
         "_Quantity": Quantity,
         "_UnitOfMeasurement": UnitOfMeasurement,
         "_MinimumQuantityNeeded": MinimumQuantityNeeded,
-        "_SellByDate": SellByDate
+        "_SellByDate": SellByDate,
     }
 
     try:
         result = requests.put(
-            'http://127.0.0.1:5000/add_item_fridge',
+            url_for('add_item_fridge'),
             headers={'content-type': 'application/json'},
             data=json.dumps(new_fridge_stock)
         )
         result.raise_for_status()  # raise an exception if the status code is not 200
-        print(result)
+        print("here is the stock:", result)
         return result.json()
     except requests.exceptions.HTTPError as errh:
         print("HTTP Error:", repr(errh))  # print the HTTP error

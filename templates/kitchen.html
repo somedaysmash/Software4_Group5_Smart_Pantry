@@ -1,62 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
-  <!-- meta data -->
-
   <head>
     <title>Smart Pantry</title>
-    <!-- <link rel="icon" type="text/png" href="favicon-32x32.png"> -->
     <link rel="stylesheet" href="static/style.css" />
   </head>
 
   <body class="fridge_bg">
     <div class='recipe_button'><a href='/ingredient'>Help me choose a recipe</a></div>
     <div class="wrapper">
-        <div class="or_navigation">What's in my fridge</div>
-        <div class="or_navigation">What's in my freezer</div>
-        <div class="or_navigation">What's in my pantry</div>
-        
-    
-      <div class="fridge-container">
-        <table>
-          <tbody align="center">
-            {%for item in fridge%}
+      <div id="kitchenSection">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th class="or_navigation">What's in my fridge</th>
+            <th class="or_navigation">What's in my pantry</th>
+            <th class="or_navigation">What's in my freezer</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% set max_length = [fridge|length, pantry|length, freezer|length]|max %}
+          {% for i in range(max_length) %}
             <tr>
-              <td class="first_col">{{item[0]}}</td>
-              <td>{{item[1]}}</td>
-              <td>{{item[2]}}</td>
-            </tr>
-            {%endfor%}
-          </tbody>
-        </table>
-      </div>
-
-      <div class="pantry-container">
-        <table>
-          <tbody align="center">
-            {%for item in pantry%}
-            <tr>
-              <td class="first_col">{{item[0]}}</td>
-              <td>{{item[1]}}</td>
-              <td>{{item[2]}}</td>
-            </tr>
-            {%endfor%}
-          </tbody>
-        </table>
-      </div>
-
-      <div class="freezer-container">
-        <table>
-          <tbody align="center">
-            {%for item in freezer%}
-            <tr>
-              <td class="first_col">{{item[0]}}</td>
-              <td>{{item[1]}}</td>
-              <td>{{item[2]}}</td>
-            </tr>
-            {%endfor%}
-          </tbody>
-        </table>
-      </div>
+              {% for storage in [fridge, pantry, freezer] %}
+              <td class="fridge-container">
+                {% if i < storage|length %}
+                  <div class="item-row">
+                    <span class="item">{{ storage[i][0] }}</span>
+                    <span class="item">{{ storage[i][1] }}</span>
+                    {% if storage[i]|length > 2 %}<span class="item">{{ storage[i][2] }}</span>{% endif %}
+                  </div>
+                {% endif %}
+              </td>
+              {% endfor %}
+             </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      <div class='prompt'>Would you like to add stock to your stock? </div>
     </div>
+
+<form method="POST" id="addStockForm">
+  
+      <label for="stock_store">Select Stock Store:</label>
+    <select name="stock_store" id="stock_store" required>
+        <option value="Fridge">Fridge</option>
+        <option value="Pantry">Pantry</option>
+        <option value="Freezer">Freezer</option>
+    </select>
+  
+  <label for="itemName">Item Name:</label>
+    <input type="text" name="itemName" id="itemName" required>
+
+    <label for="typeOfIngredient">type Of Ingredient:</label>
+    <input type="text" name="typeOfIngredient" id="typeOfIngredient" required>
+
+    <label for="quantity">quantity:</label>
+    <input type="text" name="quantity" id="quantity" required>
+
+    <label for="unitOfMeasurement">unitOfMeasurement:</label>
+    <input type="text" name="unitOfMeasurement" id="unitOfMeasurement" required>
+
+    <label for="minQuantity">minQuantity:</label>
+    <input type="text" name="minQuantity" id="minQuantity" required>
+
+    <label for="sellByDate">sellByDate:</label>
+    <input type="text" name="sellByDate" id="sellByDate" required>
+
+    <button type="submit">Add Stock</button>
+</form>
+
   </body>
 </html>
