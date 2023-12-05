@@ -1,10 +1,11 @@
 # FLASK AND @ROUTES GO HERE
-from flask import Flask, jsonify, request, send_file, render_template, url_for, flash, redirect
+from flask import Flask, jsonify, request, render_template, redirect, url_for
 from utilities import update_inventory, retrieve_stock, SqlDatabase, _add_item, stock_delete
 from config import *
 from RecipeAPI import get_random_recipe
 from pprintpp import pprint as pp
 import random
+from Main import add_stock_item_fridge
 
 app = Flask(__name__)
 
@@ -14,19 +15,32 @@ def welcome():
     return render_template('index.html')
 
 
-@app.route('/kitchen')
-def fridge():
+@app.route('/kitchen', methods=['GET', 'POST'])
+def kitchen():
+    if request.method == 'POST':
+
+        _add_item(
+            request.form['stock_store'],
+            (request.form['itemName'], request.form['typeOfIngredient'], request.form['quantity'],
+                request.form['unitOfMeasurement'], request.form['minQuantity'], request.form['sellByDate'])
+        )
+        # add_stock_item_fridge(item_name, type_of_ingredient, quantity,
+        #                       unit_of_measurement, min_quantity, sell_by_date, stock_store)
+
+    # Retrieve updated stock data after the addition
     fridge = retrieve_stock("Fridge")
     pantry = retrieve_stock("Pantry")
     freezer = retrieve_stock("Freezer")
+    pp(fridge)
     return render_template('kitchen.html', fridge=fridge, pantry=pantry, freezer=freezer)
 
-
 # Anna fetching recipe name and ingredients
+
+
 @app.route('/ingredient', methods=('GET', 'POST'))
 def ingredient():
     recipe = ""
-   
+
     if request.method == 'POST':
         query = request.form['query']
         # Call the function to get the data
@@ -68,5 +82,4 @@ def delete_item_from_stock(stock_store, item_name):
         return jsonify({"error": f"Failed to delete {item_name} from {stock_store}."})
 
 
-#   if __name__ == '__main__':
 app.run(port=5002, debug=True)
