@@ -82,4 +82,4 @@ def delete_item_from_stock(stock_store, item_name):
         return jsonify({"error": f"Failed to delete {item_name} from {stock_store}."})
 
 
-app.run(port=5002, debug=True)
+app.run(port=5000, debug=True)

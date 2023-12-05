@@ -86,19 +86,19 @@ def _add_item(stock_store, values):
     """
 
     # Check that the table name is valid
-    assert stock_store in ["Fridge", "Freezer", "Pantry"], "Invalid table name"
+    #assert stock_store in ["Fridge", "Freezer", "Pantry"], "Invalid table name"
     try:
         # Create and connect to the database object
         db = SqlDatabase('Smart_Pantry')
         db.connect()
 
         # Check that the values are a tuple or list
-        if not isinstance(values, (tuple, list)):
-            raise TypeError("Values must be a tuple or list")
+        #if not isinstance(values, (tuple, list)):
+            #raise TypeError("Values must be a tuple or list")
 
         # Execute the insert query with the given values
         db.execute_query(query=
-            f"INSERT INTO {stock_store} (IngredientName, TypeOfIngredient, Quantity, UnitOfMeasurement, MinimumQuantityNeeded, SellByDate) VALUES {values}")
+            f"INSERT INTO {stock_store} (IngredientName, TypeOfIngredient, Quantity, UnitofMeasurement, MinimumQuantityNeeded, SellByDate) VALUES {values}") #removed unitofmeasurement
 
         # Commit the changes to the database
         db.connection.commit()
@@ -264,27 +264,21 @@ def retrieve_stock(stock_store):
     :return: A list of tuples containing ingredient name and quantity for each item in the table.
     """
     # Check that the table name is valid
-    assert stock_store in ["fridge", "freezer", "pantry"], "Invalid table name"
+    #assert stock_store in ["fridge", "freezer", "pantry"], "Invalid table name"
     try:
         # Create a connection to the database
         db = SqlDatabase('Smart_Pantry')
         db.connect()
 
         # Define SQL query to select relevant columns from table
-        query = f"""SELECT IngredientName, format(Quantity, 0), UnitOfMeasurement FROM {stock_store}"""
+        query = f"""SELECT IngredientName, format(Quantity, 0) FROM {stock_store}"""
 
         # Execute the SQL update query and store result
         try:
             db.execute_query(query)
             result = db.execute_query(query)
             print(result)
-            # Check that the result is not None or empty
-            assert result, "No data found in the table"
-            # Check that the result is a list of tuples
-            assert isinstance(result, list) and all(isinstance(row, tuple) for row in result), "Invalid data type or structure"
-            print(result)
-            assert isinstance(result, list) and all(isinstance(row, tuple)
-            for row in result), "Invalid data type or structure"
+
         except mysql.connector.Error as e:
             # Handle errors that may occur during query execution
             raise DbQueryError(str(e), query, None)
@@ -299,22 +293,14 @@ def retrieve_stock(stock_store):
     return result
 
 
-def fetch_protein_data_db(ingredient, db):
-    db = SqlDatabase('Smart_Pantry')
-    db.connect()
-    query = (
-        f"SELECT IngredientName, Quantity, UnitOfMeasurement "
-        f"FROM Pantry WHERE IngredientName = '{ingredient}' "
-        f"UNION "
-        f"SELECT IngredientName, Quantity, UnitOfMeasurement "
-        f"FROM Fridge WHERE IngredientName = '{ingredient}' "
-        f"UNION "
-        f"SELECT IngredientName, Quantity, UnitOfMeasurement "
-        f"FROM Freezer WHERE IngredientName = '{ingredient}'"
-    )
-    # Execute the query and store the result
-    result = db.execute_query(query, (ingredient,))
-    return result
+# def fetch_protein_data_db():
+#     db = SqlDatabase('Smart_Pantry')
+#     db.connect()
+#     query = ("SELECT ingredientname, quantity, sellbydate FROM proteinview ORDER BY sellbydate;"
+#         )
+#     # Execute the query and store the result
+#     result = db.execute_query(query)
+#     return result
 
 
 def fetch_protein_data():
@@ -332,26 +318,23 @@ def fetch_protein_data():
         # Connect to DB
         db = SqlDatabase('Smart_Pantry')
         db.connect()
-
-        result = fetch_protein_data_db(ingredient, db)
+        result = ()
         # Execute the query to select protein data
         query = ("SELECT ingredientname, quantity, sellbydate FROM proteinview ORDER BY sellbydate;"
         )
-        db.execute_query(query)
         # Execute the query and store the result
         result = db.execute_query(query)
         if not result:
             # Raise a custom exception if no protein found
             raise DbQueryError("No protein in the database", query, None)
         protein_data = result
-
-            # Print each row of the result
+        # Print each row of the result
+        for row in protein_data:
             print(row)
             print("\n")
-        # protein_data = result
+
 
         # Create a Tkinter window
-
         try:
             root = Tk()
             root.title("Select Protein: ")
@@ -383,7 +366,7 @@ def fetch_protein_data():
 
     finally:
         # Disconnect from the database
-        # db.disconnect()
+        db.disconnect()
         # Return the result
         return result
 
@@ -411,15 +394,15 @@ def low_stock():
 
         # setting up the query to select ingredients with low quantity from different tables
         query = (
-            f"SELECT IngredientName, Quantity, UnitOfMeasurement "
+            f"SELECT IngredientName, Quantity "
             f"FROM Pantry "
             f"WHERE Quantity < 100.0 "
             f"UNION ALL "
-            f"SELECT IngredientName, Quantity, UnitOfMeasurement "
+            f"SELECT IngredientName, Quantity "
             f"FROM Fridge "
             f"WHERE Quantity < 100.0 "
             f"UNION ALL "
-            f"SELECT IngredientName, Quantity, UnitOfMeasurement "
+            f"SELECT IngredientName, Quantity "
             f"FROM Freezer "
             f"WHERE Quantity < 100.0 ")
         # Executing the query
@@ -701,7 +684,8 @@ if __name__ == '__main__':
     # update_inventory()
     # retrieve_stock(input("Which store do you want to see? Freezer, Fridge or Pantry?").lower())
     # stock_delete.delete_item("Freezer", "Diced Onion")
-    fetch_protein_data()
-    # low_stock()
+    # fetch_protein_data()
+    low_stock()
+
 
 
