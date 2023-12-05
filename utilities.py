@@ -317,22 +317,17 @@ def fetch_protein_data_db(ingredient, db):
     return result
 
 
-def fetch_protein_data(ingredient):
-    '''Fetches the protein data of a given ingredient from the database and displays it in a Tkinter window.
+def fetch_protein_data():
+    '''Fetches the protein data from the database and displays it in a Tkinter window.
 
-    :param:ingredient (str): The name of the ingredient to search for.
+    :return: list: A list of tuples containing the ingredient name, quantity, and sell by date.
 
-    :return: list: A list of tuples containing the ingredient name, quantity, and unit of measurement.
-
-    :raise: AssertionError: If the ingredient is not a non-empty string.
+    :raise: 
         DbQueryError: If the ingredient is not found in the database.
         tkinter.TclError: If there is an error with the Tkinter window.
         Exception: If there is any other error.
     '''
-    # Assert that the ingredient parameter is a string and not empty
-    assert isinstance(ingredient, str) and ingredient, "Ingredient must be a non-empty string"
-    result = None
-    assert isinstance(ingredient, str) and ingredient, "Ingredient must be a non-empty string"
+
     try:
         # Connect to DB
         db = SqlDatabase('Smart_Pantry')
@@ -340,80 +335,47 @@ def fetch_protein_data(ingredient):
 
         result = fetch_protein_data_db(ingredient, db)
         # Execute the query to select protein data
-        # query = (
-        #     f"SELECT IngredientName, Quantity, UnitOfMeasurement "
-        #     f"FROM Pantry WHERE IngredientName = '{ingredient}' "
-        #     f"UNION "
-        #     f"SELECT IngredientName, Quantity, UnitOfMeasurement "
-        #     f"FROM Fridge WHERE IngredientName = '{ingredient}' "
-        #     f"UNION "
-        #     f"SELECT IngredientName, Quantity, UnitOfMeasurement "
-        #     f"FROM Freezer WHERE IngredientName = '{ingredient}'"
-        # )
-        # db.execute_query(query)
-        # # Execute the query and store the result
-        # result = db.execute_query(query)
+        query = ("SELECT ingredientname, quantity, sellbydate FROM proteinview ORDER BY sellbydate;"
+        )
+        db.execute_query(query)
+        # Execute the query and store the result
+        result = db.execute_query(query)
         if not result:
-            # Raise a custom exception if the ingredient is not found
-            raise DbQueryError("No such ingredient in the database", None, None)
-        for row in result:
+            # Raise a custom exception if no protein found
+            raise DbQueryError("No protein in the database", query, None)
+        protein_data = result
+
             # Print each row of the result
             print(row)
             print("\n")
         # protein_data = result
 
         # Create a Tkinter window
-        root = Tk()
-        root.title("Select Protein: ")
-        # Store the protein variable
-        selected_protein = StringVar()
 
+        try:
+            root = Tk()
+            root.title("Select Protein: ")
+            # Store the protein variable
+            selected_protein = StringVar()
 
-        def save_selection():
-            nonlocal selected_protein # this may not be needed
-            # Get the value of the selected protein
-            selected_protein_value = selected_protein.get()
-            print(f"Selected protein: {selected_protein_value}")
+            def save_selection():
+                nonlocal selected_protein  # this may not be needed
+                # Get the value of the selected protein
+                selected_protein_value = selected_protein.get()
+                print(f"Selected protein: {selected_protein_value}")
 
-        for protein in result:
-            # Create a radio button for each protein option
-            Radiobutton(root, text=protein[0], variable=selected_protein, value=protein[0]).pack()
+            for protein in protein_data:
+                # Create a radio button for each protein option
+                Radiobutton(root, text=protein[0], variable=selected_protein, value=protein[0]).pack()
 
-        # Create a button to save the selection
-        Button(root, text="Save Selection", command=save_selection).pack()
-        # Start the main loop of the window
-        root.mainloop()
+            # Create a button to save the selection
+            Button(root, text="Save Selection", command=save_selection).pack()
+            # Start the main loop of the window
+            root.mainloop()
 
-    except Tk.TclError as e:
-        # Handle any errors related to the Tkinter window
-        print(f"An error occurred with the Tkinter window: {e}")
-
-        # try:
-        #     root = Tk()
-        #     root.title("Select Protein: ")
-        #     # Store the protein variable
-        #     selected_protein = StringVar()
-        #
-        #     def save_selection():
-        #         nonlocal selected_protein  # this may not be needed
-        #         # Get the value of the selected protein
-        #         selected_protein_value = selected_protein.get()
-        #         print(f"Selected protein: {selected_protein_value}")
-        #
-        #     for protein in protein_data:
-        #         # Create a radio button for each protein option
-        #         Radiobutton(
-        #             root, text=protein[0], variable=selected_protein, value=protein[0]).pack()
-        #
-        #         # Create a button to save the selection
-        #         Button(root, text="Save Selection",
-        #                command=save_selection).pack()
-        #         # Start the main loop of the window
-        #         root.mainloop()
-        #
-        # except tkinter.TclError as e:
-        #     # Handle any errors related to the Tkinter window
-        #     print(f"An error occurred with the Tkinter window: {e}")
+        except tkinter.TclError as e:
+            # Handle any errors related to the Tkinter window
+            print(f"An error occurred with the Tkinter window: {e}")
 
     except Exception as e:
         # Handle any other errors
@@ -665,7 +627,7 @@ class ShoppingList:
                 # Break the loop if the user does not want to add more items
                 break
 
-
+'''
 # Example usage:
 shopping_list = ShoppingList()
 
@@ -683,7 +645,7 @@ shopping_list.check_low_stock()
 
 # Display the final shopping list
 shopping_list.display_list()
-
+'''
 
 # Function outside of Class:
 # Lauren S: User prompt for low-stock items
@@ -736,8 +698,10 @@ def populate_from_database(self):
 
 if __name__ == '__main__':
     # _add_item(stock_store='Fridge', values=('Beef', 'Protein', 2000, 'Grams', 450, '2025-07-30'))
-    #  update_inventory()
-    #  retrieve_stock(input("Which store do you want to see? Freezer, Fridge or Pantry? ").lower())
-    # stock_delete.delete_item(stock_store="freezer", item_name="Diced Onion")
-    #  fetch_protein_data(ingredient='beef')
-      low_stock()
+    # update_inventory()
+    # retrieve_stock(input("Which store do you want to see? Freezer, Fridge or Pantry?").lower())
+    # stock_delete.delete_item("Freezer", "Diced Onion")
+    fetch_protein_data()
+    # low_stock()
+
+
