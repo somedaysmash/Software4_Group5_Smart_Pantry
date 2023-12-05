@@ -10,7 +10,7 @@ CREATE TABLE Fridge (
     IngredientName VARCHAR(255) NOT NULL,
     TypeOfIngredient VARCHAR(255),
     Quantity DECIMAL(10, 2) NOT NULL,
-    --UnitOfMeasurement VARCHAR(20),
+    UnitOfMeasurement VARCHAR(20),
     MinimumQuantityNeeded DECIMAL(10, 2),
     SellByDate DATE
 );
@@ -21,7 +21,7 @@ CREATE TABLE Freezer (
     IngredientName VARCHAR(255) NOT NULL,
     TypeOfIngredient VARCHAR(255),
     Quantity DECIMAL(10, 2) NOT NULL,
-    --UnitOfMeasurement VARCHAR(20),
+    UnitOfMeasurement VARCHAR(20),
     MinimumQuantityNeeded DECIMAL(10, 2),
     SellByDate DATE
 );
@@ -32,7 +32,7 @@ CREATE TABLE Pantry (
     IngredientName VARCHAR(255) NOT NULL,
     TypeOfIngredient VARCHAR(255),
     Quantity DECIMAL(10, 2) NOT NULL,
-    --UnitOfMeasurement VARCHAR(20),
+    UnitOfMeasurement VARCHAR(20),
     MinimumQuantityNeeded DECIMAL(10, 2),
     SellByDate DATE
 );
@@ -41,7 +41,7 @@ CREATE TABLE Pantry (
 INSERT INTO Fridge (IngredientName, TypeOfIngredient, Quantity, UnitOfMeasurement, MinimumQuantityNeeded, SellByDate)
 VALUES
     ('Eggs', 'Protein', 12, 'Each', 6, '2023-12-01'),
-    ('Milk', 'Dairy', 1, 'Liter', 0.5, '2023-11-15'),
+    ('Milk', 'Dairy', 1, 'Litre', 0.5, '2023-11-15'),
     ('Butter', 'Dairy, Fats', 113, 'Grams', 50, '2023-12-10'),
     ('Chicken', 'Protein', 300, 'Grams', 100, '2023-11-20'),
     ('Kale', 'Vegetable', 50, 'Grams', 0, '2023-11-18');
