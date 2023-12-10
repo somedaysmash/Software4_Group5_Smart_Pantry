@@ -472,17 +472,17 @@ class ShoppingList:
         self.items = {}
         self.connection = None
 
-    def connect_to_database(self, host, user, password, database):
-        try:
-            self.connection = mysql.connector.connect(
-                host=host,
-                user=user,
-                password=password,
-                database=database
-            )
-        except mysql.connector.Error as err:
-            print(f"Error: {err}")
-            # Handle the error as needed
+    # def connect_to_database(self, host, user, password, database):
+    #     try:
+    #         self.connection = mysql.connector.connect(
+    #             host=host,
+    #             user=user,
+    #             password=password,
+    #             database=database
+    #         )
+    #     except mysql.connector.Error as err:
+    #         print(f"Error: {err}")
+    #         # Handle the error as needed
 
     def populate_from_database(self):
         '''
@@ -498,13 +498,13 @@ class ShoppingList:
             ValueError: If the data fetched from the database is not valid or compatible with the add_item method.
         '''
         try:
-            # Create a cursor object to execute queries
-            cursor = self.connection.cursor()
-            # Execute a query to select the ingredient name and quantity from different tables
-            cursor.execute(
-                "SELECT IngredientName, Quantity FROM Fridge UNION SELECT IngredientName, Quantity FROM Freezer UNION SELECT IngredientName, Quantity FROM Pantry")
+            # Connect to DB
+            db = SqlDatabase('Smart_Pantry')
+            db.connect()
+            query = ("SELECT IngredientName, Quantity FROM Fridge UNION SELECT IngredientName, Quantity FROM Freezer UNION SELECT IngredientName, Quantity FROM Pantry")
             # Fetch the query result as a list of tuples
-            inventory_data = cursor.fetchall()
+            result = db.execute_query(query)
+            inventory_data = result
             try:
                 # Loop through the result and add each item and quantity to the inventory
                 for item, quantity in inventory_data:
@@ -518,7 +518,7 @@ class ShoppingList:
             # Handle the error as needed
         finally:
             # Close the cursor object
-            cursor.close()
+            db.disconnect()
 
     def add_item(self, item, quantity):
         '''
@@ -536,15 +536,15 @@ class ShoppingList:
         or the item already exists in the inventory.
         '''
         # Assert that the item parameter is a string
-        assert isinstance(item, str), "Item must be a string"
-        # Assert that the quantity parameter is a positive number
-        assert isinstance(
-            quantity, (int, float)) and quantity > 0, "Quantity must be a positive number"
+        # assert isinstance(item, str), "Item must be a string"
+        # # Assert that the quantity parameter is a positive number
+        # assert isinstance(
+        #     quantity, (int, float)) and quantity < 0, "Quantity must be a positive number"
         if item in self.items:
             self.items[item] += quantity
         else:
             # Assert that the item is not already in the inventory dictionary
-            assert item not in self.items, "Item already exists in the inventory"
+            # assert item not in self.items, "Item already exists in the inventory"
             self.items[item] = quantity
 
     def display_list(self):
@@ -632,6 +632,7 @@ shopping_list.display_list()
 
 # Function outside of Class:
 # Lauren S: User prompt for low-stock items
+
 def populate_from_database(self):
     '''
     Populates the inventory and the shopping list with the data from the database.
@@ -685,7 +686,8 @@ if __name__ == '__main__':
     # retrieve_stock(input("Which store do you want to see? Freezer, Fridge or Pantry?").lower())
     # stock_delete.delete_item("Freezer", "Diced Onion")
     # fetch_protein_data()
-    low_stock()
+    shopping_list = ShoppingList()
+    shopping_list.add_item()
 
 
 

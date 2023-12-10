@@ -46,7 +46,7 @@ def ingredient():
         # Call the function to get the data
         data = get_random_recipe(query)
         if data:
-            recipe = random.choice(data['hits'])['recipe']
+            recipe = data
     return render_template('ingredient.html', recipe=recipe)
 
 

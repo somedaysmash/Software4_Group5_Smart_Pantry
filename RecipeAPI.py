@@ -17,29 +17,30 @@ without user input '''
 
 
 def get_random_recipe(query):
-    api_endpoint = (f'https://api.edamam.com/api/recipes/v2?type=public&app_id={app_id}&app_key={app_key}&q={query}&'
-                    f'/random=true&field=label&field=ingredients&field=totalWeight')
+    api_endpoint = f'https://api.edamam.com/api/recipes/v2?type=public&q={query}&app_id={app_id}&app_key={app_key}&random=true&field=label&field=ingredients'
+
     try:
         response = requests.get(api_endpoint)
-    except:
-        print('Network error')
-        return
-
-    # will sort this into try/ except blocks with better error handling
-
-    if response.status_code == 200:
-        data = response.json()
-        return data
-
-    else:
-        print("An error occurred")
+        if response.status_code == 200:
+            data = response.json()
+            recipe_data = None
+            if 'hits' in data and data['hits']:
+                random_recipe = data['hits'][0]['recipe']
+                recipe_data = {
+                    'label': random_recipe.get('label'),
+                    'ingredients': []
+                }
+                for item in random_recipe.get('ingredients', []):
+                    if item['text'] is None:
+                        ingredient_text = f"{item.get('quantity', 0)} {item.get('measure', '')} {item.get('food', '')}"
+                        item['text'] = ingredient_text
+                    recipe_data['ingredients'].append(item)
+            return recipe_data
+        else:
+            return None
+    except requests.RequestException as e:
+        print(f"Request error: {e}")
         return None
-
-    # Text File - Shopping list
-    with open('random_recipe.txt', 'w') as txt_file:
-        txt_file.write(f"Shopping List for {refine_label} "+'\n')
-        for key, value in dict_of_weights.items():
-            txt_file.write(f"[] {key} ({value}g) \n")
 
 
 def recipe_search_by_ingredient():
@@ -226,7 +227,7 @@ def update_pantry(ingredients_and_weight):
 if __name__ == '__main__':
     # random_recipe()
 
-    run()  # we only need this part to run the sequence
+    #run()  # we only need this part to run the sequence
     # results = recipe_search_by_ingredient()
     # recipes = results['hits']
     # recipe_data = recipes[0]["recipe"]
@@ -238,3 +239,4 @@ if __name__ == '__main__':
     #     print("Some ingredients are missing in your stock:")
     #     for ingredient, weight in missing_ingredients:
     #         print(f"{ingredient} is missing or needs {weight} grams more.")
+    get_random_recipe("chicken")
