@@ -40,7 +40,7 @@ CREATE TABLE Pantry (
 -- Inserting stock data into the Fridge table
 INSERT INTO Fridge (IngredientName, TypeOfIngredient, Quantity, UnitOfMeasurement, MinimumQuantityNeeded, SellByDate)
 VALUES
-    ('Semi-Skimmed  Milk', 'Dairy', 1, 'litre', 0.5, '2023-12-31'),
+    ('Semi-Skimmed  Milk', 'Dairy', 1000, 'mls', 200, '2023-12-31'),
     ('Salted Butter', 'Dairy, Fats', 113, 'grams', 50, '2024-01-31'),
     ('Chicken breast', 'Protein', 300, 'grams', 100, '2023-12-31'),
     ('Kale', 'Vegetable', 50, 'grams', 0, '2023-12-31'),
@@ -52,13 +52,13 @@ VALUES
 	('Carrots', 'Vegetable', 500, 'grams', 250, '2023-12-31'),
 	('Apples', 'Fruit', 100, 'grams', 500, '2023-12-31'),
 	('Lemons', 'Fruit', 300, 'grams', 150, '2023-12-31'),
-	('Tomato Ketchup', 'Condiment', 0.50, 'Litre', 0.25, '2023-12-31'),
-    ('Apple Juice', 'Fruit', 1.00, 'Litre', 0.50, '2023-12-31');
+	('Tomato Ketchup', 'Condiment', 500, 'mls', 50, '2023-12-31'),
+    ('Apple Juice', 'Fruit', 1000, 'mls', 100, '2023-12-31');
 
 -- Inserting stock data into the Freezer table
 INSERT INTO Freezer (IngredientName, TypeOfIngredient, Quantity, UnitOfMeasurement, MinimumQuantityNeeded, SellByDate)
 VALUES
-    ('Ice Cream', 'Dairy, Dessert' , 1, 'Litre', 0, '2024-06-30'),
+    ('Ice Cream', 'Dairy, Dessert' , 1000, 'mls', 0, '2024-06-30'),
     ('Minced beef', 'Protein', 200, 'grams', 100, '2023-12-05'),
     ('Frozen Peas', 'Vegetable', 100, 'grams', 50, '2024-02-15'),
     ('Broccoli', 'Vegetable', 500, 'grams', 200, '2023-12-31'),
@@ -82,13 +82,13 @@ VALUES
 	('Cream Crackers', 'Grain', 150, 'grams', 0, '2023-12-31'),
     ('Medium Sliced White Bread', 'Grain', 800, 'grams', 200, '2023-12-31'),
     ('Tortilla Chips', 'Grain', 150, 'grams', 0, '2024-03-31'),
-    ('Mustard', 'Condiment', 0.25, 'Litre', 0.10, '2023-12-31'),
-	('Mayonnaise', 'Condiment', 0.50, 'Litre', 0.25, '2023-12-31'),
-	('Dark Soy sauce', 'Condiment', 0.25, 'Litre', 0.10, '2023-12-31'),
-	('Honey', 'Condiment', 0.50, 'Kilogram', 0.25, '2023-12-31'),
+    ('Mustard', 'Condiment', 70, 'mls', 10, '2023-12-31'),
+	('Mayonnaise', 'Condiment', 400, 'mls', 50, '2023-12-31'),
+	('Dark Soy sauce', 'Condiment', 250, 'mls', 100, '2023-12-31'),
+	('Honey', 'Condiment', 500, 'grams', 100, '2023-12-31'),
     ('Baking powder', 'Baking', 100, 'grams', 50, '2023-12-31'),
 	('Baking soda', 'Baking', 100, 'grams', 50, '2023-12-31'),
-	('Vanilla extract', 'Baking', 0.05, 'Litre', 0.02, '2023-12-31'),
+	('Vanilla extract', 'Baking', 50, 'mls', 20, '2023-12-31'),
     ('Table Salt', 'Spice', 500, 'grams', 100, '2023-12-31'),
 	('Ground Black pepper', 'Spice', 100, 'grams', 10, '2023-12-31'),
 	('Ground Cinnamon', 'Spice', 100, 'grams', 20, '2023-12-31'),
@@ -108,3 +108,4 @@ WHERE TypeOfIngredient LIKE '%Protein%'
 UNION
 SELECT * FROM Pantry
 WHERE TypeOfIngredient LIKE '%Protein%';
+
