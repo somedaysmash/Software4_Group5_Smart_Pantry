@@ -4,3 +4,5 @@ pprintpp
 requests
 Flask
 json
+mysql-connector-python
+tk
