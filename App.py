@@ -2,7 +2,7 @@
 from flask import Flask, jsonify, request, render_template, redirect, url_for, send_file
 from utilities import update_inventory, retrieve_stock, SqlDatabase, _add_item, stock_delete, fetch_protein_data
 from config import *
-from RecipeAPI import get_random_recipe
+from RecipeAPI import get_random_recipe, check_stock_for_recipe
 from pprintpp import pprint as pp
 import random
 from Main import add_stock_item_fridge
@@ -81,16 +81,26 @@ def delete_item_from_stock(stock_store, item_name):
         return jsonify({"error": f"Failed to delete {item_name} from {stock_store}."})
 
 
+@app.route('/generate_shopping_list')
+def generate_shopping_list():
+    ingredients_and_weight = [('ingredient1', 100), ('ingredient2', 200), ('ingredient3', 150)]
+    missing_ingredients = check_stock_for_recipe(ingredients_and_weight)
+    # Create a shopping list text file with missing ingredients
+    with open("static/assets/shopping_list.txt", "w") as shoppinglist:
+        for ingredient, weight in missing_ingredients:
+            shoppinglist.write(f"{weight}, {ingredient}\n")
+    return "Shopping list generated successfully!"
+
+
 @app.route('/shopping')
 def upload_shoppinglist():
-    shoppinglist = open("static/assets/shopping_list.txt", "r")
-    content = shoppinglist.readlines()
+    with open("static/assets/shopping_list.txt", "r") as shoppinglist:
+        content = shoppinglist.readlines()
     print(content)
     return render_template("shoppinglist.html", text=content)
 
 
 # New routes to download shopping list file.
-
 @app.route('/download')
 def download():
     return render_template('download.html')
@@ -98,7 +108,7 @@ def download():
 
 @app.route('/return_file')
 def file_downloads():
-    return send_file('static/assets/shopping_list.txt')
+    return send_file('static/assets/shopping_list.txt', as_attachment=True)
 
 
 app.run(port=5002, debug=True)
