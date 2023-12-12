@@ -1,5 +1,5 @@
 # FLASK AND @ROUTES GO HERE
-from flask import Flask, jsonify, request, render_template, redirect, url_for
+from flask import Flask, jsonify, request, render_template, redirect, url_for, send_file
 from utilities import update_inventory, retrieve_stock, SqlDatabase, _add_item, stock_delete
 from config import *
 from RecipeAPI import get_random_recipe
@@ -80,6 +80,26 @@ def delete_item_from_stock(stock_store, item_name):
         return jsonify({"message": f"{item_name} successfully deleted from {stock_store}."})
     except:
         return jsonify({"error": f"Failed to delete {item_name} from {stock_store}."})
+
+
+@app.route('/shopping')
+def upload_shoppinglist():
+    shoppinglist = open("static/assets/shopping_list.txt", "r")
+    content = shoppinglist.readlines()
+    print(content)
+    return render_template("shoppinglist.html", text=content)
+
+
+# New routes to view shopping list /download shopping list file.
+
+@app.route('/download')
+def download():
+    return render_template('download.html')
+
+
+@app.route('/return_file')
+def file_downloads():
+    return send_file('static/assets/shopping_list.txt')
 
 
 app.run(port=5000, debug=True)
