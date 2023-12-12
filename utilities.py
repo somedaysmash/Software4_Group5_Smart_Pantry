@@ -645,6 +645,72 @@ def populate_from_database(self):
     finally:
         cursor.close()
 
+def fetch_out_of_date():
+    '''Fetches the data from the database where ingredient is passed sellbydate, according to today's date.
+
+    :return: list: A list of tuples containing the ingredient name, quantity, and sell by date.
+
+    :raise:
+        DbQueryError: If the ingredient is not found in the database.
+        Exception: If there is any other error.
+    '''
+
+    try:
+        # Connect to DB
+        db = SqlDatabase('Smart_Pantry')
+        db.connect()
+        OOD_data = ()
+        # Execute the query to select out of date ingredients
+        query = ("SELECT ingredientname, quantity, sellbydate FROM ExpiredIngredients ORDER BY sellbydate;"
+        )
+        # Execute the query and store the result
+        OOD_data = db.execute_query(query)
+        if not OOD_data:
+            # Raise a custom exception if no protein found
+            raise DbQueryError("No rotting food in the kitchen, hurrah!", query, None)
+        # Print each row of the result
+        for row in OOD_data:
+            print(row)
+            print("\n")
+        return OOD_data
+
+    finally:
+        # Disconnect from the database
+        db.disconnect()
+
+def fetch_expiring_ingredient_data():
+    '''Fetches the data from the database where ingredients sellbydate is today or in the next two days,
+    according to today's date.
+
+    :return: list: A list of tuples containing the ingredient name, quantity, and sell by date.
+
+    :raise:
+        DbQueryError: If the ingredient is not found in the database.
+        Exception: If there is any other error.
+    '''
+
+    try:
+        # Connect to DB
+        db = SqlDatabase('Smart_Pantry')
+        db.connect()
+        expiring_data = ()
+        # Execute the query to select out of date ingredients
+        query = ("SELECT ingredientname, quantity, sellbydate FROM ExpiringIngredients ORDER BY sellbydate;"
+        )
+        # Execute the query and store the result
+        expiring_data = db.execute_query(query)
+        if not expiring_data:
+            # Raise a custom exception if no protein found
+            raise DbQueryError("No items found that expire within the next few days", query, None)
+        # Print each row of the result
+        for row in expiring_data:
+            print(row)
+            print("\n")
+        return expiring_data
+
+    finally:
+        # Disconnect from the database
+        db.disconnect()
 
 if __name__ == '__main__':
     # _add_item(stock_store='Fridge', values=('Beef', 'Protein', 2000, 'Grams', 450, '2025-07-30'))
@@ -652,8 +718,10 @@ if __name__ == '__main__':
     # retrieve_stock(input("Which store do you want to see? Freezer, Fridge or Pantry?").lower())
     # stock_delete.delete_item("Freezer", "Diced Onion")
     # fetch_protein_data()
-    shopping_list = ShoppingList()
-    shopping_list.add_item()
+    # shopping_list = ShoppingList()
+    # shopping_list.add_item()
+    # fetch_out_of_date()
+    # fetch_expiring_ingredient_data()
 
 
 
