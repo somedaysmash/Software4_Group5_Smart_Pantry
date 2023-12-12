@@ -15,10 +15,10 @@ otherwise, I've used protein type for user input but I can change this to someth
 For a random choice, I can write a list of proteins and use random.choice(list) to make it random 
 without user input '''
 
-ingredients_and_weight = []
 
 def get_random_recipe(query):
-    api_endpoint = f'https://api.edamam.com/api/recipes/v2?type=public&q={query}&app_id={app_id}&app_key={app_key}&random=true&field=label&field=ingredients'
+    api_endpoint = f'https://api.edamam.com/api/recipes/v2?type=public&q={query}&app_id={app_id}&app_key={app_key}&' \
+                   f'random=true&field=label&field=ingredients'
 
     try:
         response = requests.get(api_endpoint)
@@ -62,9 +62,10 @@ def next_page_request(url):
 # FUNCTION TO CREATE SHOPPING LIST OF MISSING ITEMS
 def create_shopping_list(missing_ingredients):
     # new text file
-    with open('static/assets/shopping_list.txt', 'w') as file:
+    with open('shopping_list.txt', 'w') as file:
+        file.write('Shopping List:\n')
         for ingredient, weight in missing_ingredients:
-            file.write(f' {ingredient} ({weight} g)\n')
+            file.write(f'- {ingredient} ({weight} g)\n')
     # Print a message to the console
     print('Your shopping list can be found here: shopping_list.txt')
 
@@ -85,6 +86,11 @@ def run() -> None:
         print()
 
     more_recipes = input('Would you like to see more recipes? (yes/no) ').lower()
+
+    while more_recipes not in {'yes', 'no'}:
+        print('Invalid input. Please enter "yes" or "no".')
+        more_recipes = input('Would you like to see more recipes? (yes/no) ').lower()
+
     if more_recipes == 'yes':
         see_more = True
 
@@ -102,6 +108,11 @@ def run() -> None:
                 print()
 
         more_recipes = input('Would you like to see more recipes? (yes/no) ').lower()
+
+        while more_recipes not in {'yes', 'no'}:
+            print('Invalid input. Please enter "yes" or "no".')
+            more_recipes = input('Would you like to see more recipes? (yes/no) ').lower()
+
         if more_recipes != 'yes':
             see_more = False
 
@@ -115,7 +126,7 @@ def run() -> None:
             # Interact with the selected recipe
             print(f"You have selected: {selected_recipe['label']}")
 
-            # ingredients_and_weight = []
+            ingredients_and_weight = []
 
             for ingredient in selected_recipe['ingredients']:
                 # Print the name and weight of each ingredient
@@ -126,6 +137,8 @@ def run() -> None:
 
             # Using a transaction for creating the shopping list and updating the pantry
             try:
+                db = SqlDatabase('Smart_Pantry')
+                db.connect()
                 # Begin the transaction
                 db.start_transaction()
 
@@ -247,15 +260,11 @@ def update_pantry(ingredients_and_weight):
 
 if __name__ == '__main__':
     # random_recipe()
-
-    run()
-    check_stock_for_recipe(ingredients_and_weight)
-    missing_ingredients = check_stock_for_recipe(ingredients_and_weight)
-    create_shopping_list(missing_ingredients)# we only need this part to run the sequence
-    results = recipe_search_by_ingredient()
-    recipes = results['hits']
-    recipe_data = recipes[0]["recipe"]
-    ingredients_and_weight = [(ingredient["text"], ingredient["weight"]) for ingredient in recipe_data["ingredients"]]
+    # run()  # we only need this part to run the sequence
+    # results = recipe_search_by_ingredient()
+    # recipes = results['hits']
+    # recipe_data = recipes[0]["recipe"]
+    # ingredients_and_weight = [(ingredient["text"], ingredient["weight"]) for ingredient in recipe_data["ingredients"]]
     #
     # if check_stock_for_recipe(ingredients_and_weight):
     #     print("You have all the ingredients needed for this recipe!")
