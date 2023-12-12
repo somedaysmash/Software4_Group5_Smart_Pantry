@@ -123,9 +123,30 @@ def run() -> None:
             # check for the ingredients in stock by calling the check_stock_for_recipe function:
             missing_ingredients = check_stock_for_recipe(ingredients_and_weight)
             print(f"You need to buy the following ingredients: {missing_ingredients}")
-            create_shopping_list(missing_ingredients)
-            print(f"Here are the full ingredients: {selected_recipe['ingredientLines']}")
-            # print(f"Here is the link to the recipe: {selected_recipe['url']}")
+
+            # Using a transaction for creating the shopping list and updating the pantry
+            try:
+                # Begin the transaction
+                db.start_transaction()
+
+                # Creating the shopping list
+                create_shopping_list(missing_ingredients)
+                print(f"Here are the full ingredients: {selected_recipe['ingredientLines']}")
+                # print(f"Here is the link to the recipe: {selected_recipe['url']}")
+
+                # Update the pantry
+                update_pantry(ingredients_and_weight)
+
+                # Commit the transaction if everything is successful
+                db.commit()
+            except Exception as e:
+                # Rollback the transaction if an error occurs
+                db.rollback()
+                print(f"Error: {e}")
+            finally:
+                # Close the database connection
+                db.disconnect()
+
         else:
             # Handle the invalid selection
             print('Invalid value. Please try again.')
