@@ -271,7 +271,7 @@ def retrieve_stock(stock_store):
         db.connect()
 
         # Define SQL query to select relevant columns from table
-        query = f"""SELECT IngredientName, format(Quantity, 0) FROM {stock_store}"""
+        query = f"""SELECT IngredientName, format(Quantity, 0), UnitOfMeasurement FROM {stock_store}"""
 
         # Execute the SQL update query and store result
         try:
@@ -318,58 +318,24 @@ def fetch_protein_data():
         # Connect to DB
         db = SqlDatabase('Smart_Pantry')
         db.connect()
-        result = ()
+        protein_data = ()
         # Execute the query to select protein data
         query = ("SELECT ingredientname, quantity, sellbydate FROM proteinview ORDER BY sellbydate;"
         )
         # Execute the query and store the result
-        result = db.execute_query(query)
-        if not result:
+        protein_data = db.execute_query(query)
+        if not protein_data:
             # Raise a custom exception if no protein found
             raise DbQueryError("No protein in the database", query, None)
-        protein_data = result
         # Print each row of the result
         for row in protein_data:
             print(row)
             print("\n")
-
-
-        # Create a Tkinter window
-        try:
-            root = Tk()
-            root.title("Select Protein: ")
-            # Store the protein variable
-            selected_protein = StringVar()
-
-            def save_selection():
-                nonlocal selected_protein  # this may not be needed
-                # Get the value of the selected protein
-                selected_protein_value = selected_protein.get()
-                print(f"Selected protein: {selected_protein_value}")
-
-            for protein in protein_data:
-                # Create a radio button for each protein option
-                Radiobutton(root, text=protein[0], variable=selected_protein, value=protein[0]).pack()
-
-            # Create a button to save the selection
-            Button(root, text="Save Selection", command=save_selection).pack()
-            # Start the main loop of the window
-            root.mainloop()
-
-        except tkinter.TclError as e:
-            # Handle any errors related to the Tkinter window
-            print(f"An error occurred with the Tkinter window: {e}")
-
-    except Exception as e:
-        # Handle any other errors
-        print(f"An error has occurred: {e}")
+        return protein_data 
 
     finally:
         # Disconnect from the database
         db.disconnect()
-        # Return the result
-        return result
-
 
 def low_stock():
     '''Checks the quantity of ingredients in the database and creates a shopping list based on user input.

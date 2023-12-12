@@ -1,6 +1,6 @@
 # FLASK AND @ROUTES GO HERE
 from flask import Flask, jsonify, request, render_template, redirect, url_for
-from utilities import update_inventory, retrieve_stock, SqlDatabase, _add_item, stock_delete
+from utilities import update_inventory, retrieve_stock, SqlDatabase, _add_item, stock_delete, fetch_protein_data
 from config import *
 from RecipeAPI import get_random_recipe
 from pprintpp import pprint as pp
@@ -31,7 +31,6 @@ def kitchen():
     fridge = retrieve_stock("Fridge")
     pantry = retrieve_stock("Pantry")
     freezer = retrieve_stock("Freezer")
-    pp(fridge)
     return render_template('kitchen.html', fridge=fridge, pantry=pantry, freezer=freezer)
 
 # Anna fetching recipe name and ingredients
@@ -39,15 +38,15 @@ def kitchen():
 
 @app.route('/ingredient', methods=('GET', 'POST'))
 def ingredient():
-    recipe = ""
+    if request.method == 'GET':
+        proteins = fetch_protein_data()
+        return render_template('ingredient.html', recipe={}, proteins=proteins)
 
     if request.method == 'POST':
         query = request.form['query']
         # Call the function to get the data
-        data = get_random_recipe(query)
-        if data:
-            recipe = data
-    return render_template('ingredient.html', recipe=recipe)
+        recipe = get_random_recipe(query)
+        return render_template('ingredient.html', recipe=recipe, proteins=[])
 
 
 @app.route('/add_item_fridge', methods=['PUT'])
@@ -82,4 +81,4 @@ def delete_item_from_stock(stock_store, item_name):
         return jsonify({"error": f"Failed to delete {item_name} from {stock_store}."})
 
 
-app.run(port=5000, debug=True)
+app.run(port=5002, debug=True)
