@@ -86,15 +86,15 @@ def _add_item(stock_store, values):
     """
 
     # Check that the table name is valid
-    #assert stock_store in ["Fridge", "Freezer", "Pantry"], "Invalid table name"
+    # assert stock_store in ["Fridge", "Freezer", "Pantry"], "Invalid table name"
     try:
         # Create and connect to the database object
         db = SqlDatabase('Smart_Pantry')
         db.connect()
 
         # Check that the values are a tuple or list
-        #if not isinstance(values, (tuple, list)):
-            #raise TypeError("Values must be a tuple or list")
+        # if not isinstance(values, (tuple, list)):
+        # raise TypeError("Values must be a tuple or list")
 
         # Execute the insert query with the given values
         db.execute_query(query=
@@ -189,22 +189,24 @@ def update_inventory():
         db.connect()
 
         # Retrieve input from user
-        storage_update = input("Which stock store would you like to update? \n - Fridge \n - Freezer \n - Pantry \n : ").lower()
+        storage_update = input("Which stock store would you like to update? \n - Fridge \n - Freezer \n - Pantry \n : ")\
+            .lower()
         # Check table name is valid
         assert storage_update in ["fridge", "freezer", "pantry"], "Invalid table name"
         # assert storage_update in ["Fridge", "Freezer", "Pantry"], "Invalid table name"
         column_update = input("Which column of data would you like to update? \n - Ingredient name \n "
                               "- Type of ingredient \n - Quantity \n - Sell by date \n : ").lower()
         # Check column name is valid
-        assert column_update in ["ingredient name", "type of ingredient", "quantity", "sell by date"], "Invalid column name"
+        assert column_update in ["ingredient name", "type of ingredient", "quantity", "sell by date"], \
+            "Invalid column name"
         data_id_input = input("Please enter the ingredient ID: ")
         # Check the data ID is valid and exists in the table
         try:
             data_id = int(data_id_input)
             result = db.execute_query(f"SELECT * FROM {storage_update} WHERE ID = {data_id}")
             if not result:
-            #     db.execute_query(f"SELECT * FROM {storage_update} WHERE ID = {data_id}")
-            # if db.connection.rowcount == 0:
+                # db.execute_query(f"SELECT * FROM {storage_update} WHERE ID = {data_id}")
+                # if db.connection.rowcount == 0:
                 raise ValueError("No such ID in the table")
         except ValueError:
             raise ValueError("ID must be an integer")
@@ -264,14 +266,14 @@ def retrieve_stock(stock_store):
     :return: A list of tuples containing ingredient name and quantity for each item in the table.
     """
     # Check that the table name is valid
-    #assert stock_store in ["fridge", "freezer", "pantry"], "Invalid table name"
+    # assert stock_store in ["fridge", "freezer", "pantry"], "Invalid table name"
     try:
         # Create a connection to the database
         db = SqlDatabase('Smart_Pantry')
         db.connect()
 
         # Define SQL query to select relevant columns from table
-        query = f"""SELECT IngredientName, format(Quantity, 0) FROM {stock_store}"""
+        query = f"""SELECT IngredientName, format(Quantity, 0), UnitOfMeasurement FROM {stock_store}"""
 
         # Execute the SQL update query and store result
         try:
@@ -293,16 +295,6 @@ def retrieve_stock(stock_store):
     return result
 
 
-# def fetch_protein_data_db():
-#     db = SqlDatabase('Smart_Pantry')
-#     db.connect()
-#     query = ("SELECT ingredientname, quantity, sellbydate FROM proteinview ORDER BY sellbydate;"
-#         )
-#     # Execute the query and store the result
-#     result = db.execute_query(query)
-#     return result
-
-
 def fetch_protein_data():
     '''Fetches the protein data from the database and displays it in a Tkinter window.
 
@@ -318,57 +310,24 @@ def fetch_protein_data():
         # Connect to DB
         db = SqlDatabase('Smart_Pantry')
         db.connect()
-        result = ()
+        protein_data = ()
         # Execute the query to select protein data
         query = ("SELECT ingredientname, quantity, sellbydate FROM proteinview ORDER BY sellbydate;"
         )
         # Execute the query and store the result
-        result = db.execute_query(query)
-        if not result:
+        protein_data = db.execute_query(query)
+        if not protein_data:
             # Raise a custom exception if no protein found
             raise DbQueryError("No protein in the database", query, None)
-        protein_data = result
         # Print each row of the result
         for row in protein_data:
             print(row)
             print("\n")
-
-
-        # Create a Tkinter window
-        try:
-            root = Tk()
-            root.title("Select Protein: ")
-            # Store the protein variable
-            selected_protein = StringVar()
-
-            def save_selection():
-                nonlocal selected_protein  # this may not be needed
-                # Get the value of the selected protein
-                selected_protein_value = selected_protein.get()
-                print(f"Selected protein: {selected_protein_value}")
-
-            for protein in protein_data:
-                # Create a radio button for each protein option
-                Radiobutton(root, text=protein[0], variable=selected_protein, value=protein[0]).pack()
-
-            # Create a button to save the selection
-            Button(root, text="Save Selection", command=save_selection).pack()
-            # Start the main loop of the window
-            root.mainloop()
-
-        except tkinter.TclError as e:
-            # Handle any errors related to the Tkinter window
-            print(f"An error occurred with the Tkinter window: {e}")
-
-    except Exception as e:
-        # Handle any other errors
-        print(f"An error has occurred: {e}")
+        return protein_data 
 
     finally:
         # Disconnect from the database
         db.disconnect()
-        # Return the result
-        return result
 
 
 def low_stock():
@@ -450,9 +409,9 @@ def low_stock():
         print("Your shopping list: ")
         for item in shoppinglist:
             print(item)
-        #     # Assert that the item variable is a tuple
-        #     assert isinstance(item, tuple), "Item must be a tuple"
-        # # Assert that the shoppinglist variable is a list
+        # Assert that the item variable is a tuple
+        # assert isinstance(item, tuple), "Item must be a tuple"
+        # Assert that the shoppinglist variable is a list
         # assert isinstance(shoppinglist, list), "Shopping list must be a list"
 
     except Exception as e:
@@ -472,18 +431,6 @@ class ShoppingList:
         self.items = {}
         self.connection = None
 
-    # def connect_to_database(self, host, user, password, database):
-    #     try:
-    #         self.connection = mysql.connector.connect(
-    #             host=host,
-    #             user=user,
-    #             password=password,
-    #             database=database
-    #         )
-    #     except mysql.connector.Error as err:
-    #         print(f"Error: {err}")
-    #         # Handle the error as needed
-
     def populate_from_database(self):
         '''
         Populates the inventory with the data from the database.
@@ -501,7 +448,8 @@ class ShoppingList:
             # Connect to DB
             db = SqlDatabase('Smart_Pantry')
             db.connect()
-            query = ("SELECT IngredientName, Quantity FROM Fridge UNION SELECT IngredientName, Quantity FROM Freezer UNION SELECT IngredientName, Quantity FROM Pantry")
+            query = ("SELECT IngredientName, Quantity FROM Fridge UNION SELECT IngredientName, Quantity FROM Freezer "
+                     "UNION SELECT IngredientName, Quantity FROM Pantry")
             # Fetch the query result as a list of tuples
             result = db.execute_query(query)
             inventory_data = result
@@ -539,7 +487,7 @@ class ShoppingList:
         # assert isinstance(item, str), "Item must be a string"
         # # Assert that the quantity parameter is a positive number
         # assert isinstance(
-        #     quantity, (int, float)) and quantity < 0, "Quantity must be a positive number"
+        # quantity, (int, float)) and quantity < 0, "Quantity must be a positive number"
         if item in self.items:
             self.items[item] += quantity
         else:
@@ -630,9 +578,9 @@ shopping_list.check_low_stock()
 shopping_list.display_list()
 '''
 
+
 # Function outside of Class:
 # Lauren S: User prompt for low-stock items
-
 def populate_from_database(self):
     '''
     Populates the inventory and the shopping list with the data from the database.
@@ -680,14 +628,82 @@ def populate_from_database(self):
         cursor.close()
 
 
+def fetch_out_of_date():
+    '''Fetches the data from the database where ingredient is passed sellbydate, according to today's date.
+
+    :return: list: A list of tuples containing the ingredient name, quantity, and sell by date.
+
+    :raise:
+        DbQueryError: If the ingredient is not found in the database.
+        Exception: If there is any other error.
+    '''
+
+    try:
+        # Connect to DB
+        db = SqlDatabase('Smart_Pantry')
+        db.connect()
+        OOD_data = ()
+        # Execute the query to select out of date ingredients
+        query = ("SELECT ingredientname, quantity, sellbydate FROM ExpiredIngredients ORDER BY sellbydate;"
+        )
+        # Execute the query and store the result
+        OOD_data = db.execute_query(query)
+        if not OOD_data:
+            # Raise a custom exception if no protein found
+            raise DbQueryError("No rotting food in the kitchen, hurrah!", query, None)
+        # Print each row of the result
+        for row in OOD_data:
+            print(row)
+            print("\n")
+        return OOD_data
+
+    finally:
+        # Disconnect from the database
+        db.disconnect()
+
+
+def fetch_expiring_ingredient_data():
+    '''Fetches the data from the database where ingredients sellbydate is today or in the next two days,
+    according to today's date.
+
+    :return: list: A list of tuples containing the ingredient name, quantity, and sell by date.
+
+    :raise:
+        DbQueryError: If the ingredient is not found in the database.
+        Exception: If there is any other error.
+    '''
+
+    try:
+        # Connect to DB
+        db = SqlDatabase('Smart_Pantry')
+        db.connect()
+        expiring_data = ()
+        # Execute the query to select out of date ingredients
+        query = ("SELECT ingredientname, quantity, sellbydate FROM ExpiringIngredients ORDER BY sellbydate;"
+        )
+        # Execute the query and store the result
+        expiring_data = db.execute_query(query)
+        if not expiring_data:
+            # Raise a custom exception if no protein found
+            raise DbQueryError("No items found that expire within the next few days", query, None)
+        # Print each row of the result
+        for row in expiring_data:
+            print(row)
+            print("\n")
+        return expiring_data
+
+    finally:
+        # Disconnect from the database
+        db.disconnect()
+
+
 if __name__ == '__main__':
     # _add_item(stock_store='Fridge', values=('Beef', 'Protein', 2000, 'Grams', 450, '2025-07-30'))
     # update_inventory()
     # retrieve_stock(input("Which store do you want to see? Freezer, Fridge or Pantry?").lower())
     # stock_delete.delete_item("Freezer", "Diced Onion")
     # fetch_protein_data()
-    shopping_list = ShoppingList()
-    shopping_list.add_item()
-
-
-
+    #  shopping_list = ShoppingList()
+    # ShoppingList.add_item()
+    # fetch_out_of_date()
+    fetch_expiring_ingredient_data()

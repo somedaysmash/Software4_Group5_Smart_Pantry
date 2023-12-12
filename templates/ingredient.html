@@ -8,22 +8,27 @@
     <ul class="ing_list">
       <li><a href="/kitchen">What's in my kitchen?</a></li>
       <li><a href="/shopping">Shopping list</a></li>
-       </ul>
-      <h1>
-        Don't know what to make? Choose a protein of your choice to generate a
-        random recipe. We'll automatically create a shopping list with all
-        missing products.
-      </h1>
-   
+    </ul>
+    <h1>
+      Don't know what to make? Choose a protein of your choice to generate a
+      random recipe. We'll automatically create a shopping list with all missing
+      products.
+    </h1>
   </nav>
   <form method="post">
     <div class="wrapper_button">
-      <input
+      <!--input
         type="text"
         name="query"
         placeholder="Choose your protein"
         value = ''
-      />
+      /-->
+      <select name="query" id="query">
+        {% for i in proteins %}
+        <option value = "{{i[0]}}">{{ i[0] }}</option>
+        {% endfor %}
+
+      </select>
       <button type="submit">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -45,11 +50,9 @@
     </div>
   </form>
 
-
-  </div>
-  <hr/>
+  <hr />
   <h2>{{ recipe.label }}</h2>
-  <ul class='ingredients'>
+  <ul class="ingredients">
     {% for i in recipe.ingredients %}
     <li>{{ i.text }}</li>
     {% endfor %}
