@@ -17,7 +17,8 @@ without user input '''
 
 
 def get_random_recipe(query):
-    api_endpoint = f'https://api.edamam.com/api/recipes/v2?type=public&q={query}&app_id={app_id}&app_key={app_key}&random=true&field=label&field=ingredients'
+    api_endpoint = f'https://api.edamam.com/api/recipes/v2?type=public&q={query}&app_id={app_id}&app_key={app_key}&' \
+                   f'random=true&field=label&field=ingredients'
 
     try:
         response = requests.get(api_endpoint)
@@ -85,6 +86,11 @@ def run() -> None:
         print()
 
     more_recipes = input('Would you like to see more recipes? (yes/no) ').lower()
+
+    while more_recipes not in {'yes', 'no'}:
+        print('Invalid input. Please enter "yes" or "no".')
+        more_recipes = input('Would you like to see more recipes? (yes/no) ').lower()
+
     if more_recipes == 'yes':
         see_more = True
 
@@ -102,6 +108,11 @@ def run() -> None:
                 print()
 
         more_recipes = input('Would you like to see more recipes? (yes/no) ').lower()
+
+        while more_recipes not in {'yes', 'no'}:
+            print('Invalid input. Please enter "yes" or "no".')
+            more_recipes = input('Would you like to see more recipes? (yes/no) ').lower()
+
         if more_recipes != 'yes':
             see_more = False
 
@@ -126,6 +137,8 @@ def run() -> None:
 
             # Using a transaction for creating the shopping list and updating the pantry
             try:
+                db = SqlDatabase('Smart_Pantry')
+                db.connect()
                 # Begin the transaction
                 db.start_transaction()
 
@@ -247,8 +260,7 @@ def update_pantry(ingredients_and_weight):
 
 if __name__ == '__main__':
     # random_recipe()
-
-    #run()  # we only need this part to run the sequence
+    # run()  # we only need this part to run the sequence
     # results = recipe_search_by_ingredient()
     # recipes = results['hits']
     # recipe_data = recipes[0]["recipe"]
