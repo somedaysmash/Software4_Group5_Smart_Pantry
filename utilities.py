@@ -415,7 +415,7 @@ def low_stock():
                 # Ask the user if they want to add the ingredient to the shopping list
                 add_to_list = input(f"Would you like to add {row} to your shopping list? (yes/no): ").lower()
                 if add_to_list not in ("yes", "no", "Yes", "No"):
-                    add_to_list = input(f"Would you like to add {row} to your shopping list? (yes/no): ")
+                    # add_to_list = input(f"Would you like to add {row} to your shopping list? (yes/no): ")
                     # Raise a ValueError if the user input is invalid
                     raise ValueError("Invalid input")
             except ValueError as e:
@@ -423,14 +423,15 @@ def low_stock():
                 print(e)
                 print("Please enter yes or no)")
 
-                if add_to_list.lower() == 'yes':
-                    # Add the ingredient to the shopping list and print a confirmation message
-                    print(f"Adding {row} to your shopping list")
-                    shoppinglist.append(row)
-                else:
-                    # Print a message that the ingredient is not added to the shopping list
-                    print(f"{row} has not been added to your shopping list")
-                    print("-------")
+            if add_to_list.lower() == 'yes':
+                # Add the ingredient to the shopping list and print a confirmation message
+                print(f"Adding {row} to your shopping list")
+                shoppinglist.append(row)
+
+            else:
+                # Print a message that the ingredient is not added to the shopping list
+                print(f"{row} has not been added to your shopping list")
+                print("-------")
 
         # Print the final shopping list
         print("Your shopping list: ")
@@ -734,3 +735,4 @@ if __name__ == '__main__':
     # ShoppingList.add_item()
     # fetch_out_of_date()
     # fetch_expiring_ingredient_data()
+    # low_stock()
