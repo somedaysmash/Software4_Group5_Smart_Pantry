@@ -136,3 +136,27 @@ CODE FROM Utilities.py file
 #         if db_connection:
 #             db_connection.close()
 #             print('DB connection is closed')
+
+# REDUNDANT FUNCTION FOR RETRIEVE STOCK
+fetch_protein_data_db():
+#     db = SqlDatabase('Smart_Pantry')
+#     db.connect()
+#     query = ("SELECT ingredientname, quantity, sellbydate FROM proteinview ORDER BY sellbydate;"
+#         )
+#     # Execute the query and store the result
+#     result = db.execute_query(query)
+#     return result
+
+
+REDUNDANT CODE FOR CLASS SHOPPINGLIST
+    # def connect_to_database(self, host, user, password, database):
+    #     try:
+    #         self.connection = mysql.connector.connect(
+    #             host=host,
+    #             user=user,
+    #             password=password,
+    #             database=database
+    #         )
+    #     except mysql.connector.Error as err:
+    #         print(f"Error: {err}")
+    #         # Handle the error as needed

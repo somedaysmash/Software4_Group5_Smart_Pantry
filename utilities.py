@@ -86,15 +86,15 @@ def _add_item(stock_store, values):
     """
 
     # Check that the table name is valid
-    #assert stock_store in ["Fridge", "Freezer", "Pantry"], "Invalid table name"
+    # assert stock_store in ["Fridge", "Freezer", "Pantry"], "Invalid table name"
     try:
         # Create and connect to the database object
         db = SqlDatabase('Smart_Pantry')
         db.connect()
 
         # Check that the values are a tuple or list
-        #if not isinstance(values, (tuple, list)):
-            #raise TypeError("Values must be a tuple or list")
+        # if not isinstance(values, (tuple, list)):
+        # raise TypeError("Values must be a tuple or list")
 
         # Execute the insert query with the given values
         db.execute_query(query=
@@ -189,22 +189,24 @@ def update_inventory():
         db.connect()
 
         # Retrieve input from user
-        storage_update = input("Which stock store would you like to update? \n - Fridge \n - Freezer \n - Pantry \n : ").lower()
+        storage_update = input("Which stock store would you like to update? \n - Fridge \n - Freezer \n - Pantry \n : ")\
+            .lower()
         # Check table name is valid
         assert storage_update in ["fridge", "freezer", "pantry"], "Invalid table name"
         # assert storage_update in ["Fridge", "Freezer", "Pantry"], "Invalid table name"
         column_update = input("Which column of data would you like to update? \n - Ingredient name \n "
                               "- Type of ingredient \n - Quantity \n - Sell by date \n : ").lower()
         # Check column name is valid
-        assert column_update in ["ingredient name", "type of ingredient", "quantity", "sell by date"], "Invalid column name"
+        assert column_update in ["ingredient name", "type of ingredient", "quantity", "sell by date"], \
+            "Invalid column name"
         data_id_input = input("Please enter the ingredient ID: ")
         # Check the data ID is valid and exists in the table
         try:
             data_id = int(data_id_input)
             result = db.execute_query(f"SELECT * FROM {storage_update} WHERE ID = {data_id}")
             if not result:
-            #     db.execute_query(f"SELECT * FROM {storage_update} WHERE ID = {data_id}")
-            # if db.connection.rowcount == 0:
+                # db.execute_query(f"SELECT * FROM {storage_update} WHERE ID = {data_id}")
+                # if db.connection.rowcount == 0:
                 raise ValueError("No such ID in the table")
         except ValueError:
             raise ValueError("ID must be an integer")
@@ -264,7 +266,7 @@ def retrieve_stock(stock_store):
     :return: A list of tuples containing ingredient name and quantity for each item in the table.
     """
     # Check that the table name is valid
-    #assert stock_store in ["fridge", "freezer", "pantry"], "Invalid table name"
+    # assert stock_store in ["fridge", "freezer", "pantry"], "Invalid table name"
     try:
         # Create a connection to the database
         db = SqlDatabase('Smart_Pantry')
@@ -291,16 +293,6 @@ def retrieve_stock(stock_store):
         # Close database connection
         db.disconnect()
     return result
-
-
-# def fetch_protein_data_db():
-#     db = SqlDatabase('Smart_Pantry')
-#     db.connect()
-#     query = ("SELECT ingredientname, quantity, sellbydate FROM proteinview ORDER BY sellbydate;"
-#         )
-#     # Execute the query and store the result
-#     result = db.execute_query(query)
-#     return result
 
 
 def fetch_protein_data():
@@ -336,6 +328,7 @@ def fetch_protein_data():
     finally:
         # Disconnect from the database
         db.disconnect()
+
 
 def low_stock():
     '''Checks the quantity of ingredients in the database and creates a shopping list based on user input.
@@ -416,9 +409,9 @@ def low_stock():
         print("Your shopping list: ")
         for item in shoppinglist:
             print(item)
-        #     # Assert that the item variable is a tuple
-        #     assert isinstance(item, tuple), "Item must be a tuple"
-        # # Assert that the shoppinglist variable is a list
+        # Assert that the item variable is a tuple
+        # assert isinstance(item, tuple), "Item must be a tuple"
+        # Assert that the shoppinglist variable is a list
         # assert isinstance(shoppinglist, list), "Shopping list must be a list"
 
     except Exception as e:
@@ -438,18 +431,6 @@ class ShoppingList:
         self.items = {}
         self.connection = None
 
-    # def connect_to_database(self, host, user, password, database):
-    #     try:
-    #         self.connection = mysql.connector.connect(
-    #             host=host,
-    #             user=user,
-    #             password=password,
-    #             database=database
-    #         )
-    #     except mysql.connector.Error as err:
-    #         print(f"Error: {err}")
-    #         # Handle the error as needed
-
     def populate_from_database(self):
         '''
         Populates the inventory with the data from the database.
@@ -467,7 +448,8 @@ class ShoppingList:
             # Connect to DB
             db = SqlDatabase('Smart_Pantry')
             db.connect()
-            query = ("SELECT IngredientName, Quantity FROM Fridge UNION SELECT IngredientName, Quantity FROM Freezer UNION SELECT IngredientName, Quantity FROM Pantry")
+            query = ("SELECT IngredientName, Quantity FROM Fridge UNION SELECT IngredientName, Quantity FROM Freezer "
+                     "UNION SELECT IngredientName, Quantity FROM Pantry")
             # Fetch the query result as a list of tuples
             result = db.execute_query(query)
             inventory_data = result
@@ -505,7 +487,7 @@ class ShoppingList:
         # assert isinstance(item, str), "Item must be a string"
         # # Assert that the quantity parameter is a positive number
         # assert isinstance(
-        #     quantity, (int, float)) and quantity < 0, "Quantity must be a positive number"
+        # quantity, (int, float)) and quantity < 0, "Quantity must be a positive number"
         if item in self.items:
             self.items[item] += quantity
         else:
@@ -596,9 +578,9 @@ shopping_list.check_low_stock()
 shopping_list.display_list()
 '''
 
+
 # Function outside of Class:
 # Lauren S: User prompt for low-stock items
-
 def populate_from_database(self):
     '''
     Populates the inventory and the shopping list with the data from the database.
@@ -645,6 +627,7 @@ def populate_from_database(self):
     finally:
         cursor.close()
 
+
 def fetch_out_of_date():
     '''Fetches the data from the database where ingredient is passed sellbydate, according to today's date.
 
@@ -677,6 +660,7 @@ def fetch_out_of_date():
     finally:
         # Disconnect from the database
         db.disconnect()
+
 
 def fetch_expiring_ingredient_data():
     '''Fetches the data from the database where ingredients sellbydate is today or in the next two days,
@@ -712,6 +696,7 @@ def fetch_expiring_ingredient_data():
         # Disconnect from the database
         db.disconnect()
 
+
 if __name__ == '__main__':
     # _add_item(stock_store='Fridge', values=('Beef', 'Protein', 2000, 'Grams', 450, '2025-07-30'))
     # update_inventory()
@@ -721,7 +706,7 @@ if __name__ == '__main__':
     # shopping_list = ShoppingList()
     # shopping_list.add_item()
     # fetch_out_of_date()
-    # fetch_expiring_ingredient_data()
+    fetch_expiring_ingredient_data()
 
 
 
