@@ -40,6 +40,15 @@ class SqlDatabase:
             print(e)
             raise
 
+    def commit(self):
+        if not self.connection:
+             raise DbConnectionError("Connection is not established")
+        try:
+             self.connection.commit()
+        except mysql.connector.Error as e:
+            print(f"Error committing transaction: {e}")
+            raise
+
     def disconnect(self):
         if self.connection:
             self.connection.close()
@@ -57,6 +66,24 @@ class SqlDatabase:
             print(e)
             quit(1)
         return result
+
+    def start_transaction(self):
+        if not self.connection:
+            raise DbConnectionError("Connection is not established")
+        try:
+            self.connection.start_transaction()
+        except mysql.connector.Error as e:
+            print(f"Error starting transaction: {e}")
+            raise
+
+    def rollback(self):
+        if not self.connection:
+            raise DbConnectionError("Connection is not established")
+        try:
+            self.connection.rollback()
+        except mysql.connector.Error as e:
+            print(f"Error rolling back transaction: {e}")
+            raise
 
 # TO CONNECT TO THE DB CREATE A NEW VARIABLE = SqlDatabase class and pass through the database.
 # This allows us to connect to more than one database
