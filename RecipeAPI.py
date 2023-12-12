@@ -33,7 +33,7 @@ def get_random_recipe(query):
                 }
                 for item in random_recipe.get('ingredients', []):
                     if item['text'] is None:
-                        ingredient_text = f"{item.get('quantity', 0)} {item.get('measure', '')} {item.get('food', '')}"
+                        ingredient_text = f"{item.get('quantity', 0)} {'' if item.get('measure') == '<unit>' else item.get('measure', '')} {item.get('food', '')}"
                         item['text'] = ingredient_text
                     recipe_data['ingredients'].append(item)
             return recipe_data
