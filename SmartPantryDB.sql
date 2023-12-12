@@ -1,4 +1,7 @@
 -- Creating our Smart Pantry database to contain our stock
+DROP DATABASE smart_pantry;
+
+-- Creating our Smart Pantry database to contain our stock
 CREATE DATABASE IF NOT EXISTS Smart_Pantry;
 
 -- Using our database
@@ -109,3 +112,30 @@ UNION
 SELECT * FROM Pantry
 WHERE TypeOfIngredient LIKE '%Protein%';
 
+-- View to see which ingredients are passed sellbydate
+CREATE OR REPLACE VIEW ExpiredIngredients AS
+SELECT *
+FROM Fridge
+WHERE SellByDate < CURDATE()
+UNION ALL
+SELECT *
+FROM Freezer
+WHERE SellByDate < CURDATE()
+UNION ALL
+SELECT *
+FROM Pantry
+WHERE SellByDate < CURDATE();
+
+-- View to see which ingredients are coming to an end today or in the next two days
+CREATE OR REPLACE VIEW ExpiringIngredients AS
+SELECT *
+FROM Fridge
+WHERE SellByDate BETWEEN CURDATE() AND DATE_ADD(CURDATE(), INTERVAL 2 DAY)
+UNION ALL
+SELECT *
+FROM Freezer
+WHERE SellByDate BETWEEN CURDATE() AND DATE_ADD(CURDATE(), INTERVAL 2 DAY)
+UNION ALL
+SELECT *
+FROM Pantry
+WHERE SellByDate BETWEEN CURDATE() AND DATE_ADD(CURDATE(), INTERVAL 2 DAY);
