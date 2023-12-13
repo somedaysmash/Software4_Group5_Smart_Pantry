@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <h1>Recipe Search by Ingredient</h1>
+
+    <!-- Search Form -->
+    <form id="ingredientForm" method="POST" action="/search_recipe">
+        <div class="input-container">
+            <label for="ingredient">Enter an Ingredient:</label>
+            <input type="text" id="ingredient" name="ingredient" required>
+        </div>
+        <button type="submit">Search Recipes</button>
+    </form>
+
+    <!-- Display the list of recipes here -->
+ <div>
+        <h2>Search Results</h2>
+        <ul>
+            {% if recipes %}
+                {% for recipe in recipes %}
+                    <li>
+                        <a href="{{ recipe['recipe']['url'] }}" target="_blank">
+                            <h3>{{ recipe['recipe']['label'] }}</h3>
+                        </a>
+                    </li>
+                {% endfor %}
+            {% else %}
+                <p>No recipes found.</p>
+            {% endif %}
+        </ul>
+    </div>
+</body>
+</html>

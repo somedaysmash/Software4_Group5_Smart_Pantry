@@ -2,7 +2,7 @@
 from flask import Flask, jsonify, request, render_template, redirect, url_for, send_file
 from utilities import update_inventory, retrieve_stock, SqlDatabase, _add_item, stock_delete, fetch_protein_data
 from config import *
-from RecipeAPI import get_random_recipe, check_stock_for_recipe
+from RecipeAPI import get_random_recipe, check_stock_for_recipe, recipe_search_by_ingredient
 from pprintpp import pprint as pp
 import random
 from Main import add_stock_item_fridge
@@ -110,5 +110,16 @@ def download():
 def file_downloads():
     return send_file('static/assets/shopping_list.txt', as_attachment=True)
 
+@app.route('/search_recipe', methods=['GET', 'POST'])
+def search_recipe():
+    if request.method == 'POST':
+        ingredient = request.form['ingredient']
+        results = recipe_search_by_ingredient(ingredient)
+
+        if results and 'hits' in results:
+            recipes = results['hits']
+            return render_template('search_recipe.html', recipes=recipes)
+
+    return render_template('search_recipe.html', recipes=None)
 
 app.run(port=5002, debug=True)

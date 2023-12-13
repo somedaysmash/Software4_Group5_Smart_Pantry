@@ -48,8 +48,8 @@ def get_random_recipe(query):
         return None
 
 
-def recipe_search_by_ingredient():
-    ingredient = input("Enter an ingredient: ")
+def recipe_search_by_ingredient(ingredient):
+    # ingredient = input("Enter an ingredient: ")
     url = f'https://api.edamam.com/api/recipes/v2?type=public&q={ingredient}&app_id={app_id}&app_key={app_key}'
 
     response = requests.get(url)
