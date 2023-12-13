@@ -1,5 +1,40 @@
-
-ul{
-    list-style-type:none;
+h1 {
+  font-size: 40px;
 }
 
+ul li{
+    list-style-type: none;
+    list-style-position: outside;
+    padding-left:110px;
+    text-align: left;
+
+}
+
+html {
+    height: 100%;
+    background-image: url('assets/shoplistimg.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+
+}
+body {
+    font-family: "Brush Script MT", cursive;
+    font-size: 40px;
+    padding-left:100px;
+
+}
+
+button {
+    border-radius: 12px;
+    color: green;
+    font-size: 30px;
+
+
+}
+
+button:hover {
+    background-color: green;
+    color:white;
+}
