@@ -2,8 +2,9 @@
 
 ## Project Group 5 (Software 4)
 
+<br>
 
-### <ins>Project Description:</ins>
+## Project Description:
 
 <p>We developed the Smart Pantry project to address the common challenges faced in home kitchens, where individuals struggle with keeping track of their kitchen stock. This often results in last-minute shopping trips, wasted food, and the hassle of manually managing inventory.
 
@@ -20,7 +21,7 @@ Throughout the project, our team learned valuable skills in front-end (JavaScrip
 
 <br>
 
-### <ins>Table of Contents:</ins>
+## <ins>Table of Contents:</ins>
 <!--FIX STEPS 1-8 SYNTAX ERROR-->
 1. [PreRequisites](#Pre-Requisites)
    - [Python](#Python)
@@ -43,7 +44,7 @@ Throughout the project, our team learned valuable skills in front-end (JavaScrip
 
 <br>
 
-### <ins>How to install and run the project:</ins>
+## How to install and run the project:
 
 
 ### Pre-Requisites:
@@ -52,7 +53,10 @@ Throughout the project, our team learned valuable skills in front-end (JavaScrip
 
 <br>
 
-### Python
+<details>
+<summary>Python</summary>
+
+<br>
 
 <p>For this project we utilised PyCharm, but depending on your needs/preferences we have attached links to several software packages suitable for this project.</p>
 
@@ -67,22 +71,27 @@ Once installed you can verify this has been successful by opening a terminal or 
 ```python
 python --version
 ```
-
 <br>
 
-### MySQL
+</details>
+<br>
+<details>
+<summary>MySQL</summary>
 
 - Link to [MySQL](https://dev.mysql.com/doc/workbench/en/wb-installing.html)
 <br>
 <p>Follow the installation instructions provided by the website for your specific operating system.
 
 During installation set up a root password and note it down. Ensure you configure MySQL to start as a service <i>if required</i>.</p>
-
+</details>
 <br>
 
-### Edamam API
-<!--WHY DOESN'T THIS WORK?-->
-- <p>Link to [Edamam](https://www.edamam.com)</p>
+<details>
+<summary>Edamam API</summary>
+
+<br>
+   
+- Link to [Edamam](https://www.edamam.com)
 
 <br>
 
@@ -94,34 +103,40 @@ During installation set up a root password and note it down. Ensure you configur
 
 **1. Sign Up at Edamam Developer Portal:**
 
-- Navigate to Edamam's Developer Portal.
-- Create a free account by signing up.
+   - Navigate to Edamam's Developer Portal.
+   - Create a free account by signing up.
 
 **2. Access the Recipe Search API:**
 
-- Follow the link to Edamam's 'Recipe Search API'.
-- Locate the 'Developer' section in the pricing table.
+   - Follow the link to Edamam's 'Recipe Search API'.
+   - Locate the 'Developer' section in the pricing table.
 
 **3. Initiate API Key Retrieval:**
 
-- Click on 'Get Started' in the 'Developer' section.
-- Input your necessary details.
+   - Click on 'Get Started' in the 'Developer' section.
+   - Input your necessary details.
 
 **4. Select 'Recipe Search API - Developer':**
 
-- In the dropdown box titled 'Choose your plan,' select 'Recipe Search API - Developer.'
+   - In the dropdown box titled 'Choose your plan,' select 'Recipe Search API - Developer.'
 
 **5. Create Application:**
 
-- Navigate to your Dashboard, specifically in the Applications section.
+   - Navigate to your Dashboard, specifically in the Applications section.
 
 **6. Find Your API Key:**
 
-- Once your application is created, retrieve your unique app_id and app_key.
+   - Once your application is created, retrieve your unique app_id and app_key.
 
 <br>
 
 <p>Now, you are equipped with the credentials needed to make API requests for nutrition data and recipes. Ensure to store these keys securely for the project's continued functionality.</p>
+
+<br>
+
+</details>
+
+<br>
 
 > [!NOTE]
 > <p>Never share your API key publicly. 
@@ -129,12 +144,15 @@ During installation set up a root password and note it down. Ensure you configur
 
 <br>
 
-### Installation
+## Installation
 
-<p><!--DEVELOP THIS SECTION-->
+<p><!--ADD INTRODUCTORY PARAGRAPH-->
 </p>
 
-### Step 1: Clone the Repository
+<details>
+<summary>Step 1: Clone the Repository</summary>
+
+<br>
 
 <p>Clone the Smart Pantry project repository using the following command in your git terminal:</p>
 
@@ -142,102 +160,193 @@ During installation set up a root password and note it down. Ensure you configur
 git clone https://github.com/somedaysmash/Software4_Group5_Smart_Pantry.git
 cd Software4_Group5_Smart_Pantry
 ```
+<br>
 
-### Step 2: Set Up Virtual Environment (Recommended)
+</details>
+<details>
+   
+<summary>Step 2: Set Up Virtual Environment (Recommended)</summary>
+
+<br>
 
 ```python
 python -m venv venv
 source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
 ```
 
-### Step 3: Install Dependencies
+<br>
 
-<p>Install the following dependencies:
+</details>
+<details>
+<summary>Step 3: Install Dependencies</summary>
 
-```python
-pip install -r requirements.txt
-```
-</p>
+Install the following dependencies:
 
-### Step 4: Database Set-Up
-<p>Create a MySQL database named Smart_Pantry.
-Execute the SQL scripts as provided in the Smart PantryDB.sql file</p>
+   ```python
+   pip install -r requirements.txt
+   ```
 
-### Step 5: Configure Database Connection
-<p>Edit the config.py file with your MySQL database credentials:</p>
+<br>
 
-```python
-HOST = 'your_host'
-USER = 'your_user'
-PASSWORD = 'your_password'
-```
+</details>
+<details>
+<summary>Step 4: Database Set-Up</summary>
+   
+   <br>
+   
+- Create a MySQL database named Smart_Pantry.
+- Execute the SQL scripts as provided in the Smart PantryDB.sql file</p>
 
-### Step 6: API Key Set-Up
-<!-- STILL NEEDS TO BE FORMATTED-->
+<br>
+
+</details>
+<details>
+<summary>Step 5: Configure Database Connection</summary>
+
+<br>
+   
+- Edit the config.py file with your MySQL database credentials:</p>
+
+   ```python
+   HOST = 'your_host'
+   USER = 'your_user'
+   PASSWORD = 'your_password'
+   ```
+
+<br>
+
+</details>
+<details>
+<summary>Step 6: API Key Set-Up</summary>
+
+<br>
+
 - Create API_key.py File:
 
-Open your preferred text editor or integrated development environment (IDE).
-Create a new file named `API_key.py.`
+   - Open your preferred text editor or integrated development environment (IDE).
+   - Create a new file named `API_key.py.`
+
+<br>
 
 - Obtain Edamam API Key:
 
-Go to the Edamam Developer Portal and sign in or create an account.
-Create a new application to obtain your API key.
+   - Go to the Edamam Developer Portal and sign in or create an account.
+   - Create a new application to obtain your API key.
+
+<br>
 
 - Retrieve API Key:
 
-Once your application is created, locate your Edamam API key (app_id) and application key (app_key) in the developer portal.
+   - Once your application is created, locate your Edamam API key (`app_id`) and application key (`app_key`) in the developer portal.
+
+<br>
 
 - Write API Key in API_key.py:
 
-Open the API_key.py file in your text editor.
-
-Inside the file, define two variables: app_id and app_key.
+   - Open the API_key.py file in your text editor.
+   - Inside the file, define two variables: app_id and app_key.
 
 - Assign your Edamam API key values to these variables:
 
-```python
-# API_key.py
+   ```python
+   # API_key.py
+   
+   app_id = "your_edamam_app_id"
+   app_key = "your_edamam_app_key"
+   ```
 
-app_id = "your_edamam_app_id"
-app_key = "your_edamam_app_key"
-```
-
-Replace "your_edamam_app_id" and "your_edamam_app_key" with the actual values obtained from the Edamam Developer Portal.
+   - Replace `your_edamam_app_id` and `your_edamam_app_key` with the actual values obtained from the Edamam Developer Portal.
 
 - Save the File:
 
-Save the API_key.py file.	
+   - Save the API_key.py file.	
 
-Remember to keep your API keys confidential and never share them publicly.
+   > [!NOTE]
+   > Remember to keep your API keys confidential and never share them publicly.
 
+<br>
 
-### Step 7: Run the Project
+</details>
+<details>
+<summary>Step 7: Run the Project</summary>
 
-Navigate to the project directory and run the application
+<br>
+
+- Navigate to the project directory and run the application
 (ADD IMAGE EXAMPLE)
 
-### Step 8: Access the Application
+<br>
+</details>
+<details>
+<summary>Step 8: Access the Application</summary>
 
-Once the project is running, open a web browser and navigate to the specified local address or port where the application is hosted.
+- Once the project is running, open a web browser and navigate to the specified local address or port where the application is hosted.
  
-`http://127.0.0.1:5000`
+   `http://127.0.0.1:5000`
 
 <br>
 
-### How to Use the Application
+</details>
+
+## How to Use the Application
+<!--SECTIONS TO BE ADDED-->
+
+<br>
+
+## Meet the team
+<!--PERSONAL STATEMENT: Possible questions you can answer are: "What has been your favourite/most challenging thing to do on the group project", "Why is technology so important to you". "What aspects of the course have you found most enjoyable?", "What led you to pursue a career in tech?", "What's your secret skill not many people know?" (This is just guidance, so please feel free to write what ever you would like to add and be creative! :) ) -->
+
+<br>
+
+### Vanessa L-S:
+@
+- **Project contributions:** *Add Text Here*
+- **Personal statement:** *Add Text Here*
+<br>
+
+### Anna K:
+@
+- **Project contributions:** *Add Text Here*
+- **Personal statement:** *Add Text Here*
+<br>
+
+### Karen L:
+@
+- **Project contributions:** *Add Text Here*
+- **Personal statement:** *Add Text Here*
+<br>
+
+### Lauren A:
+@
+- **Project contributions:** *Add Text Here*
+- **Personal statement:** *Add Text Here*
+<br>
+
+### Amy D:
+@
+- **Project contributions:** *Add Text Here*
+- **Personal statement:** *Add Text Here*
+<br>
+
+### Lauren S:
+@
+- **Project contributions:** *Add Text Here*
+- **Personal statement:** *Add Text Here*
+
+<br>
+
+## Project Breakdown
+<!-- SECTIONS TO BE ADDED-->
 
 
 <br>
 
-<!--ADD TEAM MEMBERS AND GITHUB ACC LINKS HERE-->
-### Meet the team
-- 
-
+## Communication and Collaboration
+<!--SECTIONS TO BE ADDED-->
 
 <br>
 
-### Further Information
+## Further Information
 
 <p>Additional links:</p>
 
@@ -246,13 +355,15 @@ Once the project is running, open a web browser and navigate to the specified lo
 - Group and Project [SWOT Analyses](https://www.canva.com/design/DAF2Iuu3O6k/DcmZ1CGJk6h11gq_JfIYTg/edit)
 - Project [Activity Log](https://docs.google.com/spreadsheets/d/16BXI3OMypGLyWKrMeU4gZ8Bl4-RA6mzLRpgcV_PJK54/edit#gid=67646434)
 - CodePen.io [Mock-Up](https://codepen.io/Lauren_Aldridge/pen/KKJqvLo)
+- Team and Project [SWOT Analyses](https://www.canva.com/design/DAF2Iuu3O6k/DcmZ1CGJk6h11gq_JfIYTg/edit?utm_content=DAF2Iuu3O6k&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
+- Team [Collaboration and Communication]()
 
 <br>
 
-### Unit Testing
-
+## Unit Testing
+<!--IN PROGRESS-->
 <br>
 
 <!--DEVELOP THIS SECTION-->
-### Summary
+## Summary
 Smart Pantry stands out as a comprehensive solution for efficient kitchen management, offering automation, collaboration, and a user-friendly interface.
