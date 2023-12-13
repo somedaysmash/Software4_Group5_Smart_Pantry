@@ -11,8 +11,7 @@
             <li><input type= "checkbox"> {{line}}</li>
         {% endfor %}</center></ul>
 
-<a href="/download"><center><button class="btn btn-default">Download</button></center></a>
-
+ <a href="{{ url_for('file_downloads') }}" download="Shopping_List.txt">Download</a>
 
 </body>
 </html>

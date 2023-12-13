@@ -91,11 +91,6 @@ def upload_shoppinglist():
 
 # New routes to download shopping list file.
 
-@app.route('/download')
-def download():
-    return render_template('download.html')
-
-
 @app.route('/return_file')
 def file_downloads():
     return send_file('static/assets/shopping_list.txt')

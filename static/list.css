@@ -26,6 +26,10 @@ body {
 
 }
 
+a {
+padding-left: 120px;
+}
+
 button {
     border-radius: 12px;
     color: green;

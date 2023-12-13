@@ -26,6 +26,8 @@ h1 {
     background-image: url(assets/ingredient.jpeg);
     background-size: cover;
     background-repeat: no-repeat;
+    background-position: center;
+    height: auto;
 }
 
 a {
