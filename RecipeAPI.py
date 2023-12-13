@@ -26,10 +26,14 @@ def get_random_recipe(query):
                     'ingredients': []
                 }
                 for item in random_recipe.get('ingredients', []):
-                    if item['text'] is None:
-                        ingredient_text = f"{item.get('quantity', 0)} {item.get('measure', '')} {item.get('food', '')}"
+                    quantity = item.get('quantity', 0)
+                    measure = item.get('measure', '')
+                    food = item.get('food', '')
+
+                    if quantity != 0 and measure is not None and food is not None:
+                        ingredient_text = f"{quantity} {'' if measure == '<unit>' else measure} {food}"
                         item['text'] = ingredient_text
-                    recipe_data['ingredients'].append(item)
+                        recipe_data['ingredients'].append(item)
             return recipe_data
         else:
             return None
@@ -38,8 +42,8 @@ def get_random_recipe(query):
         return None
 
 
-def recipe_search_by_ingredient():
-    ingredient = input("Enter an ingredient: ")
+def recipe_search_by_ingredient(ingredient):
+    # ingredient = input("Enter an ingredient: ")
     url = f'https://api.edamam.com/api/recipes/v2?type=public&q={ingredient}&app_id={app_id}&app_key={app_key}'
 
     response = requests.get(url)

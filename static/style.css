@@ -196,3 +196,9 @@ td {
     color: whitesmoke;
     padding: 1rem;
 }
+
+.kitchen-title-link {
+    color: black;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
