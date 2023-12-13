@@ -3,18 +3,12 @@
 import requests
 import API_key
 import math
-from utilities import SqlDatabase, DbConnectionError, fetch_protein_data
+from utilities import SqlDatabase, DbConnectionError
 
 '''app_id/key stored on separate .py file (API_key.py), register for recipe API (developer plan) at 
 https://www.edamam.com'''
 app_id = API_key.app_id
 app_key = API_key.app_key
-
-'''At least 1 query parameter must be used according to the API documentation, nothing is returned 
-otherwise, I've used protein type for user input but I can change this to something else. 
-For a random choice, I can write a list of proteins and use random.choice(list) to make it random 
-without user input '''
-
 
 def get_random_recipe(query):
     api_endpoint = f'https://api.edamam.com/api/recipes/v2?type=public&q={query}&app_id={app_id}&app_key={app_key}&' \
