@@ -3,7 +3,7 @@
 import requests
 import API_key
 import math
-from utilities import SqlDatabase, DbConnectionError
+from utilities import SqlDatabase, DbConnectionError, fetch_protein_data
 
 '''app_id/key stored on separate .py file (API_key.py), register for recipe API (developer plan) at 
 https://www.edamam.com'''
@@ -62,10 +62,9 @@ def next_page_request(url):
 # FUNCTION TO CREATE SHOPPING LIST OF MISSING ITEMS
 def create_shopping_list(missing_ingredients):
     # new text file
-    with open('shopping_list.txt', 'w') as file:
-        file.write('Shopping List:\n')
+    with open('static/assets/shopping_list.txt', 'w') as file:
         for ingredient, weight in missing_ingredients:
-            file.write(f'- {ingredient} ({weight} g)\n')
+            file.write(f' {ingredient} ({weight} g)\n')
     # Print a message to the console
     print('Your shopping list can be found here: shopping_list.txt')
 
@@ -160,6 +159,7 @@ def run() -> None:
                 # Close the database connection
                 db.disconnect()
 
+
         else:
             # Handle the invalid selection
             print('Invalid value. Please try again.')
@@ -174,6 +174,7 @@ def check_stock_for_recipe(ingredients_and_weight):
     try:
         db = SqlDatabase('Smart_Pantry')
         db.connect()
+        missing_ingredients = []
     except DbConnectionError as e:
         print(e)
         raise
@@ -260,7 +261,9 @@ def update_pantry(ingredients_and_weight):
 
 if __name__ == '__main__':
     # random_recipe()
-    # run()  # we only need this part to run the sequence
+     run()  # we only need this part to run the sequence
+
+
     # results = recipe_search_by_ingredient()
     # recipes = results['hits']
     # recipe_data = recipes[0]["recipe"]
@@ -272,4 +275,4 @@ if __name__ == '__main__':
     #     print("Some ingredients are missing in your stock:")
     #     for ingredient, weight in missing_ingredients:
     #         print(f"{ingredient} is missing or needs {weight} grams more.")
-    get_random_recipe("chicken")
+    # get_random_recipe("chicken")
