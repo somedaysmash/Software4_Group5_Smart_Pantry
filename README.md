@@ -6,6 +6,7 @@
 
 ## Project Description:
 
+
 <p>We developed the Smart Pantry project to address the common challenges faced in home kitchens, where individuals struggle with keeping track of their kitchen stock. This often results in last-minute shopping trips, wasted food, and the hassle of manually managing inventory.
 
 Smart Pantry is a smart fridge/pantry/kitchen inventory system that streamlines kitchen management. It eliminates the need for manual stock tracking and recipe planning. The system generates a shopping list, offers recipe suggestions based on available ingredients, and updates stock levels automatically.
@@ -21,26 +22,34 @@ Throughout the project, our team learned valuable skills in front-end (JavaScrip
 
 <br>
 
-## <ins>Table of Contents:</ins>
-<!--FIX STEPS 1-8 SYNTAX ERROR-->
-1. [PreRequisites](#Pre-Requisites)
-   - [Python](#Python)
-   - [MySQL](#MySQL)
-   - [Edamam API](#Edamam_API)
-2. [Installation](#Installation) 
-   - [Step 1: Clone the Repository](#Step_1:_Clone_the_Repository)
-   - [Step 2: Set Up Virtual Environment (Recommended)](#Step_2:_Set_Up_Virtual_Environment_(Recommended))
-   - [Step 3: Install Dependencies](#Step_3:_Install_Dependencies)
-   - [Step 4: Set-Up MySQL Database](#Step_4:_Set-Up_MySQL_Database)
-   - [Step 5: Configure Database Connection](#Step_5:_Configure_Database_Connection)
-   - [Step 6: API Key Set-Up](#Step_6:_API_Key_Set-Up)
-   - [Step 7: Run the Project](#Step_7:_Run_the_Project)
-   - [Step 8: Access the Application](#Step_8:_Access_the_Application)
-3. [How to Use Smart Pantry](#How_to_Use_the_Application)
-4. [Meet the Team!](#Meet_the_Team)
-5. [Further Information](#Further_Information)
-6. [Unit Testing](#Unit_Testing)
-7. [Summary](#Summary)
+## Table of Contents:
+
+
+1. [PreRequisites](Pre-Requisites)
+   - Python
+   - MySQL
+   - Edamam API
+2. [Installation](Installation) 
+   - Step 1: Clone the Repository
+   - Step 2: Set Up Virtual Environment (Recommended)
+   - Step 3: Install Dependencies
+   - Step 4: Set-Up MySQL Database
+   - Step 5: Configure Database Connection
+   - Step 6: API Key Set-Up
+   - Step 7: Run the Project
+   - Step 8: Access the Application
+3. [How to Use Smart Pantry](How_to_Use_the_Application)
+4. [Meet the Team!](Meet_the_Team)
+5. [Further Information](Further_Information)
+   - Additional Links
+6. [Project Breakdown](Project_Breakdown)
+   - HTML and CSS
+   - JSON
+   - Python
+   - MySQL
+7. [Communication and Collaboration](Communication_and_Collaboration)
+8. [Unit Testing](Unit_Testing)
+9. [Summary](Summary)
 
 <br>
 
@@ -142,9 +151,11 @@ During installation set up a root password and note it down. Ensure you configur
 > <p>Never share your API key publicly. 
 > Consider using environment variables or a dedicated configuration file to keep your keys confidential.</p>
 
+
 <br>
 
 ## Installation
+
 
 <p><!--ADD INTRODUCTORY PARAGRAPH-->
 </p>
@@ -291,62 +302,154 @@ Install the following dependencies:
 ## How to Use the Application
 <!--SECTIONS TO BE ADDED-->
 
-<br>
-
-## Meet the team
-<!--PERSONAL STATEMENT: Possible questions you can answer are: "What has been your favourite/most challenging thing to do on the group project", "Why is technology so important to you". "What aspects of the course have you found most enjoyable?", "What led you to pursue a career in tech?", "What's your secret skill not many people know?" (This is just guidance, so please feel free to write what ever you would like to add and be creative! :) ) -->
 
 <br>
 
-### Vanessa L-S:
-@
+## Meet the team:
+
+<!--
+PERSONAL STATEMENT: Possible questions you can answer are: 
+- "What has been your favourite/most challenging thing to do on the group project", 
+- "Why is technology so important to you". 
+- "What aspects of the course have you found most enjoyable?", 
+- "What led you to pursue a career in tech?", 
+- "What's your secret skill not many people know?" 
+(This is just guidance, so please feel free to write what ever you would like to add and be creative! :) ) 
+-->
+
+#### Vanessa L-S:
+[@somedaysmash](https://github.com/somedaysmash)
 - **Project contributions:** *Add Text Here*
 - **Personal statement:** *Add Text Here*
 <br>
 
-### Anna K:
-@
+#### Anna K:
+[@ketre](https://github.com/ketre)
 - **Project contributions:** *Add Text Here*
 - **Personal statement:** *Add Text Here*
 <br>
 
-### Karen L:
-@
+#### Karen L:
+[@klace00](https://github.com/klace00)
 - **Project contributions:** *Add Text Here*
 - **Personal statement:** *Add Text Here*
 <br>
 
-### Lauren A:
-@
+#### Lauren A:
+[@Laurenhomeridge](https://github.com/Laurenhomeridge)
 - **Project contributions:** *Add Text Here*
 - **Personal statement:** *Add Text Here*
 <br>
 
-### Amy D:
-@
+#### Amy D:
+[@Amy-Dangerfield](https://github.com/Amy-Dangerfield)
 - **Project contributions:** *Add Text Here*
 - **Personal statement:** *Add Text Here*
 <br>
 
-### Lauren S:
-@
+#### Dorothy M:
+[@dotmcevoy](https://github.com/dotmcevoy)
+- **Project contributions:** *Add Text Here*
+- **Personal statement:** *Add Text Here*
+<br>
+
+#### Lauren S:
+[@Lor9538](https://github.com/Lor9538)
 - **Project contributions:** *Add Text Here*
 - **Personal statement:** *Add Text Here*
 
 <br>
 
-## Project Breakdown
+## Project Breakdown:
 <!-- SECTIONS TO BE ADDED-->
 
+### HTML and CSS:
+
+<details>
+   <summary>index.html</summary>
+   <br>
+   
+</details>
+<details>
+   <summary>ingredient.html</summary>
+   <br>
+   
+</details>
+<details>
+   <summary>kitchen.html</summary>
+   <br>
+   
+</details>
+<details>
+   <summary>search_recipe.html</summary>
+   <br>
+   
+</details>
+<details>
+   <summary>shoppinglist.html</summary>
+   <br>
+   
+</details>
 
 <br>
 
-## Communication and Collaboration
+### JSON:
+
+<details>
+   <summary>launch.json</summary>
+   <br>
+
+</details>
+
+<br>
+
+### Python:
+
+<details>
+   <summary>main.py</summary>
+   <br>
+   
+</details>
+<details>
+   <summary>RecipieAPI.py</summary>
+   <br>
+   
+</details>
+<details>
+   <summary>App.py</summary>
+   <br>
+   
+</details>
+<details>
+   <summary>utilities.py</summary>
+   <br>
+   
+</details>
+<details>
+   <summary>API_Key.py</summary>
+   <br>
+   
+</details>
+
+<br>
+
+### MySQL:
+
+<details>
+   <summary>SmartPantryDB.sql</summary>
+   <br>
+
+</details>
+
+<br>
+
+## Communication and Collaboration:
 <!--SECTIONS TO BE ADDED-->
 
 <br>
 
-## Further Information
+## Further Information:
+
 
 <p>Additional links:</p>
 
@@ -360,10 +463,12 @@ Install the following dependencies:
 
 <br>
 
-## Unit Testing
+## Unit Testing:
 <!--IN PROGRESS-->
 <br>
 
 <!--DEVELOP THIS SECTION-->
-## Summary
+## Summary:
+
+
 Smart Pantry stands out as a comprehensive solution for efficient kitchen management, offering automation, collaboration, and a user-friendly interface.
