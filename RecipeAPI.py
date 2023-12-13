@@ -10,6 +10,7 @@ https://www.edamam.com'''
 app_id = API_key.app_id
 app_key = API_key.app_key
 
+
 def get_random_recipe(query):
     api_endpoint = f'https://api.edamam.com/api/recipes/v2?type=public&q={query}&app_id={app_id}&app_key={app_key}&' \
                    f'random=true&field=label&field=ingredients'
@@ -43,9 +44,7 @@ def get_random_recipe(query):
 
 
 def recipe_search_by_ingredient(ingredient):
-    # ingredient = input("Enter an ingredient: ")
     url = f'https://api.edamam.com/api/recipes/v2?type=public&q={ingredient}&app_id={app_id}&app_key={app_key}'
-
     response = requests.get(url)
     data = response.json()
     return data
@@ -75,7 +74,7 @@ def run() -> None:
     print(f"Smart Pantry found {results['count']} recipes!")
     print("Here are the first 20 recipes: ")
 
-# adding enumerate to allow user to select which recipe they want to use
+    # adding enumerate to allow user to select which recipe they want to use
     for value, recipe in enumerate(recipes, 1):
         recipe_data = recipe["recipe"]
         print(f"{value}. {recipe_data['label']}")
@@ -142,7 +141,6 @@ def run() -> None:
                 # Creating the shopping list
                 create_shopping_list(missing_ingredients)
                 print(f"Here are the full ingredients: {selected_recipe['ingredientLines']}")
-                # print(f"Here is the link to the recipe: {selected_recipe['url']}")
 
                 # Update the pantry
                 update_pantry(ingredients_and_weight)
@@ -156,8 +154,6 @@ def run() -> None:
             finally:
                 # Close the database connection
                 db.disconnect()
-
-
         else:
             # Handle the invalid selection
             print('Invalid value. Please try again.')
@@ -172,12 +168,11 @@ def check_stock_for_recipe(ingredients_and_weight):
     try:
         db = SqlDatabase('Smart_Pantry')
         db.connect()
-        missing_ingredients = []
     except DbConnectionError as e:
         print(e)
         raise
-
-    missing_ingredients = []  # Initialising an empty list. (not sure if this needs to go inside the Try block?)
+    # Initialising an empty list
+    missing_ingredients = []
 
     try:
         for ingredient, weight in ingredients_and_weight:
@@ -234,7 +229,8 @@ def update_pantry(ingredients_and_weight):
                 result = db.execute_query(query, (ingredient,))
 
                 if result:
-                    available_quantity = result[0][0]  # getting the quantity from the result
+                    # getting the quantity from the result
+                    available_quantity = result[0][0]
 
                     # Calculate the remaining quantity after deduction - make sure it is not negative
                     remaining_quantity = max(available_quantity - weight, 0)
@@ -259,9 +255,7 @@ def update_pantry(ingredients_and_weight):
 
 if __name__ == '__main__':
     # random_recipe()
-     run()  # we only need this part to run the sequence
-
-
+    run()  # we only need this part to run the sequence
     # results = recipe_search_by_ingredient()
     # recipes = results['hits']
     # recipe_data = recipes[0]["recipe"]

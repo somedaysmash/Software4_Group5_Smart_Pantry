@@ -6,7 +6,7 @@ from flask import url_for
 
 
 # POST REQUEST (ADD)
-def add_stock_item_fridge(IngredientName, TypeOfIngredient, Quantity, UnitOfMeasurement, MinimumQuantityNeeded, SellByDate, stock_store):
+def add_stock_item_fridge(IngredientName, TypeOfIngredient, Quantity, UnitOfMeasurement, MinimumQuantityNeeded, SellByDate):
     new_fridge_stock = {
         "_IngredientName": IngredientName,
         "_TypeOfIngredient": TypeOfIngredient,
@@ -22,17 +22,22 @@ def add_stock_item_fridge(IngredientName, TypeOfIngredient, Quantity, UnitOfMeas
             headers={'content-type': 'application/json'},
             data=json.dumps(new_fridge_stock)
         )
-        result.raise_for_status()  # raise an exception if the status code is not 200
+        # raise an exception if the status code is not 200
+        result.raise_for_status()
         print("here is the stock:", result)
         return result.json()
     except requests.exceptions.HTTPError as errh:
-        print("HTTP Error:", repr(errh))  # print the HTTP error
+        # print the HTTP error
+        print("HTTP Error:", repr(errh))
     except requests.exceptions.ConnectionError as errc:
-        print("Connection Error:", repr(errc))  # print the connection error
+        # print the connection error
+        print("Connection Error:", repr(errc))
     except requests.exceptions.Timeout as errt:
-        print("Timeout Error:", repr(errt))  # print the timeout error
+        # print the timeout error
+        print("Timeout Error:", repr(errt))
     except requests.exceptions.RequestException as err:
-        print("Other Error:", repr(err))  # print any other error
+        # print any other error
+        print("Other Error:", repr(err))
 
 
 def run_fridge():

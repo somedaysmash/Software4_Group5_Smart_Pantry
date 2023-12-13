@@ -1,11 +1,7 @@
 # FLASK AND @ROUTES GO HERE
-from flask import Flask, jsonify, request, render_template, redirect, url_for, send_file
-from utilities import update_inventory, retrieve_stock, SqlDatabase, _add_item, stock_delete, fetch_protein_data
-from config import *
+from flask import Flask, jsonify, request, render_template, send_file
+from utilities import update_inventory, retrieve_stock, _add_item, stock_delete, fetch_protein_data
 from RecipeAPI import get_random_recipe, check_stock_for_recipe, recipe_search_by_ingredient
-from pprintpp import pprint as pp
-import random
-from Main import add_stock_item_fridge
 
 app = Flask(__name__)
 
@@ -24,18 +20,14 @@ def kitchen():
             (request.form['itemName'], request.form['typeOfIngredient'], request.form['quantity'],
                 request.form['unitOfMeasurement'], request.form['minQuantity'], request.form['sellByDate'])
         )
-        # add_stock_item_fridge(item_name, type_of_ingredient, quantity,
-        #                       unit_of_measurement, min_quantity, sell_by_date, stock_store)
-
     # Retrieve updated stock data after the addition
     fridge = retrieve_stock("Fridge")
     pantry = retrieve_stock("Pantry")
     freezer = retrieve_stock("Freezer")
     return render_template('kitchen.html', fridge=fridge, pantry=pantry, freezer=freezer)
 
+
 # Anna fetching recipe name and ingredients
-
-
 @app.route('/ingredient', methods=('GET', 'POST'))
 def ingredient():
     if request.method == 'GET':
@@ -101,10 +93,10 @@ def upload_shoppinglist():
 
 
 # New routes to download shopping list file.
-
 @app.route('/return_file')
 def file_downloads():
     return send_file('static/assets/shopping_list.txt', as_attachment=True)
+
 
 @app.route('/search_recipe', methods=['GET', 'POST'])
 def search_recipe():
@@ -117,5 +109,6 @@ def search_recipe():
             return render_template('search_recipe.html', recipes=recipes)
 
     return render_template('search_recipe.html', recipes=None)
+
 
 app.run(port=5002, debug=True)
