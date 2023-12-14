@@ -1,6 +1,7 @@
 # FLASK AND @ROUTES GO HERE
-from flask import Flask, jsonify, request, render_template, send_file, redirect, session
-from utilities import update_inventory, retrieve_stock, _add_item, stock_delete, fetch_protein_data
+from flask import Flask, jsonify, request, render_template, send_file, session
+from utilities import update_inventory, retrieve_stock, _add_item, stock_delete, fetch_protein_data, fetch_out_of_date,\
+    fetch_expiring_ingredient_data
 from RecipeAPI import get_random_recipe, check_stock_for_recipe, recipe_search_by_ingredient
 from API_key import secret_key
 
@@ -119,12 +120,26 @@ def see_more_recipes():
     page = session.get('page_search', 1)
 
     # Increment the page for the "See More Recipes" button
-    session['page_search'] = page + 1
+    page += 1
+    session['page_search'] = page
 
     results = recipe_search_by_ingredient(ingredient, page=page)
     recipes = results.get('hits', [])
 
-    return render_template('search_recipe.html', recipes=recipes)
+    if not recipes:
+        session['page_search'] = 1
+
+    return render_template('search_recipe.html', recipes=recipes, page=page)
+
+
+@app.route('/out_of_date_ingredients', methods=['GET', 'POST'])
+def out_of_date_ingredients():
+    out_of_date_data = []
+    expiring_data = []
+    if request.method == 'POST':
+        out_of_date_data = fetch_out_of_date()
+        expiring_data = fetch_expiring_ingredient_data()
+    return render_template('out_of_date_ingredients.html', out_of_date=out_of_date_data, expiring_data=expiring_data)
 
 
 app.run(port=5002, debug=True)

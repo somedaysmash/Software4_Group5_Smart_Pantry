@@ -56,7 +56,8 @@ VALUES
 	('Apples', 'Fruit', 100, 'grams', 500, '2023-12-31'),
 	('Lemons', 'Fruit', 300, 'grams', 150, '2023-12-31'),
 	('Tomato Ketchup', 'Condiment', 500, 'mls', 50, '2023-12-31'),
-    ('Apple Juice', 'Fruit', 1000, 'mls', 100, '2023-12-31');
+    ('Apple Juice', 'Fruit', 1000, 'mls', 100, '2023-12-31'),
+    ('Cream', 'Dairy', 150, 'mls', 100, '2023-12-09');
 
 -- Inserting stock data into the Freezer table
 INSERT INTO Freezer (IngredientName, TypeOfIngredient, Quantity, UnitOfMeasurement, MinimumQuantityNeeded, SellByDate)
@@ -85,7 +86,7 @@ VALUES
 	('Cream Crackers', 'Grain', 150, 'grams', 0, '2023-12-31'),
     ('Medium Sliced White Bread', 'Grain', 800, 'grams', 200, '2023-12-31'),
     ('Tortilla Chips', 'Grain', 150, 'grams', 0, '2024-03-31'),
-    ('Mustard', 'Condiment', 70, 'mls', 10, '2023-12-31'),
+    ('Mustard', 'Condiment', 70, 'mls', 10, '2023-12-24'),
 	('Mayonnaise', 'Condiment', 400, 'mls', 50, '2023-12-31'),
 	('Dark Soy sauce', 'Condiment', 250, 'mls', 100, '2023-12-31'),
 	('Honey', 'Condiment', 500, 'grams', 100, '2023-12-31'),
