@@ -8,14 +8,14 @@
     <h2>Out of Date Ingredients</h2>
     <ul>
         {% for ingredient in out_of_date %}
-            <li style="text-decoration: line-through;">{{ ingredient.ingredientname }} - {{ ingredient.quantity }} - {{ ingredient.sellbydate }}</li>
+            <li>{{ ingredient[0]}} - {{ ingredient[1]}} - {{ ingredient[2]}}</li>
         {% endfor %}
     </ul>
 
     <h2>Expiring Ingredients</h2>
     <ul>
         {% for ingredient in expiring_data %}
-            <li>{{ ingredient.ingredientname }} - {{ ingredient.quantity }} - {{ ingredient.sellbydate }}</li>
+            <li>{{ ingredient[0] }} - {{ ingredient[1] }} - {{ ingredient[2] }}</li>
         {% endfor %}
     </ul>
 </body>
