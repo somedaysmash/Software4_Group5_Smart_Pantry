@@ -43,23 +43,27 @@ def get_random_recipe(query):
         return None
 
 
-def recipe_search_by_ingredient(ingredient, page=1):
-    url = f'https://api.edamam.com/api/recipes/v2?type=public&q={ingredient}&app_id={app_id}&app_key={app_key}&from={page * 20}&to={(page + 1) * 20}'
+def recipe_search_by_ingredient(ingredient, page=1, results=None):
+    if page == 1:
+        url = f'https://api.edamam.com/api/recipes/v2?type=public&q={ingredient}&app_id={app_id}&app_key={app_key}'
+    else:
+        url = results["_links"]["next"]["href"].format(app_id=app_id, app_key=app_key)
     response = requests.get(url)
-    data = response.json()
-    return data
+    results = response.json()
+    return results
 
 
 def run():
     ingredient = input('Enter an ingredient: ')
     page = 1
+    results = None
 
     while True:
-        results = recipe_search_by_ingredient(ingredient, page=page)
+        results = recipe_search_by_ingredient(ingredient, page, results)
         recipes = results.get('hits', [])
 
         print(f"Smart Pantry found {results['count']} recipes!")
-        print(f"Displaying recipes from page {page} to {min(results['to'], results['count'])}: ")
+        print(f"Displaying recipes from {results['from']} to {min(results['to'], results['count'])}: ")
 
         # Use enumerate to assign a value to each recipe
         for value, recipe in enumerate(recipes, 1):
@@ -81,7 +85,8 @@ def run():
         if more_recipes != 'yes':
             break
 
-        page += 1
+        else:
+            page += 1
 
 
 
