@@ -134,8 +134,8 @@ def see_more_recipes():
 
 @app.route('/out_of_date_ingredients', methods=['GET', 'POST'])
 def out_of_date_ingredients():
-    out_of_date_data = []
-    expiring_data = []
+    out_of_date_data = fetch_out_of_date()
+    expiring_data = fetch_expiring_ingredient_data()
     if request.method == 'POST':
         out_of_date_data = fetch_out_of_date()
         expiring_data = fetch_expiring_ingredient_data()
