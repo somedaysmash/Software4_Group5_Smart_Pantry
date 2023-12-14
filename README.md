@@ -63,7 +63,7 @@ Throughout the project, our team learned valuable skills in front-end (JavaScrip
 <br>
 
 <details>
-<summary><h3>Python</h3></summary>
+<summary>Python</summary>
 
 <br>
 
@@ -85,7 +85,7 @@ python --version
 </details>
 <br>
 <details>
-<summary><h3>MySQL</h3></summary>
+<summary>MySQL</summary>
 
 - Link to [MySQL](https://dev.mysql.com/doc/workbench/en/wb-installing.html)
 <br>
@@ -96,7 +96,7 @@ During installation set up a root password and note it down. Ensure you configur
 <br>
 
 <details>
-<summary><h3>Edamam API</h3></summary>
+<summary>Edamam API</summary>
 
 <br>
    
@@ -156,9 +156,9 @@ During installation set up a root password and note it down. Ensure you configur
 
 ### Installation
 
+<p>When it comes to installing our application, the process is straightforward and user-friendly. Follow the steps outlined below to seamlessly set up and get started with our software:</p>
 
-<p><!--ADD INTRODUCTORY PARAGRAPH-->
-</p>
+<br>
 
 <details>
 <summary>Step 1: Clone the Repository</summary>
@@ -305,13 +305,15 @@ Install the following dependencies:
 
 By following these simple steps, you'll harness the full potential of the Smart Pantry application. Enjoy delightful cooking and effortlessly manage your kitchen inventory for a stress-free culinary experience. 
 
+<br>
+
 <details>
-	<summary><h3>Introduction:</h3></summary>
+	<summary>Introduction:</summary>
 
 <p>Welcome to the Smart Pantry application, your smart solution for effortless kitchen inventory management, recipe generation, and streamlined shopping. This quick guide will lead you through the essential features and functionalities of the application.</p>
 </details>
 <details>
-<summary><h3>Navigation:</h3></summary>
+<summary>Navigation:</summary>
 
 - **What's in my Kitchen?**
 	- Navigate to your kitchen inventory by clicking on `What's in my kitchen?` in the navigation bar.
@@ -324,7 +326,7 @@ By following these simple steps, you'll harness the full potential of the Smart 
  	- Click on `Search for a recipe by ingredient` to find delightful recipes.
 </details>
 <details>
-<summary><h3>Inventory Management:</h3></summary>
+<summary>Inventory Management:</summary>
 
 - **Viewing Inventory**
 	- The main page displays your inventory categorized into Fridge, Pantry, and Freezer.
@@ -354,6 +356,8 @@ By following these simple steps, you'll harness the full potential of the Smart 
 
 <p>In this comprehensive project breakdown, we've meticulously organized the codebase to provide users with a transparent and insightful view into the underlying structure and components that power the Smart Pantry system. The breakdown serves as a roadmap, guiding users through the intricate layers of our implementation.</p>
 
+<br>
+
 ### Purpose of the Code Breakdown:
 - **Clarity and Understanding:** The breakdown elucidates the intricate details of our HTML, CSS, Python, and MySQL components, fostering a clear understanding of their individual roles in the system.
 - **Transparency in Functionality:** Each section of the breakdown delves into the functionality it encapsulates, ensuring transparency in how different technologies collaborate to deliver a seamless kitchen inventory management experience.
@@ -374,6 +378,8 @@ By sharing this detailed breakdown, we aim to facilitate a deeper understanding 
 ### HTML:
 
 <p>This HTML code serves as the foundation for the Smart Pantry's webpage, defining key elements to establish structure and layout. The design focuses on creating a user-friendly interface, ensuring a seamless and visually appealing experience for the Smart Pantry system.</p>
+
+<br>
 
 <details>
 <summary>index.html</summary>
@@ -1145,7 +1151,10 @@ and other custom modules:
 <br>
 
 ## Unit Testing
-<!--IN PROGRESS-->
+
+<p>Our aim is to ensure the robustness and reliability of our codebase. Unit testing is a fundamental practice in software development that involves testing individual units or components of our code in isolation to validate their correctness. By systematically examining each unit's functionality, we can identify and address potential bugs or issues early in the development process. Our commitment to thorough unit testing contributes to the overall quality of our software, fostering a more stable and maintainable codebase. This section provides insights into our unit testing approach, including the tools, methodologies, and best practices we employ to guarantee the integrity of our code.</p>
+
+<br>
 
 <details>
 	<summary>main.py</summary>
