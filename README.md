@@ -1236,15 +1236,88 @@ PERSONAL STATEMENT: Possible questions you can answer are:
 
 <p>Additional links:</p>
 
-- Project [Proposal](https://docs.google.com/document/d/1zBlx4-xmz2H0JjW7n_EPsaAGDybNqQM8rIOfrlSlX1k/edit#heading=h.z6ne0og04bp5)
-- Group [Task-List](https://trello.com/b/QptFT6Rh/smart-pantry)
-- Group and Project [SWOT Analyses](https://www.canva.com/design/DAF2Iuu3O6k/DcmZ1CGJk6h11gq_JfIYTg/edit)
-- Project [Activity Log](https://docs.google.com/spreadsheets/d/16BXI3OMypGLyWKrMeU4gZ8Bl4-RA6mzLRpgcV_PJK54/edit#gid=67646434)
-- CodePen.io [Mock-Up](https://codepen.io/Lauren_Aldridge/pen/KKJqvLo)
-- Team and Project [SWOT Analyses](https://www.canva.com/design/DAF2Iuu3O6k/DcmZ1CGJk6h11gq_JfIYTg/edit?utm_content=DAF2Iuu3O6k&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
-- Team [Collaboration and Communication]()
-- Project [Code Evolution]()
+<details>
+<summary>Project Proposal</summary>
+  	
+Please click [here](https://docs.google.com/document/d/1zBlx4-xmz2H0JjW7n_EPsaAGDybNqQM8rIOfrlSlX1k/edit#heading=h.z6ne0og04bp5) to view our Project Proposal.
 
+</details>
+<details>
+<summary>Group Task-List</summary>
+
+Please click [here](https://trello.com/b/QptFT6Rh/smart-pantry) to view the task Trello board.
+</details>
+<details>
+<summary>Project Activity Log</summary>
+
+Please click [here](https://docs.google.com/spreadsheets/d/16BXI3OMypGLyWKrMeU4gZ8Bl4-RA6mzLRpgcV_PJK54/edit#gid=67646434) to view the Project Activity Log.
+</details>
+<details>
+<summary>Smart Pantry Mock-Up</summary>
+	
+Please click [here](https://codepen.io/Lauren_Aldridge/pen/KKJqvLo) to view the Smart Pantry wireframes.
+</details>
+<details>	
+<summary>Team and Project SWOT Analyses</summary>
+
+Please click [here](https://www.canva.com/design/DAF2Iuu3O6k/DcmZ1CGJk6h11gq_JfIYTg/edit?utm_content=DAF2Iuu3O6k&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton) to read our independent and project SWOT analyses.
+</details>
+<details>	
+<summary>Team Collaboration and Communication</summary>
+
+Please click [here]() to view how we communicated and collaborated throughout this project.
+</details>
+<details>
+<summary>Code Evolution and Breakdown</summary>
+
+<br>
+
+<p>This section is intended to show how our code has changed and evolved through the progression of our project.</p>
+
+The file with our stale code can be found [here](https://github.com/somedaysmash/Software4_Group5_Smart_Pantry/blob/main/Further%20Information/Extra%20Code) or by opening the 'Futher Information' folder.
+
+<br>
+
+### RecipeAPI.py
+		
+Function: `get_random_recipe(query)`
+		
+- Commented-out Code:
+	- It includes using URL parameters instead of a long URL.
+	- There are attempts to extract recipe details like name, ingredients, and weight from the API response.
+	- Zipping ingredients and weights into a dictionary and writing to a CSV file is also commented out.
+		
+Function: `run()`
+		
+- Commented-out Code:
+	- It includes accessing and printing recipe labels and URLs.
+		
+Function: `check_stock_for_recipe(ingredients_and_weight)`
+		
+- Commented-out Code:
+	- Queries for checking stock in the fridge, freezer, and pantry are commented out.
+		
+		
+### Utilities.py
+		
+Redundant Function: `add_item_fridge()`, `add_item_freezer()`, `add_item_pantry()`
+		
+- Redundant Code:
+	- Duplicate functions for adding items to the fridge, freezer, and pantry databases.
+	- Each function follows a similar structure, connecting to the database and executing an INSERT query.
+		
+Redundant Function: `fetch_protein_data_db()`
+- Redundant Code:
+	- The function fetches protein data from a SQL database.
+	- The function is not used elsewhere in the code.
+		
+Redundant Code for Class: `SHOPPINGLIST`
+- Redundant Code:
+	- A method for connecting to a MySQL database is commented out.
+
+<p>Please note that some contextual information might be missing, and the code might not be fully functional without the uncommented sections or additional context.</p>
+
+</details>
 <br>
 
 <!--DEVELOP THIS SECTION-->
