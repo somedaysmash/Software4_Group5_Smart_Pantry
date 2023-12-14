@@ -43,7 +43,7 @@ nav ul {
     justify-content: center;
 
     >li {
-        padding: 0 7rem;
+        padding: 0 2rem;
         background-color: rgba(94, 86, 82, 0.80);
         border-radius: 7rem;
         text-align: center;
@@ -124,7 +124,7 @@ input::placeholder {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 40vh auto auto auto;
+    margin: 10vh auto auto auto;
     width: 40%;
 }
 
@@ -133,7 +133,7 @@ input::placeholder {
     align-items: center;
     justify-content: center;
     background-color: rgba(94, 86, 82, 0.80);
-    border-radius: 7rem;
+    border-radius: 2rem;
     font-size: 1.5rem;
     margin-bottom: 20px;
     width: 100%;
@@ -155,12 +155,6 @@ input::placeholder {
     transition: background-color 0.2s, font-weight 0.2s;
     background-color: #b7b7a5;
     font-weight: bold;
-}
-
-#primary {
-    align-items: center;
-    font-size: 3rem;
-    height: 15vh;
 }
 
 .wrapper {
@@ -216,9 +210,9 @@ td {
     align-items: center;
     justify-content: center;
     background-color: rgba(94, 86, 82, 0.80);
-    border-radius: 7rem;
+    border-radius: 1rem;
     font-size: 1.5rem;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
     width: 100%;
     height: 50px;
     border-style: solid;
