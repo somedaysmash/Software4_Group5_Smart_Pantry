@@ -63,7 +63,7 @@ Throughout the project, our team learned valuable skills in front-end (JavaScrip
 <br>
 
 <details>
-<summary>Python</summary>
+<summary><h3>Python</h3></summary>
 
 <br>
 
@@ -85,7 +85,7 @@ python --version
 </details>
 <br>
 <details>
-<summary>MySQL</summary>
+<summary><h3>MySQL</h3></summary>
 
 - Link to [MySQL](https://dev.mysql.com/doc/workbench/en/wb-installing.html)
 <br>
@@ -96,7 +96,7 @@ During installation set up a root password and note it down. Ensure you configur
 <br>
 
 <details>
-<summary>Edamam API</summary>
+<summary><h3>Edamam API</h3></summary>
 
 <br>
    
