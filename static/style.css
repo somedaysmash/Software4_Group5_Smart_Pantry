@@ -12,6 +12,10 @@ body {
     background: url(assets/index_pantry.jpeg), lightgray 50% / cover no-repeat;
 }
 
+.fridge_bg {
+    background: url(assets/fridge.png), lightgray 100% / cover no-repeat;
+}
+
 h1 {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-style: normal;
@@ -232,4 +236,53 @@ img.logo {
      margin: 0 auto;
      max-width: 20%;
      height: auto;
+}
+
+
+#addStockForm {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #b7b7a5;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+select, input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+.prompt {
+    display: block;
+    margin-top: 20px;
+    width: 100%;
+    background-color: #b7b7a5;
+    border-radius: 5px;
+    color: black;
+    padding: 10px;
+    text-align: center
 }
