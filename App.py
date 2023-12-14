@@ -1,9 +1,11 @@
 # FLASK AND @ROUTES GO HERE
-from flask import Flask, jsonify, request, render_template, send_file
+from flask import Flask, jsonify, request, render_template, send_file, redirect, session
 from utilities import update_inventory, retrieve_stock, _add_item, stock_delete, fetch_protein_data
 from RecipeAPI import get_random_recipe, check_stock_for_recipe, recipe_search_by_ingredient
+from API_key import secret_key
 
 app = Flask(__name__)
+app.secret_key = secret_key
 
 
 @app.route('/')
@@ -109,6 +111,20 @@ def search_recipe():
             return render_template('search_recipe.html', recipes=recipes)
 
     return render_template('search_recipe.html', recipes=None)
+
+
+@app.route('/see_more_recipes', methods=['POST'])
+def see_more_recipes():
+    ingredient = request.form['ingredient']
+    page = session.get('page_search', 1)
+
+    # Increment the page for the "See More Recipes" button
+    session['page_search'] = page + 1
+
+    results = recipe_search_by_ingredient(ingredient, page=page)
+    recipes = results.get('hits', [])
+
+    return render_template('search_recipe.html', recipes=recipes)
 
 
 app.run(port=5002, debug=True)
