@@ -4,7 +4,7 @@
 
 <br>
 
-## Project Description:
+## Project Description
 
 
 <p>We developed the Smart Pantry project to address the common challenges faced in home kitchens, where individuals struggle with keeping track of their kitchen stock. This often results in last-minute shopping trips, wasted food, and the hassle of manually managing inventory.
@@ -22,7 +22,7 @@ Throughout the project, our team learned valuable skills in front-end (JavaScrip
 
 <br>
 
-## Table of Contents:
+<!--## Table of Contents
 
 
 1. [PreRequisites](Pre-Requisites)
@@ -51,12 +51,12 @@ Throughout the project, our team learned valuable skills in front-end (JavaScrip
 8. [Unit Testing](Unit_Testing)
 9. [Summary](Summary)
 
-<br>
+<br>-->
 
-## How to install and run the project:
+## How to install and run the project
 
 
-### Pre-Requisites:
+### Pre-Requisites
 
 <p>To ensure a smooth experience with our application, please ensure you have the following programmes installed on your machine:</p>
 
@@ -154,7 +154,7 @@ During installation set up a root password and note it down. Ensure you configur
 
 <br>
 
-## Installation
+### Installation
 
 
 <p><!--ADD INTRODUCTORY PARAGRAPH-->
@@ -299,73 +299,81 @@ Install the following dependencies:
 
 </details>
 
+<br>
+
 ## How to Use the Application
-<!--SECTIONS TO BE ADDED-->
 
+By following these simple steps, you'll harness the full potential of the Smart Pantry application. Enjoy delightful cooking and effortlessly manage your kitchen inventory for a stress-free culinary experience. 
 
-<br>
+<details>
+	<summary><h3>Introduction:</h3></summary>
 
-## Meet the team:
+<p>Welcome to the Smart Pantry application, your smart solution for effortless kitchen inventory management, recipe generation, and streamlined shopping. This quick guide will lead you through the essential features and functionalities of the application.</p>
+</details>
+<details>
+<summary><h3>Navigation:</h3></summary>
 
-<!--
-PERSONAL STATEMENT: Possible questions you can answer are: 
-- "What has been your favourite/most challenging thing to do on the group project", 
-- "Why is technology so important to you". 
-- "What aspects of the course have you found most enjoyable?", 
-- "What led you to pursue a career in tech?", 
-- "What's your secret skill not many people know?" 
-(This is just guidance, so please feel free to write what ever you would like to add and be creative! :) ) 
--->
+- **What's in my Kitchen?**
+	- Navigate to your kitchen inventory by clicking on `What's in my kitchen?` in the navigation bar.
+- **Generate a Random Recipe**
+	- Click on `Generate a random recipe` to get culinary inspiration based on your current inventory.
+- **Shopping List**
+	- Access your shopping list by clicking on `Shopping list.`, the system generates this list based on low or out-of-stock items in your inventory.
+- **Search for a Recipe by Ingredient**
+	- Explore recipes by searching for a specific ingredient.
+ 	- Click on `Search for a recipe by ingredient` to find delightful recipes.
+</details>
+<details>
+<summary><h3>Inventory Management:</h3></summary>
 
-#### Vanessa L-S:
-[@somedaysmash](https://github.com/somedaysmash)
-- **Project contributions:** *Add Text Here*
-- **Personal statement:** *Add Text Here*
-<br>
-
-#### Anna K:
-[@ketre](https://github.com/ketre)
-- **Project contributions:** *Add Text Here*
-- **Personal statement:** *Add Text Here*
-<br>
-
-#### Karen L:
-[@klace00](https://github.com/klace00)
-- **Project contributions:** *Add Text Here*
-- **Personal statement:** *Add Text Here*
-<br>
-
-#### Lauren A:
-[@Laurenhomeridge](https://github.com/Laurenhomeridge)
-- **Project contributions:** *Add Text Here*
-- **Personal statement:** *Add Text Here*
-<br>
-
-#### Amy D:
-[@Amy-Dangerfield](https://github.com/Amy-Dangerfield)
-- **Project contributions:** *Add Text Here*
-- **Personal statement:** *Add Text Here*
-<br>
-
-#### Dorothy M:
-[@dotmcevoy](https://github.com/dotmcevoy)
-- **Project contributions:** *Add Text Here*
-- **Personal statement:** *Add Text Here*
-<br>
-
-#### Lauren S:
-[@Lor9538](https://github.com/Lor9538)
-- **Project contributions:** *Add Text Here*
-- **Personal statement:** *Add Text Here*
+- **Viewing Inventory**
+	- The main page displays your inventory categorized into Fridge, Pantry, and Freezer.
+ 	- Each category has a list of items with details like name, type, quantity, and more.
+- **Adding Stock**
+	- To add an item to your inventory, go to the `Add Stock` section.
+ 	- Fill in the details like stock store, item name, type of ingredient, quantity, unit of measurement, minimum quantity, and sell-by date.
+	- Click `Add Stock` to update your inventory.
+- **Recipe Generation**
+	- Generate recipes based on your current inventory by visiting the `Generate a Random Recipe` page.
+ 	- Choose a protein, and the system will suggest recipes along with a shopping list for missing ingredients.
+- **Shopping List Management**
+	- Access your shopping list from the `Shopping list` page (items are listed with checkboxes).
+ 	- Check items you want to buy and click `Download` to get a shopping list text file.
+- **Recipe Search**
+	- Use the `Search for a Recipe by Ingredient` page to find recipes containing a specific ingredient.
+ 	- Enter the ingredient and click `Search Recipes.`
+</details>
 
 <br>
 
-## Project Breakdown:
-<!-- SECTIONS TO BE ADDED-->
+<p>Happy cooking and organising!</p>
+
+<br>
+
+## Project Breakdown
+
+<p>In this comprehensive project breakdown, we've meticulously organized the codebase to provide users with a transparent and insightful view into the underlying structure and components that power the Smart Pantry system. The breakdown serves as a roadmap, guiding users through the intricate layers of our implementation.</p>
+
+### Purpose of the Code Breakdown:
+- **Clarity and Understanding:** The breakdown elucidates the intricate details of our HTML, CSS, Python, and MySQL components, fostering a clear understanding of their individual roles in the system.
+- **Transparency in Functionality:** Each section of the breakdown delves into the functionality it encapsulates, ensuring transparency in how different technologies collaborate to deliver a seamless kitchen inventory management experience.
+- **Modularity and Maintenance:** By dissecting the codebase into distinct sections, we've embraced modularity, enabling efficient maintenance and updates. Users can easily identify and modify specific components without navigating through an overwhelming monolith.
+- **Educational Resource:** The breakdown serves as an educational resource, offering insights into best practices, design decisions, and the rationale behind our technological choices. It empowers users to comprehend the logic behind the Smart Pantry's development.
+- **Collaborative Development:** Developers can leverage the breakdown for collaborative efforts, understanding how each team member's contributions fit into the overall structure. It promotes collaboration by providing a comprehensive overview of the entire system.
+
+By sharing this detailed breakdown, we aim to facilitate a deeper understanding of the Smart Pantry's inner workings, encouraging collaboration, transparency, and continuous improvement.
+
+<br>
+
+### JSON:
+
+<p>Our Smart Pantry project seamlessly incorporates JSON (JavaScript Object Notation) to enhance its functionality and data exchange capabilities. JSON serves as a lightweight and efficient data interchange format, allowing the Smart Pantry system to communicate effortlessly with various components.</p>
+
+<br>
 
 ### HTML:
 
-<!--ADD BRIEF DESCRIPTIONHERE-->
+<p>This HTML code serves as the foundation for the Smart Pantry's webpage, defining key elements to establish structure and layout. The design focuses on creating a user-friendly interface, ensuring a seamless and visually appealing experience for the Smart Pantry system.</p>
 
 <details>
 <summary>index.html</summary>
@@ -546,7 +554,9 @@ PERSONAL STATEMENT: Possible questions you can answer are:
 
 ### CSS:
 
-   <p>This CSS code provides styling rules for various elements, creating a visually appealing and customised design for the Smart Pantry's webpage.</p>
+<p>This CSS meticulously designs the Smart Pantry's webpage, specifying styles for various elements. Its goal is to establish a visually appealing layout, improving the user experience and capturing the system's distinct identity. From colour schemes to layout structures, each line contributes to a seamless interaction, ensuring users navigate with ease.</p>
+
+<br>
 
 <details>
 <summary>style.css</summary>
@@ -834,7 +844,10 @@ th, td {
 
 ### Python:
 
-<!-- ADD BRIEF DESCRIPTION HERE-->
+<p>Python serves as the backbone of the Smart Pantry project, providing a robust and versatile programming language for the system's functionality. Leveraging Python, we harness the language's readability and efficiency to implement core features such as inventory management, recipe generation, and seamless interaction with the backend. The Flask framework, built with Python, facilitates the development of a dynamic and responsive web application, ensuring a smooth user experience.</p> 
+<p>With Python's extensive libraries and straightforward syntax, our team collaboratively employs the language to implement essential project components, fostering maintainability and scalability. The choice of Python reflects our commitment to an effective and streamlined development process, empowering the Smart Pantry system to deliver a seamless and intuitive solution for kitchen inventory management.</p>
+
+<br>
 
 <details>
 <summary>main.py</summary>
@@ -1081,7 +1094,11 @@ and other custom modules:
 
 ### MySQL:
 
-<!--ADD BRIEF DESCRIPTION HERE-->
+<p>The Smart Pantry project leverages MySQL as its relational database management system. MySQL is employed to efficiently store and manage data related to the kitchen inventory, comprising details such as item names, quantities, units, expiration dates, and stock levels.</p> 
+
+<p>The use of MySQL facilitates robust data organization, retrieval, and modification, providing a reliable foundation for the seamless operation of the Smart Pantry system. With MySQL, the project ensures data integrity and enables users to interact with their kitchen inventory in a structured and efficient manner.</p>
+
+<br>
 
 <details>
 <summary>SmartPantryDB.sql</summary>
@@ -1127,13 +1144,86 @@ and other custom modules:
 
 <br>
 
-## Communication and Collaboration:
-<!--SECTIONS TO BE ADDED-->
+## Unit Testing
+<!--IN PROGRESS-->
+
+<details>
+	<summary>main.py</summary>
+</details>
+
+<details>
+	<summary>App.py</summary>
+</details>
+
+<details>
+	<summary>RecipeAPI.py</summary>
+</details>
+
+<details>
+	<summary>utilities.py</summary>
+</details>
+
+<details>
+	<summary>API_Key.py</summary>
+</details>
+<br>
+
+## Meet the team
+
+<!--
+PERSONAL STATEMENT: Possible questions you can answer are: 
+- "What has been your favourite/most challenging thing to do on the group project", 
+- "Why is technology so important to you". 
+- "What aspects of the course have you found most enjoyable?", 
+- "What led you to pursue a career in tech?", 
+- "What's your secret skill not many people know?" 
+(This is just guidance, so please feel free to write what ever you would like to add and be creative! :) ) 
+-->
+
+#### Vanessa:
+:octocat: [@somedaysmash](https://github.com/somedaysmash)
+- :brain: **Project contributions:** *Add Text Here*
+- :woman_technologist: **Personal statement:** *Add Text Here*
+<br>
+
+#### Anna:
+:octocat: [@ketre](https://github.com/ketre)
+- :brain: **Project contributions:** *Add Text Here*
+- :woman_technologist: **Personal statement:** *Add Text Here*
+<br>
+
+#### Karen:
+:octocat: [@klace00](https://github.com/klace00)
+- :brain: **Project contributions:** *Add Text Here*
+- :woman_technologist: **Personal statement:** *Add Text Here*
+<br>
+
+#### Lauren A:
+:octocat: [@Laurenhomeridge](https://github.com/Laurenhomeridge)
+- :brain: **Project contributions:** *Add Text Here*
+- :woman_technologist: **Personal statement:** *Add Text Here*
+<br>
+
+#### Amy:
+:octocat: [@Amy-Dangerfield](https://github.com/Amy-Dangerfield)
+- :brain: **Project contributions:** *Add Text Here*
+- :woman_technologist: **Personal statement:** *Add Text Here*
+<br>
+
+#### Dorothy:
+:octocat: [@dotmcevoy](https://github.com/dotmcevoy)
+- :brain: **Project contributions:** *Add Text Here*
+- :woman_technologist: **Personal statement:** *Add Text Here*
+<br>
+
+#### Lauren S:
+:octocat: [@Lor9538](https://github.com/Lor9538)
+- :brain: **Project contributions:** *Add Text Here*
+- :woman_technologist: **Personal statement:** *Add Text Here*
 
 <br>
 
-## Further Information:
-
+## Further Information
 
 <p>Additional links:</p>
 
@@ -1144,14 +1234,11 @@ and other custom modules:
 - CodePen.io [Mock-Up](https://codepen.io/Lauren_Aldridge/pen/KKJqvLo)
 - Team and Project [SWOT Analyses](https://www.canva.com/design/DAF2Iuu3O6k/DcmZ1CGJk6h11gq_JfIYTg/edit?utm_content=DAF2Iuu3O6k&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
 - Team [Collaboration and Communication]()
+- Project [Code Evolution]()
 
-<br>
-
-## Unit Testing:
-<!--IN PROGRESS-->
 <br>
 
 <!--DEVELOP THIS SECTION-->
-## Summary:
+## Summary
 
-Smart Pantry stands out as a comprehensive solution for efficient kitchen management, offering automation, collaboration, and a user-friendly interface.
+Smart Pantry emerges as an all-encompassing answer to streamline kitchen operations effectively. This innovative solution excels in providing automation features, fostering seamless collaboration, and presenting users with a remarkably user-friendly interface. Through its sophisticated design and functionality, Smart Pantry aims to revolutionise kitchen management, making it not only efficient but also accessible and intuitive for users. Whether through automated inventory tracking, collaborative recipe generation, or an intuitive user interface, Smart Pantry stands at the forefront of modern kitchen management solutions, catering to the needs of households with its user-centric approach.
