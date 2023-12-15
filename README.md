@@ -1,5 +1,13 @@
 # Smart Pantry - *Your kitchen, simplified.*
 
+<!--![Image of Smart Pantry logo, displaying title: Smart Pantry, slogan: "Your kitchen, Simplified" and an icon of a frying pan on a black and tan background](https://github.com/somedaysmash/Software4_Group5_Smart_Pantry/blob/main/Further%20Information/Logo.png)-->
+<!--<p align="center">
+  <img src="https://github.com/somedaysmash/Software4_Group5_Smart_Pantry/blob/main/Further%20Information/Logo.png" 
+       alt="Image of Smart Pantry logo, displaying title: Smart Pantry, slogan: Your kitchen, Simplified, and an icon of a frying pan on a black and tan background" 
+       width="300" 
+       height="300"></p>-->
+
+
 ### Software 4 - Project Group 5 
 (Lauren Aldridge, Amy Dangerfield, Anna Ketre, Karen Lacey, Vanessa Latchen-Smith, Dorothy McEvoy, Lauren Southall)
 
@@ -309,12 +317,12 @@ By following these simple steps, you'll harness the full potential of the Smart 
 <br>
 
 <details>
-	<summary>Introduction:</summary>
+	<summary>Introduction</summary>
 
 <p>Welcome to the Smart Pantry application, your smart solution for effortless kitchen inventory management, recipe generation, and streamlined shopping. This quick guide will lead you through the essential features and functionalities of the application.</p>
 </details>
 <details>
-<summary>Navigation:</summary>
+<summary>Navigation</summary>
 
 - **What's in my Kitchen?**
 	- Navigate to your kitchen inventory by clicking on `What's in my kitchen?` in the navigation bar.
@@ -327,7 +335,7 @@ By following these simple steps, you'll harness the full potential of the Smart 
  	- Click on `Search for a recipe by ingredient` to find delightful recipes.
 </details>
 <details>
-<summary>Inventory Management:</summary>
+<summary>Inventory Management</summary>
 
 - **Viewing Inventory**
 	- The main page displays your inventory categorized into Fridge, Pantry, and Freezer.
@@ -371,13 +379,13 @@ By sharing this detailed breakdown, we aim to facilitate a deeper understanding 
 
 <br>
 
-### JSON:
+### JSON
 
 <p>Our Smart Pantry project seamlessly incorporates JSON (JavaScript Object Notation) to enhance its functionality and data exchange capabilities. JSON serves as a lightweight and efficient data interchange format, allowing the Smart Pantry system to communicate effortlessly with various components.</p>
 
 <br>
 
-### HTML:
+### HTML
 
 <p>This HTML code serves as the foundation for the Smart Pantry's webpage, defining key elements to establish structure and layout. The design focuses on creating a user-friendly interface, ensuring a seamless and visually appealing experience for the Smart Pantry system.</p>
 
@@ -560,7 +568,7 @@ By sharing this detailed breakdown, we aim to facilitate a deeper understanding 
 
 <br>
 
-### CSS:
+### CSS
 
 <p>This CSS meticulously designs the Smart Pantry's webpage, specifying styles for various elements. Its goal is to establish a visually appealing layout, improving the user experience and capturing the system's distinct identity. From colour schemes to layout structures, each line contributes to a seamless interaction, ensuring users navigate with ease.</p>
 
@@ -850,7 +858,7 @@ th, td {
 
 <br>
 
-### Python:
+### Python
 
 <p>Python serves as the backbone of the Smart Pantry project, providing a robust and versatile programming language for the system's functionality. Leveraging Python, we harness the language's readability and efficiency to implement core features such as inventory management, recipe generation, and seamless interaction with the backend. The Flask framework, built with Python, facilitates the development of a dynamic and responsive web application, ensuring a smooth user experience.</p> 
 <p>With Python's extensive libraries and straightforward syntax, our team collaboratively employs the language to implement essential project components, fostering maintainability and scalability. The choice of Python reflects our commitment to an effective and streamlined development process, empowering the Smart Pantry system to deliver a seamless and intuitive solution for kitchen inventory management.</p>
@@ -1100,7 +1108,7 @@ and other custom modules:
 
 <br>
 
-### MySQL:
+### MySQL
 
 <p>The Smart Pantry project leverages MySQL as its relational database management system. MySQL is employed to efficiently store and manage data related to the kitchen inventory, comprising details such as item names, quantities, units, expiration dates, and stock levels.</p> 
 
@@ -1270,7 +1278,7 @@ Please click [here](https://docs.google.com/spreadsheets/d/16BXI3OMypGLyWKrMeU4g
 <summary>Smart Pantry Mock-Up</summary>
 <br>
 	
-Please click [here](https://codepen.io/Lauren_Aldridge/pen/KKJqvLo) to view the Smart Pantry wireframes.
+Please click [here](https://codepen.io/Lauren_Aldridge/pen/KKJqvLo) for the initial wireframe and [here](https://www.figma.com/file/jcAyhESnTwMatxPtUYRRtp/Untitled?type=design&node-id=0-1&mode=design&t=gdudk9G8huLayTVl-0) for the final mock-up.
 
 </details>
 <details>	
