@@ -1461,9 +1461,6 @@ Please click [here](https://docs.google.com/spreadsheets/d/16BXI3OMypGLyWKrMeU4g
 <br>
 	
 ![An image of a flowchart providing a visual representation of the logical flow and sequence of processes within the Smart Pantry application](https://github.com/somedaysmash/Software4_Group5_Smart_Pantry/blob/main/Further%20Information/Application%20Flowchart.png)
-<br>
-
-[Final wireframe](https://www.figma.com/file/jcAyhESnTwMatxPtUYRRtp/Untitled?type=design&node-id=0-1&mode=design&t=gdudk9G8huLayTVl-0)
 
 <br>
 
