@@ -1238,24 +1238,38 @@ PERSONAL STATEMENT: Possible questions you can answer are:
 
 <details>
 <summary>Project Proposal</summary>
-  	
+<br>
+	
 Please click [here](https://docs.google.com/document/d/1zBlx4-xmz2H0JjW7n_EPsaAGDybNqQM8rIOfrlSlX1k/edit#heading=h.z6ne0og04bp5) to view our Project Proposal.
 
 </details>
 <details>
-<summary>Group Task-List</summary>
+<summary>Sprint Minutes</summary>
+<br>
+	
+Please click [here](https://github.com/somedaysmash/Software4_Group5_Smart_Pantry/Further_Information/Sprint_Minutes.pdf) to view the sprint minutes.
 
+</details>
+<details>
+<summary>Group Task-List</summary>
+<br>
+	
 Please click [here](https://trello.com/b/QptFT6Rh/smart-pantry) to view the task Trello board.
+
 </details>
 <details>
 <summary>Project Activity Log</summary>
-
+<br>
+	
 Please click [here](https://docs.google.com/spreadsheets/d/16BXI3OMypGLyWKrMeU4gZ8Bl4-RA6mzLRpgcV_PJK54/edit#gid=67646434) to view the Project Activity Log.
+
 </details>
 <details>
 <summary>Smart Pantry Mock-Up</summary>
+<br>
 	
 Please click [here](https://codepen.io/Lauren_Aldridge/pen/KKJqvLo) to view the Smart Pantry wireframes.
+
 </details>
 <details>	
 <summary>Team and Project SWOT Analyses</summary>
@@ -1264,17 +1278,18 @@ Please click [here](https://www.canva.com/design/DAF2Iuu3O6k/DcmZ1CGJk6h11gq_JfI
 </details>
 <details>	
 <summary>Team Collaboration and Communication</summary>
+<br>
+	
+A booklet showing how we have been able to communicate and collaborate as a team througout this project can be accessed [here](https://www.canva.com/design/DAF3DJfNaks/_pmt_z7WhDnLPmtTW2lSmw/edit?utm_content=DAF3DJfNaks&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton).
 
-Please click [here]() to view how we communicated and collaborated throughout this project.
 </details>
 <details>
 <summary>Code Evolution and Breakdown</summary>
-
 <br>
 
 <p>This section is intended to show how our code has changed and evolved through the progression of our project.</p>
 
-The file with our stale code can be found [here](https://github.com/somedaysmash/Software4_Group5_Smart_Pantry/blob/main/Further%20Information/Extra%20Code) or by opening the 'Futher Information' folder.
+The file with our stale code can be found [here](https://github.com/somedaysmash/Software4_Group5_Smart_Pantry/blob/main/Further%20Information/Extra%20Code).
 
 <br>
 
@@ -1320,7 +1335,16 @@ Redundant Code for Class: `SHOPPINGLIST`
 </details>
 <br>
 
+> [!NOTE]
+> All evidence and documentation can be found in the 'Further Information' folder within our repo.
+
+
 <!--DEVELOP THIS SECTION-->
 ## Summary
 
 Smart Pantry emerges as an all-encompassing answer to streamline kitchen operations effectively. This innovative solution excels in providing automation features, fostering seamless collaboration, and presenting users with a remarkably user-friendly interface. Through its sophisticated design and functionality, Smart Pantry aims to revolutionise kitchen management, making it not only efficient but also accessible and intuitive for users. Whether through automated inventory tracking, collaborative recipe generation, or an intuitive user interface, Smart Pantry stands at the forefront of modern kitchen management solutions, catering to the needs of households with its user-centric approach.
+
+<br>
+
+Resources
+- 
