@@ -16,11 +16,14 @@
 ## Project Description
 
 
-<p>We developed the Smart Pantry project to address the common challenges faced in home kitchens, where individuals struggle with keeping track of their kitchen stock. This often results in last-minute shopping trips, wasted food, and the hassle of manually managing inventory.
+<p>We developed the Smart Pantry project to address the common challenges faced in home kitchens, where individuals struggle with keeping track of 
+	their kitchen stock. This often results in last-minute shopping trips, wasted food, and the hassle of manually managing inventory.
 
-Smart Pantry is a smart fridge/pantry/kitchen inventory system that streamlines kitchen management. It eliminates the need for manual stock tracking and recipe planning. The system generates a shopping list, offers recipe suggestions based on available ingredients, and updates stock levels automatically.
+Smart Pantry is a smart fridge/pantry/kitchen inventory system that streamlines kitchen management. It eliminates the need for manual stock tracking 
+and recipe planning. The system generates a shopping list, offers recipe suggestions based on available ingredients, and updates stock levels automatically.
 
-Throughout the project, our team learned valuable skills in front-end (JavaScript, HTML, CSS), back-end (Python with Flask), and database management (MySQL). We also gained insights into API integration (Edamam) for recipe retrieval and implemented effective collaboration and version control strategies.</p>
+Throughout the project, our team learned valuable skills in front-end (JavaScript, HTML, CSS), back-end (Python with Flask), and database management 
+(MySQL). We also gained insights into API integration (Edamam) for recipe retrieval and implemented effective collaboration and version control strategies.</p>
 
 ### Features:
 
@@ -319,7 +322,8 @@ By following these simple steps, you'll harness the full potential of the Smart 
 <details>
 	<summary>Introduction</summary>
 
-<p>Welcome to the Smart Pantry application, your smart solution for effortless kitchen inventory management, recipe generation, and streamlined shopping. This quick guide will lead you through the essential features and functionalities of the application.</p>
+<p>Welcome to the Smart Pantry application, your smart solution for effortless kitchen inventory management, recipe generation, and streamlined shopping. 
+	This quick guide will lead you through the essential features and functionalities of the application.</p>
 </details>
 <details>
 <summary>Navigation</summary>
@@ -363,7 +367,8 @@ By following these simple steps, you'll harness the full potential of the Smart 
 
 ## Project Breakdown
 
-<p>In this comprehensive project breakdown, we've meticulously organized the codebase to provide users with a transparent and insightful view into the underlying structure and components that power the Smart Pantry system. The breakdown serves as a roadmap, guiding users through the intricate layers of our implementation.</p>
+<p>In this comprehensive project breakdown, we've meticulously organized the codebase to provide users with a transparent and insightful view into the underlying 
+	structure and components that power the Smart Pantry system. The breakdown serves as a roadmap, guiding users through the intricate layers of our implementation.</p>
 
 <br>
 
@@ -381,13 +386,15 @@ By sharing this detailed breakdown, we aim to facilitate a deeper understanding 
 
 ### JSON
 
-<p>Our Smart Pantry project seamlessly incorporates JSON (JavaScript Object Notation) to enhance its functionality and data exchange capabilities. JSON serves as a lightweight and efficient data interchange format, allowing the Smart Pantry system to communicate effortlessly with various components.</p>
+<p>Our Smart Pantry project seamlessly incorporates JSON (JavaScript Object Notation) to enhance its functionality and data exchange capabilities. 
+	JSON serves as a lightweight and efficient data interchange format, allowing the Smart Pantry system to communicate effortlessly with various components.</p>
 
 <br>
 
 ### HTML
 
-<p>This HTML code serves as the foundation for the Smart Pantry's webpage, defining key elements to establish structure and layout. The design focuses on creating a user-friendly interface, ensuring a seamless and visually appealing experience for the Smart Pantry system.</p>
+<p>This HTML code serves as the foundation for the Smart Pantry's webpage, defining key elements to establish structure and layout. The design focuses on 
+	creating a user-friendly interface, ensuring a seamless and visually appealing experience for the Smart Pantry system.</p>
 
 <br>
 
@@ -453,7 +460,8 @@ By sharing this detailed breakdown, we aim to facilitate a deeper understanding 
 
 <br>
 
-<p>This HTML code creates a web page for the Smart Pantry application, displaying inventory information and providing a form to add new stock items. The page also includes a navigation button for recipe assistance.</p>
+<p>This HTML code creates a web page for the Smart Pantry application, displaying inventory information and providing a form to add new stock items. 
+	The page also includes a navigation button for recipe assistance.</p>
 
 #### Head Section:
 
@@ -505,7 +513,8 @@ By sharing this detailed breakdown, we aim to facilitate a deeper understanding 
 
 <br>
 
-<p>Within this HTML code enables us to visualise the webpage with a form for searching recipes by ingredient and a section to display the search results. The page utilises Jinja templating syntax ({% ... %}) for dynamic content rendering.</p>
+<p>Within this HTML code enables us to visualise the webpage with a form for searching recipes by ingredient and a section to display the search results. 
+	The page utilises Jinja templating syntax ({% ... %}) for dynamic content rendering.</p>
 
 - `<!DOCTYPE html>`: Specifies the document type and version of HTML being used, in this case, HTML5.
 - `<html lang="en">`: The root element of the HTML document, indicating that the document is written in English.
@@ -549,7 +558,8 @@ By sharing this detailed breakdown, we aim to facilitate a deeper understanding 
 
 <br>
 
-<p>The `shoppinglist.html` file is part of the Flask application for our Smart Pantry, and it dynamically generates a shopping list with checkboxes based on the data provided in the text variable. The "Download" link enables the user to download the shopping list as a text file.</p>
+<p>The `shoppinglist.html` file is part of the Flask application for our Smart Pantry, and it dynamically generates a shopping list with checkboxes based 
+	on the data provided in the text variable. The "Download" link enables the user to download the shopping list as a text file.</p>
 
 - `<!DOCTYPE html>`: Declares the document type and version of HTML.
 - `<html lang="en">`: Defines the root element of the HTML document with the language attribute set to English.
@@ -570,7 +580,9 @@ By sharing this detailed breakdown, we aim to facilitate a deeper understanding 
 
 ### CSS
 
-<p>This CSS meticulously designs the Smart Pantry's webpage, specifying styles for various elements. Its goal is to establish a visually appealing layout, improving the user experience and capturing the system's distinct identity. From colour schemes to layout structures, each line contributes to a seamless interaction, ensuring users navigate with ease.</p>
+<p>This CSS meticulously designs the Smart Pantry's webpage, specifying styles for various elements. Its goal is to establish a visually appealing layout, 
+	improving the user experience and capturing the system's distinct identity. From colour schemes to layout structures, each line contributes to a 
+	seamless interaction, ensuring users navigate with ease.</p>
 
 <br>
 
@@ -860,8 +872,12 @@ th, td {
 
 ### Python
 
-<p>Python serves as the backbone of the Smart Pantry project, providing a robust and versatile programming language for the system's functionality. Leveraging Python, we harness the language's readability and efficiency to implement core features such as inventory management, recipe generation, and seamless interaction with the backend. The Flask framework, built with Python, facilitates the development of a dynamic and responsive web application, ensuring a smooth user experience.</p> 
-<p>With Python's extensive libraries and straightforward syntax, our team collaboratively employs the language to implement essential project components, fostering maintainability and scalability. The choice of Python reflects our commitment to an effective and streamlined development process, empowering the Smart Pantry system to deliver a seamless and intuitive solution for kitchen inventory management.</p>
+<p>Python serves as the backbone of the Smart Pantry project, providing a robust and versatile programming language for the system's functionality. Leveraging Python, 
+	we harness the language's readability and efficiency to implement core features such as inventory management, recipe generation, and seamless interaction with 
+	the backend. The Flask framework, built with Python, facilitates the development of a dynamic and responsive web application, ensuring a smooth user experience.</p> 
+<p>With Python's extensive libraries and straightforward syntax, our team collaboratively employs the language to implement essential project components, fostering 
+	maintainability and scalability. The choice of Python reflects our commitment to an effective and streamlined development process, empowering the Smart Pantry 
+	system to deliver a seamless and intuitive solution for kitchen inventory management.</p>
 
 <br>
 
@@ -975,7 +991,8 @@ th, td {
 
 <br>
 
-<p>This Flask application provides routes for kitchen management, recipe handling, and shopping list functionalities. It integrates with HTML templates for rendering dynamic content and utilises both POST and GET methods for data handling. The application is specifically structured for modular and maintainable code.</p>
+<p>This Flask application provides routes for kitchen management, recipe handling, and shopping list functionalities. It integrates with HTML templates for rendering 
+	dynamic content and utilises both POST and GET methods for data handling. The application is specifically structured for modular and maintainable code.</p>
 
 #### Import Statements:
 
@@ -1110,9 +1127,11 @@ and other custom modules:
 
 ### MySQL
 
-<p>The Smart Pantry project leverages MySQL as its relational database management system. MySQL is employed to efficiently store and manage data related to the kitchen inventory, comprising details such as item names, quantities, units, expiration dates, and stock levels.</p> 
+<p>The Smart Pantry project leverages MySQL as its relational database management system. MySQL is employed to efficiently store and manage data related to the kitchen inventory, 
+	comprising details such as item names, quantities, units, expiration dates, and stock levels.</p> 
 
-<p>The use of MySQL facilitates robust data organization, retrieval, and modification, providing a reliable foundation for the seamless operation of the Smart Pantry system. With MySQL, the project ensures data integrity and enables users to interact with their kitchen inventory in a structured and efficient manner.</p>
+<p>The use of MySQL facilitates robust data organization, retrieval, and modification, providing a reliable foundation for the seamless operation of the Smart Pantry system. With MySQL, 
+	the project ensures data integrity and enables users to interact with their kitchen inventory in a structured and efficient manner.</p>
 
 <br>
 
@@ -1162,7 +1181,9 @@ and other custom modules:
 
 ## Unit Testing
 
-<p>Our aim is to ensure the robustness and reliability of our codebase. Unit testing is a fundamental practice in software development that involves testing individual units or components of our code in isolation to validate their correctness. By systematically examining each unit's functionality, we can identify and address potential bugs or issues early in the development process. Our commitment to thorough unit testing contributes to the overall quality of our software, fostering a more stable and maintainable codebase. This section provides insights into our unit testing approach, including the tools, methodologies, and best practices we employ to guarantee the integrity of our code.</p>
+<p>Our aim is to ensure the robustness and reliability of our codebase. Unit testing is a fundamental practice in software development that involves testing individual units or components of our code in isolation to validate their correctness. 
+	By systematically examining each unit's functionality, we can identify and address potential bugs or issues early in the development process. Our commitment to thorough unit testing contributes to the overall quality of our software, 
+	fostering a more stable and maintainable codebase. This section provides insights into our unit testing approach, including the tools, methodologies, and best practices we employ to guarantee the integrity of our code.</p>
 
 <br>
 
@@ -1252,19 +1273,166 @@ PERSONAL STATEMENT: Possible questions you can answer are:
 	
 Please click [here](https://docs.google.com/document/d/1zBlx4-xmz2H0JjW7n_EPsaAGDybNqQM8rIOfrlSlX1k/edit#heading=h.z6ne0og04bp5) to view our Project Proposal.
 
+<br>
+
 </details>
 <details>
 <summary>Sprint Minutes</summary>
 <br>
+
+<details>
+	<summary>Sprint 1 of 5</summary>
+	<br>
+
+ The idea is:
+- App where we can input shopping. Updated and stored in inventory. 
+	- Then we can generate recipe based on available ingredie3nts. 
+	- And generate shopping list based on that. Or we can add stuff that aren’t low or aren’t in the inventory – adjustable shopping list. 
+- Automatically update inventory once we select the recipe we want to use. 
+- 3 separate stock for cupboard, fridge, freezer. Able to click on those and you can see what’s inside. 
+	- Linked to SQL database. -> by default we will fill with random quantities and ingredients = starting stock.
+	- Able to update or delete ingredients. 
+- Anna K to try out a demo on Figma to brainstorm and ensure we are only on the same page for how we want it to look and function.
+- Log in page to elevate code. -> another database to store user info in SQL (desirable). 
+- Basic Functions:
+	- JS, HTML, CSS – button clicking, webpages, 
+	- Python 
+	- SQL: DOT TO CREATE
+		- Fridge stock table 
+		- Freezer stock table
+		- Cupboard stock table
+		- Ingredient
+		- Quantity
+		- Type/Description
+		- Min needed for stock
+		- Sell by date
+	- Storage location
+- User info table (desirable)
+- Edamame API – filter recipes through that.
+- Code will need to filter through available ingredients and then go through API for recipe. 
+- User can specify main protein or thing: ‘what do you want tonight’, ‘chicken’, ‘ok here’s a recipe for chicken wings’ 
+- Order proteins by sell by date:
+	- Chicken
+	- Beef
+	- Tofu
+	- Fish
+	- Pork
+	- Egg
+- Surprise me button! (desirable)
+- option for high protein meals or low calorie etc (desirable)
+- Function to control range for example: where if less than 1 protein in fridge suggest another protein to buy
+- When recipe is suggested have button for ‘Yes, I cooked this’ so that stock can update.
+- There should be a function where we have alerts when things go below certain stock level e.g. milk
+- Python functions to make calls to API:
+- Function to connect to API: Amy 
+- Python function to add, delete, update etc the SQL:
+- Python function to add: Vanessa
+- Python function to delete: Karen
+- Python function to update: Lauren
+- Lauren has done HTML and CSS
+- We can create a logo and brand identity. 
+- Vanessa created repo on GitHub
+- First function: let’s generate a random recipe first.
+- Python function to add to inventory
+- START with SQL stock database
+- Reconnect: Sunday 20th at 4pm or we may adjust for USA time
+- Lauren has made a merged activity log so we can monitor our progress – it's pinned on slack.
+
+<br>
+
+</details>
+<details>
+	<summary>Sprint 2 of 5</summary>
+	<br>
 	
-Please click [here](https://github.com/somedaysmash/Software4_Group5_Smart_Pantry/Further_Information/Sprint_Minutes.pdf) to view the sprint minutes.
+- Put files in .gitignore. 
+- API connection is working but Amy still wants to completely finish it.
+- Will need to put in exceptions / insertions 
+- Clarify – should we be using lots of classes? Should everything we write now be a class?
+- Go over class recording showing previous cohort project to check if they used lots of classes?
+- For HW2 we will tackle it next week but we may assign Qs to each other or just each take a stab at the questions and put together a whole complete file.
+- Make sure we are filling in the activity logs! 
+- Add, update, delete item functions are complete. 
+- Next function we want to do is iterate through what we have through stock and find and generate random recipe. 
+- Base it on proteins – ask user to select protein from list of what’s in stock. Query will find proteins, display, and then search the API. Start with a list of 10. Then select an item. Then we see what we need to buy to complete the recipe and what we already have. 
+- We may need a unit converter – everything in the API can be in grams.... We may just change our database to show only grams – check where the word decimal is coming from when show all. 
+- Code: look at proteins and select = Lauren S
+- Search API and show list of 10 = Lauren A
+- Search stock based on the recipe ingredients = Dorothy 
+- Function shows true and false on whether we have items= Dorothy
+	- and if false then add to a shopping list. = Vanessa
+- Code to present shopping list = Anna
+- When recipe is used – update stock levels = Karen
+<br>
+
+</details>
+<details>
+	<summary>Sprint 3 of 5</summary>
+	<br>
+	
+- Some over spill from spring 2 – Karen has Wed planned for this
+- Need to check the DB (GRAMS!) - Dot!!
+- We should all try giving the code a look over – Lauren A says she will check it after our meeting
+- How do we get the code to run – why is PyCharm mean to us
+- Need to include Test file – unit tests – Lauren S says she will try and get some basics in. Like a separate directory of files? Lauren S will share some resources on this in slack also.
+- Need to tidy it up 
+- This sprint will be focused on getting the project to run and understanding what each of us have done. 
+- We should do a group retrospective – also what happened to our SWOT analysis? - another Trello for this so we can all put our SWOTs in there – Dot focus on making this diagram
+- Run file (ap.py) - you’ll see website, once you click on generate recipe, you’ll see new page …etc
+- Debugging focus this sprint. Remember to comment out codes to check what functions are having issues. 
+- Lauren S idea: Put code that isn’t used in separate file to showcase our thinking process and how we changed over time!
+- Error handling – Vanessa
+- Presentation slides start – Dot
+- Screen record pages - Anna
+- Update meeting – Wednesday after class
+<br>
+	
+</details>
+<details>
+	<summary>Sprint 4 of 5</summary>
+	<br>
+	
+Continuation with overflow from sprint 3 with main focus on:
+- Unit testing and collating swot analysis to file - Lauren S, 
+- Debugging and functionality - Dorothy, Karen, Amy, Lauren A
+- Front-end (HTML, CSS) - Anna
+- Design presentation - Dorothy
+- Smart Pantry flow diagram - Vanessa
+- SQL DB maintenance - Vanessa 
+<br>
+	
+</details>
+<details>
+	<summary>Sprint 5 of 5</summary>
+	<br>
+	
+- Trying to fix and debug - all hands on deck. 
+- Try to front load work this week as many people have busy weekends coming up!
+- Fetching protein data is a bit fidgety – if it isn’t working for you, check your SQL table as Vanessa updated it to include a protein label. 
+- Make sure shopping list function works and can produce a txt file – Anna to make this shown in the HTML
+- Transaction to roll back or commit shopping list function – Dorothy to do 
+- Data units adjust - Dorothy
+- More data to be added to database – Vanessa
+- What can we do with the shopping list – Karen
+- Read me file – what to install, how to run, what to run in which order. - Lauren S to do. Government website has advice on the readability of this (linked in slack).
+- Retrospective document – will be adding lots of screenshots and info e.g. SWOT. - Lauren S to do. </p>
+<br>
+	
+</details>
+<br>
+
+Minutes from each sprint are also available as a[PDF](https://github.com/somedaysmash/Software4_Group5_Smart_Pantry/Further_Information/Sprint_Minutes.pdf).
+
+<br>
 
 </details>
 <details>
 <summary>Group Task-List</summary>
 <br>
 	
-Please click [here](https://trello.com/b/QptFT6Rh/smart-pantry) to view the task Trello board.
+Please click [here](https://trello.com/b/QptFT6Rh/smart-pantry) to access the task Trello board.
+
+<br>
 
 </details>
 <details>
@@ -1273,24 +1441,49 @@ Please click [here](https://trello.com/b/QptFT6Rh/smart-pantry) to view the task
 	
 Please click [here](https://docs.google.com/spreadsheets/d/16BXI3OMypGLyWKrMeU4gZ8Bl4-RA6mzLRpgcV_PJK54/edit#gid=67646434) to view the Project Activity Log.
 
+<br>
+
 </details>
 <details>
-<summary>Smart Pantry Mock-Up</summary>
+<summary>Smart Pantry Wireframes</summary>
 <br>
 	
-Please click [here](https://codepen.io/Lauren_Aldridge/pen/KKJqvLo) for the initial wireframe and [here](https://www.figma.com/file/jcAyhESnTwMatxPtUYRRtp/Untitled?type=design&node-id=0-1&mode=design&t=gdudk9G8huLayTVl-0) for the final mock-up.
+[Draft wireframe](https://codepen.io/Lauren_Aldridge/pen/KKJqvLo) 
+<br>
+
+[Final wireframe](https://www.figma.com/file/jcAyhESnTwMatxPtUYRRtp/Untitled?type=design&node-id=0-1&mode=design&t=gdudk9G8huLayTVl-0)
+
+<br>
+
+</details>
+<details>
+<summary>Smart Pantry Flowchart</summary>
+<br>
+	
+![An image of a flowchart providing a visual representation of the logical flow and sequence of processes within the Smart Pantry application](https://github.com/somedaysmash/Software4_Group5_Smart_Pantry/blob/main/Further%20Information/Application%20Flowchart.png)
+<br>
+
+[Final wireframe](https://www.figma.com/file/jcAyhESnTwMatxPtUYRRtp/Untitled?type=design&node-id=0-1&mode=design&t=gdudk9G8huLayTVl-0)
+
+<br>
 
 </details>
 <details>	
 <summary>Team and Project SWOT Analyses</summary>
+<br>
+	
+Please click [here](https://www.canva.com/design/DAF2Iuu3O6k/DcmZ1CGJk6h11gq_JfIYTg/edit?utm_content=DAF2Iuu3O6k&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton) to view our independent and project SWOT analyses.
 
-Please click [here](https://www.canva.com/design/DAF2Iuu3O6k/DcmZ1CGJk6h11gq_JfIYTg/edit?utm_content=DAF2Iuu3O6k&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton) to read our independent and project SWOT analyses.
+<br>
+
 </details>
 <details>	
 <summary>Team Collaboration and Communication</summary>
 <br>
 	
 A booklet showing how we have been able to communicate and collaborate as a team througout this project can be accessed [here](https://www.canva.com/design/DAF3DJfNaks/_pmt_z7WhDnLPmtTW2lSmw/edit?utm_content=DAF3DJfNaks&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton).
+
+<br>
 
 </details>
 <details>
@@ -1346,13 +1539,15 @@ Redundant Code for Class: `SHOPPINGLIST`
 <br>
 
 > [!NOTE]
-> All evidence and documentation can be found in the 'Further Information' folder within our repo.
+> All evidence and documentation can be found in the 'Further Information' folder within our repository.
 
 
-<!--DEVELOP THIS SECTION-->
 ## Summary
 
-Smart Pantry emerges as an all-encompassing answer to streamline kitchen operations effectively. This innovative solution excels in providing automation features, fostering seamless collaboration, and presenting users with a remarkably user-friendly interface. Through its sophisticated design and functionality, Smart Pantry aims to revolutionise kitchen management, making it not only efficient but also accessible and intuitive for users. Whether through automated inventory tracking, collaborative recipe generation, or an intuitive user interface, Smart Pantry stands at the forefront of modern kitchen management solutions, catering to the needs of households with its user-centric approach.
+<p>Smart Pantry emerges as an all-encompassing answer to streamline kitchen operations effectively. This innovative solution excels in providing automation features, fostering seamless collaboration, 
+	and presenting users with a remarkably user-friendly interface. Through its sophisticated design and functionality, Smart Pantry aims to revolutionise kitchen management, making it not only 
+	efficient but also accessible and intuitive for users. Whether through automated inventory tracking, collaborative recipe generation, or an intuitive user interface, Smart Pantry stands at the 
+	forefront of modern kitchen management solutions, catering to the needs of households with its user-centric approach.</p>
 
 <br>
 
