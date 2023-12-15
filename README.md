@@ -1,6 +1,7 @@
-# Smart Pantry
+# Smart Pantry - *Your kitchen, simplified.*
 
-## Project Group 5 (Software 4)
+### Software 4 - Project Group 5 
+(Lauren Aldridge, Amy Dangerfield, Anna Ketre, Karen Lacey, Vanessa Latchen-Smith, Dorothy McEvoy, Lauren Southall)
 
 <br>
 
@@ -348,7 +349,7 @@ By following these simple steps, you'll harness the full potential of the Smart 
 
 <br>
 
-<p>Happy cooking and organising!</p>
+<p><i>Happy cooking and organising!</i></p>
 
 <br>
 
@@ -364,6 +365,7 @@ By following these simple steps, you'll harness the full potential of the Smart 
 - **Modularity and Maintenance:** By dissecting the codebase into distinct sections, we've embraced modularity, enabling efficient maintenance and updates. Users can easily identify and modify specific components without navigating through an overwhelming monolith.
 - **Educational Resource:** The breakdown serves as an educational resource, offering insights into best practices, design decisions, and the rationale behind our technological choices. It empowers users to comprehend the logic behind the Smart Pantry's development.
 - **Collaborative Development:** Developers can leverage the breakdown for collaborative efforts, understanding how each team member's contributions fit into the overall structure. It promotes collaboration by providing a comprehensive overview of the entire system.
+<br>
 
 By sharing this detailed breakdown, we aim to facilitate a deeper understanding of the Smart Pantry's inner workings, encouraging collaboration, transparency, and continuous improvement.
 
