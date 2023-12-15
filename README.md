@@ -1220,43 +1220,43 @@ PERSONAL STATEMENT: Possible questions you can answer are:
 (This is just guidance, so please feel free to write what ever you would like to add and be creative! :) ) 
 -->
 
-#### Vanessa:
+### Vanessa:
 :octocat: [@somedaysmash](https://github.com/somedaysmash)
 - :brain: **Project contributions:** *Add Text Here*
 - :woman_technologist: **Personal statement:** *Add Text Here*
 <br>
 
-#### Anna:
+### Anna:
 :octocat: [@ketre](https://github.com/ketre)
 - :brain: **Project contributions:** *Add Text Here*
 - :woman_technologist: **Personal statement:** *Add Text Here*
 <br>
 
-#### Karen:
+### Karen:
 :octocat: [@klace00](https://github.com/klace00)
 - :brain: **Project contributions:** *Add Text Here*
 - :woman_technologist: **Personal statement:** *Add Text Here*
 <br>
 
-#### Lauren A:
+### Lauren A:
 :octocat: [@Laurenhomeridge](https://github.com/Laurenhomeridge)
 - :brain: **Project contributions:** *Add Text Here*
 - :woman_technologist: **Personal statement:** *Add Text Here*
 <br>
 
-#### Amy:
+### Amy:
 :octocat: [@Amy-Dangerfield](https://github.com/Amy-Dangerfield)
 - :brain: **Project contributions:** *Add Text Here*
 - :woman_technologist: **Personal statement:** *Add Text Here*
 <br>
 
-#### Dorothy:
+### Dorothy:
 :octocat: [@dotmcevoy](https://github.com/dotmcevoy)
 - :brain: **Project contributions:** *Add Text Here*
 - :woman_technologist: **Personal statement:** *Add Text Here*
 <br>
 
-#### Lauren S:
+### Lauren S:
 :octocat: [@Lor9538](https://github.com/Lor9538)
 - :brain: **Project contributions:** *Add Text Here*
 - :woman_technologist: **Personal statement:** *Add Text Here*
@@ -1264,8 +1264,6 @@ PERSONAL STATEMENT: Possible questions you can answer are:
 <br>
 
 ## Further Information
-
-<p>Additional links:</p>
 
 <details>
 <summary>Project Proposal</summary>
@@ -1549,4 +1547,25 @@ Redundant Code for Class: `SHOPPINGLIST`
 <br>
 
 Resources
-- 
+<br>
+
+- [Canva](https://www.canva.com/)
+- [Code Pen](https://www.codepen.io/)
+- [Feedough](https://www.feedough.com/swot-analysis-generator/)
+- [Figma](https://www.figma.com/)
+- [GitHub Docs](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax)
+- [Google Sheets](https://www.docs.google.com/spreadsheets/)
+- [gov.uk Content Design](https://www.gov.uk/guidance/content-design/writing-for-gov-uk)
+- [gov.uk Writing Style Guide](https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/451510/AGO_Writing_Style_Guide.pdf)
+- [Government Digital Service Style Guide](https://www.gov.uk/guidance/style-guide)
+- [Hemingway](https://hemingwayapp.com/)
+- [Jet Brains](https://www.jetbrains.com/help/pycharm/creating-tests.html)
+- [Markdown Guide](https://www.markdownguide.org/basic-syntax/)
+- [Miro](https://www.miro.com/)
+- [Mozilla Developers Network](https://developer.mozilla.org/en-US/)
+- [Mural](https://www.mural.co/blog/sprint-retrospective)
+- [Python Tutor](https://pythontutor.com/render.html#mode=edit)
+- [Sadra](https://imsadra.me/unit-testing-in-python-and-best-practices)
+- [Scaler](https://www.scaler.com/)
+- [Trello](https://www.trello.com/)
+- [W3Schools](https://www.w3schools.com/)
