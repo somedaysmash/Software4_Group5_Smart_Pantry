@@ -1546,7 +1546,7 @@ Redundant Code for Class: `SHOPPINGLIST`
 
 <br>
 
-Resources
+## Resources
 <br>
 
 - [Canva](https://www.canva.com/)
