@@ -43,7 +43,7 @@ def get_random_recipe(query):
         print(f"Request error: {e}")
         return None
 
-
+      
 def recipe_search_by_ingredient(ingredient, page=1, results=None):
     if page == 1:
         url = f'https://api.edamam.com/api/recipes/v2?type=public&q={ingredient}&app_id={app_id}&app_key={app_key}'
@@ -63,7 +63,7 @@ def recipe_search_by_ingredient(ingredient, page=1, results=None):
         return None
 
 
-def run():
+def see_more_recipes():
     ingredient = input('Enter an ingredient: ')
     page = 1
     results = None
@@ -99,11 +99,10 @@ def run():
             page += 1
 
 
-
-# def next_page_request(url):
-#     response = requests.get(url)
-#     data = response.json()
-#     return data
+def next_page_request(url):
+    response = requests.get(url)
+    data = response.json()
+    return data
 
 
 # FUNCTION TO CREATE SHOPPING LIST OF MISSING ITEMS
@@ -116,100 +115,100 @@ def create_shopping_list(missing_ingredients):
     print('Your shopping list can be found here: shopping_list.txt')
 
 
-# def run():
-#     results = recipe_search_by_ingredient()
-#     recipes = results['hits']
-#     see_more = False
-#
-#     print(f"Smart Pantry found {results['count']} recipes!")
-#     print("Here are the first 20 recipes: ")
-#
-#     # adding enumerate to allow user to select which recipe they want to use
-#     for value, recipe in enumerate(recipes, 1):
-#         recipe_data = recipe["recipe"]
-#         print(f"{value}. {recipe_data['label']}")
-#         print(recipe_data["url"])
-#         print()
-#
-#     more_recipes = input('Would you like to see more recipes? (yes/no) ').lower()
-#
-#     while more_recipes not in {'yes', 'no'}:
-#         print('Invalid input. Please enter "yes" or "no".')
-#         more_recipes = input('Would you like to see more recipes? (yes/no) ').lower()
-#
-#     if more_recipes == 'yes':
-#         see_more = True
-#
-#     while see_more and results['to'] < results['count']:
-#         url = results['_links']['next']['href']
-#         results = next_page_request(url)
-#         if 'hits' in results:
-#             recipes = results['hits']
-#
-#             # Use enumerate() to assign a value to each recipe
-#             for value, recipe in enumerate(recipes, 1):
-#                 recipe_data = recipe['recipe']
-#                 print(f"{value}. {recipe_data['label']}")
-#                 print(recipe_data['url'])
-#                 print()
-#
-#         more_recipes = input('Would you like to see more recipes? (yes/no) ').lower()
-#
-#         while more_recipes not in {'yes', 'no'}:
-#             print('Invalid input. Please enter "yes" or "no".')
-#             more_recipes = input('Would you like to see more recipes? (yes/no) ').lower()
-#
-#         if more_recipes != 'yes':
-#             see_more = False
-#
-#     # asking user if they want to select a recipe
-#     if not see_more:
-#         selection = int(input('Please enter a value to select a recipe: '))
-#         # Check if the selection is valid
-#         if 1 <= selection <= len(recipes):
-#             # Get the selected recipe data
-#             selected_recipe = recipes[selection - 1]['recipe']
-#             # Interact with the selected recipe
-#             print(f"You have selected: {selected_recipe['label']}")
-#
-#             ingredients_and_weight = []
-#
-#             for ingredient in selected_recipe['ingredients']:
-#                 # Print the name and weight of each ingredient
-#                 ingredients_and_weight.append((ingredient['food'], math.ceil(ingredient['weight'])))
-#             # check for the ingredients in stock by calling the check_stock_for_recipe function:
-#             missing_ingredients = check_stock_for_recipe(ingredients_and_weight)
-#             print(f"You need to buy the following ingredients: {missing_ingredients}")
-#
-#             # Using a transaction for creating the shopping list and updating the pantry
-#             try:
-#                 db = SqlDatabase('Smart_Pantry')
-#                 db.connect()
-#                 # Begin the transaction
-#                 db.start_transaction()
-#
-#                 # Creating the shopping list
-#                 create_shopping_list(missing_ingredients)
-#                 print(f"Here are the full ingredients: {selected_recipe['ingredientLines']}")
-#
-#                 # Update the pantry
-#                 update_pantry(ingredients_and_weight)
-#
-#                 # Commit the transaction if everything is successful
-#                 db.commit()
-#             except Exception as e:
-#                 # Rollback the transaction if an error occurs
-#                 db.rollback()
-#                 print(f"Error: {e}")
-#             finally:
-#                 # Close the database connection
-#                 db.disconnect()
-#         else:
-#             # Handle the invalid selection
-#             print('Invalid value. Please try again.')
-#
-#     if results['to'] >= results['count']:
-#         print('That\'s all the recipes we have! Thank you for using Smart Pantry!')
+def run():
+    results = recipe_search_by_ingredient()
+    recipes = results['hits']
+    see_more = False
+
+    print(f"Smart Pantry found {results['count']} recipes!")
+    print("Here are the first 20 recipes: ")
+
+    # adding enumerate to allow user to select which recipe they want to use
+    for value, recipe in enumerate(recipes, 1):
+        recipe_data = recipe["recipe"]
+        print(f"{value}. {recipe_data['label']}")
+        print(recipe_data["url"])
+        print()
+
+    more_recipes = input('Would you like to see more recipes? (yes/no) ').lower()
+
+    while more_recipes not in {'yes', 'no'}:
+        print('Invalid input. Please enter "yes" or "no".')
+        more_recipes = input('Would you like to see more recipes? (yes/no) ').lower()
+
+    if more_recipes == 'yes':
+        see_more = True
+
+    while see_more and results['to'] < results['count']:
+        url = results['_links']['next']['href']
+        results = next_page_request(url)
+        if 'hits' in results:
+            recipes = results['hits']
+
+            # Use enumerate() to assign a value to each recipe
+            for value, recipe in enumerate(recipes, 1):
+                recipe_data = recipe['recipe']
+                print(f"{value}. {recipe_data['label']}")
+                print(recipe_data['url'])
+                print()
+
+        more_recipes = input('Would you like to see more recipes? (yes/no) ').lower()
+
+        while more_recipes not in {'yes', 'no'}:
+            print('Invalid input. Please enter "yes" or "no".')
+            more_recipes = input('Would you like to see more recipes? (yes/no) ').lower()
+
+        if more_recipes != 'yes':
+            see_more = False
+
+    # asking user if they want to select a recipe
+    if not see_more:
+        selection = int(input('Please enter a value to select a recipe: '))
+        # Check if the selection is valid
+        if 1 <= selection <= len(recipes):
+            # Get the selected recipe data
+            selected_recipe = recipes[selection - 1]['recipe']
+            # Interact with the selected recipe
+            print(f"You have selected: {selected_recipe['label']}")
+
+            ingredients_and_weight = []
+
+            for ingredient in selected_recipe['ingredients']:
+                # Print the name and weight of each ingredient
+                ingredients_and_weight.append((ingredient['food'], math.ceil(ingredient['weight'])))
+            # check for the ingredients in stock by calling the check_stock_for_recipe function:
+            missing_ingredients = check_stock_for_recipe(ingredients_and_weight)
+            print(f"You need to buy the following ingredients: {missing_ingredients}")
+
+            # Using a transaction for creating the shopping list and updating the pantry
+            try:
+                db = SqlDatabase('Smart_Pantry')
+                db.connect()
+                # Begin the transaction
+                db.start_transaction()
+
+                # Creating the shopping list
+                create_shopping_list(missing_ingredients)
+                print(f"Here are the full ingredients: {selected_recipe['ingredientLines']}")
+
+                # Update the pantry
+                update_pantry(ingredients_and_weight)
+
+                # Commit the transaction if everything is successful
+                db.commit()
+            except Exception as e:
+                # Rollback the transaction if an error occurs
+                db.rollback()
+                print(f"Error: {e}")
+            finally:
+                # Close the database connection
+                db.disconnect()
+        else:
+            # Handle the invalid selection
+            print('Invalid value. Please try again.')
+
+    if results['to'] >= results['count']:
+        print('That\'s all the recipes we have! Thank you for using Smart Pantry!')
 
 
 # Adding function that takes our recipe and checks the stock in our database, returning True or False
@@ -305,7 +304,7 @@ def update_pantry(ingredients_and_weight):
 
 if __name__ == '__main__':
     # random_recipe()
-    run()  # we only need this part to run the sequence
+    # run()  # we only need this part to run the sequence
     # results = recipe_search_by_ingredient()
     # recipes = results['hits']
     # recipe_data = recipes[0]["recipe"]
@@ -317,4 +316,4 @@ if __name__ == '__main__':
     #     print("Some ingredients are missing in your stock:")
     #     for ingredient, weight in missing_ingredients:
     #         print(f"{ingredient} is missing or needs {weight} grams more.")
-    # get_random_recipe("chicken")
+     get_random_recipe("chicken")
