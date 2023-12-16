@@ -48,12 +48,15 @@ def ingredient():
 def new_item_fridge():
     new_fridge_stock = request.get_json()
     _add_item(
-        _IngredientName=new_fridge_stock['_IngredientName'],
-        _TypeOfIngredient=new_fridge_stock['_TypeOfIngredient'],
-        _Quantity=new_fridge_stock['_Quantity'],
-        _UnitofMeasurement=new_fridge_stock['_UnitofMeasurement'],
-        _MinimumQuantityNeeded=new_fridge_stock['_MinimumQuantityNeeded'],
-        _SellByDate=new_fridge_stock['_SellByDate']
+        stock_store='fridge',
+        values=(
+            new_fridge_stock['IngredientName'],
+            new_fridge_stock['TypeOfIngredient'],
+            new_fridge_stock['Quantity'],
+            new_fridge_stock['UnitOfMeasurement'],
+            new_fridge_stock['MinimumQuantityNeeded'],
+            new_fridge_stock['SellByDate']
+        )
     )
     return new_fridge_stock
 
