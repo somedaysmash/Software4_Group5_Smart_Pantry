@@ -17,6 +17,10 @@ body {
 
 }
 
+.date_bg {
+    background: url(assets/expiring.jpg), lightgray 50% / cover no-repeat;
+}
+
 h1 {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-style: italic;
