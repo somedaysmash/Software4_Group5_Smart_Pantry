@@ -4,6 +4,7 @@ import requests
 import API_key
 import math
 from utilities import SqlDatabase, DbConnectionError
+from flask import session
 
 '''app_id/key stored on separate .py file (API_key.py), register for recipe API (developer plan) at 
 https://www.edamam.com'''
@@ -42,12 +43,24 @@ def get_random_recipe(query):
         print(f"Request error: {e}")
         return None
 
-
-def recipe_search_by_ingredient(ingredient, page=1):
-    url = f'https://api.edamam.com/api/recipes/v2?type=public&q={ingredient}&app_id={app_id}&app_key={app_key}&page={page}'
+      
+def recipe_search_by_ingredient(ingredient, page=1, results=None):
+    if page == 1:
+        url = f'https://api.edamam.com/api/recipes/v2?type=public&q={ingredient}&app_id={app_id}&app_key={app_key}'
+    else:
+        # get the next page URL from session
+        next_page_url = session.get('next_page_url', '')
+        if not next_page_url:
+            return None  # handle the case where next page URL is not available
+        url = next_page_url
     response = requests.get(url)
-    results = response.json()
-    return results
+    if response.status_code == 200:
+        results = response.json()
+        # store the next page URL for future use with session
+        session['next_page_url'] = results["_links"]["next"]["href"]
+        return results
+    else:
+        return None
 
 
 def see_more_recipes():

@@ -30,10 +30,9 @@
             {% endif %}
         </ul>
     </div>
-<form action="/see_more_recipes" method="post">
-    <input type="hidden" name="ingredient" value="{{ session['ingredient'] }}">
-    <input type="hidden" name="page" value="{{ page }}">
-    <input type="submit" value="See More Recipes">
-</form>
+
+    <form id="seeMoreForm" method="POST" action="/see_more_recipes">
+        <button type="submit" name="action" value="see_more">See More Recipes</button>
+    </form>
 </body>
 </html>
