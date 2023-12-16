@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+  <link rel="stylesheet" href="static/style.css" />
+</head>
+<body>
+    <div class='prompt'>Remove stock from your inventory</div>
+    </div>
+
+<form method="POST" action="/delete" id="removeStockForm">
+    <input type="hidden" name="_method" value="DELETE">
+    <label for="stock_store">Select Stock Store:</label>
+    <select name="stock_store" id="stock_store" required>
+        <option value="Fridge">Fridge</option>
+        <option value="Pantry">Pantry</option>
+        <option value="Freezer">Freezer</option>
+    </select>
+    <label for="item_name">Item Name: </label>
+         <input type="text" name="item_name" id="item_name" >
+        <button type="submit" >Remove Stock</button>
+</form>
+</body>
+</html>
