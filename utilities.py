@@ -204,7 +204,7 @@ class StockDelete:
 stock_delete = StockDelete("freezer", "Diced Onion")
 
 
-def update_inventory(storage_update, column_update, data_id, new_value):
+def update_inventory_record(storage_update, column_update, data_id, new_value):
     """
     Update a record in the Smart_Pantry database based on user input.
 
@@ -219,7 +219,7 @@ def update_inventory(storage_update, column_update, data_id, new_value):
         # storage_update = input("Which stock store would you like to update? \n - Fridge \n - Freezer \n - Pantry \n : ")\
         #     .lower()
         # Check table name is valid
-        assert storage_update in ["fridge", "freezer", "pantry"], "Invalid table name"
+        assert storage_update in ["Fridge", "Freezer", "Pantry"], "Invalid table name"
         # assert storage_update in ["Fridge", "Freezer", "Pantry"], "Invalid table name"
         # column_update = input("Which column of data would you like to update? \n - Ingredient name \n "
         #                       "- Type of ingredient \n - Quantity \n - Sell by date \n : ").lower()
@@ -278,7 +278,7 @@ def update_inventory(storage_update, column_update, data_id, new_value):
         print("Record Updated successfully ")
 
     except Exception as e:
-        raise DbConnectionError("Failed to update inventory: {e}")
+        raise DbConnectionError(f"Failed to update inventory: {e}")
 
     finally:
         # Close the database connection
