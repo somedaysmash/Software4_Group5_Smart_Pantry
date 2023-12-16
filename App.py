@@ -103,8 +103,10 @@ def file_downloads():
 
 @app.route('/search_recipe', methods=['GET', 'POST'])
 def search_recipe():
+    session['page_search'] = 1 # Reset page count for a new search
     if request.method == 'POST':
         ingredient = request.form['ingredient']
+        session['ingredient'] = ingredient  # Store ingredient in session
         results = recipe_search_by_ingredient(ingredient)
 
         if results and 'hits' in results:
@@ -116,7 +118,7 @@ def search_recipe():
 
 @app.route('/see_more_recipes', methods=['POST'])
 def see_more_recipes():
-    ingredient = request.form['ingredient']
+    ingredient = session.get('ingredient')  # Retrieve ingredient from session
     page = session.get('page_search', 1)
 
     # Increment the page for the "See More Recipes" button
