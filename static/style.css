@@ -252,10 +252,19 @@ img.logo {
 #addStockForm {
     max-width: 400px;
     margin: 0 auto;
+    margin-top: 60px;
     padding: 20px;
     background-color: #b7b7a5;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#addStock {
+    background: url(assets/index_pantry.jpeg), lightgray 50% / cover no-repeat;
+}
+
+.prompt {
+    margin-top: 60px;
 }
 
 label {
@@ -325,3 +334,4 @@ button:hover {
     background-color: rgba(169, 115, 87, 0.9);
     font-weight: bold;
  }
+
