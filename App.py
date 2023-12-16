@@ -61,6 +61,40 @@ def new_item_fridge():
     return new_fridge_stock
 
 
+@app.route('/add_item_freezer', methods=['PUT'])
+def new_item_freezer():
+    new_freezer_stock = request.get_json()
+    _add_item(
+        stock_store='freezer',
+        values=(
+            new_freezer_stock['IngredientName'],
+            new_freezer_stock['TypeOfIngredient'],
+            new_freezer_stock['Quantity'],
+            new_freezer_stock['UnitOfMeasurement'],
+            new_freezer_stock['MinimumQuantityNeeded'],
+            new_freezer_stock['SellByDate']
+        )
+    )
+    return new_freezer_stock
+
+
+@app.route('/add_item_pantry', methods=['PUT'])
+def new_item_pantry():
+    new_pantry_stock = request.get_json()
+    _add_item(
+        stock_store='pantry',
+        values=(
+            new_pantry_stock['IngredientName'],
+            new_pantry_stock['TypeOfIngredient'],
+            new_pantry_stock['Quantity'],
+            new_pantry_stock['UnitOfMeasurement'],
+            new_pantry_stock['MinimumQuantityNeeded'],
+            new_pantry_stock['SellByDate']
+        )
+    )
+    return new_pantry_stock
+
+
 @app.route('/update/fridge', methods=['PUT'])
 def update_fridge_stock():
     successful = update_inventory()
