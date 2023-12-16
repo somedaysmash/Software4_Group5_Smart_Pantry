@@ -5,14 +5,14 @@
     <title>Out Of Date Ingredients</title>
 </head>
 <body class="date_bg">
-    <h2>Out of Date Ingredients</h2>
+    <h1>Out of Date Ingredients</h1>
     <ul>
         {% for ingredient in out_of_date %}
             <li>{{ ingredient[0]}} - {{ ingredient[1]}} - {{ ingredient[2]}}</li>
         {% endfor %}
     </ul>
 
-    <h2>Expiring Ingredients</h2>
+    <h1>Expiring Ingredients</h1>
     <ul>
         {% for ingredient in expiring_data %}
             <li>{{ ingredient[0] }} - {{ ingredient[1] }} - {{ ingredient[2] }}</li>

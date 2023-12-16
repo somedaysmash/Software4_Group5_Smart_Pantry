@@ -18,7 +18,7 @@ body {
 }
 
 .date_bg {
-    background: url(assets/expiring.jpg), lightgray 50% / cover no-repeat;
+    background: lightgray url('assets/test.jpg') center/cover no-repeat;
 }
 
 h1 {
