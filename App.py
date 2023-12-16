@@ -1,8 +1,8 @@
 # FLASK AND @ROUTES GO HERE
-from flask import Flask, jsonify, request, render_template, send_file, session
+from flask import Flask, jsonify, request, render_template, send_file, session, redirect, url_for
 from utilities import update_inventory, retrieve_stock, _add_item, stock_delete, fetch_protein_data, fetch_out_of_date,\
     fetch_expiring_ingredient_data
-from RecipeAPI import get_random_recipe, check_stock_for_recipe, recipe_search_by_ingredient
+from RecipeAPI import get_random_recipe, check_stock_for_recipe, recipe_search_by_ingredient, update_pantry
 from API_key import secret_key
 
 app = Flask(__name__)
@@ -44,64 +44,70 @@ def ingredient():
         return render_template('ingredient.html', recipe=recipe, proteins=[])
 
 
-@app.route('/add_item_fridge', methods=['PUT'])
-def new_item_fridge():
-    new_fridge_stock = request.get_json()
-    _add_item(
-        stock_store='fridge',
-        values=(
-            new_fridge_stock['IngredientName'],
-            new_fridge_stock['TypeOfIngredient'],
-            new_fridge_stock['Quantity'],
-            new_fridge_stock['UnitOfMeasurement'],
-            new_fridge_stock['MinimumQuantityNeeded'],
-            new_fridge_stock['SellByDate']
-        )
-    )
-    return new_fridge_stock
+# @app.route('/add_item_fridge', methods=['PUT'])
+# def new_item_fridge():
+#     new_fridge_stock = request.get_json()
+#     _add_item(
+#         stock_store='fridge',
+#         values=(
+#             new_fridge_stock['IngredientName'],
+#             new_fridge_stock['TypeOfIngredient'],
+#             new_fridge_stock['Quantity'],
+#             new_fridge_stock['UnitOfMeasurement'],
+#             new_fridge_stock['MinimumQuantityNeeded'],
+#             new_fridge_stock['SellByDate']
+#         )
+#     )
+#     return new_fridge_stock
+#
+#
+# @app.route('/add_item_freezer', methods=['PUT'])
+# def new_item_freezer():
+#     new_freezer_stock = request.get_json()
+#     _add_item(
+#         stock_store='freezer',
+#         values=(
+#             new_freezer_stock['IngredientName'],
+#             new_freezer_stock['TypeOfIngredient'],
+#             new_freezer_stock['Quantity'],
+#             new_freezer_stock['UnitOfMeasurement'],
+#             new_freezer_stock['MinimumQuantityNeeded'],
+#             new_freezer_stock['SellByDate']
+#         )
+#     )
+#     return new_freezer_stock
+#
+#
+# @app.route('/add_item_pantry', methods=['PUT'])
+# def new_item_pantry():
+#     new_pantry_stock = request.get_json()
+#     _add_item(
+#         stock_store='pantry',
+#         values=(
+#             new_pantry_stock['IngredientName'],
+#             new_pantry_stock['TypeOfIngredient'],
+#             new_pantry_stock['Quantity'],
+#             new_pantry_stock['UnitOfMeasurement'],
+#             new_pantry_stock['MinimumQuantityNeeded'],
+#             new_pantry_stock['SellByDate']
+#         )
+#     )
+#     return new_pantry_stock
 
 
-@app.route('/add_item_freezer', methods=['PUT'])
-def new_item_freezer():
-    new_freezer_stock = request.get_json()
-    _add_item(
-        stock_store='freezer',
-        values=(
-            new_freezer_stock['IngredientName'],
-            new_freezer_stock['TypeOfIngredient'],
-            new_freezer_stock['Quantity'],
-            new_freezer_stock['UnitOfMeasurement'],
-            new_freezer_stock['MinimumQuantityNeeded'],
-            new_freezer_stock['SellByDate']
-        )
-    )
-    return new_freezer_stock
+@app.route('/update_stock', methods=['GET', 'POST'])
+def update_inventory_route():
+    if request.method == 'POST':
+        storage_update = request.form['storage_update']
+        column_update = request.form['column_update']
+        data_id = request.form['data_id']
+        new_value = request.form['new_value']
 
+        update_inventory(storage_update, column_update, data_id, new_value)
 
-@app.route('/add_item_pantry', methods=['PUT'])
-def new_item_pantry():
-    new_pantry_stock = request.get_json()
-    _add_item(
-        stock_store='pantry',
-        values=(
-            new_pantry_stock['IngredientName'],
-            new_pantry_stock['TypeOfIngredient'],
-            new_pantry_stock['Quantity'],
-            new_pantry_stock['UnitOfMeasurement'],
-            new_pantry_stock['MinimumQuantityNeeded'],
-            new_pantry_stock['SellByDate']
-        )
-    )
-    return new_pantry_stock
+        return redirect(url_for('kitchen'))
 
-
-@app.route('/update/fridge', methods=['PUT'])
-def update_fridge_stock():
-    successful = update_inventory()
-    if successful:
-        return jsonify({"message": f"Fridge ingredient has been updated."})
-    else:
-        return jsonify({"error": f"Failed to update fridge ingredient."})
+    return render_template('update_stock.html')
 
 
 @app.route('/delete/<stock_store>/<item_name>', methods=['DELETE'])
@@ -179,6 +185,27 @@ def out_of_date_ingredients():
         out_of_date_data = fetch_out_of_date()
         expiring_data = fetch_expiring_ingredient_data()
     return render_template('out_of_date_ingredients.html', out_of_date=out_of_date_data, expiring_data=expiring_data)
+
+
+@app.route('/add_stock', methods=['GET'])
+def add_stock():
+    return render_template('add_stock.html')
+
+
+@app.route('/add_stock', methods=['POST'])
+def add_stock_submit():
+    stock_store = request.form['stock_store']
+    item_name = request.form['itemName']
+    type_of_ingredient = request.form['typeOfIngredient']
+    quantity = request.form['quantity']
+    unit_of_measurement = request.form['unitOfMeasurement']
+    min_quantity = request.form['minQuantity']
+    sell_by_date = request.form['sellByDate']
+
+    _add_item(stock_store, (item_name, type_of_ingredient, quantity, unit_of_measurement, min_quantity, sell_by_date))
+
+    # Redirect back to original page (kitchen page) after form submission
+    return redirect(url_for('kitchen'))
 
 
 app.run(port=5002, debug=True)

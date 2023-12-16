@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+</head>
+<body>
+    <div class='prompt'>Update your inventory</div>
+
+<form method="POST" action="update_stock" id="updateStockForm">
+
+    <label for="storage_update">Select Stock Store:</label>
+    <select name="stock_store" id="storage_update" required>
+        <option value="Fridge">Fridge</option>
+        <option value="Pantry">Pantry</option>
+        <option value="Freezer">Freezer</option>
+    </select>
+
+    <label for="column_update">Column to Update:</label>
+    <input type="text" name="column_update" id="column_update" required>
+
+    <label for="data_id">Data ID:</label>
+    <input type="text" name="data_id" id="data_id" required>
+
+    <label for="new_value">New Value:</label>
+    <input type="text" name="new_value" id="new_value" required>
+
+    <button type="submit" name="action">Update Stock</button>
+</form>
+</body>
+</html>

@@ -204,7 +204,7 @@ class StockDelete:
 stock_delete = StockDelete("freezer", "Diced Onion")
 
 
-def update_inventory():
+def update_inventory(storage_update, column_update, data_id, new_value):
     """
     Update a record in the Smart_Pantry database based on user input.
 
@@ -216,20 +216,20 @@ def update_inventory():
         db.connect()
 
         # Retrieve input from user
-        storage_update = input("Which stock store would you like to update? \n - Fridge \n - Freezer \n - Pantry \n : ")\
-            .lower()
+        # storage_update = input("Which stock store would you like to update? \n - Fridge \n - Freezer \n - Pantry \n : ")\
+        #     .lower()
         # Check table name is valid
         assert storage_update in ["fridge", "freezer", "pantry"], "Invalid table name"
         # assert storage_update in ["Fridge", "Freezer", "Pantry"], "Invalid table name"
-        column_update = input("Which column of data would you like to update? \n - Ingredient name \n "
-                              "- Type of ingredient \n - Quantity \n - Sell by date \n : ").lower()
+        # column_update = input("Which column of data would you like to update? \n - Ingredient name \n "
+        #                       "- Type of ingredient \n - Quantity \n - Sell by date \n : ").lower()
         # Check column name is valid
         assert column_update in ["ingredient name", "type of ingredient", "quantity", "sell by date"], \
             "Invalid column name"
-        data_id_input = input("Please enter the ingredient ID: ")
+        # data_id_input = input("Please enter the ingredient ID: ")
         # Check the data ID is valid and exists in the table
         try:
-            data_id = int(data_id_input)
+            data_id = int(data_id)
             result = db.execute_query(f"SELECT * FROM {storage_update} WHERE ID = {data_id}")
             if not result:
                 # db.execute_query(f"SELECT * FROM {storage_update} WHERE ID = {data_id}")
@@ -239,7 +239,7 @@ def update_inventory():
             raise ValueError("ID must be an integer")
         except Exception as e:
             raise ValueError(f"An error occurred: {str(e)}")
-        new_value = input(f"Enter the new value for the {column_update}: ")
+        # new_value = input(f"Enter the new value for the {column_update}: ")
 
         # Define SQL update query
         update_query = ""
@@ -271,7 +271,7 @@ def update_inventory():
             update_query = f"UPDATE {storage_update} SET SellByDate = %s WHERE ID = %s"
             db.execute_query(update_query, (new_value, data_id))
         else:
-            print("Invalid input.")
+            raise ValueError("Invalid input.")
 
         # Commit the changes to the database
         db.connection.commit()
