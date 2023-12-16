@@ -1,8 +1,8 @@
 # FLASK AND @ROUTES GO HERE
-from flask import Flask, jsonify, request, render_template, send_file, session, redirect, url_for
-from utilities import update_inventory, retrieve_stock, _add_item, stock_delete, fetch_protein_data, fetch_out_of_date,\
+from flask import Flask, request, render_template, send_file, session, redirect, url_for
+from utilities import update_inventory, retrieve_stock, _add_item, StockDelete, fetch_protein_data, fetch_out_of_date,\
     fetch_expiring_ingredient_data
-from RecipeAPI import get_random_recipe, check_stock_for_recipe, recipe_search_by_ingredient, update_pantry
+from RecipeAPI import get_random_recipe, check_stock_for_recipe, recipe_search_by_ingredient
 from API_key import secret_key
 
 app = Flask(__name__)
@@ -44,59 +44,8 @@ def ingredient():
         return render_template('ingredient.html', recipe=recipe, proteins=[])
 
 
-# @app.route('/add_item_fridge', methods=['PUT'])
-# def new_item_fridge():
-#     new_fridge_stock = request.get_json()
-#     _add_item(
-#         stock_store='fridge',
-#         values=(
-#             new_fridge_stock['IngredientName'],
-#             new_fridge_stock['TypeOfIngredient'],
-#             new_fridge_stock['Quantity'],
-#             new_fridge_stock['UnitOfMeasurement'],
-#             new_fridge_stock['MinimumQuantityNeeded'],
-#             new_fridge_stock['SellByDate']
-#         )
-#     )
-#     return new_fridge_stock
-#
-#
-# @app.route('/add_item_freezer', methods=['PUT'])
-# def new_item_freezer():
-#     new_freezer_stock = request.get_json()
-#     _add_item(
-#         stock_store='freezer',
-#         values=(
-#             new_freezer_stock['IngredientName'],
-#             new_freezer_stock['TypeOfIngredient'],
-#             new_freezer_stock['Quantity'],
-#             new_freezer_stock['UnitOfMeasurement'],
-#             new_freezer_stock['MinimumQuantityNeeded'],
-#             new_freezer_stock['SellByDate']
-#         )
-#     )
-#     return new_freezer_stock
-#
-#
-# @app.route('/add_item_pantry', methods=['PUT'])
-# def new_item_pantry():
-#     new_pantry_stock = request.get_json()
-#     _add_item(
-#         stock_store='pantry',
-#         values=(
-#             new_pantry_stock['IngredientName'],
-#             new_pantry_stock['TypeOfIngredient'],
-#             new_pantry_stock['Quantity'],
-#             new_pantry_stock['UnitOfMeasurement'],
-#             new_pantry_stock['MinimumQuantityNeeded'],
-#             new_pantry_stock['SellByDate']
-#         )
-#     )
-#     return new_pantry_stock
-
-
 @app.route('/update_stock', methods=['GET', 'POST'])
-def update_inventory_route():
+def update_inventory():
     if request.method == 'POST':
         storage_update = request.form['storage_update']
         column_update = request.form['column_update']
@@ -110,13 +59,17 @@ def update_inventory_route():
     return render_template('update_stock.html')
 
 
-@app.route('/delete/<stock_store>/<item_name>', methods=['DELETE'])
-def delete_item_from_stock(stock_store, item_name):
-    try:
-        stock_delete(stock_store, item_name)
-        return jsonify({"message": f"{item_name} successfully deleted from {stock_store}."})
-    except:
-        return jsonify({"error": f"Failed to delete {item_name} from {stock_store}."})
+@app.route('/delete_item', methods=['GET', 'POST'])
+def delete_item_from_stock():
+    if request.method == 'POST':
+        stock_store = request.form['stock_store']
+        item_name = request.form['item_name']
+
+        stock_delete = StockDelete(stock_store, item_name)
+        stock_delete.delete_item(item_name, stock_store)
+        return redirect(url_for('kitchen'))
+
+    return render_template('delete_stock.html')
 
 
 @app.route('/generate_shopping_list')
@@ -146,7 +99,8 @@ def file_downloads():
 
 @app.route('/search_recipe', methods=['GET', 'POST'])
 def search_recipe():
-    session['page_search'] = 1 # Reset page count for a new search
+    # Reset page count for a new search
+    session['page_search'] = 1
     if request.method == 'POST':
         ingredient = request.form['ingredient']
         session['ingredient'] = ingredient  # Store ingredient in session
