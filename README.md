@@ -1260,11 +1260,12 @@ PERSONAL STATEMENT: Possible questions you can answer are:
 <br>
 
 :brain: **Project contributions:** 
-*<p>Add Text Here</p>*
+*<p> Generated the project concept, Created the Trello board, Individual SWOT analysis, Python functions, De-bugging, Cleaning code</p>*
 <br>
 
 :woman_technologist: **Personal statement:** 
-*<p>"Add Text Here"</p>*
+*<p>
+During my collaborative experience within our dynamic team, i thrived in a synergistic environment that fostered creativity, innovation, and effective communication. Working collectively towards our common goals, I actively contributed my skills while embracing diverse perspectives within the team. This collaborative journey not only enhanced my ability to adapt and learn from my peers but also underscored the significance of teamwork in achieving remarkable outcomes. I am proud to have been a part of this cohesive team, that not only met challenges head-on but also celebrated shared successes, shaping an invaluable chapter of personal and professional growth in my journey.</p>*
 
 <br>
 
