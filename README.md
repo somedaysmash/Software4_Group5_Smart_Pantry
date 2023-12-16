@@ -1220,46 +1220,87 @@ PERSONAL STATEMENT: Possible questions you can answer are:
 (This is just guidance, so please feel free to write what ever you would like to add and be creative! :) ) 
 -->
 
-### Vanessa:
-:octocat: [@somedaysmash](https://github.com/somedaysmash)
-- :brain: **Project contributions:** *Add Text Here*
-- :woman_technologist: **Personal statement:** *Add Text Here*
+### Vanessa ([@somedaysmash](https://github.com/somedaysmash))
 <br>
 
-### Anna:
-:octocat: [@ketre](https://github.com/ketre)
-- :brain: **Project contributions:** *Add Text Here*
-- :woman_technologist: **Personal statement:** *Add Text Here*
+:brain: **Project contributions:** 
+*<p>Add Text Here</p>*
 <br>
 
-### Karen:
-:octocat: [@klace00](https://github.com/klace00)
-- :brain: **Project contributions:** *Add Text Here*
-- :woman_technologist: **Personal statement:** *Add Text Here*
+:woman_technologist: **Personal statement:** 
+*<p>"Add Text Here"</p>*
+
 <br>
 
-### Lauren A:
-:octocat: [@Laurenhomeridge](https://github.com/Laurenhomeridge)
-- :brain: **Project contributions:** *Add Text Here*
-- :woman_technologist: **Personal statement:** *Add Text Here*
+### Anna ([@ketre](https://github.com/ketre))
 <br>
 
-### Amy:
-:octocat: [@Amy-Dangerfield](https://github.com/Amy-Dangerfield)
-- :brain: **Project contributions:** *Add Text Here*
-- :woman_technologist: **Personal statement:** *Add Text Here*
+:brain: **Project contributions:** 
+*<p>Add Text Here</p>*
 <br>
 
-### Dorothy:
-:octocat: [@dotmcevoy](https://github.com/dotmcevoy)
-- :brain: **Project contributions:** *Add Text Here*
-- :woman_technologist: **Personal statement:** *Add Text Here*
+:woman_technologist: **Personal statement:** 
+*<p>"Add Text Here"</p>*
+
 <br>
 
-### Lauren S:
-:octocat: [@Lor9538](https://github.com/Lor9538)
-- :brain: **Project contributions:** *Add Text Here*
-- :woman_technologist: **Personal statement:** *Add Text Here*
+### Karen ([@klace00](https://github.com/klace00))
+<br>
+
+:brain: **Project contributions:** 
+*<p>Add Text Here</p>*
+<br>
+
+:woman_technologist: **Personal statement:** 
+*<p>"Add Text Here"</p>*
+
+<br>
+
+### Lauren A ([@Laurenhomeridge](https://github.com/Laurenhomeridge))
+<br>
+
+:brain: **Project contributions:** 
+*<p>Add Text Here</p>*
+<br>
+
+:woman_technologist: **Personal statement:** 
+*<p>"Add Text Here"</p>*
+
+<br>
+
+### Amy ([@Amy-Dangerfield](https://github.com/Amy-Dangerfield))
+<br>
+
+:brain: **Project contributions:** 
+*<p>Add Text Here</p>*
+<br>
+
+:woman_technologist: **Personal statement:** 
+*<p>"Add Text Here"</p>*
+
+<br>
+
+### Dorothy ([@dotmcevoy](https://github.com/dotmcevoy))
+<br>
+
+:brain: **Project contributions:** 
+*<p>Add Text Here</p>*
+<br>
+
+:woman_technologist: **Personal statement:** 
+*<p>"Add Text Here"</p>*
+
+<br>
+
+### Lauren S ([@Lor9538](https://github.com/Lor9538))
+<br>
+
+:brain: **Project contributions:** 
+*<p>Python functions, unit testing, individual and project SWOT analyses, README.md, communication and collaboration booklet</p>*
+<br>
+
+:woman_technologist: **Personal statement:** 
+*<p>"In our group project, the most challenging yet rewarding task was diving into the intricate world of unit testing for our Python files in the Smart Pantry application. Implementing robust testing strategies added a layer of complexity, but the satisfaction of ensuring our code's reliability was worth the effort.</p> <p>Throughout the course, I've found immense joy in the process of continuously enhancing my skills. Whether it's independently exploring new technologies or collaborating within the group, the journey of learning is what I find most enjoyable.</p> <p>My passion for technology stems from its dynamic and diverse nature. It's not just about coding; it's the gateway to endless creativity and innovation. Technology has this incredible power to turn groundbreaking ideas into tangible realities, and being part of that transformation is what makes pursuing a career in tech so important to me</p><p>...and finding new ways to torment my family with my two new best friends, Python and AlexaDeveloperConsole - that's if I ever get my Alexa access back!*:wink:"</p> 
 
 <br>
 
