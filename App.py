@@ -70,7 +70,7 @@ def update_inventory():
     return render_template('update_stock.html')
 
 
-@app.route('/delete_item', methods=['GET', 'POST'])
+@app.route('/delete_stock', methods=['GET', 'POST'])
 def delete_item_from_stock():
     if request.method == 'POST':
         stock_store = request.form['stock_store']
