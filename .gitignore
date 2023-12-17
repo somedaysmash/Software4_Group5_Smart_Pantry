@@ -5,6 +5,7 @@ config.py
 API_key.py
 .vscode
 static/assets/shopping_list.txt
+static/assets/list_of_low_stock.txt
 shopping_list.txt
 random_recipe.csv
 random_recipe.txt

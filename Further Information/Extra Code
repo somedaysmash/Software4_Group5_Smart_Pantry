@@ -215,3 +215,9 @@ REDUNDANT CODE FROM APP.py file
 #         )
 #     )
 #     return new_pantry_stock
+
+
+# @app.route('/return_file')
+# def file_downloads():
+#     file_path = "static/assets/shopping_list.txt"
+#     return send_file(file_path, as_attachment=True, download_name='shopping_list.txt')

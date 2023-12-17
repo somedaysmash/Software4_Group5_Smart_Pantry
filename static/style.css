@@ -386,3 +386,12 @@ button:hover {
     background-color: rgba(169, 115, 87, 0.9);
     font-weight: bold;
 }
+
+.shopping_list{
+    background-color: rgba(169, 115, 87, 0.9);
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+}
