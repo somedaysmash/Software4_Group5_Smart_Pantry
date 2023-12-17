@@ -477,6 +477,7 @@ By sharing this detailed breakdown, we aim to facilitate a deeper understanding 
 #### Body Section:
 
 - `<body class="fridge_bg">`: Sets the class of the body element to "fridge_bg," likely for styling purposes.
+- `<center><a class="home_button" href="/">Home</a></center> : A home button to return to the main page centred.
 - `<div class='recipe_button'`>: Creates a division for styling purposes.
 - `<a href='/ingredient'>`: Creates a hyperlink with the text "Help me choose a recipe" that links to the "/ingredient" route.
 
@@ -489,24 +490,19 @@ By sharing this detailed breakdown, we aim to facilitate a deeper understanding 
 - `<tr>`: Defines a table row.
 - `<th>`: Defines table header cells.
 - `<tbody>`: Defines the table body.
+- `{% set max_length = [fridge|length, pantry|length, freezer|length]|max %} : to set the length of the columns
 - `{% for i in range(max_length) %}`: Iterates over a range based on the maximum length of fridge, pantry, and freezer.
 - `<tr>`: Defines a table row for each iteration.
 - `{% for storage in [fridge, pantry, freezer] %}`: Iterates over fridge, pantry, and freezer.
 - `<td class="fridge-container">`: Defines a table cell with the class "fridge-container."
 - `{% if i < storage|length %}`: Checks if the current index is within the length of the storage and displays item details within a div with the class "item-row."
 
-#### Prompt Section:
+#### Button Section:
 
-- `<div class='prompt'>`: Creates a division for displaying a prompt.
-  "Would you like to add stock to your stock?"
-
-#### Form Section:
-
-- `<form method="POST" id="addStockForm">`: Defines a form with the method "POST" and the id "addStockForm."
-- `<label>`: Labels for form inputs.
-- `<select>`: Dropdown to select the stock store (Fridge, Pantry, Freezer).
-- Various `<input>` elements: Text inputs for item details (name, type, quantity, etc.).
-- `<button type="submit">`: Submit button for adding stock to the selected stock store.
+- `<ul :buttons in an unordered list
+- `class="main_button">: a class for buttonss, created for styling purposes
+- `<li>: list element for each button
+- <a href='/add_stock'> : anchor element behaves like a button, navigating to our add, update and delete stock forms on separate html pages
 
 <br>
 
@@ -660,104 +656,7 @@ By sharing this detailed breakdown, we aim to facilitate a deeper understanding 
 <br>
 
 </details>
-<details>
-   <summary>list.css</summary>
 
-<br>
-
-#### Heading Style:
-
-```css
-h1 {
-  font-size: 40px;
-  }
-```
-
-- Sets the font size for all `<h1>` elements to 40 pixels.
-
-#### Styling Unordered List and List Items:
-
-```css
-ul li {
-  list-style-type: none;
-  list-style-position: outside;
-  padding-left: 110px;
-  text-align: left;
-}
-```
-
-- Removes the default bullet point style from list items.
-- Positions the list marker outside the list item.
-- Adds left padding of 110 pixels.
-- Aligns the text to the left.
-
-#### Styling HTML Element:
-
-```css
-html {
-  height: 100%;
-  background-image: url('assets/shoplistimg.jpg');
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-```
-
-- Sets the height of the HTML element to 100%.
-- Sets a background image ('assets/shoplistimg.jpg') with center positioning, no repetition, and cover size.
-
-#### Styling Body Element:
-
-```css
-body {
-  font-family: "Brush Script MT", cursive;
-  font-size: 40px;
-  padding-left: 100px;
-}
-```
-
-- Chooses the font family for the body text.
-- Sets the font size to 40 pixels.
-- Adds left padding of 100 pixels.
-
-#### Styling Anchor Element
-
-```css
-a {
-  padding-left: 120px;
-}
-```
-
-- Adds left padding of 120 pixels to anchor elements.
-
-#### Styling Button Element:
-
-```css
-button {
-  border-radius: 12px;
-  color: green;
-  font-size: 30px;
-}
-```
-
-- Adds a border-radius of 12 pixels for rounded corners.
-- Sets the text color to green.
-- Sets the font size to 30 pixels.
-
-#### Button Effects:
-
-```css
-button:hover {
-  background-color: green;
-  color: white;
-}
-```
-
-- Changes the background color to green and text color to white when the button is hovered over.
-
-  <br>
-
-</details>
 <details>
 <summary>new.css</summary>
 
