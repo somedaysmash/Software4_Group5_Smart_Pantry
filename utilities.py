@@ -323,7 +323,7 @@ def retrieve_stock(stock_store):
 
 
 def fetch_protein_data():
-    '''Fetches the protein data from the database and displays it in a Tkinter window.
+    '''Fetches the protein data.
 
     :return: list: A list of tuples containing the ingredient name, quantity, and sell by date.
 
@@ -346,10 +346,6 @@ def fetch_protein_data():
         if not protein_data:
             # Raise a custom exception if no protein found
             raise DbQueryError("No protein in the database", query, None)
-        # Print each row of the result
-        for row in protein_data:
-            print(row)
-            print("\n")
         return protein_data 
 
     finally:
@@ -358,99 +354,28 @@ def fetch_protein_data():
 
 
 def low_stock():
-    '''Checks the quantity of ingredients in the database and creates a shopping list based on user input.
-    This function connects to the Smart_Pantry database and queries the Pantry, Fridge, and Freezer tables
-    to find the ingredients that have a quantity less than 100.0.
-    It then prints the result and asks the user if they want to add any of the ingredients to their shopping list.
-    It finally prints the shopping list and disconnects from the database.
+    # Connect to DB
+    db = SqlDatabase('Smart_Pantry')
+    db.connect()
 
-    :return: list: A list of tuples containing the ingredient name, quantity,
-    and unit of measurement that the user added to their shopping list.
-
-    :raise: DbConnectionError: If there is an error in connecting to or disconnecting from the database.
-        DbQueryError: If the query result is empty, meaning that there are no ingredients with low stock.
-        ValueError: If the user enters an invalid input, such as something other than 'yes' or 'no'.
-    '''
-    # Creating a new variable to store the shopping list
-    shoppinglist = []
-    try:
-        # Connect to DB
-        db = SqlDatabase('Smart_Pantry')
-        db.connect()
-
-        # setting up the query to select ingredients with low quantity from different tables
-        query = (
-            f"SELECT IngredientName, Quantity "
-            f"FROM Pantry "
-            f"WHERE Quantity < 100.0 "
-            f"UNION ALL "
-            f"SELECT IngredientName, Quantity "
-            f"FROM Fridge "
-            f"WHERE Quantity < 100.0 "
-            f"UNION ALL "
-            f"SELECT IngredientName, Quantity "
-            f"FROM Freezer "
-            f"WHERE Quantity < 100.0 ")
-        # Executing the query
-        result = db.execute_query(query)
-
-        try:
-            if not result:
-                # Raise an exception if the query result is empty
-                raise DbQueryError(
-                    "No such ingredient in the database", query, None)
-        except DbQueryError as e:
-            # Print the exception message and inform the user that they have enough stock
-            print(e)
-            print("You have enough stock of all ingredients")
-
-        for row in result:
-            # Print each row of the result
-            print(row)
-            print("\n")
-            # Assert that the row variable is a tuple
-            assert isinstance(row, tuple), "Row must be a tuple"
-
-            try:
-                # Ask the user if they want to add the ingredient to the shopping list
-                add_to_list = input(f"Would you like to add {row} to your shopping list? (yes/no): ").lower()
-                if add_to_list not in ("yes", "no", "Yes", "No"):
-                    # add_to_list = input(f"Would you like to add {row} to your shopping list? (yes/no): ")
-                    # Raise a ValueError if the user input is invalid
-                    raise ValueError("Invalid input")
-            except ValueError as e:
-                # Print the exception message and ask the user to enter a valid input
-                print(e)
-                print("Please enter yes or no)")
-
-            if add_to_list.lower() == 'yes':
-                # Add the ingredient to the shopping list and print a confirmation message
-                print(f"Adding {row} to your shopping list")
-                shoppinglist.append(row)
-
-            else:
-                # Print a message that the ingredient is not added to the shopping list
-                print(f"{row} has not been added to your shopping list")
-                print("-------")
-
-        # Print the final shopping list
-        print("Your shopping list: ")
-        for item in shoppinglist:
-            print(item)
-        # Assert that the item variable is a tuple
-        # assert isinstance(item, tuple), "Item must be a tuple"
-        # Assert that the shoppinglist variable is a list
-        # assert isinstance(shoppinglist, list), "Shopping list must be a list"
-
-    except Exception as e:
-        # Raise a custom exception if there is an error in connecting to or disconnecting from the database
-        raise DbConnectionError(f'Failed to update inventory: {e}')
-
-    finally:
-        # Disconnect from the database
-        db.disconnect()
-
-    return shoppinglist
+    # setting up the query to select ingredients with low quantity from different tables
+    query = ("""
+        SELECT IngredientName, format(Quantity, 0), UnitOfMeasurement
+        FROM Pantry
+        WHERE Quantity < 100.0
+        UNION ALL
+        SELECT IngredientName, format(Quantity, 0), UnitOfMeasurement
+        FROM Fridge
+        WHERE Quantity < 100.0
+        UNION ALL
+        SELECT IngredientName, format(Quantity, 0), UnitOfMeasurement
+        FROM Freezer
+        WHERE Quantity < 100.0
+        """)
+    
+    # Executing the query
+    result = db.execute_query(query)
+    return result
 
 
 # Lauren S: Generate shopping list, including low-stock, with the option to add/modify items:
@@ -724,6 +649,53 @@ def fetch_expiring_ingredient_data():
         # Disconnect from the database
         db.disconnect()
 
+def metrify(input_unit, output_unit, amount):
+    '''Converts the input unit to the output unit, based on the amount of the input unit.
+
+    :param input_unit: str: The unit of measurement of the input amount.
+    :param output_unit: str: The unit of measurement to convert to.
+    :param amount: int or float: The amount of the input unit to convert.
+
+    :return: float: The amount of the output unit after conversion.
+
+    :raise:
+        ValueError: If the input unit is not a valid unit of measurement.
+        ValueError: If the output unit is not a valid unit of measurement.
+        ValueError: If the amount is not a positive number.
+    '''
+
+    # Define a dictionary of units and their conversion factors
+    units = {
+        'g': 1,
+        'grams': 1,
+        'kg': 1000,
+        'oz': 28.3495,
+        'lb': 453.592,
+        'ml': 1,
+        'mls': 1,
+        'mililiters': 1,
+        'liters': 1000,
+        'l': 1000,
+        'fl oz': 29.5735,
+        'pt': 473.176,
+        'qt': 946.353,
+        'gal': 3785.41,
+        'teaspoon': 5,
+        'tablespoon': 15,
+        'cup': 240,
+        'stick': 110
+    }
+
+    # Check if the input unit is a valid unit of measurement
+    if input_unit not in units or output_unit not in units:
+        return amount
+
+    # Convert the amount to grams or milliliters
+    amount_in_g_or_ml = amount * units[input_unit]
+    # Convert the amount from grams or milliliters to the output unit
+    amount_in_output_unit = amount_in_g_or_ml / units[output_unit]
+
+    return amount_in_output_unit
 
 if __name__ == '__main__':
     # _add_item(stock_store='Fridge', values=('Beef', 'Protein', 2000, 'Grams', 450, '2025-07-30'))

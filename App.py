@@ -1,12 +1,12 @@
 # FLASK AND @ROUTES GO HERE
 from flask import Flask, request, render_template, send_file, session, redirect, url_for
-from utilities import update_inventory, retrieve_stock, _add_item, StockDelete, fetch_protein_data, fetch_out_of_date,\
-    fetch_expiring_ingredient_data
-from RecipeAPI import get_random_recipe, check_stock_for_recipe, recipe_search_by_ingredient
-from API_key import secret_key
+from utilities import update_inventory, retrieve_stock, _add_item, StockDelete, fetch_protein_data, fetch_out_of_date, \
+    fetch_expiring_ingredient_data, low_stock, metrify
+from RecipeAPI import get_random_recipe, check_stock_for_recipe, recipe_search_by_ingredient, show_all
+# from API_key import *
 
 app = Flask(__name__)
-app.secret_key = secret_key
+# app.secret_key = app_key
 
 
 @app.route('/')
@@ -41,7 +41,18 @@ def ingredient():
         query = request.form['query']
         # Call the function to get the data
         recipe = get_random_recipe(query)
-        return render_template('ingredient.html', recipe=recipe, proteins=[])
+        all_stock = show_all()
+        recipe_shopping = []
+        enough_stock = []
+        for ingredient in recipe['ingredients']:
+            for item in all_stock:
+                if item[1].upper() == ingredient['food'].upper() and metrify(ingredient['measure'], item[4], ingredient['quantity']) < item[3]:
+                    enough_stock.append(ingredient)
+        for ingredient in recipe['ingredients']:
+            if ingredient not in enough_stock:
+                recipe_shopping.append(
+                    (ingredient['food'], ingredient['quantity'], ingredient['measure']))
+        return render_template('ingredient.html', recipe=recipe, proteins=[], stock=recipe_shopping)
 
 
 @app.route('/update_stock', methods=['GET', 'POST'])
@@ -74,7 +85,8 @@ def delete_item_from_stock():
 
 @app.route('/generate_shopping_list')
 def generate_shopping_list():
-    ingredients_and_weight = [('ingredient1', 100), ('ingredient2', 200), ('ingredient3', 150)]
+    ingredients_and_weight = [
+        ('ingredient1', 100), ('ingredient2', 200), ('ingredient3', 150)]
     missing_ingredients = check_stock_for_recipe(ingredients_and_weight)
     # Create a shopping list text file with missing ingredients
     with open("static/assets/shopping_list.txt", "w") as shoppinglist:
@@ -85,16 +97,8 @@ def generate_shopping_list():
 
 @app.route('/shopping')
 def upload_shoppinglist():
-    with open("static/assets/shopping_list.txt", "r") as shoppinglist:
-        content = shoppinglist.readlines()
-    print(content)
+    content = low_stock()
     return render_template("shoppinglist.html", text=content)
-
-
-# New routes to download shopping list file.
-@app.route('/return_file')
-def file_downloads():
-    return send_file('static/assets/shopping_list.txt', as_attachment=True)
 
 
 @app.route('/search_recipe', methods=['GET', 'POST'])
@@ -156,7 +160,8 @@ def add_stock_submit():
     min_quantity = request.form['minQuantity']
     sell_by_date = request.form['sellByDate']
 
-    _add_item(stock_store, (item_name, type_of_ingredient, quantity, unit_of_measurement, min_quantity, sell_by_date))
+    _add_item(stock_store, (item_name, type_of_ingredient, quantity,
+              unit_of_measurement, min_quantity, sell_by_date))
 
     # Redirect back to original page (kitchen page) after form submission
     return redirect(url_for('kitchen'))
