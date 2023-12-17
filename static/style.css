@@ -39,7 +39,8 @@ body {
 
 .list {
     list-style: none;
-    padding: 0;
+    padding: 1rem;
+    background-color: rgba(159, 193, 213, 0.6);
 }
 
 .list li {
@@ -70,11 +71,6 @@ nav ul {
         border-radius: 7rem;
         text-align: center;
     }
-}
-
-button {
-    border: none;
-    cursor: pointer;
 }
 
 input {
@@ -299,9 +295,7 @@ button {
     background-color: rgba(169, 115, 87, 0.9);
     color: white;
     padding: 10px 15px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+    border-radius: 7px;
 }
 
 button:hover {
