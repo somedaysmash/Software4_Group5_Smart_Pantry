@@ -286,7 +286,7 @@ img.logo {
     height: auto;
 }
 
-#addStockForm {
+#StockForm {
     max-width: 400px;
     margin: 0 auto;
     margin-top: 60px;
@@ -296,7 +296,7 @@ img.logo {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-#addStock {
+#alterStock {
     background: url(assets/index_pantry.jpeg), lightgray 50% / cover no-repeat;
 }
 

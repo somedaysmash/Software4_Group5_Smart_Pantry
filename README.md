@@ -1,15 +1,14 @@
 # Smart Pantry - *Your kitchen, simplified.*
 
 <!--![Image of Smart Pantry logo, displaying title: Smart Pantry, slogan: "Your kitchen, Simplified" and an icon of a frying pan on a black and tan background](https://github.com/somedaysmash/Software4_Group5_Smart_Pantry/blob/main/Further%20Information/Logo.png)-->
-
 <!--<p align="center">
   <img src="https://github.com/somedaysmash/Software4_Group5_Smart_Pantry/blob/main/Further%20Information/Logo.png" 
        alt="Image of Smart Pantry logo, displaying title: Smart Pantry, slogan: Your kitchen, Simplified, and an icon of a frying pan on a black and tan background" 
        width="300" 
        height="300"></p>-->
 
-### Software 4 - Project Group 5
 
+### Software 4 - Project Group 5 
 Lauren Aldridge, Amy Dangerfield, Anna Ketre, Karen Lacey, Vanessa Latchen-Smith, Dorothy McEvoy, Lauren Southall
 
 <br>
@@ -19,11 +18,11 @@ Lauren Aldridge, Amy Dangerfield, Anna Ketre, Karen Lacey, Vanessa Latchen-Smith
 <p>We developed the Smart Pantry project to address the common challenges faced in home kitchens, where individuals struggle with keeping track of 
 	their kitchen stock. This often results in last-minute shopping trips, wasted food, and the hassle of manually managing inventory.
 
-Smart Pantry is a smart fridge/pantry/kitchen inventory system that streamlines kitchen management. It eliminates the need for manual stock tracking
+Smart Pantry is a smart fridge/pantry/kitchen inventory system that streamlines kitchen management. It eliminates the need for manual stock tracking 
 and recipe planning. The system generates a shopping list, offers recipe suggestions based on available ingredients, and updates stock levels automatically.
 
-Throughout the project, our team learned valuable skills in front-end (JavaScript, HTML, CSS), back-end (Python with Flask), and database management
-(MySQL). We also gained insights into API integration (Edamam) for recipe retrieval and implemented effective collaboration and version control strategies.`</p>`
+Throughout the project, our team learned valuable skills in front-end (JavaScript, HTML, CSS), back-end (Python with Flask), and database management 
+(MySQL). We also gained insights into API integration (Edamam) for recipe retrieval and implemented effective collaboration and version control strategies.</p>
 
 ### Features:
 
@@ -67,6 +66,7 @@ Throughout the project, our team learned valuable skills in front-end (JavaScrip
 
 ## How to install and run the project
 
+
 ### Pre-Requisites
 
 <p>To ensure a smooth experience with our application, please ensure you have the following programmes installed on your machine:</p>
@@ -83,16 +83,14 @@ Throughout the project, our team learned valuable skills in front-end (JavaScrip
 - Link to [Python](https://www.python.org/downloads/)
 - Link to [PyCharm](https://www.jetbrains.com/pycharm/download/?section=windows)
 - Link to [VS Code](https://code.visualstudio.com/download)
-  `<br>`
-
+<br>
 <p>Follow the installation instructions provided on the website to install python on your machine.
 
-Once installed you can verify this has been successful by opening a terminal or command prompt by typing the following:`</p>`
+Once installed you can verify this has been successful by opening a terminal or command prompt by typing the following:</p>
 
 ```python
 python --version
 ```
-
 <br>
 
 </details>
@@ -101,12 +99,10 @@ python --version
 <summary>MySQL</summary>
 
 - Link to [MySQL](https://dev.mysql.com/doc/workbench/en/wb-installing.html)
-  `<br>`
-
+<br>
 <p>Follow the installation instructions provided by the website for your specific operating system.
 
-During installation set up a root password and note it down. Ensure you configure MySQL to start as a service `<i>`if required`</i>`.`</p>`
-
+During installation set up a root password and note it down. Ensure you configure MySQL to start as a service <i>if required</i>.</p>
 </details>
 <br>
 
