@@ -55,7 +55,6 @@ def ingredient():
         return render_template('ingredient.html', recipe=recipe, proteins=[], stock=recipe_shopping)
 
 
-
 @app.route('/update_stock', methods=['GET', 'POST'])
 def update_inventory():
     if request.method == 'POST':
@@ -71,7 +70,6 @@ def update_inventory():
     return render_template('update_stock.html')
 
 
-
 @app.route('/delete_stock', methods=['GET', 'POST'])
 def delete_item_from_stock():
     if request.method == 'POST':
@@ -84,7 +82,6 @@ def delete_item_from_stock():
         return redirect(url_for('kitchen'))
 
     return render_template('delete_stock.html')
-
 
 
 @app.route('/generate_shopping_list')
@@ -107,10 +104,9 @@ def upload_shoppinglist():
         return render_template('shoppinglist.html', line=slist)
 
 
-# low_stock_items.write(result)
-# @app.route('/return_file')
-# def file_downloads():
-#     return send_file('static/assets/list_of_low_stock.txt')
+@app.route('/return_file')
+def file_downloads():
+    return send_file('static/assets/list_of_low_stock.txt')
 
 
 @app.route('/search_recipe', methods=['GET', 'POST'])
