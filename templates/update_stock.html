@@ -1,37 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <link rel="stylesheet" href="static/style.css"/>
-    <meta charset="UTF-8">
-    <center><a class="home_button" href="/">Home</a></center>>
-</head>
-<body id="alterStock">
-    <div class='prompt'>Update your inventory</div>
-
-<form method="POST" action="update_stock" id="StockForm">
-
-    <label for="storage_update">Select Stock Store:</label>
-    <select name="storage_update" id="storage_update" required>
+  <head>
+    <link rel="stylesheet" href="static/style.css" />
+    <meta charset="UTF-8" />
+  </head>
+  <body id="alterStock">
+    <div class="recipe_button"><a href="/">Home</a></div>
+    <form method="POST" action="update_stock" id="StockForm">
+      <label for="stock_store"
+        >Update stock inventory: <br />Select Stock Store:</label
+      >
+      <select name="storage_update" id="storage_update" required>
         <option value="Fridge">Fridge</option>
         <option value="Pantry">Pantry</option>
         <option value="Freezer">Freezer</option>
-    </select>
+      </select>
 
-    <label for="column_update">Column to Update:</label>
-    <select name="column_update" id="column_update" required>
+      <label for="column_update">Column to Update:</label>
+      <select name="column_update" id="column_update" required>
         <option value="Quantity">Quantity</option>
         <option value="Ingredient Name">Ingredient Name</option>
         <option value="Type of Ingredient">Type of Ingredient</option>
         <option value="Sell by Date">Sell by Date</option>
-    </select>
+      </select>
 
-    <label for="data_id">Data ID:</label>
-    <input type="text" name="data_id" id="data_id" required>
+      <label for="data_id">Data ID:</label>
+      <input type="text" name="data_id" id="data_id" required />
 
-    <label for="new_value">New Value:</label>
-    <input type="text" name="new_value" id="new_value" required>
+      <label for="new_value">New Value:</label>
+      <input type="text" name="new_value" id="new_value" required />
 
-    <button type="submit" name="action">Update Stock</button>
-</form>
-</body>
+      <button type="submit" name="action">Update Stock</button>
+    </form>
+  </body>
 </html>

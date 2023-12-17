@@ -37,13 +37,6 @@ body {
     height: 100vh;
 }
 
-.para {
-    font-family: 'Arial', sans-serif;
-    color: #333;
-    text-align: center;
-    margin-bottom: 20px;
-}
-
 .list {
     list-style: none;
     padding: 0;
@@ -77,17 +70,6 @@ nav ul {
         border-radius: 7rem;
         text-align: center;
     }
-}
-
-.ing_list li {
-    display: flex;
-    background-color: rgba(169, 115, 87, 0.9);
-    margin: 10px;
-    padding: 0 7rem;
-    border-radius: 7rem;
-    color: whitesmoke;
-    justify-content: center;
-    align-items: center;
 }
 
 button {
@@ -152,6 +134,7 @@ h1 {
     display: flex;
     background-color: rgba(159, 193, 213, 0.6);
     padding: 20px;
+    font-size: rem;
 }
 
 .recipe_wrapper,
@@ -186,7 +169,7 @@ h1 {
 .recipe_button {
     background-color: rgba(71, 115, 74, 0.9);
     text-align: center;
-    margin: 2rem 0 0 0;
+    margin: 1rem 0 0 0;
     padding: 0 7rem;
     border-radius: 7rem;
     width: 80vw;
@@ -288,8 +271,7 @@ img.logo {
 
 #StockForm {
     max-width: 400px;
-    margin: 0 auto;
-    margin-top: 60px;
+    margin: 1rem auto;
     padding: 20px;
     background-color: #b7b7a5;
     border-radius: 10px;

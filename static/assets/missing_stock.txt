@@ -1,9 +1,7 @@
-ground beef 1.0
-basil 1.0
-pepper 0.25
-garlic powder 0.125
-tomato soup 1.0
-cream of mushroom soup 1.0
-water 1.25
-mozzarella cheese 6.0
-macaroni 4.0
+flour 0.25 cup
+granulated sugar 2.0 tablespoon
+cocoa 2.0 tablespoon
+vegetable oil 2.0 tablespoon
+milk 3.0 tablespoon
+Nutella 3.0 tablespoon
+egg 1.0 <unit>
