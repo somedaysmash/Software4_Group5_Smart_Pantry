@@ -1,7 +1,8 @@
 # FLASK AND @ROUTES GO HERE
 from flask import Flask, request, render_template, send_file, session, redirect, url_for
-from utilities import update_inventory_record, retrieve_stock, _add_item, StockDelete, fetch_protein_data, fetch_out_of_date, \
-    fetch_expiring_ingredient_data, low_stock, metrify
+from Main import update_inventory_record, retrieve_stock, _add_item, StockDelete, fetch_protein_data, \
+    fetch_out_of_date, fetch_expiring_ingredient_data, low_stock
+from utilities import metrify
 from RecipeAPI import get_random_recipe, check_stock_for_recipe, recipe_search_by_ingredient, show_all
 from API_key import *
 
@@ -57,9 +58,11 @@ def ingredient():
                     missing_stock_items.writelines(missing_items)
         return render_template('ingredient.html', recipe=recipe, proteins=[], stock=missing_items)
 
+
 @app.route('/return_missing_items')
 def file_download_missing():
     return send_file('static/assets/missing_stock.txt')
+
 
 @app.route('/update_stock', methods=['GET', 'POST'])
 def update_inventory():
@@ -76,7 +79,6 @@ def update_inventory():
     return render_template('update_stock.html')
 
 
-
 @app.route('/delete_stock', methods=['GET', 'POST'])
 def delete_item_from_stock():
     if request.method == 'POST':
@@ -89,7 +91,6 @@ def delete_item_from_stock():
         return redirect(url_for('kitchen'))
 
     return render_template('delete_stock.html')
-
 
 
 @app.route('/generate_shopping_list')
@@ -110,7 +111,6 @@ def upload_shoppinglist():
     with open('static/assets/list_of_low_stock.txt', 'r') as file:
         slist = file.readlines()
         return render_template('shoppinglist.html', line=slist)
-
 
 
 @app.route('/return_file')

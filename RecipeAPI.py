@@ -301,6 +301,7 @@ def update_pantry(ingredients_and_weight):
     finally:
         db.disconnect()
 
+
 def show_all():
         db = SqlDatabase('Smart_Pantry')
         db.connect()
@@ -311,6 +312,7 @@ def show_all():
         db.disconnect()
         # Print the results
         return results
+
        
 if __name__ == '__main__':
     # random_recipe()
@@ -326,4 +328,4 @@ if __name__ == '__main__':
     #     print("Some ingredients are missing in your stock:")
     #     for ingredient, weight in missing_ingredients:
     #         print(f"{ingredient} is missing or needs {weight} grams more.")
-     get_random_recipe("chicken")
+    get_random_recipe("chicken")
