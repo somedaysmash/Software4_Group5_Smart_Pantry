@@ -23,7 +23,7 @@ Smart Pantry is a smart kitchen inventory system that streamlines kitchen manage
 and recipe planning. The system generates a shopping list, offers recipe suggestions based on available ingredients, and updates stock levels automatically.
 
 Throughout the project, our team learned valuable skills in front-end (JavaScript, HTML, CSS), back-end (Python with Flask), and database management
-(MySQL). We also gained insights into API integration (Edamam) for recipe retrieval and implemented effective collaboration and version control strategies.`</p>`
+(MySQL). We also gained insights into API integration (Edamam) for recipe retrieval and implemented effective collaboration and version control strategies.</p>
 
 ### Features:
 
@@ -384,7 +384,7 @@ By following these simple steps, you'll harness the full potential of the Smart 
 - **Modularity and Maintenance:** By dissecting the codebase into distinct sections, we've embraced modularity, enabling efficient maintenance and updates. Users can easily identify and modify specific components without navigating through an overwhelming monolith.
 - **Educational Resource:** The breakdown serves as an educational resource, offering insights into best practices, design decisions, and the rationale behind our technological choices. It empowers users to comprehend the logic behind the Smart Pantry's development.
 - **Collaborative Development:** Developers can leverage the breakdown for collaborative efforts, understanding how each team member's contributions fit into the overall structure. It promotes collaboration by providing a comprehensive overview of the entire system.
-  `<br>`
+  <br>
 
 By sharing this detailed breakdown, we aim to facilitate a deeper understanding of the Smart Pantry's inner workings, encouraging collaboration, transparency, and continuous improvement.
 
@@ -1519,7 +1519,7 @@ Please click [here](https://docs.google.com/spreadsheets/d/16BXI3OMypGLyWKrMeU4g
 <br>
 
 [Draft wireframe](https://codepen.io/Lauren_Aldridge/pen/KKJqvLo)
-`<br>`
+<br>
 
 [Final wireframe](https://www.figma.com/file/jcAyhESnTwMatxPtUYRRtp/Untitled?type=design&node-id=0-1&mode=design&t=gdudk9G8huLayTVl-0)
 
