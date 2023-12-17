@@ -63,7 +63,7 @@ def update_inventory():
         data_id = request.form['data_id']
         new_value = request.form['new_value']
 
-        update_inventory_record(storage_update, column_update, data_id, new_value)
+        update_inventory_record(storage_update, column_update.lower(), data_id, new_value)
 
         return redirect(url_for('kitchen'))
 
