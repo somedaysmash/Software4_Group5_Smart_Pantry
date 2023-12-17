@@ -52,7 +52,14 @@ def ingredient():
             if ingredient not in enough_stock:
                 recipe_shopping.append(
                     (ingredient['food'], ingredient['quantity'], ingredient['measure']))
-        return render_template('ingredient.html', recipe=recipe, proteins=[], stock=recipe_shopping)
+                missing_items = [f"{row[0]} {row[1]}\n" for row in recipe_shopping]
+                with open('static/assets/missing_stock.txt', 'w') as missing_stock_items:
+                    missing_stock_items.writelines(missing_items)
+        return render_template('ingredient.html', recipe=recipe, proteins=[], stock=missing_items)
+
+@app.route('/return_missing_items')
+def file_download_missing():
+    return send_file('static/assets/missing_stock.txt')
 
 @app.route('/update_stock', methods=['GET', 'POST'])
 def update_inventory():
@@ -105,10 +112,10 @@ def upload_shoppinglist():
         return render_template('shoppinglist.html', line=slist)
 
 
-# low_stock_items.write(result)
-# @app.route('/return_file')
-# def file_downloads():
-#     return send_file('static/assets/list_of_low_stock.txt')
+
+@app.route('/return_file')
+def file_downloads():
+    return send_file('static/assets/list_of_low_stock.txt')
 
 
 @app.route('/search_recipe', methods=['GET', 'POST'])
