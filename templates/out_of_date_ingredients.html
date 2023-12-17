@@ -5,18 +5,25 @@
     <link rel="stylesheet" href="static/style.css" />
 </head>
 <body class="date_bg">
-    <h1>Out of Date Ingredients</h1>
+<h1>Out of Date Ingredients</h1>
     <ul>
+        {% if out_of_date %}
         {% for ingredient in out_of_date %}
-        <li>{{ ingredient[0]}} - {{ ingredient[1]}} - {{ ingredient[2]}}</li>
-        {% endfor %}
+            <li>{{ ingredient[0]}} - {{ ingredient1}} - {{ ingredient2}}</li>
+        {% endfor %} {% else %}
+            <li>No items going out of date in your kitchen in the next three days</li>
+        {% endif %}
     </ul>
 
-    <h1>Expiring Ingredients</h1>
+<h1>Expiring Ingredients</h1>
     <ul>
+        {% if expiring_data %}
         {% for ingredient in expiring_data %}
             <li>{{ ingredient[0] }} - {{ ingredient[1] }} - {{ ingredient[2] }}</li>
         {% endfor %}
+        {% else %}
+        <li>No items found that expire within the next few days</li>
+        {% endif %}
     </ul>
 </body>
 </html>
