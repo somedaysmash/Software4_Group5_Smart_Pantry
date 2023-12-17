@@ -1267,10 +1267,10 @@ PERSONAL STATEMENT: Possible questions you can answer are:
 <br>
 
 :brain: **Project contributions:**
-*`<p>`Responsible for front-end and flask routes connectivity with the html pages, as well as their styling. Helped with merge conflicts and code cleaning. `</p>`*
+*`<p>`Collaborative code development in Python, Individual SWOT analysis, Debugging and problem-solving, Contribution to project document. `</p>`*
 
 👩‍💻 **Personal statement:**
-*`<p>`"Add Text Here"`</p>`*
+*`<p>`Embarking on the CFGDegree as a career changer in my forties was initially daunting and I often struggled with imposter syndrome. Over the duration of the course I've been amazed at how much I've grown in both skill and confidence. A particular highlight of this journey has been our group project. Here, I have found myself part of a fantastic group who have worked with a strong collaborative spirit with every member contributing significantly. Our project has pushed the boundaries of my coding abilities, often delving into areas that felt complex beyond my scope. However, as a team we have embraced this challenge and turned our errors into learning opportunities which enabled us to progress towards our goal. I feel so incredibly proud of what we've achieved as a team and I know I can take my learning from this experience forward into my future endeavors in this industry.`</p>`*
 
 <br>
 
