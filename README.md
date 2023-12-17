@@ -522,6 +522,8 @@ By sharing this detailed breakdown, we aim to facilitate a deeper understanding 
 
 - `<head>`: Contains meta-information about the HTML document.
 - `<meta charset="UTF-8">`: Sets the character encoding to UTF-8, ensuring proper handling of text in different languages.
+- `<link rel="stylesheet" href="static/style.css" />`: External style sheet for styling.
+- `<center><a class="home_button" href="/">` Anchor tag behaves like a button, linking user back to main page.Centred on page.  
 
 #### Body Section:
 
@@ -566,8 +568,11 @@ By sharing this detailed breakdown, we aim to facilitate a deeper understanding 
 - `<meta charset="UTF-8">`: Specifies the character encoding for the document as UTF-8.
 - `<link rel="stylesheet" href="static/list.css"/>`: Links an external CSS stylesheet named "list.css" located in the "static" folder.
 - `<body>`: Contains the content of the HTML document that will be displayed in the browser.
-- `<h1><center> Shopping List </center></h1>`: Displays a centered heading "Shopping List."
-- `<ul><center>{% for line in text %} ... {% endfor %}</center></ul>`: Uses Jinja templating to loop through items in the text variable and generate a centered unordered list.
+- `<center><a class="home_button" href="/">Home</a></center>` : anchor tag behaves like a button, linking user back to main page. Centred with HTML tags. 
+- `<h1 class='para'>` : Heading informing user they are low on stock of items listed below.
+- `<h2 class="shopping_list">` : Header saying 'Shopping List'
+- `<ul class="list">` : Unordered list with class for styling purposes
+- `{% for line in line %} ... {% endfor %}</ul>`: Uses Jinja templating to loop through items in the text variable and generate a centered unordered list.
 - `<li><input type="checkbox"> {{ line }}</li>`: Creates list items with checkboxes for each line in the text variable.
 - `<a href="{{ url_for('file_downloads') }}" download="Shopping_List.txt">Download</a>`: Provides a link to trigger the download of a file. The url_for function generates the URL for the "file_downloads" endpoint, and the download attribute specifies the suggested filename.
 
