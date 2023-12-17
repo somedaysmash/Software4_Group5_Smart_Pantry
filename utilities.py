@@ -129,9 +129,16 @@ def metrify(input_unit, output_unit, amount):
         'stick': 110
     }
 
-    # Check if the input unit is a valid unit of measurement
-    if input_unit not in units or output_unit not in units:
-        return amount
+    if input_unit not in units:
+        raise ValueError(f"Invalid input unit: {input_unit}")
+
+    # Check if the output unit is a valid unit of measurement
+    if output_unit not in units:
+        raise ValueError(f"Invalid output unit: {output_unit}")
+
+    # Check if the amount is a positive number
+    if amount <= 0:
+        raise ValueError("Amount must be a positive number")
 
     # Convert the amount to grams or milliliters
     amount_in_g_or_ml = amount * units[input_unit]

@@ -5,7 +5,7 @@ import unittest
 from unittest.mock import patch, MagicMock, call
 from tkinter import TclError
 from io import StringIO
-from utilities import DbConnectionError, DbQueryError, SqlDatabase
+from utilities import DbConnectionError, DbQueryError, SqlDatabase, metrify
 
 
 class TestDBConnection(unittest.TestCase):
@@ -132,3 +132,40 @@ class SetUp(unittest.TestCase):
 
             with self.assertRaises(mysql.connector.Error):
                 self.database.execute_query("SELECT * FROM table")
+
+
+class TestMetrifyFunction(unittest.TestCase):
+
+    def test_valid_conversion(self):
+        # Test a valid conversion from grams to kilograms
+        result = metrify('g', 'kg', 500)
+        self.assertEqual(result, 0.5)
+
+        # Test a valid conversion from milliliters to liters
+        result = metrify('ml', 'liters', 1000)
+        self.assertEqual(result, 1)
+
+    def test_invalid_input_unit(self):
+        # Test with an invalid input unit
+        with self.assertRaises(ValueError):
+            metrify('invalid_unit', 'kg', 500)
+
+    def test_invalid_output_unit(self):
+        # Test with an invalid output unit
+        with self.assertRaises(ValueError):
+            metrify('g', 'invalid_unit', 500)
+
+    def test_invalid_amount(self):
+        # Test with an invalid amount (negative number)
+        with self.assertRaises(ValueError):
+            metrify('g', 'kg', -500)
+
+    def test_invalid_unit_and_amount(self):
+        # Test with both an invalid unit and amount
+        with self.assertRaises(ValueError):
+            metrify('invalid_unit', 'invalid_unit', -500)
+
+
+if __name__ == '__main__':
+    unittest.main()
+    
