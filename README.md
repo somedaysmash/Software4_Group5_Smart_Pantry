@@ -1239,14 +1239,14 @@ PERSONAL STATEMENT: Possible questions you can answer are:
 -->
 
 ### Vanessa ([@somedaysmash](https://github.com/somedaysmash))
-
 <br>
 
-:brain: **Project contributions:**
-*<p>Add Text Here</p>*
+:brain: **Project contributions:** 
+*<p>Created git repository; wrote class for database connection, wrote functions to add stock to database, edited data for tables and added views with accompnaying functions, added excepetions and assertions (rolled some back due to conflicts).</p>*
+
 
 👩‍💻 **Personal statement:**
-*<p>"Add Text Here"</p>*
+*<p>"Tackling three differnet programming languages within the first four weeks was the kind of fast-paced learing I love. After quickly finding my feet with SQL, I promptly tripped over them in Python. Our firts team project was a great warm up to the main event. Taking on the more complex lessons in the last four weeks along with putting our new skills into practice collaborativley has more time-management and team-work than any of the skill taught. Learning how to manipulate the database through python is the most enjoyable. The least fun is trying to troublesoot! Moving into a career in technology feels long-overdue - I am ready for the challenges ahead of me! On a more personal note, I am a massive Staw Wars fan: I have cosplayed as Chewbacca (in my homemade costume), our youngest padawan is named 'Orson Benedict' - 'Obi' for short.</p>*
 
 <br>
 
@@ -1282,7 +1282,7 @@ PERSONAL STATEMENT: Possible questions you can answer are:
 *<p>Generated the project concept, Created the Trello board, Individual SWOT analysis, Python functions, De-bugging, Cleaning code</p>*
 
 👩‍💻 **Personal statement:**
-*<p>"During my collaborative experience within our dynamic team, i thrived in a synergistic environment that fostered creativity, innovation, and effective communication. Working collectively towards our common goals, I actively contributed my skills while embracing diverse perspectives within the team. This collaborative journey not only enhanced my ability to adapt and learn from my peers but also underscored the significance of teamwork in achieving remarkable outcomes. I am proud to have been a part of this cohesive team, that not only met challenges head-on but also celebrated shared successes, shaping an invaluable chapter of personal and professional growth in my journey."</p>*
+*<p>"During my collaborative experience within our dynamic team, I thrived in a synergistic environment that fostered creativity, innovation, and effective communication. Working collectively towards our common goals, I actively contributed my skills while embracing diverse perspectives within the team. This collaborative journey not only enhanced my ability to adapt and learn from my peers but also underscored the significance of teamwork in achieving remarkable outcomes. I am proud to have been a part of this cohesive team, that not only met challenges head-on but also celebrated shared successes, shaping an invaluable chapter of personal and professional growth in my journey."</p>*
 
 <br>
 
@@ -1303,10 +1303,14 @@ PERSONAL STATEMENT: Possible questions you can answer are:
 <br>
 
 :brain: **Project contributions:**
-*<p>Add Text Here</p>*
+*<p>Meeting note tacker, created SQL database, various python functions, de-bugging, created Trello board for SWOT analysis, individual SWOT analysis, presentation slide leader, project documention editor</p>*
 
 👩‍💻 **Personal statement:**
-*<p>"Add Text Here"</p>*
+*<p>"Throughout the CFG degree and group project, my favorite aspect has been the collaborative journey with my fellow career changers. Tackling new and exciting problems together has not only led to day-by-day improvements in my own skills but also in the growth of my fellow team members, which has been inspiring to see. 
+
+Technology is integral to my life, and my desire to learn and advance in the field is fueled by a passion for collaborating with innovative software engineers and making a tangible impact for companies. My decision to pursue a tech career is rooted in a goal to satisfy my technical and analytical curiosity, aligning perfectly with the dynamic nature of this space. This final team project has been a wonderful end to the CFG degree and welcome to the collaborative and problem-solving nature of being a software engineer!
+
+To end this on a personal note, a not-so-well-known fact about me is that I used to compete in hip hop crew competitions. Even today, I never shy away from a dance battle when out with friends."</p>*
 
 <br>
 
@@ -1315,7 +1319,7 @@ PERSONAL STATEMENT: Possible questions you can answer are:
 <br>
 
 :brain: **Project contributions:**
-*<p>Python functions, unit testing, individual and project SWOT analyses, README.md, communication and collaboration booklet</p>*
+*<p>Python functions, unit testing, individual and project SWOT analysis, README.md, communication and collaboration booklet</p>*
 
 👩‍💻 **Personal statement:**
 *<p>"In our group project, the most challenging yet rewarding task was diving into the intricate world of unit testing for our Python files in the Smart Pantry application. Implementing robust testing strategies added a layer of complexity, but the satisfaction of ensuring our code's reliability was worth the effort.</p> <p>Throughout the course, I've found immense joy in the process of continuously enhancing my skills. Whether it's independently exploring new technologies or collaborating within the group, the journey of learning is what I find most enjoyable.</p> <p>My passion for technology stems from its dynamic and diverse nature. It's not just about coding; it's the gateway to endless creativity and innovation. Technology has this incredible power to turn groundbreaking ideas into tangible realities, and being part of that transformation is what makes pursuing a career in tech so important to me</p> <p>...and finding new ways to torment my family with my two new best friends, Python and AlexaDeveloperConsole - that's if I ever get my Alexa access back!*😉"</p>

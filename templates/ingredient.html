@@ -40,11 +40,11 @@
     <div class='shopping_list_wrapper'>
         <h2>Uh oh! Looks like you have a few missing ingredients:</h2>
         <ul class="ingredients">
-            {% for i in stock %}
-            <li>{{ i }}</li>
+            {% for line in stock %}
+               <li><input type="checkbox" /> {{line}} </li>
             {% endfor %}
         </ul>
+        <button><a href=" {{url_for('file_download_missing')}}" download="missing_stock.txt">Download</a></button>
     </div>
 </div>
-
 </body>

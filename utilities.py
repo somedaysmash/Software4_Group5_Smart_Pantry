@@ -266,7 +266,7 @@ def update_inventory_record(storage_update, column_update, data_id, new_value):
         elif column_update == 'sell by date':
             # Check that the new value is a valid date in the format YYYY-MM-DD
             assert_sell_by_date(new_value)
-            new_value = int(new_value)
+            new_value = datetime.strptime(new_value, "%Y-%m-%d").date()
             # Update the sell by date with the new value
             update_query = f"UPDATE {storage_update} SET SellByDate = %s WHERE ID = %s"
             db.execute_query(update_query, (new_value, data_id))
