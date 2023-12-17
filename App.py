@@ -1,6 +1,6 @@
 # FLASK AND @ROUTES GO HERE
 from flask import Flask, request, render_template, send_file, session, redirect, url_for
-from utilities import update_inventory, retrieve_stock, _add_item, StockDelete, fetch_protein_data, fetch_out_of_date, \
+from utilities import update_inventory_record, retrieve_stock, _add_item, StockDelete, fetch_protein_data, fetch_out_of_date, \
     fetch_expiring_ingredient_data, low_stock, metrify
 from RecipeAPI import get_random_recipe, check_stock_for_recipe, recipe_search_by_ingredient, show_all
 # from API_key import *
@@ -78,6 +78,7 @@ def delete_item_from_stock():
 
         stock_delete = StockDelete(stock_store, item_name)
         stock_delete.delete_item(item_name, stock_store)
+
         return redirect(url_for('kitchen'))
 
     return render_template('delete_stock.html')
