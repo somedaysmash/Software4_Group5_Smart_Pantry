@@ -1,11 +1,9 @@
-olive oil 1.0
-onions 4.0
-garlic 3.0
-whole wheat flour 1.0
-red wine 0.5
-beef broth 6.0
-worcestershire sauce 1.0
-balsamic vinegar 1.0
-bay leaf 1.0
-thyme sprigs 4.0
-baguette 1.0
+ground beef 1.0
+basil 1.0
+pepper 0.25
+garlic powder 0.125
+tomato soup 1.0
+cream of mushroom soup 1.0
+water 1.25
+mozzarella cheese 6.0
+macaroni 4.0
