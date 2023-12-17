@@ -55,6 +55,7 @@ def ingredient():
         return render_template('ingredient.html', recipe=recipe, proteins=[], stock=recipe_shopping)
 
 
+
 @app.route('/update_stock', methods=['GET', 'POST'])
 def update_inventory():
     if request.method == 'POST':

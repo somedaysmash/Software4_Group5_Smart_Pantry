@@ -155,6 +155,7 @@ class StockDelete:
         self.stock_store = stock_store
         self.item_name = item_name
 
+
     def delete_item(self, stock_store, item_name):
         # Check that the table name is valid
         assert stock_store in ["Fridge", "Freezer", "Pantry"], "Invalid table name"
