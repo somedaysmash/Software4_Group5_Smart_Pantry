@@ -246,7 +246,7 @@ def check_stock_for_recipe(ingredients_and_weight):
 
             # If the ingredient is not available in any of the tables, we add it to the missing list
             if not result_fridge and not result_freezer and not result_pantry:
-                missing_ingredients.append((ingredient, weight))
+                missing_ingredients.append(ingredient, weight)
     finally:
         # Closing the database connection outside the loop
         db.disconnect()
