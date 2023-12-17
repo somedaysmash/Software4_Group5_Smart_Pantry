@@ -6,10 +6,13 @@
   </head>
   <body class='shopping_bg'>
     <h1 class='para'>You may want to stock up on the below products before you run out:</h1>
-    <ul class="list">
-        {% for line in text %}
-        <li><input type="checkbox" /> {{line}}</li>
-        {% endfor %}
-    </ul>
+<!--    <h1> Shopping List </h1>-->
+    <button><a href=" {{url_for('file_downloads')}}" download="list_of_low_stock.txt">Download</a></button>
+        <ul class="list">
+            {% for line in line %}
+               <li><input type="checkbox" /> {{line}} </li>
+            {% endfor %}
+        </ul>
+<!--            <li><input type="checkbox" /> {{line}} </li>-->
   </body>
 </html>

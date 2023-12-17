@@ -375,6 +375,9 @@ def low_stock():
     
     # Executing the query
     result = db.execute_query(query)
+    as_lines= [f"{row[0]}\n"for row in result]
+    with open('static/assets/list_of_low_stock.txt', 'w') as low_stock_items:
+        low_stock_items.writelines(as_lines)
     return result
 
 

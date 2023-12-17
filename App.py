@@ -98,9 +98,15 @@ def generate_shopping_list():
 
 @app.route('/shopping')
 def upload_shoppinglist():
-    content = low_stock()
-    return render_template("shoppinglist.html", text=content)
+    low_stock()
+    with open('static/assets/list_of_low_stock.txt', 'r') as file:
+        slist= file.readlines()
+        return render_template('shoppinglist.html', line=slist)
 
+# low_stock_items.write(result)
+@app.route('/return_file')
+def file_downloads():
+    return send_file('static/assets/list_of_low_stock.txt')
 
 @app.route('/search_recipe', methods=['GET', 'POST'])
 def search_recipe():
