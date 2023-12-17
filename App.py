@@ -4,6 +4,7 @@ from utilities import update_inventory_record, retrieve_stock, _add_item, StockD
     fetch_expiring_ingredient_data, low_stock, metrify
 from RecipeAPI import get_random_recipe, check_stock_for_recipe, recipe_search_by_ingredient, show_all
 from API_key import *
+import os
 
 app = Flask(__name__)
 app.secret_key = app_key
@@ -107,6 +108,12 @@ def upload_shoppinglist():
 @app.route('/return_file')
 def file_downloads():
     return send_file('static/assets/list_of_low_stock.txt')
+
+@app.route('/return_file')
+def file_downloads():
+    file_path = "static/assets/shopping_list.txt"
+    return send_file(file_path, as_attachment=True, download_name='shopping_list.txt')
+
 
 @app.route('/search_recipe', methods=['GET', 'POST'])
 def search_recipe():
