@@ -71,6 +71,7 @@ def update_inventory():
     return render_template('update_stock.html')
 
 
+
 @app.route('/delete_stock', methods=['GET', 'POST'])
 def delete_item_from_stock():
     if request.method == 'POST':
@@ -83,6 +84,7 @@ def delete_item_from_stock():
         return redirect(url_for('kitchen'))
 
     return render_template('delete_stock.html')
+
 
 
 @app.route('/generate_shopping_list')
