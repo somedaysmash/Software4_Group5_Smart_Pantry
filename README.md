@@ -1154,7 +1154,10 @@ PERSONAL STATEMENT: Possible questions you can answer are:
 <p>Created git repository; wrote class for database connection, wrote functions to add stock to database, edited data for tables and added views with accompnaying functions, added excepetions and assertions (rolled some back due to conflicts).</p>
 
 👩‍💻 **Personal statement:**
-<p>"Tackling three differnet programming languages within the first four weeks was the kind of fast-paced learing I love. After quickly finding my feet with SQL, I promptly tripped over them in Python. Our firts team project was a great warm up to the main event. Taking on the more complex lessons in the last four weeks along with putting our new skills into practice collaborativley has more time-management and team-work than any of the skill taught. Learning how to manipulate the database through python is the most enjoyable. The least fun is trying to troublesoot! Moving into a career in technology feels long-overdue - I am ready for the challenges ahead of me! On a more personal note, I am a massive Staw Wars fan: I have cosplayed as Chewbacca (in my homemade costume), our youngest padawan is named 'Orson Benedict' - 'Obi' for short.</p>
+<p>Tackling three different programming languages within the first four weeks was the kind of fast-paced learning I love. After quickly finding my feet with SQL, I promptly tripped over them in Python. Our first team project was a great warm up to the main event. 
+Taking on the more complex lessons in the last four weeks along with putting our new skills into practice collaboratively has more time-management and teamwork than any of the skill taught. Learning how to manipulate the database through python is the most enjoyable. The least fun is trying to troubleshoot! 
+Moving into a career in technology feels long-overdue - I am ready for the challenges ahead of me! On a more personal note, I am a massive Star Wars fan: I have cosplayed as Chewbacca (in my homemade costume), our youngest padawan is named 'Orson Benedict' - 'Obi' for short!
+.</p>
 
 <br>
 
