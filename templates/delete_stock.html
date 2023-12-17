@@ -3,10 +3,10 @@
 <head>
   <link rel="stylesheet" href="static/style.css" />
 </head>
-<body>
+<body id="alterStock">
     <div class='prompt'>Remove stock from your inventory</div>
 
-<form method="POST" action="/delete_item" id="removeStockForm">
+<form method="POST" action="/delete_item" id="StockForm">
     <input type="hidden" name="_method" value="DELETE">
     <label for="stock_store">Select Stock Store:</label>
     <select name="stock_store" id="stock_store" required>
