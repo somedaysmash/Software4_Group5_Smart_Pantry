@@ -1,14 +1,15 @@
 # Smart Pantry - *Your kitchen, simplified.*
 
 <!--![Image of Smart Pantry logo, displaying title: Smart Pantry, slogan: "Your kitchen, Simplified" and an icon of a frying pan on a black and tan background](https://github.com/somedaysmash/Software4_Group5_Smart_Pantry/blob/main/Further%20Information/Logo.png)-->
+
 <!--<p align="center">
   <img src="https://github.com/somedaysmash/Software4_Group5_Smart_Pantry/blob/main/Further%20Information/Logo.png" 
        alt="Image of Smart Pantry logo, displaying title: Smart Pantry, slogan: Your kitchen, Simplified, and an icon of a frying pan on a black and tan background" 
        width="300" 
        height="300"></p>-->
 
+### Software 4 - Project Group 5
 
-### Software 4 - Project Group 5 
 Lauren Aldridge, Amy Dangerfield, Anna Ketre, Karen Lacey, Vanessa Latchen-Smith, Dorothy McEvoy, Lauren Southall
 
 <br>
@@ -18,11 +19,11 @@ Lauren Aldridge, Amy Dangerfield, Anna Ketre, Karen Lacey, Vanessa Latchen-Smith
 <p>We developed the Smart Pantry project to address the common challenges faced in home kitchens, where individuals struggle with keeping track of 
 	their kitchen stock. This often results in last-minute shopping trips, wasted food, and the hassle of manually managing inventory.
 
-Smart Pantry is a smart kitchen inventory system that streamlines kitchen management. It eliminates the need for manual stock tracking 
+Smart Pantry is a smart kitchen inventory system that streamlines kitchen management. It eliminates the need for manual stock tracking
 and recipe planning. The system generates a shopping list, offers recipe suggestions based on available ingredients, and updates stock levels automatically.
 
-Throughout the project, our team learned valuable skills in front-end (JavaScript, HTML, CSS), back-end (Python with Flask), and database management 
-(MySQL). We also gained insights into API integration (Edamam) for recipe retrieval and implemented effective collaboration and version control strategies.</p>
+Throughout the project, our team learned valuable skills in front-end (JavaScript, HTML, CSS), back-end (Python with Flask), and database management
+(MySQL). We also gained insights into API integration (Edamam) for recipe retrieval and implemented effective collaboration and version control strategies.`</p>`
 
 ### Features:
 
@@ -66,7 +67,6 @@ Throughout the project, our team learned valuable skills in front-end (JavaScrip
 
 ## How to install and run the project
 
-
 ### Pre-Requisites
 
 <p>To ensure a smooth experience with our application, please ensure you have the following programmes installed on your machine:</p>
@@ -83,14 +83,16 @@ Throughout the project, our team learned valuable skills in front-end (JavaScrip
 - Link to [Python](https://www.python.org/downloads/)
 - Link to [PyCharm](https://www.jetbrains.com/pycharm/download/?section=windows)
 - Link to [VS Code](https://code.visualstudio.com/download)
-<br>
+  `<br>`
+
 <p>Follow the installation instructions provided on the website to install python on your machine.
 
-Once installed you can verify this has been successful by opening a terminal or command prompt by typing the following:</p>
+Once installed you can verify this has been successful by opening a terminal or command prompt by typing the following:`</p>`
 
 ```python
 python --version
 ```
+
 <br>
 
 </details>
@@ -99,10 +101,12 @@ python --version
 <summary>MySQL</summary>
 
 - Link to [MySQL](https://dev.mysql.com/doc/workbench/en/wb-installing.html)
-<br>
+  `<br>`
+
 <p>Follow the installation instructions provided by the website for your specific operating system.
 
-During installation set up a root password and note it down. Ensure you configure MySQL to start as a service <i>if required</i>.</p>
+During installation set up a root password and note it down. Ensure you configure MySQL to start as a service `<i>`if required`</i>`.`</p>`
+
 </details>
 <br>
 
@@ -218,7 +222,7 @@ Install the following dependencies:
 <br>
 
 - Create a MySQL database named Smart_Pantry.
-- Execute the SQL scripts as provided in the Smart PantryDB.sql file`</p>`
+- Execute the SQL scripts as provided in the Smart PantryDB.sql file `</p>`
 
 <br>
 
@@ -1143,14 +1147,14 @@ PERSONAL STATEMENT: Possible questions you can answer are:
 -->
 
 ### Vanessa ([@somedaysmash](https://github.com/somedaysmash))
+
 <br>
 
-:brain: **Project contributions:** 
-*<p>Created git repository; wrote class for database connection, wrote functions to add stock to database, edited data for tables and added views with accompnaying functions, added excepetions and assertions (rolled some back due to conflicts).</p>*
-
+:brain: **Project contributions:**
+*`<p>`Created git repository; wrote class for database connection, wrote functions to add stock to database, edited data for tables and added views with accompnaying functions, added excepetions and assertions (rolled some back due to conflicts).`</p>`*
 
 👩‍💻 **Personal statement:**
-*<p>"Tackling three differnet programming languages within the first four weeks was the kind of fast-paced learing I love. After quickly finding my feet with SQL, I promptly tripped over them in Python. Our firts team project was a great warm up to the main event. Taking on the more complex lessons in the last four weeks along with putting our new skills into practice collaborativley has more time-management and team-work than any of the skill taught. Learning how to manipulate the database through python is the most enjoyable. The least fun is trying to troublesoot! Moving into a career in technology feels long-overdue - I am ready for the challenges ahead of me! On a more personal note, I am a massive Staw Wars fan: I have cosplayed as Chewbacca (in my homemade costume), our youngest padawan is named 'Orson Benedict' - 'Obi' for short.</p>*
+*`<p>`"Tackling three differnet programming languages within the first four weeks was the kind of fast-paced learing I love. After quickly finding my feet with SQL, I promptly tripped over them in Python. Our firts team project was a great warm up to the main event. Taking on the more complex lessons in the last four weeks along with putting our new skills into practice collaborativley has more time-management and team-work than any of the skill taught. Learning how to manipulate the database through python is the most enjoyable. The least fun is trying to troublesoot! Moving into a career in technology feels long-overdue - I am ready for the challenges ahead of me! On a more personal note, I am a massive Staw Wars fan: I have cosplayed as Chewbacca (in my homemade costume), our youngest padawan is named 'Orson Benedict' - 'Obi' for short.`</p>`*
 
 <br>
 
@@ -1159,10 +1163,14 @@ PERSONAL STATEMENT: Possible questions you can answer are:
 <br>
 
 :brain: **Project contributions:**
-*<p>Add Text Here</p>*
+*`<p>`Responsible for initial design mock-ups in Figma and further styling implementation across pages. Rendering HTML templates through Flask routes. Helped with code cleaning and import debugging. `</p>`*
 
 👩‍💻 **Personal statement:**
-*<p>"Add Text Here"</p>*
+*`<p>`"The collective effort and collaboration within the team made this (at times challenging) journey worthwhile. Working as a team has brought the theoretical knowldge into the real world - a world with git commits and collaborative software development.*
+
+*This group project allowed me to push my limits and challenge myself with each and every sprint we've done. I'm thrilled to see the website come to live from what was just an idea a month ago - and am grateful to have the most hard-working and collaborative team to have achieved this with.*
+
+*`</p>`*
 
 <br>
 
@@ -1171,10 +1179,10 @@ PERSONAL STATEMENT: Possible questions you can answer are:
 <br>
 
 :brain: **Project contributions:**
-*<p>Collaborative code development in Python, Individual SWOT analysis, Debugging and problem-solving, Contribution to project document.</p>*
+*`<p>`Collaborative code development in Python, Individual SWOT analysis, Debugging and problem-solving, Contribution to project document.`</p>`*
 
 👩‍💻 **Personal statement:**
-*<p>"Embarking on the CFGDegree as a career changer in my forties was initially daunting and I often struggled with imposter syndrome. Over the duration of the course I've been amazed at how much I've grown in both skill and confidence. A particular highlight of this journey has been our group project. Here, I have found myself part of a fantastic group who have worked with a strong collaborative spirit with every member contributing significantly. Our project has pushed the boundaries of my coding abilities, often delving into areas that felt complex beyond my scope. However, as a team we have embraced this challenge and turned our errors into learning opportunities which enabled us to progress towards our goal. I feel so incredibly proud of what we've achieved as a team and I know I can take my learning from this experience forward into my future endeavors in this industry."</p>*
+*`<p>`"Embarking on the CFGDegree as a career changer in my forties was initially daunting and I often struggled with imposter syndrome. Over the duration of the course I've been amazed at how much I've grown in both skill and confidence. A particular highlight of this journey has been our group project. Here, I have found myself part of a fantastic group who have worked with a strong collaborative spirit with every member contributing significantly. Our project has pushed the boundaries of my coding abilities, often delving into areas that felt complex beyond my scope. However, as a team we have embraced this challenge and turned our errors into learning opportunities which enabled us to progress towards our goal. I feel so incredibly proud of what we've achieved as a team and I know I can take my learning from this experience forward into my future endeavors in this industry."`</p>`*
 
 <br>
 
@@ -1183,10 +1191,10 @@ PERSONAL STATEMENT: Possible questions you can answer are:
 <br>
 
 :brain: **Project contributions:**
-*<p>Generated the project concept, Created the Trello board, Individual SWOT analysis, Python functions, De-bugging, Cleaning code</p>*
+*`<p>`Generated the project concept, Created the Trello board, Individual SWOT analysis, Python functions, De-bugging, Cleaning code`</p>`*
 
 👩‍💻 **Personal statement:**
-*<p>"During my collaborative experience within our dynamic team, I thrived in a synergistic environment that fostered creativity, innovation, and effective communication. Working collectively towards our common goals, I actively contributed my skills while embracing diverse perspectives within the team. This collaborative journey not only enhanced my ability to adapt and learn from my peers but also underscored the significance of teamwork in achieving remarkable outcomes. I am proud to have been a part of this cohesive team, that not only met challenges head-on but also celebrated shared successes, shaping an invaluable chapter of personal and professional growth in my journey."</p>*
+*`<p>`"During my collaborative experience within our dynamic team, I thrived in a synergistic environment that fostered creativity, innovation, and effective communication. Working collectively towards our common goals, I actively contributed my skills while embracing diverse perspectives within the team. This collaborative journey not only enhanced my ability to adapt and learn from my peers but also underscored the significance of teamwork in achieving remarkable outcomes. I am proud to have been a part of this cohesive team, that not only met challenges head-on but also celebrated shared successes, shaping an invaluable chapter of personal and professional growth in my journey."`</p>`*
 
 <br>
 
@@ -1195,10 +1203,10 @@ PERSONAL STATEMENT: Possible questions you can answer are:
 <br>
 
 :brain: **Project contributions:**
-*<p>"Code for Edamam API calls, python functions, HTML templates, CSS, flask routes, individual SWOT analysis."</p>*
+*`<p>`"Code for Edamam API calls, python functions, HTML templates, CSS, flask routes, individual SWOT analysis."`</p>`*
 
 👩‍💻 **Personal statement:**
-*<p>"I have thorougly enjoyed working within the team towards this project. Due to the supportive attitudes of the team, I certainly felt more confident about taking on challenges and seekng answers. I have learnt a lot from my team members as collaboration within the team has been excellent. I also have benefited from my team members existing skils and experience, as it meant the project and task delegation has been very well managed. I'm excited to start a meaningful career and build on the skills developed over the past 16 weeks. "</p>*
+*`<p>`"I have thorougly enjoyed working within the team towards this project. Due to the supportive attitudes of the team, I certainly felt more confident about taking on challenges and seekng answers. I have learnt a lot from my team members as collaboration within the team has been excellent. I also have benefited from my team members existing skils and experience, as it meant the project and task delegation has been very well managed. I'm excited to start a meaningful career and build on the skills developed over the past 16 weeks. "`</p>`*
 
 <br>
 
@@ -1207,11 +1215,11 @@ PERSONAL STATEMENT: Possible questions you can answer are:
 <br>
 
 :brain: **Project contributions:**
-*<p>Meeting note taker, created SQL database, various python functions, de-bugging, created Trello board for SWOT analysis, individual SWOT analysis, presentation slide leader, project documentation editor</p>*
+*`<p>`Meeting note taker, created SQL database, various python functions, de-bugging, created Trello board for SWOT analysis, individual SWOT analysis, presentation slide leader, project documentation editor`</p>`*
 
 👩‍💻 **Personal statement:**
 
-*<p>"Throughout the CFG degree and group project, my favorite aspect has been the collaborative journey with my fellow career changers. Tackling new and exciting problems together has not only led to day-by-day improvements in my own skills but also in the growth of my fellow team members, which has been inspiring to see.</p> <p>Technology is integral to my life, and my desire to learn and advance in the field is fueled by a passion for collaborating with innovative software engineers and making a tangible impact for companies. My decision to pursue a tech career is rooted in a goal to satisfy my technical and analytical curiosity, aligning perfectly with the dynamic nature of this space. This final team project has been a wonderful end to the CFG degree and welcome to the collaborative and problem-solving nature of being a software engineer!</p> <p>To end this on a personal note, a not-so-well-known fact about me is that I used to compete in hip hop crew competitions. Even today, I never shy away from a dance battle when out with friends."</p>*
+*`<p>`"Throughout the CFG degree and group project, my favorite aspect has been the collaborative journey with my fellow career changers. Tackling new and exciting problems together has not only led to day-by-day improvements in my own skills but also in the growth of my fellow team members, which has been inspiring to see.`</p>` `<p>`Technology is integral to my life, and my desire to learn and advance in the field is fueled by a passion for collaborating with innovative software engineers and making a tangible impact for companies. My decision to pursue a tech career is rooted in a goal to satisfy my technical and analytical curiosity, aligning perfectly with the dynamic nature of this space. This final team project has been a wonderful end to the CFG degree and welcome to the collaborative and problem-solving nature of being a software engineer!`</p>` `<p>`To end this on a personal note, a not-so-well-known fact about me is that I used to compete in hip hop crew competitions. Even today, I never shy away from a dance battle when out with friends."`</p>`*
 
 <br>
 
@@ -1220,10 +1228,10 @@ PERSONAL STATEMENT: Possible questions you can answer are:
 <br>
 
 :brain: **Project contributions:**
-*<p>Python functions, unit testing, individual and project SWOT analysis, README.md, communication and collaboration booklet</p>*
+*`<p>`Python functions, unit testing, individual and project SWOT analysis, README.md, communication and collaboration booklet`</p>`*
 
 👩‍💻 **Personal statement:**
-*<p>"In our group project, the most challenging yet rewarding task was diving into the intricate world of unit testing for our Python files in the Smart Pantry application. Implementing robust testing strategies added a layer of complexity, but the satisfaction of ensuring our code's reliability was worth the effort.</p> <p>Throughout the course, I've found immense joy in the process of continuously enhancing my skills. Whether it's independently exploring new technologies or collaborating within the group, the journey of learning is what I find most enjoyable.</p> <p>My passion for technology stems from its dynamic and diverse nature. It's not just about coding; it's the gateway to endless creativity and innovation. Technology has this incredible power to turn groundbreaking ideas into tangible realities, and being part of that transformation is what makes pursuing a career in tech so important to me</p> <p>...and finding new ways to torment my family with my two new best friends, Python and AlexaDeveloperConsole - that's if I ever get my Alexa access back!😉"</p>*
+*`<p>`"In our group project, the most challenging yet rewarding task was diving into the intricate world of unit testing for our Python files in the Smart Pantry application. Implementing robust testing strategies added a layer of complexity, but the satisfaction of ensuring our code's reliability was worth the effort.`</p>` `<p>`Throughout the course, I've found immense joy in the process of continuously enhancing my skills. Whether it's independently exploring new technologies or collaborating within the group, the journey of learning is what I find most enjoyable.`</p>` `<p>`My passion for technology stems from its dynamic and diverse nature. It's not just about coding; it's the gateway to endless creativity and innovation. Technology has this incredible power to turn groundbreaking ideas into tangible realities, and being part of that transformation is what makes pursuing a career in tech so important to me`</p>` `<p>`...and finding new ways to torment my family with my two new best friends, Python and AlexaDeveloperConsole - that's if I ever get my Alexa access back!😉"`</p>`*
 
 <br>
 

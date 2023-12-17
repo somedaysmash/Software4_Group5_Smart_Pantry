@@ -1,40 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-     <link rel="stylesheet" href="static/style.css" />
-    <center><a class="home_button" href="/">Home</a></center>
-</head>
-<body class="date_bg">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="static/style.css" />
+  </head>
+  <body class="date_bg">
+    <div class="recipe_button"><a href="/">Home</a></div>
+
     <h1>Recipe Search by Ingredient</h1>
     <form id="ingredientForm" method="POST" action="/search_recipe">
-        <div class="input-container">
-            <label for="ingredient">Enter an Ingredient:</label>
-            <input type="text" id="ingredient" name="ingredient" required>
-        </div>
-        <button type="submit" name="action" value="search">Search Recipes</button>
+      <div class="input-container">
+        <label for="ingredient">Choose an ingredient:</label>
+        <input type="text" id="ingredient" name="ingredient" required />
+      </div>
+      <button type="submit" name="action" value="search">Search Recipes</button>
     </form>
 
     <!-- Display the list of recipes here -->
- <div>
-        <h2>Search Results</h2>
-        <ul>
-            {% if recipes %}
-                {% for recipe in recipes %}
-                    <li>
-                        <a href="{{ recipe['recipe']['url'] }}" target="_blank">
-                            <h2 class="recipe">{{ recipe['recipe']['label'] }}</h2>
-                        </a>
-                    </li>
-                {% endfor %}
-            {% else %}
-                <p>No recipes found.</p>
-            {% endif %}
-        </ul>
+    <div>
+      <h2>Search Results</h2>
+      <ul>
+        {% if recipes %} {% for recipe in recipes %}
+        <li>
+          <a href="{{ recipe['recipe']['url'] }}" target="_blank">
+            <h2 class="recipe">{{ recipe['recipe']['label'] }}</h2>
+          </a>
+        </li>
+        {% endfor %} {% else %}
+        <p>No recipes found.</p>
+        {% endif %}
+      </ul>
     </div>
 
     <form id="seeMoreForm" method="POST" action="/see_more_recipes">
-        <button type="submit" name="action" value="see_more">See More Recipes</button>
+      <button type="submit" name="action" value="see_more">
+        See More Recipes
+      </button>
     </form>
-</body>
+  </body>
 </html>

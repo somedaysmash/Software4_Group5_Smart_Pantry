@@ -2,49 +2,52 @@
   <title>Smart Pantry</title>
   <link rel="stylesheet" href="static/style.css" />
 </head>
-<center><a class="home_button" href="/">Home</a></center>
 <body class="ingredient_bg">
-  <nav>
-    <ul class="ing_list">
-      <li><a href="/kitchen">Inside My Kitchen</a></li>
-      <li><a href="/shopping">Ingredients running low</a></li>
-    </ul>
-    <h1>
-      Not sure what to cook? Choose a protein to generate a
-      random recipe. We'll create a shopping list with all the missing
-      products.
-    </h1>
-  </nav>
+  <div class="recipe_button"><a href="/">Home</a></div>
+  <div class="recipe_button"><a href="/kitchen">Inside My Kitchen</a></div>
+  <div class="recipe_button">
+    <a href="/shopping">Ingredients running low</a>
+  </div>
+
+  <h1>
+    Not sure what to cook? Choose a protein to generate a random recipe. We'll
+    create a shopping list with all the missing products.
+  </h1>
   <form method="post">
     <div class="wrapper_button">
       <select name="query" id="query">
         {% for i in proteins %}
-        <option value = "{{i[0]}}">{{ i[0] }}</option>
+        <option value="{{i[0]}}">{{ i[0] }}</option>
         {% endfor %}
-
       </select>
       <button class="or_navigation" type="submit">Generate Recipe</button>
     </div>
   </form>
 
-<div class="recipe_container">
+  <div class="recipe_container">
     <div>
-        <h2 class='recipe_wrapper'>{{ recipe.label }}</h2>
-        <ul class="ingredients">
-            {% for i in recipe.ingredients %}
-            <li>{{ i.text }}</li>
-            {% endfor %}
-        </ul>
+      <h2 class="recipe_wrapper">{{ recipe.label }}</h2>
+      <ul class="ingredients">
+        {% for i in recipe.ingredients %}
+        <li>{{ i.text }}</li>
+        {% endfor %}
+      </ul>
     </div>
 
-    <div class='shopping_list_wrapper'>
-        <h2>Uh oh! Looks like you have a few missing ingredients:</h2>
-        <ul class="ingredients">
-            {% for line in stock %}
-               <li><input type="checkbox" /> {{line}} </li>
-            {% endfor %}
-        </ul>
-        <button><a href=" {{url_for('file_download_missing')}}" download="missing_stock.txt">Download</a></button>
+    <div class="shopping_list_wrapper">
+      <h2>Uh oh! Looks like you have a few missing ingredients:</h2>
+      <ul class="ingredients">
+        {% for line in stock %}
+        <li><input type="checkbox" /> {{line}}</li>
+        {% endfor %}
+      </ul>
+      <button>
+        <a
+          href=" {{url_for('file_download_missing')}}"
+          download="missing_stock.txt"
+          >Download</a
+        >
+      </button>
     </div>
-</div>
+  </div>
 </body>

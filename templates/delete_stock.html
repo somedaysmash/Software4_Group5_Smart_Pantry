@@ -1,22 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <link rel="stylesheet" href="static/style.css"/>
-  <center><a class="home_button" href="/">Home</a></center>>
-</head>
-<body id="alterStock">
-    <div class='prompt'>Remove stock from your inventory</div>
-#
-<form method="POST" action="/delete_stock" id="StockForm">
-    <label for="stock_store">Select Stock Store:</label>
-    <select name="stock_store" id="stock_store" required>
+  <head>
+    <link rel="stylesheet" href="static/style.css" />
+  </head>
+  <body id="alterStock">
+    <div class="recipe_button"><a href="/">Home</a></div>
+
+    <form method="POST" action="/delete_stock" id="StockForm">
+      <label for="stock_store"
+        >Remove stock from your inventory: <br />Select Stock Store:</label
+      >
+      <select name="stock_store" id="stock_store" required>
         <option value="Fridge">Fridge</option>
         <option value="Pantry">Pantry</option>
         <option value="Freezer">Freezer</option>
-    </select>
-    <label for="item_name">Item Name: </label>
-         <input type="text" name="item_name" id="item_name" >
-        <button type="submit" name="action">Remove Stock</button>
-</form>
-</body>
+      </select>
+      <label for="item_name">Item Name: </label>
+      <input type="text" name="item_name" id="item_name" />
+      <button type="submit" name="action">Remove Stock</button>
+    </form>
+  </body>
 </html>
