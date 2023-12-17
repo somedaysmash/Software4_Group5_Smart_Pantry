@@ -367,7 +367,6 @@ button:hover {
 }
 
 .home_button {
-    display: flex;
     align-items: center;
     justify-content: center;
     background-color: #b7b7a5;
