@@ -592,23 +592,23 @@ def fetch_out_of_date():
     '''
 
     try:
-        # Connect to DB
         db = SqlDatabase('Smart_Pantry')
         db.connect()
         OOD_data = ()
-        # Execute the query to select out of date ingredients
         query = ("SELECT ingredientname, quantity, sellbydate FROM ExpiredIngredients ORDER BY sellbydate;"
         )
-        # Execute the query and store the result
         OOD_data = db.execute_query(query)
         if not OOD_data:
-            # Raise a custom exception if no protein found
+            # Raise a custom exception if no results found
             raise DbQueryError("No rotting food in the kitchen, hurrah!", query, None)
         # Print each row of the result
         for row in OOD_data:
             print(row)
             print("\n")
         return OOD_data
+
+    except DbQueryError as e:
+        print("No out of date ingredients")
 
     finally:
         # Disconnect from the database
@@ -625,25 +625,27 @@ def fetch_expiring_ingredient_data():
         DbQueryError: If the ingredient is not found in the database.
         Exception: If there is any other error.
     '''
-
     try:
         # Connect to DB
         db = SqlDatabase('Smart_Pantry')
         db.connect()
         expiring_data = ()
-        # Execute the query to select out of date ingredients
+        # Execute  query to select out of date ingredients
         query = ("SELECT ingredientname, quantity, sellbydate FROM ExpiringIngredients ORDER BY sellbydate;"
         )
-        # Execute the query and store the result
+        # Execute  query and store  result
         expiring_data = db.execute_query(query)
         if not expiring_data:
-            # Raise a custom exception if no protein found
+            # Raise exception if no results found
             raise DbQueryError("No items found that expire within the next few days", query, None)
         # Print each row of the result
         for row in expiring_data:
             print(row)
             print("\n")
         return expiring_data
+
+    except DbQueryError as e:
+        print("No items found that expire within the next few days")
 
     finally:
         # Disconnect from the database
