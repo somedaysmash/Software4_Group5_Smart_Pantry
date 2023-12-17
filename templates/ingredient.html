@@ -7,7 +7,7 @@
   <nav>
     <ul class="ing_list">
       <li><a href="/kitchen">Inside My Kitchen</a></li>
-      <li><a href="/shopping">Shopping List</a></li>
+      <li><a href="/shopping">Ingredients running low</a></li>
     </ul>
     <h1>
       Not sure what to cook? Choose a protein to generate a
@@ -17,44 +17,34 @@
   </nav>
   <form method="post">
     <div class="wrapper_button">
-      <!--input
-        type="text"
-        name="query"
-        placeholder="Choose your protein"
-        value = ''
-      /-->
       <select name="query" id="query">
         {% for i in proteins %}
         <option value = "{{i[0]}}">{{ i[0] }}</option>
         {% endfor %}
 
       </select>
-      <button type="submit">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="28"
-          height="28"
-          viewBox="0 0 24 24"
-          stroke-width="2"
-          stroke="currentColor"
-          fill="none"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        >
-          <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-          <path d="M5 12l14 0"></path>
-          <path d="M13 18l6 -6"></path>
-          <path d="M13 6l6 6"></path>
-        </svg>
-      </button>
+      <button type="submit">Generate Recipe</button>
     </div>
   </form>
 
-  <hr />
-  <h2>{{ recipe.label }}</h2>
-  <ul class="ingredients">
-    {% for i in recipe.ingredients %}
-    <li>{{ i.text }}</li>
-    {% endfor %}
-  </ul>
+<div class="recipe_container">
+    <div>
+        <h2 class='recipe_wrapper'>{{ recipe.label }}</h2>
+        <ul class="ingredients">
+            {% for i in recipe.ingredients %}
+            <li>{{ i.text }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div class='shopping_list_wrapper'>
+        <h2>Uh oh! Looks like you have a few missing ingredients:</h2>
+        <ul class="ingredients">
+            {% for i in stock %}
+            <li>{{ i }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+
 </body>

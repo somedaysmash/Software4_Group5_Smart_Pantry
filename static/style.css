@@ -21,25 +21,42 @@ body {
     background: url(assets/expiring.jpg), lightgray 50% / cover no-repeat;
 }
 
-h1 {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-style: italic;
-    font-size: 24px;
-    background-color: #b7b7a5;
-    margin: 10px;
-    padding: 0 7rem;
-    border-radius: 5rem;
-    color: whitesmoke;
-    text-align: center;
-
-}
-
 .ingredient_bg {
     background-image: url(assets/protein.jpg);
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: center;
-    height: auto;
+
+}
+
+.shopping_bg {
+    background-color: #f4f4f4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.para {
+    font-family: 'Arial', sans-serif;
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.list {
+    list-style: none;
+    padding: 0;
+}
+
+.list li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+input[type="checkbox"] {
+    margin-right: 10px;
 }
 
 a {
@@ -91,30 +108,72 @@ input::placeholder {
     color: rgb(78, 94, 68);
 }
 
-/* Button on top of the Input */
 .wrapper_button {
     width: 400px;
     position: relative;
     margin: auto;
+    overflow: hidden;
 }
 
-.wrapper_button input {
-    background: rgba(255, 255, 255, 0.1);
+.wrapper_button select {
+    background: white;
     border: 2px solid white;
     border-radius: 7rem;
     padding: 1rem 2rem;
-    width: 100%;
+    width: 70%;
 }
 
 .wrapper_button button {
     background: white;
-    border-radius: 50px;
-    aspect-ratio: 1;
-    height: 80%;
+    border: none;
+    color: brown;
+    border-radius: 7rem;
+    padding: 1rem 2rem;
+    width: auto;
     position: absolute;
-    top: 10%;
-    right: 5px;
+    top: 0;
+    right: 0;
+    height: 100%;
 }
+
+.wrapper_button button:hover {
+    background: rgb(87, 63, 63);
+    cursor: pointer;
+}
+
+.recipe_container {
+    display: flex;
+    gap: 40px;
+    background-color: rgba(159, 193, 213, 0.6);
+    padding: 20px;
+}
+
+h1 {
+    display: flex;
+    background-color: rgba(159, 193, 213, 0.6);
+    padding: 20px;
+}
+
+.recipe_wrapper,
+.shopping_list_wrapper {
+    flex: 1;
+}
+
+.recipe_wrapper h2,
+.shopping_list_wrapper h2 {
+    font-size: 1em;
+    margin-bottom: 10px;
+}
+
+.ingredients {
+    list-style-type: none;
+    padding: 0;
+}
+
+.ingredients li {
+    margin-bottom: 5px;
+}
+
 
 .or_navigation {
     background-color: #b7b7a5;
@@ -163,7 +222,7 @@ input::placeholder {
     transition: background-color 0.2s, font-weight 0.2s;
     background-color: #b7b7a5;
     font-weight: bold;
-    }
+}
 
 .main-page:hover {
     cursor: pointer;
@@ -219,35 +278,13 @@ td {
     text-align: center
 }
 
-.kitchen-title-link {
+img.logo {
     display: flex;
     align-items: center;
-    justify-content: center;
-    background-color: rgba(94, 86, 82, 0.80);
-    border-radius: 1rem;
-    font-size: 1.5rem;
-    margin-bottom: 20px;
-    width: 100%;
-    height: 50px;
-    border-style: solid;
-    border-color: #b7b7a5;
+    margin: 0 auto;
+    max-width: 20%;
+    height: auto;
 }
-
-.kitchen-title-link:hover {
-    cursor: pointer;
-    transition: background-color 0.2s, font-weight 0.2s;
-    background-color: #b7b7a5;
-    font-weight: bold;
-}
-
-img.logo {
-     display: flex;
-     align-items: center;
-     margin: 0 auto;
-     max-width: 20%;
-     height: auto;
-}
-
 
 #addStockForm {
     max-width: 400px;
@@ -263,10 +300,6 @@ img.logo {
     background: url(assets/index_pantry.jpeg), lightgray 50% / cover no-repeat;
 }
 
-.prompt {
-    margin-top: 60px;
-}
-
 label {
     display: block;
     margin-bottom: 8px;
@@ -274,9 +307,7 @@ label {
 }
 
 select, input {
-    width: 100%;
     padding: 10px;
-    margin-bottom: 15px;
     box-sizing: border-box;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -328,10 +359,9 @@ button:hover {
     border-color: #b7b7a5;
 }
 
-.recipe:hover{
+.recipe:hover {
     cursor: pointer;
     transition: background-color 0.2s, font-weight 0.2s;
     background-color: rgba(169, 115, 87, 0.9);
     font-weight: bold;
- }
-
+}
