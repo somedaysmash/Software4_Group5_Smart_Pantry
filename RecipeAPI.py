@@ -301,7 +301,17 @@ def update_pantry(ingredients_and_weight):
     finally:
         db.disconnect()
 
+def show_all():
+        db = SqlDatabase('Smart_Pantry')
+        db.connect()
 
+        # Get all the ingredients from the database
+        query = "SELECT * FROM Fridge UNION SELECT * FROM Freezer UNION SELECT * FROM Pantry"
+        results = db.execute_query(query)
+        db.disconnect()
+        # Print the results
+        return results
+       
 if __name__ == '__main__':
     # random_recipe()
     # run()  # we only need this part to run the sequence

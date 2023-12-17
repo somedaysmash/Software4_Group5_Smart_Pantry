@@ -9,7 +9,7 @@
 
 
 ### Software 4 - Project Group 5 
-(Lauren Aldridge, Amy Dangerfield, Anna Ketre, Karen Lacey, Vanessa Latchen-Smith, Dorothy McEvoy, Lauren Southall)
+Lauren Aldridge, Amy Dangerfield, Anna Ketre, Karen Lacey, Vanessa Latchen-Smith, Dorothy McEvoy, Lauren Southall
 
 <br>
 
@@ -1225,7 +1225,7 @@ PERSONAL STATEMENT: Possible questions you can answer are:
 
 :brain: **Project contributions:** 
 *<p>Add Text Here</p>*
-<br>
+
 
 :woman_technologist: **Personal statement:** 
 *<p>"Add Text Here"</p>*
@@ -1237,7 +1237,7 @@ PERSONAL STATEMENT: Possible questions you can answer are:
 
 :brain: **Project contributions:** 
 *<p>Add Text Here</p>*
-<br>
+
 
 :woman_technologist: **Personal statement:** 
 *<p>"Add Text Here"</p>*
@@ -1249,7 +1249,7 @@ PERSONAL STATEMENT: Possible questions you can answer are:
 
 :brain: **Project contributions:** 
 *<p>Add Text Here</p>*
-<br>
+
 
 :woman_technologist: **Personal statement:** 
 *<p>"Add Text Here"</p>*
@@ -1261,11 +1261,11 @@ PERSONAL STATEMENT: Possible questions you can answer are:
 
 :brain: **Project contributions:** 
 *<p> Generated the project concept, Created the Trello board, Individual SWOT analysis, Python functions, De-bugging, Cleaning code</p>*
-<br>
+
 
 :woman_technologist: **Personal statement:** 
 *<p>
-During my collaborative experience within our dynamic team, i thrived in a synergistic environment that fostered creativity, innovation, and effective communication. Working collectively towards our common goals, I actively contributed my skills while embracing diverse perspectives within the team. This collaborative journey not only enhanced my ability to adapt and learn from my peers but also underscored the significance of teamwork in achieving remarkable outcomes. I am proud to have been a part of this cohesive team, that not only met challenges head-on but also celebrated shared successes, shaping an invaluable chapter of personal and professional growth in my journey.</p>*
+"During my collaborative experience within our dynamic team, i thrived in a synergistic environment that fostered creativity, innovation, and effective communication. Working collectively towards our common goals, I actively contributed my skills while embracing diverse perspectives within the team. This collaborative journey not only enhanced my ability to adapt and learn from my peers but also underscored the significance of teamwork in achieving remarkable outcomes. I am proud to have been a part of this cohesive team, that not only met challenges head-on but also celebrated shared successes, shaping an invaluable chapter of personal and professional growth in my journey."</p>*
 
 <br>
 
@@ -1274,7 +1274,7 @@ During my collaborative experience within our dynamic team, i thrived in a syner
 
 :brain: **Project contributions:** 
 *<p>Add Text Here</p>*
-<br>
+
 
 :woman_technologist: **Personal statement:** 
 *<p>"Add Text Here"</p>*
@@ -1286,7 +1286,7 @@ During my collaborative experience within our dynamic team, i thrived in a syner
 
 :brain: **Project contributions:** 
 *<p>Add Text Here</p>*
-<br>
+
 
 :woman_technologist: **Personal statement:** 
 *<p>"Add Text Here"</p>*
@@ -1298,7 +1298,7 @@ During my collaborative experience within our dynamic team, i thrived in a syner
 
 :brain: **Project contributions:** 
 *<p>Python functions, unit testing, individual and project SWOT analyses, README.md, communication and collaboration booklet</p>*
-<br>
+
 
 :woman_technologist: **Personal statement:** 
 *<p>"In our group project, the most challenging yet rewarding task was diving into the intricate world of unit testing for our Python files in the Smart Pantry application. Implementing robust testing strategies added a layer of complexity, but the satisfaction of ensuring our code's reliability was worth the effort.</p> <p>Throughout the course, I've found immense joy in the process of continuously enhancing my skills. Whether it's independently exploring new technologies or collaborating within the group, the journey of learning is what I find most enjoyable.</p> <p>My passion for technology stems from its dynamic and diverse nature. It's not just about coding; it's the gateway to endless creativity and innovation. Technology has this incredible power to turn groundbreaking ideas into tangible realities, and being part of that transformation is what makes pursuing a career in tech so important to me</p><p>...and finding new ways to torment my family with my two new best friends, Python and AlexaDeveloperConsole - that's if I ever get my Alexa access back!*:wink:"</p> 
