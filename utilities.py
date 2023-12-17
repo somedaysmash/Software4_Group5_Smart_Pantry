@@ -157,7 +157,7 @@ class StockDelete:
 
     def delete_item(self, stock_store, item_name):
         # Check that the table name is valid
-        assert stock_store in ["fridge", "freezer", "pantry"], "Invalid table name"
+        assert stock_store in ["Fridge", "Freezer", "Pantry"], "Invalid table name"
         # assert stock_store in ["Fridge", "Freezer", "Pantry"], "Invalid table name"
         # Check the item name is not none or empty
         assert item_name, "Item name cannot be None or empty"

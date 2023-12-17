@@ -78,7 +78,7 @@ def delete_item_from_stock():
         item_name = request.form['item_name']
 
         stock_delete = StockDelete(stock_store, item_name)
-        stock_delete.delete_item(item_name, stock_store)
+        stock_delete.delete_item(stock_store, item_name)
 
         return redirect(url_for('kitchen'))
 
@@ -105,9 +105,9 @@ def upload_shoppinglist():
         return render_template('shoppinglist.html', line=slist)
 
 # low_stock_items.write(result)
-@app.route('/return_file')
-def file_downloads():
-    return send_file('static/assets/list_of_low_stock.txt')
+# @app.route('/return_file')
+# def file_downloads():
+#     return send_file('static/assets/list_of_low_stock.txt')
 
 @app.route('/return_file')
 def file_downloads():
