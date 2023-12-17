@@ -31,6 +31,7 @@ def kitchen():
     return render_template('kitchen.html', fridge=fridge, pantry=pantry, freezer=freezer)
 
 
+
 # Anna fetching recipe name and ingredients
 @app.route('/ingredient', methods=('GET', 'POST'))
 def ingredient():
@@ -53,7 +54,7 @@ def ingredient():
             if ingredient not in enough_stock:
                 recipe_shopping.append(
                     (ingredient['food'], ingredient['quantity'], ingredient['measure']))
-                missing_items = [f"{row[0]} {row[1]}\n" for row in recipe_shopping]
+                missing_items = [f"{row[0]} {row[1]} {row[2]}\n" for row in recipe_shopping]
                 with open('static/assets/missing_stock.txt', 'w') as missing_stock_items:
                     missing_stock_items.writelines(missing_items)
         return render_template('ingredient.html', recipe=recipe, proteins=[], stock=missing_items)
