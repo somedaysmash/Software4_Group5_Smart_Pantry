@@ -1303,7 +1303,7 @@ PERSONAL STATEMENT: Possible questions you can answer are:
 <br>
 
 :brain: **Project contributions:**
-*<p>Meeting note tacker, created SQL database, various python functions, de-bugging, created Trello board for SWOT analysis, individual SWOT analysis, presentation slide leader, project documention editor</p>*
+*<p>Meeting note taker, created SQL database, various python functions, de-bugging, created Trello board for SWOT analysis, individual SWOT analysis, presentation slide leader, project documentation editor</p>*
 
 👩‍💻 **Personal statement:**
 
