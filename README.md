@@ -1115,23 +1115,122 @@ and other custom modules:
 
 <details>
 	<summary>main.py</summary>
+	
+- `assert_sell_by_date` Function:
+	- This function checks the validity of the sell-by date.
+	- It ensures that the sell-by date is a string and follows the format YYYY-MM-DD.
+- `_add_item` Function:
+	- Inserts a new item into the specified table in the Smart_Pantry database.
+	- Validates the table name, values format, and executes the insert query.
+- `StockDelete Class`:
+	- Deletes an item from a specified table in the Smart_Pantry database.
+	- Validates the table name, item name, executes the delete query, and handles errors.
+- `update_inventory_record` Function:
+	- Updates a record in the Smart_Pantry database based on user input.
+	- Validates table name, column name, data ID, and new value. Executes the update query.
+- `retrieve_stock` Function:
+	- Retrieves stock information from a specific table in the Smart_Pantry database.
+	- Validates the table name, executes the select query, and prints the result.
+- `fetch_protein_data` Function:
+	- Fetches protein data from the database and handles potential exceptions.
+- `low_stock` Function:
+	- Connects to the database and retrieves low-stock items from different tables.
+- `ShoppingList Class`:
+	- Manages a shopping list with methods to populate from the database, display, and interact with the user.
+- `populate_from_database` Function (Outside of Class):
+	- Populates the inventory and shopping list from the database, handling low-stock items.
+- `fetch_out_of_date` Function:
+	- Fetches data from the database where ingredients are past their sell-by date.
+- `fetch_expiring_ingredient_data` Function:
+	- Fetches data from the database where ingredients' sell-by date is today or in the next two days.
+- Example Usage Section:
+	- Demonstrates the usage of the classes and functions with comments.
+
+<br>
+
 </details>
 
 <details>
 	<summary>App.py</summary>
+	
+- Welcome Route:
+	- Tests the `/welcome` route to ensure a successful response with a status code of 200 and the presence of the 'Welcome' message.
+- Kitchen Route:
+	- Tests the `/kitchen` route with a POST request, verifying a successful response with a status code of 200 and the presence of the 'Updated Kitchen' message.
+- Ingredient Route:
+	- Utilizes a patch to mock the `get_random_recipe` function and tests the `/ingredient` route with a POST request. Ensures a successful response with a status code of 200 and the presence of a recipe label.
+- New Item Fridge:
+	- Tests the `new_item_fridge` function with a mocked input data for adding a new item to the fridge. Verifies a successful response with a status code of 200 and the returned JSON matching the input data.
+- Update Fridge Stock:
+	- Tests the `update_fridge_stock` function with a generic update data and another test with specific data. Ensures a successful response with a status code of 200 and the appropriate success message.
+- Delete Item From Stock:
+	- Tests the `delete_item_from_stock` function for both deleting an existing item and attempting to delete a nonexistent item. Verifies successful deletion and appropriate error response.
+
+<br>
+
 </details>
 
 <details>
 	<summary>RecipeAPI.py</summary>
+
+  - `test_get_random_recipe`: 
+    - Tests the `get_random_recipe` function, simulating a successful API response.
+    - Mocks the `requests.get` method and asserts the expected data structure.
+
+  - `test_see_more_recipes`: 
+    - Tests the `see_more_recipes` function, specifically its interaction with `recipe_search_by_ingredient`.
+    - Uses side effects to simulate user input and asserts the expected function calls.
+
+  - `test_next_page_request`: 
+    - Tests the `next_page_request` function, checking its behavior when making a request to the next page.
+    - Mocks the `requests.get` method and asserts the expected API response.
+
+  - `test_create_shopping_list`: 
+    - Tests the `create_shopping_list` function, ensuring correct file writing.
+    - Mocks the `open` method and asserts the expected file content.
+
+  - `test_get_random_recipe_success`: 
+    - Tests the `get_random_recipe` function for a successful API call.
+    - Mocks the `requests.get` method and asserts the expected API response.
+
+  - `test_get_random_recipe_failure`: 
+    - Tests the `get_random_recipe` function for a failed API call (404).
+    - Mocks the `requests.get` method and asserts the function's response.
+
+  - `test_recipe_search_by_ingredient_success`: 
+    - Tests the `recipe_search_by_ingredient` function for a successful API call.
+    - Mocks the `requests.get` method and asserts the expected API response.
+
+  - `test_recipe_search_by_ingredient_failure`: 
+    - Tests the `recipe_search_by_ingredient` function for a failed API call (404).
+    - Mocks the `requests.get` method and asserts the function's response.
+
+<br>
+
 </details>
 
 <details>
 	<summary>utilities.py</summary>
+
+- DbConnectionError Tests:
+	- Ensure the `DbConnectionError` instance can be created.
+	- Confirm that `DbConnectionError` inherits from the base Exception class.
+	- Validate the ability to provide a custom error message.
+	- Verify the use of a default message when none is provided.
+- DbQueryError Tests:
+	- Check the creation of `DbQueryError` instances with specific properties.
+	- Examine the string representation of `DbQueryError` for proper formatting.
+- SetUp Tests:
+	- Confirm the initialisation of SqlDatabase with a valid database name.
+	- Assert an `AssertionError` when trying to initialize SqlDatabase with a None database name.
+	- Validate successful connection to the database and handling of connection failure.
+	- Ensure proper disconnection by mocking the connection close method.
+	- Test the execution of queries, both successful and with failure.
+- TestMetrifyFunction:
+	- Verify the correct conversion from grams to kilograms and milliliters to liters.
+	- Check for appropriate handling of invalid input and output units, negative amounts, and combinations of both.
 </details>
 
-<details>
-	<summary>API_Key.py</summary>
-</details>
 <br>
 
 ## Meet the team
@@ -1151,13 +1250,13 @@ PERSONAL STATEMENT: Possible questions you can answer are:
 <br>
 
 :brain: **Project contributions:**
-<p>Created git repository; wrote class for database connection, wrote functions to add stock to database, edited data for tables and added views with accompnaying functions, added excepetions and assertions (rolled some back due to conflicts).</p>
+*<p>Created git repository; wrote class for database connection, wrote functions to add stock to database, edited data for tables and added views with accompnaying functions, added excepetions and assertions (rolled some back due to conflicts).</p>*
 
 👩‍💻 **Personal statement:**
-<p>Tackling three different programming languages within the first four weeks was the kind of fast-paced learning I love. After quickly finding my feet with SQL, I promptly tripped over them in Python. Our first team project was a great warm up to the main event. 
+*<p>"Tackling three different programming languages within the first four weeks was the kind of fast-paced learning I love. After quickly finding my feet with SQL, I promptly tripped over them in Python. Our first team project was a great warm up to the main event. 
 Taking on the more complex lessons in the last four weeks along with putting our new skills into practice collaboratively has more time-management and teamwork than any of the skill taught. Learning how to manipulate the database through python is the most enjoyable. The least fun is trying to troubleshoot! 
 Moving into a career in technology feels long-overdue - I am ready for the challenges ahead of me! On a more personal note, I am a massive Star Wars fan: I have cosplayed as Chewbacca (in my homemade costume), our youngest padawan is named 'Orson Benedict' - 'Obi' for short!
-.</p>
+."</p>*
 
 <br>
 
@@ -1166,14 +1265,10 @@ Moving into a career in technology feels long-overdue - I am ready for the chall
 <br>
 
 :brain: **Project contributions:**
-<p>Responsible for initial design mock-ups in Figma and further styling implementation across pages. Rendering HTML templates through Flask routes. Helped with code cleaning and import debugging. </p>
+*<p>Responsible for initial design mock-ups in Figma and further styling implementation across pages. Rendering HTML templates through Flask routes. Helped with code cleaning and import debugging. </p>*
 
 👩‍💻 **Personal statement:**
-<p>"The collective effort and collaboration within the team made this (at times challenging) journey worthwhile. Working as a team has brought the theoretical knowldge into the real world - a world with git commits and collaborative software development.*
-
-*This group project allowed me to push my limits and challenge myself with each and every sprint we've done. I'm thrilled to see the website come to live from what was just an idea a month ago - and am grateful to have the most hard-working and collaborative team to have achieved this with.*
-
-</p>
+*<p>"The collective effort and collaboration within the team made this (at times challenging) journey worthwhile. Working as a team has brought the theoretical knowldge into the real world - a world with git commits and collaborative software development.</p><p>This group project allowed me to push my limits and challenge myself with each and every sprint we've done. I'm thrilled to see the website come to live from what was just an idea a month ago - and am grateful to have the most hard-working and collaborative team to have achieved this with."</p>*
 
 <br>
 
@@ -1182,10 +1277,10 @@ Moving into a career in technology feels long-overdue - I am ready for the chall
 <br>
 
 :brain: **Project contributions:**
-<p>Collaborative code development in Python, Individual SWOT analysis, Debugging and problem-solving, Contribution to project document.</p>
+*<p>Collaborative code development in Python, Individual SWOT analysis, Debugging and problem-solving, Contribution to project document.</p>*
 
 👩‍💻 **Personal statement:**
-<p>"Embarking on the CFGDegree as a career changer in my forties was initially daunting and I often struggled with imposter syndrome. Over the duration of the course I've been amazed at how much I've grown in both skill and confidence. A particular highlight of this journey has been our group project. Here, I have found myself part of a fantastic group who have worked with a strong collaborative spirit with every member contributing significantly. Our project has pushed the boundaries of my coding abilities, often delving into areas that felt complex beyond my scope. However, as a team we have embraced this challenge and turned our errors into learning opportunities which enabled us to progress towards our goal. I feel so incredibly proud of what we've achieved as a team and I know I can take my learning from this experience forward into my future endeavors in this industry."</p>
+*<p>"Embarking on the CFGDegree as a career changer in my forties was initially daunting and I often struggled with imposter syndrome. Over the duration of the course I've been amazed at how much I've grown in both skill and confidence. A particular highlight of this journey has been our group project. Here, I have found myself part of a fantastic group who have worked with a strong collaborative spirit with every member contributing significantly. Our project has pushed the boundaries of my coding abilities, often delving into areas that felt complex beyond my scope. However, as a team we have embraced this challenge and turned our errors into learning opportunities which enabled us to progress towards our goal. I feel so incredibly proud of what we've achieved as a team and I know I can take my learning from this experience forward into my future endeavors in this industry."</p>*
 
 <br>
 
@@ -1194,10 +1289,10 @@ Moving into a career in technology feels long-overdue - I am ready for the chall
 <br>
 
 :brain: **Project contributions:**
-<p>Generated the project concept, Created the Trello board, Individual SWOT analysis, Python functions, De-bugging, Cleaning code</p>
+*<p>Generated the project concept, Created the Trello board, Individual SWOT analysis, Python functions, De-bugging, Cleaning code</p>*
 
 👩‍💻 **Personal statement:**
-<p>"During my collaborative experience within our dynamic team, I thrived in a synergistic environment that fostered creativity, innovation, and effective communication. Working collectively towards our common goals, I actively contributed my skills while embracing diverse perspectives within the team. This collaborative journey not only enhanced my ability to adapt and learn from my peers but also underscored the significance of teamwork in achieving remarkable outcomes. I am proud to have been a part of this cohesive team, that not only met challenges head-on but also celebrated shared successes, shaping an invaluable chapter of personal and professional growth in my journey."</p>
+*<p>"During my collaborative experience within our dynamic team, I thrived in a synergistic environment that fostered creativity, innovation, and effective communication. Working collectively towards our common goals, I actively contributed my skills while embracing diverse perspectives within the team. This collaborative journey not only enhanced my ability to adapt and learn from my peers but also underscored the significance of teamwork in achieving remarkable outcomes. I am proud to have been a part of this cohesive team, that not only met challenges head-on but also celebrated shared successes, shaping an invaluable chapter of personal and professional growth in my journey."</p>*
 
 <br>
 
@@ -1206,10 +1301,10 @@ Moving into a career in technology feels long-overdue - I am ready for the chall
 <br>
 
 :brain: **Project contributions:**
-<p>"Code for Edamam API calls, python functions, HTML templates, CSS, flask routes, individual SWOT analysis."</p>
+*<p>Code for Edamam API calls, python functions, HTML templates, CSS, flask routes, individual SWOT analysis.</p>*
 
 👩‍💻 **Personal statement:**
-<p>"I have thorougly enjoyed working within the team towards this project. Due to the supportive attitudes of the team, I certainly felt more confident about taking on challenges and seekng answers. I have learnt a lot from my team members as collaboration within the team has been excellent. I also have benefited from my team members existing skils and experience, as it meant the project and task delegation has been very well managed. I'm excited to start a meaningful career and build on the skills developed over the past 16 weeks. "</p>
+*<p>"I have thorougly enjoyed working within the team towards this project. Due to the supportive attitudes of the team, I certainly felt more confident about taking on challenges and seekng answers. I have learnt a lot from my team members as collaboration within the team has been excellent. I also have benefited from my team members existing skils and experience, as it meant the project and task delegation has been very well managed. I'm excited to start a meaningful career and build on the skills developed over the past 16 weeks."</p>*
 
 <br>
 
@@ -1218,11 +1313,11 @@ Moving into a career in technology feels long-overdue - I am ready for the chall
 <br>
 
 :brain: **Project contributions:**
-<p>Meeting note taker, created SQL database, various python functions, de-bugging, created Trello board for SWOT analysis, individual SWOT analysis, presentation slide leader, project documentation editor</p>
+*<p>Meeting note taker, created SQL database, various python functions, de-bugging, created Trello board for SWOT analysis, individual SWOT analysis, presentation slide leader, project documentation editor</p>*
 
 👩‍💻 **Personal statement:**
 
-<p>"Throughout the CFG degree and group project, my favorite aspect has been the collaborative journey with my fellow career changers. Tackling new and exciting problems together has not only led to day-by-day improvements in my own skills but also in the growth of my fellow team members, which has been inspiring to see.`</p>` `<p>`Technology is integral to my life, and my desire to learn and advance in the field is fueled by a passion for collaborating with innovative software engineers and making a tangible impact for companies. My decision to pursue a tech career is rooted in a goal to satisfy my technical and analytical curiosity, aligning perfectly with the dynamic nature of this space. This final team project has been a wonderful end to the CFG degree and welcome to the collaborative and problem-solving nature of being a software engineer!`</p>` `<p>`To end this on a personal note, a not-so-well-known fact about me is that I used to compete in hip hop crew competitions. Even today, I never shy away from a dance battle when out with friends."</p>
+*<p>"Throughout the CFG degree and group project, my favorite aspect has been the collaborative journey with my fellow career changers. Tackling new and exciting problems together has not only led to day-by-day improvements in my own skills but also in the growth of my fellow team members, which has been inspiring to see.</p> <p>Technology is integral to my life, and my desire to learn and advance in the field is fueled by a passion for collaborating with innovative software engineers and making a tangible impact for companies. My decision to pursue a tech career is rooted in a goal to satisfy my technical and analytical curiosity, aligning perfectly with the dynamic nature of this space. This final team project has been a wonderful end to the CFG degree and welcome to the collaborative and problem-solving nature of being a software engineer!</p> <p>To end this on a personal note, a not-so-well-known fact about me is that I used to compete in hip hop crew competitions. Even today, I never shy away from a dance battle when out with friends."</p>*
 
 <br>
 
@@ -1231,10 +1326,10 @@ Moving into a career in technology feels long-overdue - I am ready for the chall
 <br>
 
 :brain: **Project contributions:**
-<p>Python functions, unit testing, individual and project SWOT analysis, README.md, communication and collaboration booklet</p>
+*<p>Python functions, unit testing, individual and project SWOT analysis, README.md, communication and collaboration booklet</p>*
 
 👩‍💻 **Personal statement:**
-<p>"In our group project, the most challenging yet rewarding task was diving into the intricate world of unit testing for our Python files in the Smart Pantry application. Implementing robust testing strategies added a layer of complexity, but the satisfaction of ensuring our code's reliability was worth the effort.`</p>` `<p>`Throughout the course, I've found immense joy in the process of continuously enhancing my skills. Whether it's independently exploring new technologies or collaborating within the group, the journey of learning is what I find most enjoyable.`</p>` `<p>`My passion for technology stems from its dynamic and diverse nature. It's not just about coding; it's the gateway to endless creativity and innovation. Technology has this incredible power to turn groundbreaking ideas into tangible realities, and being part of that transformation is what makes pursuing a career in tech so important to me`</p>` `<p>`...and finding new ways to torment my family with my two new best friends, Python and AlexaDeveloperConsole - that's if I ever get my Alexa access back!😉"</p>
+*<p>"In our group project, the most challenging yet rewarding task was diving into the intricate world of unit testing for our Python files in the Smart Pantry application. Implementing robust testing strategies added a layer of complexity, but the satisfaction of ensuring our code's reliability was worth the effort.</p> <p>Throughout the course, I've found immense joy in the process of continuously enhancing my skills. Whether it's independently exploring new technologies or collaborating within the group, the journey of learning is what I find most enjoyable.</p> <p>My passion for technology stems from its dynamic and diverse nature. It's not just about coding; it's the gateway to endless creativity and innovation. Technology has this incredible power to turn groundbreaking ideas into tangible realities, and being part of that transformation is what makes pursuing a career in tech so important to me</p> <p>...and finding new ways to torment my family with my two new best friends, Python and AlexaDeveloperConsole - that's if I ever get my Alexa access back!"*😉</p>
 
 <br>
 
