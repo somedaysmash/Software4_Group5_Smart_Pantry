@@ -477,8 +477,8 @@ By sharing this detailed breakdown, we aim to facilitate a deeper understanding 
 #### Body Section:
 
 - `<body class="fridge_bg">`: Sets the class of the body element to "fridge_bg," likely for styling purposes.
-- `<center><a class="home_button" href="/">Home</a></center> : A home button to return to the main page centred.
-- `<div class='recipe_button'`>: Creates a division for styling purposes.
+- `<center><a class="home_button" href="/">Home</a></center>` : A home button to return to the main page centred.
+- `<div class='recipe_button'>`: Creates a division for styling purposes.
 - `<a href='/ingredient'>`: Creates a hyperlink with the text "Help me choose a recipe" that links to the "/ingredient" route.
 
 #### Data Table Section:
@@ -490,7 +490,7 @@ By sharing this detailed breakdown, we aim to facilitate a deeper understanding 
 - `<tr>`: Defines a table row.
 - `<th>`: Defines table header cells.
 - `<tbody>`: Defines the table body.
-- `{% set max_length = [fridge|length, pantry|length, freezer|length]|max %} : to set the length of the columns
+- `{% set max_length = [fridge|length, pantry|length, freezer|length]|max %}` : to set the length of the columns
 - `{% for i in range(max_length) %}`: Iterates over a range based on the maximum length of fridge, pantry, and freezer.
 - `<tr>`: Defines a table row for each iteration.
 - `{% for storage in [fridge, pantry, freezer] %}`: Iterates over fridge, pantry, and freezer.
@@ -499,10 +499,10 @@ By sharing this detailed breakdown, we aim to facilitate a deeper understanding 
 
 #### Button Section:
 
-- `<ul :buttons in an unordered list
-- `class="main_button">: a class for buttonss, created for styling purposes
-- `<li>: list element for each button
-- <a href='/add_stock'> : anchor element behaves like a button, navigating to our add, update and delete stock forms on separate html pages
+- `<ul>` :buttons in an unordered list
+- `<class="main_button">`: a class for buttonss, created for styling purposes
+- `<li>`: list element for each button
+- `<a href='/add_stock'>` : anchor element behaves like a button, navigating to our add, update and delete stock forms on separate html pages
 
 <br>
 
