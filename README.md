@@ -1291,10 +1291,10 @@ PERSONAL STATEMENT: Possible questions you can answer are:
 <br>
 
 :brain: **Project contributions:**
-*<p>Add Text Here</p>*
+*<p>"Code for Edamam API calls, python functions, HTML templates, CSS, flask routes, individual SWOT analysis."</p>*
 
 👩‍💻 **Personal statement:**
-*<p>"Add Text Here"</p>*
+*<p>"I have thorougly enjoyed working within the team towards this project. Due to the supportive attitudes of the team, I certainly felt more confident about taking on challenges and seekng answers. I have learnt a lot from my team members as collaboration within the team has been excellent. I also have benefited from my team members existing skils and experience, as it meant the project and task delegation has been very well managed. I'm excited to start a meaningful career and build on the skills developed over the past 16 weeks. "</p>*
 
 <br>
 
